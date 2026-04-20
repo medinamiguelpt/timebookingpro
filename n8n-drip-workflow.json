@@ -1,0 +1,189 @@
+{
+  "name": "CalBliss — Email Drip Sequence",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [{ "field": "cronExpression", "expression": "0 9 * * *" }]
+        }
+      },
+      "id": "trigger-daily",
+      "name": "Daily Trigger (9am)",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT id, email, created_at FROM waitlist WHERE created_at >= NOW() - INTERVAL '1 day' AND created_at < NOW() ORDER BY created_at ASC LIMIT 200",
+        "options": {}
+      },
+      "id": "fetch-day1",
+      "name": "Fetch Day-1 Signups",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.4,
+      "position": [460, 200],
+      "credentials": { "postgres": { "id": "supabase-pg", "name": "Supabase (Postgres)" } }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT id, email, created_at FROM waitlist WHERE created_at >= NOW() - INTERVAL '3 days' AND created_at < NOW() - INTERVAL '2 days' ORDER BY created_at ASC LIMIT 200",
+        "options": {}
+      },
+      "id": "fetch-day3",
+      "name": "Fetch Day-3 Signups",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.4,
+      "position": [460, 300],
+      "credentials": { "postgres": { "id": "supabase-pg", "name": "Supabase (Postgres)" } }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT id, email, created_at FROM waitlist WHERE created_at >= NOW() - INTERVAL '7 days' AND created_at < NOW() - INTERVAL '6 days' ORDER BY created_at ASC LIMIT 200",
+        "options": {}
+      },
+      "id": "fetch-day7",
+      "name": "Fetch Day-7 Signups",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.4,
+      "position": [460, 400],
+      "credentials": { "postgres": { "id": "supabase-pg", "name": "Supabase (Postgres)" } }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.CALBLISS_BASE_URL }}/api/drip",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [{ "name": "Content-Type", "value": "application/json" }]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            { "name": "email", "value": "={{ $json.email }}" },
+            { "name": "day", "value": "1" },
+            { "name": "secret", "value": "={{ $env.DRIP_SECRET }}" }
+          ]
+        },
+        "options": { "response": { "response": { "neverError": true } } }
+      },
+      "id": "send-day1",
+      "name": "Send Day-1 Email",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [700, 200]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.CALBLISS_BASE_URL }}/api/drip",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [{ "name": "Content-Type", "value": "application/json" }]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            { "name": "email", "value": "={{ $json.email }}" },
+            { "name": "day", "value": "3" },
+            { "name": "secret", "value": "={{ $env.DRIP_SECRET }}" }
+          ]
+        },
+        "options": { "response": { "response": { "neverError": true } } }
+      },
+      "id": "send-day3",
+      "name": "Send Day-3 Email",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [700, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.CALBLISS_BASE_URL }}/api/drip",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [{ "name": "Content-Type", "value": "application/json" }]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            { "name": "email", "value": "={{ $json.email }}" },
+            { "name": "day", "value": "7" },
+            { "name": "secret", "value": "={{ $env.DRIP_SECRET }}" }
+          ]
+        },
+        "options": { "response": { "response": { "neverError": true } } }
+      },
+      "id": "send-day7",
+      "name": "Send Day-7 Email",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [700, 400]
+    },
+    {
+      "parameters": {
+        "jsCode": "const results = [];\nfor (const item of $input.all()) {\n  if (item.json.statusCode === 200 || item.json.ok) {\n    results.push({ email: item.json.email, sent: true });\n  } else {\n    console.error('Drip send failed for', item.json);\n  }\n}\nreturn results;"
+      },
+      "id": "log-results",
+      "name": "Log Results",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [940, 300]
+    }
+  ],
+  "connections": {
+    "Daily Trigger (9am)": {
+      "main": [
+        [
+          { "node": "Fetch Day-1 Signups", "type": "main", "index": 0 },
+          { "node": "Fetch Day-3 Signups", "type": "main", "index": 0 },
+          { "node": "Fetch Day-7 Signups", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Fetch Day-1 Signups": {
+      "main": [[{ "node": "Send Day-1 Email", "type": "main", "index": 0 }]]
+    },
+    "Fetch Day-3 Signups": {
+      "main": [[{ "node": "Send Day-3 Email", "type": "main", "index": 0 }]]
+    },
+    "Fetch Day-7 Signups": {
+      "main": [[{ "node": "Send Day-7 Email", "type": "main", "index": 0 }]]
+    },
+    "Send Day-1 Email": {
+      "main": [[{ "node": "Log Results", "type": "main", "index": 0 }]]
+    },
+    "Send Day-3 Email": {
+      "main": [[{ "node": "Log Results", "type": "main", "index": 0 }]]
+    },
+    "Send Day-7 Email": {
+      "main": [[{ "node": "Log Results", "type": "main", "index": 0 }]]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": ""
+  },
+  "pinData": {},
+  "versionId": "1.0.0",
+  "meta": {
+    "templateCredsSetupCompleted": false,
+    "instanceId": ""
+  },
+  "tags": ["calbliss", "drip", "email"],
+  "_readme": {
+    "setup": [
+      "1. Import this file into N8N via Workflows > Import from file",
+      "2. Create a Postgres credential named 'Supabase (Postgres)' pointing at your Supabase DB",
+      "3. Set N8N environment variables: CALBLISS_BASE_URL (e.g. https://calbliss.com) and DRIP_SECRET (must match your Vercel DRIP_SECRET env var)",
+      "4. Activate the workflow — it runs daily at 9am and sends drip emails to the right cohorts"
+    ]
+  }
+}

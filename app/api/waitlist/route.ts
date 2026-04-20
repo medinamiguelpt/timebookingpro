@@ -11,24 +11,44 @@ function generateCode(): string {
 }
 
 export async function POST(req: Request) {
-  const { email, source = "waitlist", ref = "" } = await req.json()
+  const { email, source = "waitlist", ref = "", phone = "" } = await req.json()
 
   if (!email || !email.includes("@")) {
     return NextResponse.json({ error: "Invalid email" }, { status: 400 })
   }
 
-  const { position, referralCode } = await persistToSupabase(email, source, ref)
+  const { position, referralCode } = await persistToSupabase(email, source, ref, phone)
 
   await Promise.allSettled([
     sendOwnerNotification(email, source),
     sendConfirmation(email, position, referralCode),
+    phone ? sendSmsConfirmation(phone, position) : Promise.resolve(),
   ])
 
   console.log(`[waitlist] New signup: ${email} (source: ${source}, position: ${position})`)
   return NextResponse.json({ ok: true, position, referralCode })
 }
 
-async function persistToSupabase(email: string, source: string, ref: string) {
+async function sendSmsConfirmation(phone: string, position: number | null) {
+  const accountSid = process.env.TWILIO_ACCOUNT_SID
+  const authToken  = process.env.TWILIO_AUTH_TOKEN
+  const from       = process.env.TWILIO_PHONE_NUMBER
+  if (!accountSid || !authToken || !from) return
+
+  const positionText = position ? ` You're #${position} on the list.` : ""
+  const body = `CalBliss: You're on the waitlist!${positionText} We'll reach out within 24 hours. Questions? Reply to this message.`
+
+  await fetch(`https://api.twilio.com/2010-04-01/Accounts/${accountSid}/Messages.json`, {
+    method: "POST",
+    headers: {
+      Authorization: `Basic ${Buffer.from(`${accountSid}:${authToken}`).toString("base64")}`,
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: new URLSearchParams({ To: phone, From: from, Body: body }).toString(),
+  })
+}
+
+async function persistToSupabase(email: string, source: string, ref: string, phone = "") {
   if (!supabaseUrl || !supabaseKey) {
     return { position: null, referralCode: null }
   }
@@ -39,7 +59,7 @@ async function persistToSupabase(email: string, source: string, ref: string) {
   const { error } = await supabase
     .from("waitlist")
     .upsert(
-      { email, source, referred_by: ref || null, referral_code: code, created_at: new Date().toISOString() },
+      { email, source, referred_by: ref || null, referral_code: code, phone: phone || null, created_at: new Date().toISOString() },
       { onConflict: "email" }
     )
 

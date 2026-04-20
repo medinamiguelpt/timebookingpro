@@ -21,6 +21,7 @@ const PLANS = [
     ],
     cta: "Get started",
     popular: false,
+    franchise: false,
   },
   {
     name: "Growth",
@@ -37,6 +38,7 @@ const PLANS = [
     ],
     cta: "Get started",
     popular: true,
+    franchise: false,
   },
   {
     name: "Pro",
@@ -53,6 +55,25 @@ const PLANS = [
     ],
     cta: "Contact us",
     popular: false,
+    franchise: false,
+  },
+  {
+    name: "Franchise",
+    monthly: 499,
+    annual: 399,
+    description: "For chains, franchises, and multi-location groups.",
+    perks: [
+      "Up to 10 AI voice agents",
+      "Unlimited calls across all locations",
+      "Centralised multi-location dashboard",
+      "White-label agent voice & branding",
+      "Custom CRM & POS integrations",
+      "Dedicated account manager",
+      "99.9% SLA guarantee",
+    ],
+    cta: "Contact us",
+    popular: false,
+    franchise: true,
   },
 ]
 
@@ -121,8 +142,8 @@ export function Pricing() {
           </motion.div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6 items-start">
-          {PLANS.map(({ name, monthly, annual: annualPrice, description, perks, cta, popular }, i) => {
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 items-start">
+          {PLANS.map(({ name, monthly, annual: annualPrice, description, perks, cta, popular, franchise }, i) => {
             const price = annual ? annualPrice : monthly
             const originalPrice = monthly
 
@@ -131,7 +152,9 @@ export function Pricing() {
                 key={name}
                 className={`relative rounded-2xl border p-7 flex flex-col gap-6 transition-shadow duration-300 ${
                   popular
-                    ? "border-primary/60 bg-gradient-to-b from-primary/10 to-primary/5 shadow-2xl shadow-primary/20 ring-1 ring-primary/20 md:scale-[1.03] md:z-10"
+                    ? "border-primary/60 bg-gradient-to-b from-primary/10 to-primary/5 shadow-2xl shadow-primary/20 ring-1 ring-primary/20"
+                    : franchise
+                    ? "border-amber-500/40 bg-gradient-to-b from-amber-500/10 to-amber-500/5 hover:shadow-md hover:shadow-amber-500/10"
                     : "border-border bg-card hover:shadow-md hover:shadow-primary/8"
                 }`}
                 initial={{ opacity: 0, y: 24 }}
@@ -142,6 +165,11 @@ export function Pricing() {
                 {popular && (
                   <Badge className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground font-semibold px-5 py-1.5 rounded-full text-xs shadow-lg shadow-primary/30">
                     Most popular
+                  </Badge>
+                )}
+                {franchise && (
+                  <Badge className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-amber-500 text-white font-semibold px-5 py-1.5 rounded-full text-xs shadow-lg shadow-amber-500/30">
+                    Multi-location
                   </Badge>
                 )}
 
@@ -187,11 +215,13 @@ export function Pricing() {
 
                 <Button
                   size="lg"
-                  render={<a href={name === "Pro" ? "/demo" : `/api/checkout?plan=${name.toLowerCase()}&billing=${annual ? "annual" : "monthly"}`} />}
+                  render={<a href={(name === "Pro" || name === "Franchise") ? "/demo" : `/api/checkout?plan=${name.toLowerCase()}&billing=${annual ? "annual" : "monthly"}`} />}
                   nativeButton={false}
                   className={`rounded-full font-semibold h-11 ${
                     popular
                       ? "bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/25"
+                      : franchise
+                      ? "bg-amber-500 hover:bg-amber-500/90 text-white shadow-lg shadow-amber-500/25"
                       : "bg-transparent border-2 border-border hover:border-primary/40 hover:bg-primary/5 text-foreground transition-colors"
                   }`}
                 >

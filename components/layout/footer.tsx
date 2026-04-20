@@ -5,13 +5,26 @@ const LINKS = {
     { label: "How it Works", href: "#how-it-works" },
     { label: "Features", href: "#features" },
     { label: "Pricing", href: "#pricing" },
+    { label: "Help Centre", href: "/help" },
+    { label: "Affiliate Programme", href: "/affiliate" },
+  ],
+  Industries: [
+    { label: "Barbershops", href: "/for/barbershops" },
+    { label: "Salons", href: "/for/salons" },
+    { label: "Spas", href: "/for/spas" },
+    { label: "Dental Practices", href: "/for/dental" },
+    { label: "Gyms & Fitness", href: "/for/gyms" },
+  ],
+  Compare: [
+    { label: "vs. Receptionist", href: "/vs/receptionist" },
+    { label: "vs. Voicemail", href: "/vs/voicemail" },
+    { label: "vs. Answering Service", href: "/vs/answering-service" },
+    { label: "vs. Google Voice", href: "/vs/google-voice" },
   ],
   Company: [
     { label: "Blog", href: "/blog" },
     { label: "About", href: "#" },
     { label: "Contact", href: "mailto:hello@calbliss.com" },
-  ],
-  Legal: [
     { label: "Privacy Policy", href: "#" },
     { label: "Terms of Service", href: "#" },
   ],
@@ -21,7 +34,7 @@ export function Footer() {
   return (
     <footer className="border-t border-border bg-background">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-14">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-10">
           {/* Brand */}
           <div className="flex flex-col gap-4">
             <Logo iconSize={32} />

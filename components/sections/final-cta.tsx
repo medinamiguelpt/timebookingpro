@@ -2,13 +2,15 @@
 
 import { useState } from "react"
 import { motion } from "framer-motion"
-import { ArrowRight, CheckCircle } from "lucide-react"
+import { ArrowRight, CheckCircle, MessageSquare } from "lucide-react"
 
 export function FinalCTA() {
   const [email, setEmail] = useState("")
   const [state, setState] = useState<"idle" | "loading" | "success" | "error">("idle")
   const [position, setPosition] = useState<number | null>(null)
   const [referralCode, setReferralCode] = useState<string | null>(null)
+  const [phone, setPhone] = useState("")
+  const [smsState, setSmsState] = useState<"idle" | "loading" | "done">("idle")
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -31,6 +33,18 @@ export function FinalCTA() {
     } catch {
       setState("error")
     }
+  }
+
+  const handleSmsOptin = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!phone || !email) return
+    setSmsState("loading")
+    await fetch("/api/waitlist", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, phone }),
+    })
+    setSmsState("done")
   }
 
   return (
@@ -108,6 +122,34 @@ export function FinalCTA() {
                 </div>
               )}
               <p className="text-white/50 text-sm">Check your email — confirmation is on its way.</p>
+
+              {/* SMS opt-in */}
+              {smsState === "done" ? (
+                <div className="flex items-center gap-2 text-green-400 text-xs font-semibold mt-1">
+                  <CheckCircle size={14} /> SMS updates enabled
+                </div>
+              ) : (
+                <form onSubmit={handleSmsOptin} className="mt-2 flex gap-2 items-center">
+                  <div className="flex items-center gap-1.5 bg-white/10 border border-white/20 rounded-full px-3 py-1.5 text-xs text-white/50">
+                    <MessageSquare size={12} />
+                    <span>Get SMS updates?</span>
+                  </div>
+                  <input
+                    type="tel"
+                    placeholder="+1 555 000 0000"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    className="rounded-full px-4 h-8 bg-white/10 border border-white/20 text-white placeholder:text-white/30 text-xs outline-none focus:border-primary-soft/60 transition-colors w-36"
+                  />
+                  <button
+                    type="submit"
+                    disabled={smsState === "loading" || !phone}
+                    className="bg-white/15 hover:bg-white/20 disabled:opacity-40 text-white text-xs font-semibold rounded-full px-3 h-8 transition-colors whitespace-nowrap"
+                  >
+                    {smsState === "loading" ? "…" : "Yes please"}
+                  </button>
+                </form>
+              )}
             </div>
           ) : (
             <form
