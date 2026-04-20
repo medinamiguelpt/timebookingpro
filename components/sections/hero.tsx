@@ -6,6 +6,8 @@ import { ArrowRight, CheckCircle, Phone, Calendar } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { openDemoModal } from "@/components/ui/demo-modal"
+import { Particles } from "@/components/ui/particles"
+import { TiltCard } from "@/components/ui/tilt-card"
 
 function LiveWaveform() {
   const bars = [0.4, 0.9, 0.6, 1, 0.5, 0.8, 0.45]
@@ -201,9 +203,16 @@ export function Hero({ variant = "a" }: { variant?: "a" | "b" }) {
 
   return (
     <section ref={sectionRef} className="relative overflow-hidden">
-      <div className="absolute inset-0 -z-10 bg-purple-glow" />
+      {/* Mesh gradient blobs */}
+      <div className="absolute inset-0 -z-10 overflow-hidden" aria-hidden>
+        <div className="mesh-blob-1 absolute top-[-20%] left-[-10%] w-[60vw] h-[60vw] rounded-full bg-primary/15 blur-[100px]" />
+        <div className="mesh-blob-2 absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-primary/10 blur-[120px]" />
+        <div className="mesh-blob-3 absolute top-[30%] right-[20%] w-[30vw] h-[30vw] rounded-full bg-violet-500/8 blur-[80px]" />
+      </div>
+      {/* Particles */}
+      <Particles className="-z-10" color="147,51,234" connectionDistance={90} speed={0.25} />
       <motion.div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] -z-10 rounded-full bg-primary/10 blur-[120px]"
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] -z-10 rounded-full bg-primary/8 blur-[140px]"
         style={{ y: glowY, opacity: glowOpacity }}
       />
 
@@ -297,7 +306,9 @@ export function Hero({ variant = "a" }: { variant?: "a" | "b" }) {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <HeroMockup />
+            <TiltCard maxTilt={8} scale={1.015}>
+              <HeroMockup />
+            </TiltCard>
           </motion.div>
         </div>
       </div>

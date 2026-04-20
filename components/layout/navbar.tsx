@@ -64,15 +64,19 @@ export function Navbar() {
   const toggleTheme = () => setTheme(theme === "dark" ? "light" : "dark")
 
   return (
-    <header
-      className={cn(
-        "fixed top-0 inset-x-0 z-50 transition-all duration-300",
-        scrolled
-          ? "bg-background/80 backdrop-blur-md border-b border-border shadow-sm"
-          : "bg-transparent"
-      )}
-    >
-      <nav className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+    <header className="fixed top-0 inset-x-0 z-50 transition-all duration-300 pointer-events-none">
+      <div
+        className={cn(
+          "transition-all duration-500 pointer-events-auto",
+          scrolled
+            ? "mx-3 sm:mx-6 lg:mx-auto lg:max-w-5xl mt-2 rounded-2xl bg-background/75 backdrop-blur-xl border border-border/60 shadow-xl shadow-black/8"
+            : "bg-transparent"
+        )}
+      >
+      <nav className={cn(
+        "px-4 sm:px-5 flex items-center justify-between transition-all duration-300",
+        scrolled ? "h-14" : "h-16 max-w-6xl mx-auto px-4 sm:px-6"
+      )}>
         {/* Logo */}
         <Logo iconSize={32} />
 
@@ -153,12 +157,18 @@ export function Navbar() {
           </button>
         </div>
       </nav>
+      </div>
 
       {/* Mobile menu */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            className="md:hidden border-t border-border bg-background/95 backdrop-blur-md overflow-hidden"
+            className={cn(
+              "md:hidden bg-background/95 backdrop-blur-xl overflow-hidden pointer-events-auto",
+              scrolled
+                ? "mx-3 sm:mx-6 lg:mx-auto lg:max-w-5xl rounded-b-2xl border-x border-b border-border/60 shadow-xl shadow-black/8"
+                : "border-t border-border"
+            )}
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}

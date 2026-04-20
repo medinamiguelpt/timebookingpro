@@ -2,101 +2,108 @@
 
 import { useRef, useEffect } from "react"
 import { motion, useInView, animate } from "framer-motion"
-import {
-  Clock,
-  Globe,
-  CalendarDays,
-  MessageSquare,
-  ShieldCheck,
-  BarChart3,
-} from "lucide-react"
+import { Clock, Globe, CalendarDays, MessageSquare, ShieldCheck, BarChart3 } from "lucide-react"
+import { SpotlightCard } from "@/components/ui/spotlight-card"
 import { cn } from "@/lib/utils"
 
 const INTEGRATIONS = [
-  { name: "Google Calendar", color: "#4285F4", bg: "#EEF4FF" },
-  { name: "Calendly",        color: "#006BFF", bg: "#E8F0FF" },
-  { name: "Acuity",          color: "#F04E37", bg: "#FEF0EE" },
-  { name: "Outlook",         color: "#0078D4", bg: "#E5F2FC" },
-  { name: "Apple Calendar",  color: "#FF3B30", bg: "#FFF0EF" },
+  { name: "Google Calendar", color: "#4285F4" },
+  { name: "Calendly",        color: "#006BFF" },
+  { name: "Acuity",          color: "#F04E37" },
+  { name: "Outlook",         color: "#0078D4" },
+  { name: "Apple Calendar",  color: "#FF3B30" },
 ]
 
-function CountUp({
-  to,
-  prefix = "",
-  suffix = "",
-  duration = 1.6,
-}: {
-  to: number
-  prefix?: string
-  suffix?: string
-  duration?: number
+function CountUp({ to, prefix = "", suffix = "", duration = 1.8 }: {
+  to: number; prefix?: string; suffix?: string; duration?: number
 }) {
   const ref = useRef<HTMLSpanElement>(null)
   const inView = useInView(ref, { once: true, margin: "-60px" })
-
   useEffect(() => {
     if (!inView) return
     const el = ref.current
     if (!el) return
-    const controls = animate(0, to, {
-      duration,
-      ease: [0.22, 1, 0.36, 1],
-      onUpdate(v) {
-        el.textContent = prefix + Math.round(v) + suffix
-      },
+    const ctrl = animate(0, to, {
+      duration, ease: [0.22, 1, 0.36, 1],
+      onUpdate(v) { el.textContent = prefix + Math.round(v) + suffix },
     })
-    return () => controls.stop()
+    return () => ctrl.stop()
   }, [inView, to, prefix, suffix, duration])
-
-  return (
-    <span ref={ref}>
-      {prefix}0{suffix}
-    </span>
-  )
+  return <span ref={ref}>{prefix}0{suffix}</span>
 }
 
-const FEATURES = [
+type Feature = {
+  icon: React.ElementType
+  title: string
+  body: string
+  accent: string
+  accentBg: string
+  span: "normal" | "wide" | "tall"
+  stat?: { value: number; prefix?: string; suffix: string; label: string }
+  extra?: React.ReactNode
+}
+
+const FEATURES: Feature[] = [
   {
     icon: Clock,
     title: "24/7 availability",
-    body: "Your agent never sleeps, never takes a lunch break, and never misses a call — weekends and holidays included.",
-    wide: true,
-    extra: { to: 0, prefix: "", suffix: "", label: "missed calls — ever" },
-  },
-  {
-    icon: Globe,
-    title: "Multilingual support",
-    body: "Speaks fluent English, Spanish, Greek, Portuguese, German, and Arabic. Reach every customer in their language.",
-    wide: false,
-    extra: null,
-  },
-  {
-    icon: CalendarDays,
-    title: "Direct calendar sync",
-    body: "Bookings go straight into your calendar in real time. No double-booking, no manual entry, no delays.",
-    wide: false,
-    extra: null,
+    body: "Never sleeps, never takes a break. Your agent answers every call on weekends, nights, and holidays.",
+    accent: "#7C3AED",
+    accentBg: "rgba(124,58,237,0.08)",
+    span: "wide",
+    stat: { value: 0, suffix: "", label: "missed calls — ever" },
   },
   {
     icon: MessageSquare,
     title: "Natural conversation",
-    body: "Powered by advanced voice AI — sounds human, understands context, and handles complex requests gracefully.",
-    wide: true,
-    extra: { to: 98, prefix: "", suffix: "%", label: "callers think it's human" },
+    body: "Powered by advanced voice AI — sounds human, handles complex requests, understands context.",
+    accent: "#0EA5E9",
+    accentBg: "rgba(14,165,233,0.08)",
+    span: "normal",
+    stat: { value: 98, suffix: "%", label: "callers think it's human" },
+  },
+  {
+    icon: Globe,
+    title: "Multilingual",
+    body: "English, Spanish, French, Portuguese, German, Arabic — auto-detected per caller.",
+    accent: "#10B981",
+    accentBg: "rgba(16,185,129,0.08)",
+    span: "normal",
+  },
+  {
+    icon: CalendarDays,
+    title: "Direct calendar sync",
+    body: "Bookings go straight into your calendar in real time. Zero double-bookings, zero manual entry.",
+    accent: "#F59E0B",
+    accentBg: "rgba(245,158,11,0.08)",
+    span: "normal",
+    extra: (
+      <div className="flex flex-wrap gap-1.5 mt-3">
+        {INTEGRATIONS.map(({ name, color }) => (
+          <span key={name} className="text-[11px] font-medium rounded-full px-2.5 py-1 border border-border bg-background"
+            style={{ color }}>
+            {name}
+          </span>
+        ))}
+      </div>
+    ),
   },
   {
     icon: ShieldCheck,
     title: "Fully customisable",
-    body: "Give your agent a name, a voice, and a personality that matches your brand. Your business, your agent.",
-    wide: false,
-    extra: null,
+    body: "Name, voice, personality — your brand, your agent.",
+    accent: "#EC4899",
+    accentBg: "rgba(236,72,153,0.08)",
+    span: "normal",
   },
   {
     icon: BarChart3,
     title: "Live dashboard",
-    body: "Track calls, bookings, and revenue from a clean dashboard. Know exactly what your agent is doing.",
-    wide: true,
-    extra: { to: 34, prefix: "+", suffix: "%", label: "more bookings on average" },
+    body: "Track calls, bookings, and revenue in real time. Know what your agent is doing, always.",
+    accent: "#7C3AED",
+    accentBg: "rgba(124,58,237,0.08)",
+    span: "wide",
+    stat: { value: 34, prefix: "+", suffix: "%", label: "more bookings on average" },
   },
 ]
 
@@ -104,103 +111,93 @@ export function Features() {
   return (
     <section id="features" className="py-24 sm:py-32">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="text-center mb-16">
-          <motion.p
-            className="text-sm font-semibold uppercase tracking-widest text-primary mb-3"
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4 }}
-          >
+
+        {/* Header */}
+        <div className="text-center mb-14">
+          <motion.p className="text-sm font-semibold uppercase tracking-widest text-primary mb-3"
+            initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }}>
             Features
           </motion.p>
-          <motion.h2
-            className="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold leading-tight tracking-tight"
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: 0.1 }}
-          >
+          <motion.h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold leading-tight tracking-tight"
+            initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: 0.1 }}>
             Everything your business needs
           </motion.h2>
-          <motion.p
-            className="mt-4 text-lg text-muted-foreground max-w-xl mx-auto"
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: 0.2 }}
-          >
+          <motion.p className="mt-4 text-lg text-muted-foreground max-w-xl mx-auto"
+            initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: 0.2 }}>
             One agent. Zero missed calls. A calendar that fills itself.
           </motion.p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {FEATURES.map(({ icon: Icon, title, body, wide, extra }, i) => (
+        {/* Bento grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-auto">
+          {FEATURES.map(({ icon: Icon, title, body, accent, accentBg, span, stat, extra }, i) => (
             <motion.div
               key={title}
-              className={cn(
-                "group relative rounded-2xl border border-border bg-card p-6",
-                "hover:border-primary/40 hover:shadow-lg hover:shadow-primary/8 transition-all duration-300 cursor-default",
-                wide && "lg:col-span-2"
-              )}
-              whileHover={{ y: -3 }}
+              className={cn(span === "wide" && "sm:col-span-2")}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.07 }}
+              transition={{ duration: 0.45, delay: i * 0.06 }}
             >
-              <div className={cn("flex gap-6", wide ? "lg:flex-row lg:items-center" : "flex-col")}>
-                <div className={cn("flex flex-col gap-4", wide && "lg:flex-1")}>
-                  <div className="w-12 h-12 rounded-xl bg-primary/15 border border-primary/30 flex items-center justify-center group-hover:bg-primary/20 group-hover:border-primary/40 transition-colors">
-                    <Icon size={22} className="text-primary" />
+              <SpotlightCard className={cn(
+                "group relative h-full rounded-2xl border border-border bg-card overflow-hidden",
+                "hover:border-[color:var(--accent-color)] hover:shadow-xl transition-all duration-300 cursor-default",
+                span === "wide" && "flex flex-col sm:flex-row"
+              )}
+              style={{ "--accent-color": accent + "60" } as React.CSSProperties}
+              >
+                {/* Accent glow bg */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl"
+                  style={{ background: `radial-gradient(ellipse 80% 60% at 0% 0%, ${accentBg}, transparent)` }}
+                />
+
+                {/* Content side */}
+                <div className={cn("relative p-6 flex flex-col gap-4 z-10", span === "wide" ? "flex-1" : "")}>
+                  {/* Icon */}
+                  <div className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0 transition-all duration-300 group-hover:scale-110"
+                    style={{ background: accentBg, border: `1px solid ${accent}30` }}>
+                    <Icon size={20} style={{ color: accent }} />
                   </div>
+
                   <div>
                     <h3 className="font-heading font-bold text-base mb-1.5">{title}</h3>
                     <p className="text-sm text-muted-foreground leading-relaxed">{body}</p>
+                    {extra}
                   </div>
                 </div>
-                {wide && extra && (
-                  <div className="hidden lg:flex flex-col items-center justify-center bg-primary/8 border border-primary/20 rounded-xl px-8 py-5 shrink-0 text-center min-w-[160px] group-hover:bg-primary/12 transition-colors">
-                    <p className="text-4xl font-heading font-extrabold text-primary leading-none">
-                      <CountUp to={extra.to} prefix={extra.prefix} suffix={extra.suffix} />
+
+                {/* Stat side (wide cards) */}
+                {span === "wide" && stat && (
+                  <div className={cn(
+                    "relative z-10 flex flex-col items-center justify-center px-8 py-6 sm:min-w-[180px] border-t sm:border-t-0 sm:border-l border-border/60",
+                    "transition-colors duration-300"
+                  )}
+                  style={{ background: `${accentBg}` }}
+                  >
+                  <div className="text-center">
+                    <p className="text-5xl font-heading font-extrabold leading-none mb-2 tabular-nums"
+                      style={{ color: accent }}>
+                      <CountUp to={stat.value} prefix={stat.prefix} suffix={stat.suffix} />
                     </p>
-                    <p className="text-xs text-muted-foreground mt-2 leading-snug max-w-[120px]">
-                      {extra.label}
-                    </p>
+                    <p className="text-xs text-muted-foreground leading-snug max-w-[140px]">{stat.label}</p>
+                  </div>
                   </div>
                 )}
-              </div>
+
+                {/* Stat badge (narrow cards) */}
+                {span === "normal" && stat && (
+                  <div className="absolute bottom-4 right-4 z-10 rounded-xl px-3 py-1.5 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    style={{ background: accentBg, border: `1px solid ${accent}30` }}>
+                    <p className="text-lg font-heading font-extrabold leading-none" style={{ color: accent }}>
+                      <CountUp to={stat.value} prefix={stat.prefix} suffix={stat.suffix} />
+                    </p>
+                    <p className="text-[10px] text-muted-foreground">{stat.label}</p>
+                  </div>
+                )}
+              </SpotlightCard>
             </motion.div>
           ))}
         </div>
-        {/* Works with strip */}
-        <motion.div
-          className="mt-14 flex flex-col items-center gap-5"
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: 0.2 }}
-        >
-          <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-            Connects with your calendar
-          </p>
-          <div className="flex flex-wrap justify-center gap-3">
-            {INTEGRATIONS.map(({ name, color, bg }) => (
-              <div
-                key={name}
-                className="flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium text-foreground"
-              >
-                <div
-                  className="w-6 h-6 rounded-md flex items-center justify-center shrink-0"
-                  style={{ backgroundColor: bg }}
-                >
-                  <CalendarDays size={13} style={{ color }} />
-                </div>
-                {name}
-              </div>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </section>
   )
