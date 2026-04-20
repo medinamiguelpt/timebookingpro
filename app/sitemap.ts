@@ -17,7 +17,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/blog`,     lastModified: new Date(), changeFrequency: "weekly",  priority: 0.8 },
     { url: `${BASE}/help`,     lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE}/demo`,     lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
-    { url: `${BASE}/affiliate`,lastModified: new Date(), changeFrequency: "monthly", priority: 0.5 },
+    { url: `${BASE}/affiliate`,  lastModified: new Date(), changeFrequency: "monthly", priority: 0.5 },
+    { url: `${BASE}/partners`,   lastModified: new Date(), changeFrequency: "monthly", priority: 0.6 },
+    { url: `${BASE}/dashboard`,  lastModified: new Date(), changeFrequency: "monthly", priority: 0.3 },
     ...BLOG_SLUGS.map(({ slug, date }) => ({
       url: `${BASE}/blog/${slug}`,
       lastModified: new Date(date),

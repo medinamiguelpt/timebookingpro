@@ -6,7 +6,8 @@ const LINKS = {
     { label: "Features", href: "#features" },
     { label: "Pricing", href: "#pricing" },
     { label: "Help Centre", href: "/help" },
-    { label: "Affiliate Programme", href: "/affiliate" },
+    { label: "Partner Programme", href: "/partners" },
+    { label: "Affiliate", href: "/affiliate" },
   ],
   Industries: [
     { label: "Barbershops", href: "/for/barbershops" },

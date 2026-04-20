@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { CheckCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
+import { SpotlightCard } from "@/components/ui/spotlight-card"
 
 const PLANS = [
   {
@@ -150,6 +151,12 @@ export function Pricing() {
             return (
               <motion.div
                 key={name}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.1 }}
+              >
+              <SpotlightCard
                 className={`relative rounded-2xl border p-7 flex flex-col gap-6 transition-shadow duration-300 ${
                   popular
                     ? "border-primary/60 bg-gradient-to-b from-primary/10 to-primary/5 shadow-2xl shadow-primary/20 ring-1 ring-primary/20"
@@ -157,10 +164,6 @@ export function Pricing() {
                     ? "border-amber-500/40 bg-gradient-to-b from-amber-500/10 to-amber-500/5 hover:shadow-md hover:shadow-amber-500/10"
                     : "border-border bg-card hover:shadow-md hover:shadow-primary/8"
                 }`}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.1 }}
               >
                 {popular && (
                   <Badge className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground font-semibold px-5 py-1.5 rounded-full text-xs shadow-lg shadow-primary/30">
@@ -227,6 +230,7 @@ export function Pricing() {
                 >
                   {cta}
                 </Button>
+              </SpotlightCard>
               </motion.div>
             )
           })}

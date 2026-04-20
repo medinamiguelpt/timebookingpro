@@ -1,8 +1,16 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
-import { ArrowRight, CheckCircle, MessageSquare } from "lucide-react"
+import { ArrowRight, CheckCircle, MessageSquare, Trophy, Gift } from "lucide-react"
+import { VoiceDemo } from "@/components/ui/voice-demo"
+
+const MILESTONES = [
+  { count: 1,  reward: "30-day trial", icon: "🎁" },
+  { count: 3,  reward: "1 month free", icon: "⭐" },
+  { count: 10, reward: "3 months free", icon: "🏆" },
+  { count: 25, reward: "25% off forever", icon: "💎" },
+]
 
 export function FinalCTA() {
   const [email, setEmail] = useState("")
@@ -11,6 +19,11 @@ export function FinalCTA() {
   const [referralCode, setReferralCode] = useState<string | null>(null)
   const [phone, setPhone] = useState("")
   const [smsState, setSmsState] = useState<"idle" | "loading" | "done">("idle")
+  const [leaderboard, setLeaderboard] = useState<{ top: { rank: number; initial: string; referrals: number }[] } | null>(null)
+
+  useEffect(() => {
+    fetch("/api/leaderboard").then(r => r.json()).then(setLeaderboard).catch(() => null)
+  }, [])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -84,7 +97,7 @@ export function FinalCTA() {
         </motion.h2>
 
         <motion.p
-          className="text-lg text-white/60 mb-10 max-w-xl mx-auto"
+          className="text-lg text-white/60 mb-6 max-w-xl mx-auto"
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -92,6 +105,16 @@ export function FinalCTA() {
         >
           Join businesses that never miss a booking. Your AI agent will be live in under 24 hours.
         </motion.p>
+
+        <motion.div
+          className="flex justify-center mb-8"
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: 0.25 }}
+        >
+          <VoiceDemo />
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 12 }}
@@ -122,6 +145,49 @@ export function FinalCTA() {
                 </div>
               )}
               <p className="text-white/50 text-sm">Check your email — confirmation is on its way.</p>
+
+              {/* Milestone progress */}
+              {referralCode && (
+                <div className="mt-4 w-full max-w-xs">
+                  <div className="flex items-center gap-2 text-white/70 text-xs mb-3">
+                    <Trophy size={13} className="text-primary-soft" />
+                    <span>Refer friends to unlock rewards</span>
+                  </div>
+                  <div className="flex gap-2 justify-center">
+                    {MILESTONES.map(({ count, reward, icon }) => (
+                      <div key={count} className="flex flex-col items-center gap-1 flex-1">
+                        <div className="w-9 h-9 rounded-full bg-white/10 border border-white/15 flex items-center justify-center text-sm">
+                          {icon}
+                        </div>
+                        <p className="text-[9px] text-white/40 text-center leading-tight">{count} ref{count > 1 ? "s" : ""}</p>
+                      </div>
+                    ))}
+                  </div>
+                  <button
+                    onClick={() => navigator.clipboard.writeText(`https://calbliss.com/r/${referralCode}`)}
+                    className="mt-3 w-full flex items-center justify-center gap-2 bg-primary/20 hover:bg-primary/30 border border-primary/30 text-primary-soft text-xs font-semibold rounded-full py-2 transition-colors"
+                  >
+                    <Gift size={12} /> Copy referral link to share
+                  </button>
+                </div>
+              )}
+
+              {/* Leaderboard teaser */}
+              {leaderboard && leaderboard.top.length > 0 && (
+                <div className="mt-4 w-full max-w-xs bg-white/5 border border-white/10 rounded-xl p-3">
+                  <p className="text-[10px] text-white/40 uppercase tracking-wider mb-2">Top referrers this month</p>
+                  {leaderboard.top.slice(0, 3).map((r, i) => (
+                    <div key={i} className="flex items-center gap-2 py-1">
+                      <span className="text-xs text-white/30 w-4">#{r.rank}</span>
+                      <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center text-[10px] text-primary-soft font-bold">{r.initial}</div>
+                      <div className="flex-1 bg-white/10 rounded-full h-1.5 overflow-hidden">
+                        <div className="bg-primary h-full rounded-full" style={{ width: `${Math.min(100, (r.referrals / 15) * 100)}%` }} />
+                      </div>
+                      <span className="text-[10px] text-white/40">{r.referrals}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
 
               {/* SMS opt-in */}
               {smsState === "done" ? (

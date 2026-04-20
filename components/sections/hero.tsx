@@ -171,7 +171,7 @@ const HEADLINES = {
     main: (
       <>
         Give your business{" "}
-        <span className="bg-gradient-to-r from-primary via-primary-soft to-primary bg-clip-text text-transparent">
+        <span className="text-shimmer">
           its own AI agent
         </span>
       </>
@@ -182,7 +182,7 @@ const HEADLINES = {
     main: (
       <>
         Stop losing bookings{" "}
-        <span className="bg-gradient-to-r from-primary via-primary-soft to-primary bg-clip-text text-transparent">
+        <span className="text-shimmer">
           while you sleep
         </span>
       </>
@@ -252,7 +252,11 @@ export function Hero({ variant = "a" }: { variant?: "a" | "b" }) {
             >
               <Button
                 size="lg"
-                render={<a href="#get-started" />}
+                render={<a href="#get-started" onClick={() => {
+                  if (typeof window !== "undefined" && (window as Window & { plausible?: (e: string, o?: object) => void }).plausible) {
+                    (window as Window & { plausible?: (e: string, o?: object) => void }).plausible?.("hero-cta-click", { props: { variant } })
+                  }
+                }} />}
                 nativeButton={false}
                 className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-full px-7 h-12 text-base shadow-lg shadow-primary/25"
               >
@@ -263,7 +267,12 @@ export function Hero({ variant = "a" }: { variant?: "a" | "b" }) {
                 size="lg"
                 variant="outline"
                 nativeButton={false}
-                onClick={openDemoModal}
+                onClick={() => {
+                  if (typeof window !== "undefined" && (window as Window & { plausible?: (e: string, o?: object) => void }).plausible) {
+                    (window as Window & { plausible?: (e: string, o?: object) => void }).plausible?.("hero-demo-click", { props: { variant } })
+                  }
+                  openDemoModal()
+                }}
                 className="rounded-full px-7 h-12 text-base border-border hover:bg-muted"
               >
                 <Calendar size={16} className="mr-2" />
