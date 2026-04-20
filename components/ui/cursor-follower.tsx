@@ -4,29 +4,34 @@ import { useEffect, useRef, useState } from "react"
 import { motion, useMotionValue, useSpring } from "framer-motion"
 
 export function CursorFollower() {
+  const [mounted, setMounted] = useState(false)
+  const [hasHover, setHasHover] = useState(false)
   const [visible, setVisible] = useState(false)
   const isTouch = useRef(false)
+  const visibleRef = useRef(false)
 
   const rawX = useMotionValue(-200)
   const rawY = useMotionValue(-200)
-
   const x = useSpring(rawX, { stiffness: 100, damping: 22, mass: 0.5 })
   const y = useSpring(rawY, { stiffness: 100, damping: 22, mass: 0.5 })
 
   useEffect(() => {
-    if (typeof window === "undefined") return
-    if (window.matchMedia("(hover: none)").matches) return
+    setMounted(true)
+    setHasHover(window.matchMedia("(hover: hover)").matches)
+  }, [])
+
+  useEffect(() => {
+    if (!mounted || !hasHover) return
 
     const onMove = (e: MouseEvent) => {
       if (isTouch.current) return
       rawX.set(e.clientX)
       rawY.set(e.clientY)
-      if (!visible) setVisible(true)
+      if (!visibleRef.current) { visibleRef.current = true; setVisible(true) }
     }
-
-    const onLeave = () => setVisible(false)
-    const onEnter = () => { if (!isTouch.current) setVisible(true) }
-    const onTouch = () => { isTouch.current = true; setVisible(false) }
+    const onLeave = () => { visibleRef.current = false; setVisible(false) }
+    const onEnter = () => { if (!isTouch.current) { visibleRef.current = true; setVisible(true) } }
+    const onTouch = () => { isTouch.current = true; visibleRef.current = false; setVisible(false) }
 
     window.addEventListener("mousemove", onMove)
     document.addEventListener("mouseleave", onLeave)
@@ -38,9 +43,9 @@ export function CursorFollower() {
       document.removeEventListener("mouseleave", onLeave)
       document.removeEventListener("mouseenter", onEnter)
     }
-  }, [visible, rawX, rawY])
+  }, [mounted, hasHover, rawX, rawY])
 
-  if (typeof window !== "undefined" && window.matchMedia("(hover: none)").matches) return null
+  if (!mounted || !hasHover) return null
 
   return (
     <motion.div

@@ -330,32 +330,20 @@ export function Pricing() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.1 }}
-                className="group/flip"
-                style={{ perspective: "1000px" }}
               >
-                {/* Flip container */}
-                <div
-                  className="relative transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
-                  style={{
-                    transformStyle: "preserve-3d",
-                    transform: "rotateY(0deg)",
-                  }}
-                  // CSS group-hover rotateY via data attribute trick — use JS state per card
-                >
-                  <FlippableCard
-                    name={name}
-                    price={price}
-                    originalPrice={originalPrice}
-                    annualPrice={annualPrice}
-                    description={description}
-                    perks={perks}
-                    cta={cta}
-                    popular={popular}
-                    franchise={franchise}
-                    annual={annual}
-                    back={back}
-                  />
-                </div>
+                <FlippableCard
+                  name={name}
+                  price={price}
+                  originalPrice={originalPrice}
+                  annualPrice={annualPrice}
+                  description={description}
+                  perks={perks}
+                  cta={cta}
+                  popular={popular}
+                  franchise={franchise}
+                  annual={annual}
+                  back={back}
+                />
               </motion.div>
             )
           })}

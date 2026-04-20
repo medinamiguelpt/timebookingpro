@@ -1,7 +1,7 @@
 "use client"
 
 import { useRef, useEffect, useState, useCallback } from "react"
-import { motion, AnimatePresence, useMotionValue } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import { Star, ChevronLeft, ChevronRight, Play, X } from "lucide-react"
 
 const TESTIMONIALS = [
@@ -147,7 +147,7 @@ function TestimonialCard({
   const scale = isCenter ? 1 : 0.82
   const opacity = isHidden ? 0 : isCenter ? 1 : 0.55
   const z = isCenter ? 10 : 0
-  const translateX = position === "left" ? "14%" : position === "right" ? "-14%" : "0%"
+  const translateX = position === "left" ? "-14%" : position === "right" ? "14%" : "0%"
 
   return (
     <motion.div
@@ -268,7 +268,7 @@ export function Testimonials() {
         >
           <div
             className="relative mx-auto flex items-center justify-center"
-            style={{ perspective: "1200px", height: 320 }}
+            style={{ perspective: "1200px", height: 380 }}
           >
             {TESTIMONIALS.map((t, i) => {
               const pos = getPosition(i, active, total)

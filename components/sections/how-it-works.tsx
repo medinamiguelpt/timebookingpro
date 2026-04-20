@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef, useState, type ElementType } from "react"
+import { useRef, useState, Fragment, type ElementType } from "react"
 import { motion, useScroll, useTransform, useMotionValueEvent, useInView } from "framer-motion"
 import { PhoneCall, Settings2, CalendarCheck, Mic, Zap, Bell } from "lucide-react"
 
@@ -340,12 +340,12 @@ export function HowItWorks() {
           </p>
           <div className="hidden md:flex items-end gap-0 w-full overflow-hidden">
             {FLOW_NODES.map((node, i) => (
-              <>
-                <FlowNode key={node.label} {...node} index={i} />
+              <Fragment key={node.label}>
+                <FlowNode {...node} index={i} />
                 {i < FLOW_NODES.length - 1 && (
-                  <FlowConnector key={`conn-${i}`} label={CONNECTOR_LABELS[i]} delay={i * 0.15} />
+                  <FlowConnector label={CONNECTOR_LABELS[i]} delay={i * 0.15} />
                 )}
-              </>
+              </Fragment>
             ))}
           </div>
           <div className="flex md:hidden flex-col items-center gap-0">
