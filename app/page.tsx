@@ -46,9 +46,9 @@ export default async function Home() {
         <Calculator />
         <FAQ />
         <FinalCTA />
+        <StickyCTA />
       </main>
       <Footer />
-      <StickyCTA />
       <DemoModal />
       <ExitIntent />
       <HomeJsonLd />
