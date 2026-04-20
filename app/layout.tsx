@@ -5,6 +5,7 @@ import { Providers } from "@/components/providers"
 import { CookieBanner } from "@/components/ui/cookie-banner"
 import { ScrollProgress } from "@/components/ui/scroll-progress"
 import { ChatWidget } from "@/components/ui/chat-widget"
+import { CursorFollower } from "@/components/ui/cursor-follower"
 import "./globals.css"
 
 const inter = Inter({
@@ -56,6 +57,7 @@ export default function RootLayout({
         <Providers>{children}</Providers>
         <CookieBanner />
         <ChatWidget />
+        <CursorFollower />
         {/* Plausible Analytics — privacy-friendly, no cookies required */}
         <Script
           defer

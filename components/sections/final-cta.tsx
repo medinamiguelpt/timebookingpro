@@ -1,9 +1,35 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import { motion } from "framer-motion"
+import { useState, useEffect, useCallback } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 import { ArrowRight, CheckCircle, MessageSquare, Trophy, Gift } from "lucide-react"
 import { VoiceDemo } from "@/components/ui/voice-demo"
+
+const EMOJIS = ["📅", "📞", "✅", "🎉", "💜", "⚡", "🚀", "🤖"]
+
+type EmojiParticle = { id: number; emoji: string; x: number; delay: number }
+
+function EmojiReactions({ particles }: { particles: EmojiParticle[] }) {
+  return (
+    <div className="pointer-events-none absolute inset-0 overflow-visible" aria-hidden>
+      <AnimatePresence>
+        {particles.map((p) => (
+          <motion.span
+            key={p.id}
+            className="absolute text-2xl select-none"
+            style={{ left: `calc(50% + ${p.x}px)`, bottom: "50%" }}
+            initial={{ y: 0, opacity: 1, scale: 0.5 }}
+            animate={{ y: -160, opacity: 0, scale: 1.2 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.4, delay: p.delay, ease: [0.22, 1, 0.36, 1] }}
+          >
+            {p.emoji}
+          </motion.span>
+        ))}
+      </AnimatePresence>
+    </div>
+  )
+}
 
 const MILESTONES = [
   { count: 1,  reward: "30-day trial", icon: "🎁" },
@@ -11,6 +37,8 @@ const MILESTONES = [
   { count: 10, reward: "3 months free", icon: "🏆" },
   { count: 25, reward: "25% off forever", icon: "💎" },
 ]
+
+let particleCounter = 0
 
 export function FinalCTA() {
   const [email, setEmail] = useState("")
@@ -20,6 +48,21 @@ export function FinalCTA() {
   const [phone, setPhone] = useState("")
   const [smsState, setSmsState] = useState<"idle" | "loading" | "done">("idle")
   const [leaderboard, setLeaderboard] = useState<{ top: { rank: number; initial: string; referrals: number }[] } | null>(null)
+  const [emojiParticles, setEmojiParticles] = useState<EmojiParticle[]>([])
+
+  const spawnEmojis = useCallback(() => {
+    const count = 7
+    const newParticles: EmojiParticle[] = Array.from({ length: count }, (_, i) => ({
+      id: ++particleCounter,
+      emoji: EMOJIS[Math.floor(Math.random() * EMOJIS.length)],
+      x: (Math.random() - 0.5) * 240,
+      delay: i * 0.08,
+    }))
+    setEmojiParticles((prev) => [...prev, ...newParticles])
+    setTimeout(() => {
+      setEmojiParticles((prev) => prev.filter((p) => !newParticles.find((n) => n.id === p.id)))
+    }, 2000)
+  }, [])
 
   useEffect(() => {
     fetch("/api/leaderboard").then(r => r.json()).then(setLeaderboard).catch(() => null)
@@ -218,27 +261,30 @@ export function FinalCTA() {
               )}
             </div>
           ) : (
-            <form
-              onSubmit={handleSubmit}
-              className="flex flex-col sm:flex-row items-center gap-3 max-w-md mx-auto"
-            >
-              <input
-                type="email"
-                required
-                placeholder="your@email.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="flex-1 w-full rounded-full px-5 h-13 bg-white/10 border border-white/20 text-white placeholder:text-white/35 text-sm outline-none focus:border-primary-soft/60 transition-colors"
-              />
-              <button
-                type="submit"
-                disabled={state === "loading"}
-                className="flex items-center gap-2 whitespace-nowrap bg-primary hover:bg-primary/90 disabled:opacity-60 text-white font-semibold rounded-full px-7 h-13 text-sm shadow-2xl shadow-primary/40 transition-colors"
+            <div className="relative">
+              <EmojiReactions particles={emojiParticles} />
+              <form
+                onSubmit={(e) => { handleSubmit(e); spawnEmojis() }}
+                className="flex flex-col sm:flex-row items-center gap-3 max-w-md mx-auto"
               >
-                {state === "loading" ? "Sending…" : "Get your agent"}
-                {state !== "loading" && <ArrowRight size={16} />}
-              </button>
-            </form>
+                <input
+                  type="email"
+                  required
+                  placeholder="your@email.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="flex-1 w-full rounded-full px-5 h-13 bg-white/10 border border-white/20 text-white placeholder:text-white/35 text-sm outline-none focus:border-primary-soft/60 transition-colors"
+                />
+                <button
+                  type="submit"
+                  disabled={state === "loading"}
+                  className="flex items-center gap-2 whitespace-nowrap bg-primary hover:bg-primary/90 disabled:opacity-60 text-white font-semibold rounded-full px-7 h-13 text-sm shadow-2xl shadow-primary/40 transition-colors"
+                >
+                  {state === "loading" ? "Sending…" : "Get your agent"}
+                  {state !== "loading" && <ArrowRight size={16} />}
+                </button>
+              </form>
+            </div>
           )}
           {state === "error" && (
             <p className="mt-3 text-sm text-red-400">Something went wrong — try again or email us at hello@calbliss.com</p>

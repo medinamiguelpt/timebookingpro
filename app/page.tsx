@@ -19,6 +19,7 @@ import { StickyCTA } from "@/components/ui/sticky-cta"
 import { DemoModal } from "@/components/ui/demo-modal"
 import { ExitIntent } from "@/components/ui/exit-intent"
 import { HomeJsonLd } from "@/components/seo/json-ld"
+import { WaveDivider } from "@/components/ui/wave-divider"
 
 export default async function Home() {
   const headersList = await headers()
@@ -33,10 +34,13 @@ export default async function Home() {
         <TechStrip />
         <HowItWorks />
         <AgentNamer />
+        <WaveDivider opacity={0.5} />
         <Features />
         <BeforeAfter />
+        <WaveDivider opacity={0.6} flip />
         <ForWho />
         <Pricing />
+        <WaveDivider opacity={0.5} />
         <Testimonials />
         <StatsBar />
         <Calculator />

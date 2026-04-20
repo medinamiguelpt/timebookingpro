@@ -1,7 +1,7 @@
 "use client"
 
-import { useRef, useEffect, useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { useRef, useEffect, useState, useCallback } from "react"
+import { motion, AnimatePresence, useMotionValue } from "framer-motion"
 import { Star, ChevronLeft, ChevronRight, Play, X } from "lucide-react"
 
 const TESTIMONIALS = [
@@ -122,8 +122,6 @@ function VideoModal({ name, onClose }: { name: string; onClose: () => void }) {
           >
             <X size={16} />
           </button>
-
-          {/* Video placeholder */}
           <div className="aspect-video bg-gradient-to-br from-primary/20 to-primary/5 flex flex-col items-center justify-center gap-4">
             <div className="w-16 h-16 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center">
               <Play size={28} className="text-primary ml-1" />
@@ -140,81 +138,99 @@ function VideoModal({ name, onClose }: { name: string; onClose: () => void }) {
 }
 
 function TestimonialCard({
-  name, role, quote, stars, initials, color, hasVideo, videoLabel, onPlayVideo,
-}: typeof TESTIMONIALS[0] & { onPlayVideo: () => void }) {
+  name, role, quote, stars, initials, color, hasVideo, videoLabel, onPlayVideo, position,
+}: typeof TESTIMONIALS[0] & { onPlayVideo: () => void; position: "center" | "left" | "right" | "hidden" }) {
+  const isCenter = position === "center"
+  const isHidden = position === "hidden"
+
+  const rotateY = position === "left" ? -28 : position === "right" ? 28 : 0
+  const scale = isCenter ? 1 : 0.82
+  const opacity = isHidden ? 0 : isCenter ? 1 : 0.55
+  const z = isCenter ? 10 : 0
+  const translateX = position === "left" ? "14%" : position === "right" ? "-14%" : "0%"
+
   return (
-    <div className="group relative rounded-2xl border border-border bg-card flex flex-col gap-4 h-full overflow-hidden">
-      <div className={`absolute inset-0 bg-gradient-to-br ${color} opacity-40 group-hover:opacity-70 transition-opacity pointer-events-none`} />
-
-      <div className="relative p-6 flex flex-col gap-4 h-full">
-        <Stars count={stars} />
-        <p className="text-sm text-foreground leading-relaxed flex-1">&ldquo;{quote}&rdquo;</p>
-
-        <div className="flex items-center gap-3 pt-2 border-t border-border">
-          {/* Avatar — with play button overlay on hover */}
-          <div className="relative shrink-0">
-            <div className="w-10 h-10 rounded-full bg-primary/15 border border-primary/20 flex items-center justify-center text-xs font-bold text-primary">
-              {initials}
+    <motion.div
+      animate={{ rotateY, scale, opacity, translateX, zIndex: z }}
+      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      style={{ transformStyle: "preserve-3d", willChange: "transform" }}
+      className={`absolute top-0 w-full max-w-sm ${isCenter ? "cursor-default" : "cursor-pointer"}`}
+    >
+      <div className={`group relative rounded-2xl border border-border bg-card flex flex-col gap-4 h-full overflow-hidden ${isCenter ? "shadow-2xl shadow-black/10" : ""}`}>
+        <div className={`absolute inset-0 bg-gradient-to-br ${color} opacity-40 group-hover:opacity-70 transition-opacity pointer-events-none`} />
+        <div className="relative p-6 flex flex-col gap-4 h-full min-h-[220px]">
+          <Stars count={stars} />
+          <p className="text-sm text-foreground leading-relaxed flex-1">&ldquo;{quote}&rdquo;</p>
+          <div className="flex items-center gap-3 pt-2 border-t border-border">
+            <div className="relative shrink-0">
+              <div className="w-10 h-10 rounded-full bg-primary/15 border border-primary/20 flex items-center justify-center text-xs font-bold text-primary">
+                {initials}
+              </div>
+              {hasVideo && isCenter && (
+                <motion.button
+                  onClick={onPlayVideo}
+                  className="absolute inset-0 rounded-full bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                  whileTap={{ scale: 0.9 }}
+                  aria-label={videoLabel}
+                >
+                  <Play size={12} className="text-white ml-0.5" />
+                </motion.button>
+              )}
             </div>
-            {hasVideo && (
-              <motion.button
+            <div className="flex-1 min-w-0">
+              <p className="text-sm font-semibold text-foreground">{name}</p>
+              <p className="text-xs text-muted-foreground truncate">{role}</p>
+            </div>
+            {hasVideo && isCenter && (
+              <button
                 onClick={onPlayVideo}
-                className="absolute inset-0 rounded-full bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
-                whileTap={{ scale: 0.9 }}
-                aria-label={videoLabel}
+                className="shrink-0 flex items-center gap-1.5 text-xs font-semibold text-primary hover:text-primary/80 transition-colors opacity-0 group-hover:opacity-100"
               >
-                <Play size={12} className="text-white ml-0.5" />
-              </motion.button>
+                <Play size={11} className="ml-0.5" />
+                Watch
+              </button>
             )}
           </div>
-
-          <div className="flex-1 min-w-0">
-            <p className="text-sm font-semibold text-foreground">{name}</p>
-            <p className="text-xs text-muted-foreground truncate">{role}</p>
-          </div>
-
-          {hasVideo && (
-            <button
-              onClick={onPlayVideo}
-              className="shrink-0 flex items-center gap-1.5 text-xs font-semibold text-primary hover:text-primary/80 transition-colors opacity-0 group-hover:opacity-100"
-            >
-              <Play size={11} className="ml-0.5" />
-              Watch
-            </button>
-          )}
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }
 
+function getPosition(cardIndex: number, activeIndex: number, total: number): "center" | "left" | "right" | "hidden" {
+  const diff = ((cardIndex - activeIndex) % total + total) % total
+  if (diff === 0) return "center"
+  if (diff === 1) return "right"
+  if (diff === total - 1) return "left"
+  return "hidden"
+}
+
 export function Testimonials() {
-  const [page, setPage] = useState(0)
+  const [active, setActive] = useState(0)
   const [paused, setPaused] = useState(false)
   const [videoFor, setVideoFor] = useState<string | null>(null)
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
+  const dragStartX = useRef(0)
+  const total = TESTIMONIALS.length
 
-  const totalPages = TESTIMONIALS.length
-  const visibleCount = 3
-
-  const startTimer = () => {
-    if (timerRef.current) clearInterval(timerRef.current)
-    timerRef.current = setInterval(() => {
-      if (!paused) setPage((p) => (p + 1) % totalPages)
-    }, 4500)
-  }
+  const next = useCallback(() => setActive((p) => (p + 1) % total), [total])
+  const prev = useCallback(() => setActive((p) => (p - 1 + total) % total), [total])
 
   useEffect(() => {
-    startTimer()
+    if (paused) return
+    timerRef.current = setInterval(next, 4500)
     return () => { if (timerRef.current) clearInterval(timerRef.current) }
-  }, [paused])
+  }, [paused, next])
 
-  const prev = () => { setPage((p) => (p - 1 + totalPages) % totalPages); startTimer() }
-  const next = () => { setPage((p) => (p + 1) % totalPages); startTimer() }
+  const handleDragStart = (e: React.TouchEvent | React.MouseEvent) => {
+    dragStartX.current = "touches" in e ? e.touches[0].clientX : e.clientX
+  }
 
-  const visible = Array.from({ length: visibleCount }, (_, i) =>
-    TESTIMONIALS[(page + i) % totalPages]
-  )
+  const handleDragEnd = (e: React.TouchEvent | React.MouseEvent) => {
+    const endX = "changedTouches" in e ? e.changedTouches[0].clientX : e.clientX
+    const diff = dragStartX.current - endX
+    if (Math.abs(diff) > 40) diff > 0 ? next() : prev()
+  }
 
   return (
     <section className="py-24 sm:py-32 bg-muted/30 overflow-hidden">
@@ -240,37 +256,66 @@ export function Testimonials() {
           </motion.h2>
         </div>
 
-        {/* Desktop carousel grid */}
+        {/* 3D Coverflow — desktop */}
         <div
-          className="hidden md:grid md:grid-cols-3 gap-6"
+          className="hidden md:block"
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
+          onMouseDown={handleDragStart}
+          onMouseUp={handleDragEnd}
+          onTouchStart={handleDragStart}
+          onTouchEnd={handleDragEnd}
         >
-          {visible.map((t, i) => (
-            <motion.div
-              key={`${page}-${i}`}
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.35, delay: i * 0.07 }}
-            >
-              <TestimonialCard {...t} onPlayVideo={() => setVideoFor(t.name)} />
-            </motion.div>
-          ))}
+          <div
+            className="relative mx-auto flex items-center justify-center"
+            style={{ perspective: "1200px", height: 320 }}
+          >
+            {TESTIMONIALS.map((t, i) => {
+              const pos = getPosition(i, active, total)
+              return (
+                <TestimonialCard
+                  key={t.name}
+                  {...t}
+                  position={pos}
+                  onPlayVideo={() => setVideoFor(t.name)}
+                />
+              )
+            })}
+          </div>
         </div>
 
-        {/* Mobile: single card */}
-        <div className="md:hidden">
-          <motion.div
-            key={page}
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.35 }}
-          >
-            <TestimonialCard
-              {...TESTIMONIALS[page]}
-              onPlayVideo={() => TESTIMONIALS[page].hasVideo && setVideoFor(TESTIMONIALS[page].name)}
-            />
-          </motion.div>
+        {/* Mobile: single card swipe */}
+        <div
+          className="md:hidden"
+          onTouchStart={handleDragStart}
+          onTouchEnd={handleDragEnd}
+        >
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={active}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.3 }}
+            >
+              <div className="group relative rounded-2xl border border-border bg-card flex flex-col gap-4 overflow-hidden shadow-lg">
+                <div className={`absolute inset-0 bg-gradient-to-br ${TESTIMONIALS[active].color} opacity-40 pointer-events-none`} />
+                <div className="relative p-6 flex flex-col gap-4">
+                  <Stars count={TESTIMONIALS[active].stars} />
+                  <p className="text-sm text-foreground leading-relaxed">&ldquo;{TESTIMONIALS[active].quote}&rdquo;</p>
+                  <div className="flex items-center gap-3 pt-2 border-t border-border">
+                    <div className="w-10 h-10 rounded-full bg-primary/15 border border-primary/20 flex items-center justify-center text-xs font-bold text-primary">
+                      {TESTIMONIALS[active].initials}
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-foreground">{TESTIMONIALS[active].name}</p>
+                      <p className="text-xs text-muted-foreground">{TESTIMONIALS[active].role}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
         </div>
 
         {/* Controls */}
@@ -286,10 +331,10 @@ export function Testimonials() {
             {TESTIMONIALS.map((_, i) => (
               <button
                 key={i}
-                onClick={() => { setPage(i); startTimer() }}
+                onClick={() => setActive(i)}
                 aria-label={`Go to testimonial ${i + 1}`}
                 className={`rounded-full transition-all duration-300 ${
-                  i === page ? "w-5 h-2 bg-primary" : "w-2 h-2 bg-border hover:bg-primary/40"
+                  i === active ? "w-5 h-2 bg-primary" : "w-2 h-2 bg-border hover:bg-primary/40"
                 }`}
               />
             ))}
@@ -304,7 +349,6 @@ export function Testimonials() {
         </div>
       </div>
 
-      {/* Video modal */}
       {videoFor && <VideoModal name={videoFor} onClose={() => setVideoFor(null)} />}
     </section>
   )

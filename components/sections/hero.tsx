@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef, useEffect, useState } from "react"
+import { useRef, useEffect, useState, useCallback } from "react"
 import { motion, animate, useScroll, useTransform } from "framer-motion"
 import { ArrowRight, CheckCircle, Phone, Calendar } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -8,6 +8,30 @@ import { Badge } from "@/components/ui/badge"
 import { openDemoModal } from "@/components/ui/demo-modal"
 import { Particles } from "@/components/ui/particles"
 import { TiltCard } from "@/components/ui/tilt-card"
+
+const FULL_TEXT = "CalBliss creates a custom voice AI that answers calls, handles bookings, and fills your calendar — automatically, 24 hours a day."
+
+function TypewriterText() {
+  const [displayed, setDisplayed] = useState("")
+  const [done, setDone] = useState(false)
+
+  useEffect(() => {
+    let i = 0
+    const id = setInterval(() => {
+      i++
+      setDisplayed(FULL_TEXT.slice(0, i))
+      if (i >= FULL_TEXT.length) { clearInterval(id); setDone(true) }
+    }, 18)
+    return () => clearInterval(id)
+  }, [])
+
+  return (
+    <span>
+      {displayed}
+      {!done && <span className="inline-block w-0.5 h-4 bg-primary/70 ml-0.5 animate-pulse align-middle" />}
+    </span>
+  )
+}
 
 function LiveWaveform() {
   const bars = [0.4, 0.9, 0.6, 1, 0.5, 0.8, 0.45]
@@ -249,8 +273,7 @@ export function Hero({ variant = "a" }: { variant?: "a" | "b" }) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              CalBliss creates a custom voice AI that answers calls, handles
-              bookings, and fills your calendar — automatically, 24 hours a day.
+              <TypewriterText />
             </motion.p>
 
             <motion.div
