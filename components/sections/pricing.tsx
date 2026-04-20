@@ -2,7 +2,7 @@
 
 import { useState, useRef, useCallback } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { CheckCircle, RotateCcw } from "lucide-react"
+import { CheckCircle } from "lucide-react"
 
 type CoinParticle = { id: number; x: number; delay: number; emoji: string }
 let coinId = 0
@@ -121,138 +121,86 @@ const PLANS = [
   },
 ]
 
-function FlippableCard({
-  name, price, originalPrice, annualPrice, description, perks, cta, popular, franchise, annual, back,
+function PricingCard({
+  name, price, originalPrice, annualPrice, description, perks, cta, popular, franchise, annual,
 }: {
   name: string; price: number; originalPrice: number; annualPrice: number; description: string
   perks: string[]; cta: string; popular: boolean; franchise: boolean; annual: boolean
-  back: { title: string; lines: string[] }
 }) {
-  const [flipped, setFlipped] = useState(false)
-  const accentColor = franchise ? "#F59E0B" : popular ? "var(--color-primary)" : "var(--color-muted-foreground)"
-
   return (
-    <div
-      className="relative w-full"
-      style={{ perspective: "1000px" }}
-      onMouseEnter={() => setFlipped(true)}
-      onMouseLeave={() => setFlipped(false)}
+    <SpotlightCard
+      className={`relative rounded-2xl border p-7 flex flex-col gap-6 transition-shadow duration-300 ${
+        popular
+          ? "border-primary/60 bg-gradient-to-b from-primary/10 to-primary/5 shadow-2xl shadow-primary/20 ring-1 ring-primary/20"
+          : franchise
+          ? "border-amber-500/40 bg-gradient-to-b from-amber-500/10 to-amber-500/5"
+          : "border-border bg-card"
+      }`}
     >
-      <motion.div
-        animate={{ rotateY: flipped ? 180 : 0 }}
-        transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-        style={{ transformStyle: "preserve-3d", position: "relative" }}
-      >
-        {/* FRONT */}
-        <SpotlightCard
-          className={`relative rounded-2xl border p-7 flex flex-col gap-6 transition-shadow duration-300 backface-hidden ${
-            popular
-              ? "border-primary/60 bg-gradient-to-b from-primary/10 to-primary/5 shadow-2xl shadow-primary/20 ring-1 ring-primary/20"
-              : franchise
-              ? "border-amber-500/40 bg-gradient-to-b from-amber-500/10 to-amber-500/5"
-              : "border-border bg-card"
-          }`}
-          style={{ backfaceVisibility: "hidden" }}
-        >
-          {popular && (
-            <Badge className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground font-semibold px-5 py-1.5 rounded-full text-xs shadow-lg shadow-primary/30">
-              Most popular
-            </Badge>
-          )}
-          {franchise && (
-            <Badge className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-amber-500 text-white font-semibold px-5 py-1.5 rounded-full text-xs shadow-lg shadow-amber-500/30">
-              Multi-location
-            </Badge>
-          )}
+      {popular && (
+        <Badge className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground font-semibold px-5 py-1.5 rounded-full text-xs shadow-lg shadow-primary/30">
+          Most popular
+        </Badge>
+      )}
+      {franchise && (
+        <Badge className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-amber-500 text-white font-semibold px-5 py-1.5 rounded-full text-xs shadow-lg shadow-amber-500/30">
+          Multi-location
+        </Badge>
+      )}
 
-          <div>
-            <p className="font-heading font-bold text-lg mb-1">{name}</p>
-            <p className="text-muted-foreground text-sm">{description}</p>
-          </div>
+      <div>
+        <p className="font-heading font-bold text-lg mb-1">{name}</p>
+        <p className="text-muted-foreground text-sm">{description}</p>
+      </div>
 
-          <div className="flex items-end gap-2">
-            <AnimatePresence mode="wait">
-              <motion.span
-                key={price}
-                className="text-4xl font-heading font-extrabold"
-                initial={{ opacity: 0, y: -8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 8 }}
-                transition={{ duration: 0.2 }}
-              >
-                ${price}
-              </motion.span>
-            </AnimatePresence>
-            <div className="flex flex-col mb-1">
-              <span className="text-muted-foreground text-sm">/mo</span>
-              {annual && <span className="text-xs text-muted-foreground line-through">${originalPrice}</span>}
-            </div>
-            {annual && (
-              <span className="mb-1 text-xs font-semibold text-green-600 dark:text-green-400 bg-green-500/10 px-2 py-0.5 rounded-full">
-                Save ${(originalPrice - annualPrice) * 12}/yr
-              </span>
-            )}
-          </div>
-
-          <ul className="space-y-2.5 flex-1">
-            {perks.map((perk) => (
-              <li key={perk} className="flex items-start gap-2.5 text-sm">
-                <CheckCircle size={15} className="text-primary mt-0.5 shrink-0" />
-                <span>{perk}</span>
-              </li>
-            ))}
-          </ul>
-
-          <Button
-            size="lg"
-            render={<a href={(name === "Pro" || name === "Franchise") ? "/demo" : `/api/checkout?plan=${name.toLowerCase()}&billing=${annual ? "annual" : "monthly"}`} />}
-            nativeButton={false}
-            className={`rounded-full font-semibold h-11 ${
-              popular
-                ? "bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/25"
-                : franchise
-                ? "bg-amber-500 hover:bg-amber-500/90 text-white shadow-lg shadow-amber-500/25"
-                : "bg-transparent border-2 border-border hover:border-primary/40 hover:bg-primary/5 text-foreground transition-colors"
-            }`}
+      <div className="flex items-end gap-2">
+        <AnimatePresence mode="wait">
+          <motion.span
+            key={price}
+            className="text-4xl font-heading font-extrabold"
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 8 }}
+            transition={{ duration: 0.2 }}
           >
-            {cta}
-          </Button>
-        </SpotlightCard>
-
-        {/* BACK */}
-        <div
-          className={`absolute inset-0 rounded-2xl border p-7 flex flex-col gap-5 ${
-            popular
-              ? "border-primary/60 bg-gradient-to-b from-primary/10 to-primary/5"
-              : franchise
-              ? "border-amber-500/40 bg-gradient-to-b from-amber-500/10 to-amber-500/5"
-              : "border-border bg-card"
-          }`}
-          style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
-        >
-          <div className="flex items-center justify-between">
-            <p className="font-heading font-bold text-base" style={{ color: accentColor }}>{back.title}</p>
-            <div className="p-1.5 rounded-full bg-muted">
-              <RotateCcw size={13} className="text-muted-foreground" />
-            </div>
-          </div>
-          <ul className="space-y-3 flex-1">
-            {back.lines.map((line, j) => (
-              <li key={j} className="flex items-start gap-2.5 text-sm">
-                <span
-                  className="w-5 h-5 rounded-full text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5 text-white"
-                  style={{ background: accentColor }}
-                >
-                  {j + 1}
-                </span>
-                <span className="text-foreground">{line}</span>
-              </li>
-            ))}
-          </ul>
-          <p className="text-xs text-muted-foreground text-center mt-2">Hover away to flip back</p>
+            ${price}
+          </motion.span>
+        </AnimatePresence>
+        <div className="flex flex-col mb-1">
+          <span className="text-muted-foreground text-sm">/mo</span>
+          {annual && <span className="text-xs text-muted-foreground line-through">${originalPrice}</span>}
         </div>
-      </motion.div>
-    </div>
+        {annual && (
+          <span className="mb-1 text-xs font-semibold text-green-600 dark:text-green-400 bg-green-500/10 px-2 py-0.5 rounded-full">
+            Save ${(originalPrice - annualPrice) * 12}/yr
+          </span>
+        )}
+      </div>
+
+      <ul className="space-y-2.5 flex-1">
+        {perks.map((perk) => (
+          <li key={perk} className="flex items-start gap-2.5 text-sm">
+            <CheckCircle size={15} className="text-primary mt-0.5 shrink-0" />
+            <span>{perk}</span>
+          </li>
+        ))}
+      </ul>
+
+      <Button
+        size="lg"
+        render={<a href={(name === "Pro" || name === "Franchise") ? "/demo" : `/api/checkout?plan=${name.toLowerCase()}&billing=${annual ? "annual" : "monthly"}`} />}
+        nativeButton={false}
+        className={`rounded-full font-semibold h-11 ${
+          popular
+            ? "bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/25"
+            : franchise
+            ? "bg-amber-500 hover:bg-amber-500/90 text-white shadow-lg shadow-amber-500/25"
+            : "bg-transparent border-2 border-border hover:border-primary/40 hover:bg-primary/5 text-foreground transition-colors"
+        }`}
+      >
+        {cta}
+      </Button>
+    </SpotlightCard>
   )
 }
 
@@ -357,8 +305,6 @@ export function Pricing() {
           {PLANS.map(({ name, monthly, annual: annualPrice, description, perks, cta, popular, franchise }, i) => {
             const price = annual ? annualPrice : monthly
             const originalPrice = monthly
-            const back = PLAN_BACK[name]
-
             return (
               <motion.div
                 key={name}
@@ -367,7 +313,7 @@ export function Pricing() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.1 }}
               >
-                <FlippableCard
+                <PricingCard
                   name={name}
                   price={price}
                   originalPrice={originalPrice}
@@ -378,7 +324,6 @@ export function Pricing() {
                   popular={popular}
                   franchise={franchise}
                   annual={annual}
-                  back={back}
                 />
               </motion.div>
             )
