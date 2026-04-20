@@ -43,19 +43,19 @@ const VISUAL_PANELS = [
     accent: "#7C3AED",
     icon: "⚙️",
     title: "Agent configured",
-    lines: ["Business name ✓", "Hours set ✓", "Services added ✓", "Voice selected ✓"],
+    lines: ["Business name ✓", "Hours set ✓", "Services: Haircut, Shave, Beard Trim... ✓", "Voice & language selected ✓"],
   },
   {
     accent: "#0EA5E9",
     icon: "📞",
     title: "Call in progress",
-    lines: ["Caller: 'Hi, I'd like a haircut'", "Agent: 'Of course! I have...'", "2 PM slot available ✓", "Language detected: EN ✓"],
+    lines: ["Caller: 'Hi, I'd like a haircut + beard'", "Agent: 'Of course! I have...'", "3 PM slot available ✓", "Language detected: EN ✓"],
   },
   {
     accent: "#10B981",
     icon: "📅",
     title: "Booking confirmed",
-    lines: ["Calendar: Updated ✓", "SMS sent to customer ✓", "Notification sent to you ✓", "Revenue: +$45 ✓"],
+    lines: ["Service: Haircut + Beard — €22 ✓", "Calendar: Updated ✓", "SMS sent to customer ✓", "Notification sent to you ✓"],
   },
 ]
 

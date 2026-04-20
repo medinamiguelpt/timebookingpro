@@ -66,7 +66,7 @@ const FEATURES: Feature[] = [
   {
     icon: Globe,
     title: "Multilingual",
-    body: "English, Spanish, French, Portuguese, German, Arabic — auto-detected per caller.",
+    body: "Greek, English, Spanish, Portuguese, French, German, Arabic — 7 languages, auto-detected per caller.",
     accent: "#10B981",
     accentBg: "rgba(16,185,129,0.08)",
     span: "normal",

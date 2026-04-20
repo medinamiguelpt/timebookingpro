@@ -37,7 +37,7 @@ const PLANS = [
       "1 AI voice agent",
       "Up to 600 calls/month",
       "Multi-staff scheduling",
-      "Multilingual support",
+      "7-language support (EN/ES/PT/FR/DE/AR/EL)",
       "Priority support",
       "Analytics dashboard",
     ],

@@ -4,16 +4,16 @@ import { useEffect, useState, useCallback } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 
 const EVENTS = [
-  { name: "Sarah", city: "Miami",       service: "booked a haircut"    },
-  { name: "James", city: "London",      service: "scheduled a trim"    },
-  { name: "Camila",city: "São Paulo",   service: "booked a colour"     },
-  { name: "Yuki",  city: "Tokyo",       service: "reserved a blow-dry" },
-  { name: "Omar",  city: "Dubai",       service: "booked a beard trim" },
-  { name: "Priya", city: "Singapore",   service: "scheduled a facial"  },
-  { name: "Lucas", city: "Barcelona",   service: "booked a shave"      },
-  { name: "Aisha", city: "Lagos",       service: "reserved a cut"      },
-  { name: "Tyler", city: "New York",    service: "booked a clean fade" },
-  { name: "Elena", city: "Amsterdam",   service: "scheduled a massage" },
+  { name: "Sarah",  city: "Miami",       service: "booked a haircut"           },
+  { name: "James",  city: "London",      service: "booked a beard trim"        },
+  { name: "Camila", city: "São Paulo",   service: "booked a haircut + beard"   },
+  { name: "Yuki",   city: "Tokyo",       service: "reserved a hair styling"    },
+  { name: "Omar",   city: "Dubai",       service: "booked a full shave"        },
+  { name: "Priya",  city: "Singapore",   service: "scheduled a kids cut"       },
+  { name: "Lucas",  city: "Barcelona",   service: "booked a beard trim"        },
+  { name: "Aisha",  city: "Lagos",       service: "reserved a haircut"         },
+  { name: "Nikos",  city: "Athens",      service: "booked a haircut + beard"   },
+  { name: "Elena",  city: "Amsterdam",   service: "scheduled eyebrow grooming" },
 ]
 
 function randomAgo() {
