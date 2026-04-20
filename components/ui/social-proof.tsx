@@ -4,27 +4,34 @@ import { useEffect, useState, useCallback } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 
 const EVENTS = [
-  { name: "Sarah", city: "Miami",       service: "booked a haircut",    ago: "2m ago" },
-  { name: "James", city: "London",      service: "scheduled a trim",    ago: "4m ago" },
-  { name: "Camila",city: "São Paulo",   service: "booked a colour",     ago: "1m ago" },
-  { name: "Yuki",  city: "Tokyo",       service: "reserved a blow-dry", ago: "6m ago" },
-  { name: "Omar",  city: "Dubai",       service: "booked a beard trim", ago: "3m ago" },
-  { name: "Priya", city: "Singapore",   service: "scheduled a facial",  ago: "5m ago" },
-  { name: "Lucas", city: "Barcelona",   service: "booked a shave",      ago: "2m ago" },
-  { name: "Aisha", city: "Lagos",       service: "reserved a cut",      ago: "8m ago" },
-  { name: "Tyler", city: "New York",    service: "booked a clean fade", ago: "1m ago" },
-  { name: "Elena", city: "Amsterdam",   service: "scheduled a massage", ago: "7m ago" },
+  { name: "Sarah", city: "Miami",       service: "booked a haircut"    },
+  { name: "James", city: "London",      service: "scheduled a trim"    },
+  { name: "Camila",city: "São Paulo",   service: "booked a colour"     },
+  { name: "Yuki",  city: "Tokyo",       service: "reserved a blow-dry" },
+  { name: "Omar",  city: "Dubai",       service: "booked a beard trim" },
+  { name: "Priya", city: "Singapore",   service: "scheduled a facial"  },
+  { name: "Lucas", city: "Barcelona",   service: "booked a shave"      },
+  { name: "Aisha", city: "Lagos",       service: "reserved a cut"      },
+  { name: "Tyler", city: "New York",    service: "booked a clean fade" },
+  { name: "Elena", city: "Amsterdam",   service: "scheduled a massage" },
 ]
+
+function randomAgo() {
+  const n = Math.floor(Math.random() * 58) + 1
+  if (n < 60) return `${n}m ago`
+  const h = Math.floor(n / 60)
+  return `${h}h ago`
+}
 
 let idx = Math.floor(Math.random() * EVENTS.length)
 
 export function SocialProof() {
-  const [current, setCurrent] = useState<typeof EVENTS[0] | null>(null)
+  const [current, setCurrent] = useState<(typeof EVENTS[0] & { ago: string }) | null>(null)
   const [id, setId] = useState(0)
 
   const show = useCallback(() => {
     idx = (idx + 1) % EVENTS.length
-    setCurrent(EVENTS[idx])
+    setCurrent({ ...EVENTS[idx], ago: randomAgo() })
     setId((p) => p + 1)
   }, [])
 
