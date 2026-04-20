@@ -18,7 +18,7 @@ export function StickyCTA() {
       {visible && (
         <motion.a
           href="#get-started"
-          className="fixed bottom-[5.5rem] right-4 sm:bottom-6 sm:right-[6rem] z-[149] flex items-center gap-2 bg-primary hover:bg-primary/90 text-white text-sm font-semibold rounded-full px-5 py-3 shadow-2xl shadow-primary/40 transition-colors"
+          className="fixed bottom-24 right-4 sm:right-6 z-[149] flex items-center gap-2 bg-primary hover:bg-primary/90 text-white text-sm font-semibold rounded-full px-5 py-3 shadow-2xl shadow-primary/40 transition-colors"
           initial={{ opacity: 0, y: 16, scale: 0.95 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 16, scale: 0.95 }}
