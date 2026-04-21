@@ -1,9 +1,28 @@
 "use client"
 
 import { useState, useRef, useCallback } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion, AnimatePresence, useInView, animate } from "framer-motion"
 import { CheckCircle } from "lucide-react"
 import { SpotlightCard } from "@/components/ui/spotlight-card"
+
+function AnimatedMinutes({ value }: { value: number }) {
+  const ref = useRef<HTMLSpanElement>(null)
+  const inView = useInView(ref, { once: true, margin: "-60px" })
+  const started = useRef(false)
+
+  if (inView && !started.current && ref.current) {
+    started.current = true
+    animate(0, value, {
+      duration: 1.4,
+      ease: [0.22, 1, 0.36, 1],
+      onUpdate: (v) => {
+        if (ref.current) ref.current.textContent = Math.round(v).toLocaleString()
+      },
+    })
+  }
+
+  return <span ref={ref}>0</span>
+}
 
 type CoinParticle = { id: number; x: number; delay: number; emoji: string }
 let coinId = 0
@@ -97,12 +116,22 @@ function PricingCard({
         </div>
 
         <ul className="space-y-2.5 flex-1">
-          {perks.map((perk) => (
-            <li key={perk} className="flex items-start gap-2.5 text-sm">
-              <CheckCircle size={15} className="text-primary mt-0.5 shrink-0" />
-              <span>{perk}</span>
-            </li>
-          ))}
+          {perks.map((perk) => {
+            const match = perk.match(/^([\d,]+)(\s.+)$/)
+            return (
+              <li key={perk} className="flex items-start gap-2.5 text-sm">
+                <CheckCircle size={15} className="text-primary mt-0.5 shrink-0" />
+                <span>
+                  {match ? (
+                    <>
+                      <AnimatedMinutes value={parseInt(match[1].replace(/,/g, ""))} />
+                      {match[2]}
+                    </>
+                  ) : perk}
+                </span>
+              </li>
+            )
+          })}
         </ul>
 
         <motion.a

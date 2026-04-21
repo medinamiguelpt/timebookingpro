@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef, useEffect, useState } from "react"
+import { useRef, useEffect } from "react"
 import { motion, animate, useScroll, useTransform, useMotionValue, useSpring } from "framer-motion"
 import { ArrowRight, CheckCircle, Phone, Calendar } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge"
 import { openDemoModal } from "@/components/ui/demo-modal"
 import { Particles } from "@/components/ui/particles"
 import { TiltCard } from "@/components/ui/tilt-card"
+import { useState } from "react"
 
 const FULL_TEXT = "CalBliss creates a custom voice AI that answers calls, handles bookings, and fills your calendar — automatically, 24 hours a day."
 
@@ -110,7 +111,7 @@ function LiveRevenue({ initialValue, delay = 0.8, intervalMs = 7000 }: {
         animate(prev, currentRef.current, {
           duration: 0.9,
           ease: [0.22, 1, 0.36, 1],
-          onUpdate(v) { if (el) el.textContent = "$" + Math.round(v).toLocaleString() },
+          onUpdate(v) { if (el) el.textContent = "€" + Math.round(v).toLocaleString() },
         })
       }, intervalMs)
       return () => clearInterval(ticker)
@@ -121,7 +122,7 @@ function LiveRevenue({ initialValue, delay = 0.8, intervalMs = 7000 }: {
 
   return (
     <p ref={displayRef} className="text-xl font-bold font-heading text-gold">
-      ${initialValue.toLocaleString()}
+      €{initialValue.toLocaleString()}
     </p>
   )
 }
@@ -192,29 +193,63 @@ function HeroMockup() {
   )
 }
 
+// ── Staggered word-by-word headline reveal ────────────────────────────────────
+function HeadlineReveal({ plain, highlight }: { plain: string; highlight: string }) {
+  const words = plain.split(" ")
+  return (
+    <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-extrabold leading-[1.1] tracking-tight text-balance">
+      {words.map((word, i) => (
+        <span key={i} className="inline-block overflow-hidden" style={{ marginRight: "0.28em" }}>
+          <motion.span
+            className="inline-block"
+            initial={{ y: "110%" }}
+            animate={{ y: 0 }}
+            transition={{ duration: 0.55, delay: 0.05 + i * 0.09, ease: [0.22, 1, 0.36, 1] }}
+          >
+            {word}
+          </motion.span>
+        </span>
+      ))}
+      <span className="inline-block overflow-hidden">
+        <motion.span
+          className="inline-block text-shimmer"
+          initial={{ y: "110%" }}
+          animate={{ y: 0 }}
+          transition={{ duration: 0.55, delay: 0.05 + words.length * 0.09, ease: [0.22, 1, 0.36, 1] }}
+        >
+          {highlight}
+        </motion.span>
+      </span>
+    </h1>
+  )
+}
+
+// ── Magnetic button wrapper ───────────────────────────────────────────────────
+function MagneticWrap({ children }: { children: React.ReactNode }) {
+  const ref = useRef<HTMLDivElement>(null)
+  const x = useMotionValue(0)
+  const y = useMotionValue(0)
+  const sx = useSpring(x, { stiffness: 350, damping: 28 })
+  const sy = useSpring(y, { stiffness: 350, damping: 28 })
+
+  const onMove = (e: React.MouseEvent) => {
+    const rect = ref.current?.getBoundingClientRect()
+    if (!rect) return
+    x.set((e.clientX - (rect.left + rect.width / 2)) * 0.32)
+    y.set((e.clientY - (rect.top + rect.height / 2)) * 0.32)
+  }
+  const onLeave = () => { x.set(0); y.set(0) }
+
+  return (
+    <motion.div ref={ref} style={{ x: sx, y: sy }} onMouseMove={onMove} onMouseLeave={onLeave}>
+      {children}
+    </motion.div>
+  )
+}
+
 const HEADLINES = {
-  a: {
-    main: (
-      <>
-        Give your business{" "}
-        <span className="text-shimmer">
-          its own AI agent
-        </span>
-      </>
-    ),
-    cta: "Get your agent",
-  },
-  b: {
-    main: (
-      <>
-        Stop losing bookings{" "}
-        <span className="text-shimmer">
-          while you sleep
-        </span>
-      </>
-    ),
-    cta: "Start free trial",
-  },
+  a: { plain: "Give your business", highlight: "its own AI agent", cta: "Get your agent" },
+  b: { plain: "Stop losing bookings", highlight: "while you sleep",  cta: "Start free trial" },
 }
 
 export function Hero({ variant = "a" }: { variant?: "a" | "b" }) {
@@ -281,20 +316,14 @@ export function Hero({ variant = "a" }: { variant?: "a" | "b" }) {
               </Badge>
             </motion.div>
 
-            <motion.h1
-              className="text-4xl sm:text-5xl lg:text-6xl font-heading font-extrabold leading-[1.1] tracking-tight text-balance"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-            >
-              {headline.main}
-            </motion.h1>
+            {/* Staggered word reveal headline */}
+            <HeadlineReveal plain={headline.plain} highlight={headline.highlight} />
 
             <motion.p
               className="text-lg text-muted-foreground leading-relaxed max-w-lg"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
             >
               <TypewriterText />
             </motion.p>
@@ -303,50 +332,57 @@ export function Hero({ variant = "a" }: { variant?: "a" | "b" }) {
               className="flex flex-col sm:flex-row gap-3 pt-2"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
+              transition={{ duration: 0.5, delay: 0.6 }}
             >
-              <div className="relative group/cta w-fit">
-                <div
-                  className="absolute -inset-[2px] rounded-full opacity-80 blur-[2px] group-hover/cta:opacity-100 group-hover/cta:blur-[3px] transition-all duration-300"
-                  style={{ background: "conic-gradient(from var(--border-angle), #7C3AED, #A78BFA, #C4B5FD, #7C3AED)", animation: "border-spin 3s linear infinite" }}
-                  aria-hidden
-                />
+              {/* Primary CTA — magnetic */}
+              <MagneticWrap>
+                <div className="relative group/cta w-fit">
+                  <div
+                    className="absolute -inset-[2px] rounded-full opacity-80 blur-[2px] group-hover/cta:opacity-100 group-hover/cta:blur-[3px] transition-all duration-300"
+                    style={{ background: "conic-gradient(from var(--border-angle), #7C3AED, #A78BFA, #C4B5FD, #7C3AED)", animation: "border-spin 3s linear infinite" }}
+                    aria-hidden
+                  />
+                  <Button
+                    size="lg"
+                    render={<a href="#get-started" onClick={() => {
+                      if (typeof window !== "undefined" && (window as Window & { plausible?: (e: string, o?: object) => void }).plausible) {
+                        (window as Window & { plausible?: (e: string, o?: object) => void }).plausible?.("hero-cta-click", { props: { variant } })
+                      }
+                    }} />}
+                    nativeButton={false}
+                    className="relative bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-full px-7 h-12 text-base shadow-lg shadow-primary/25"
+                  >
+                    {headline.cta}
+                    <ArrowRight size={18} className="ml-2" />
+                  </Button>
+                </div>
+              </MagneticWrap>
+
+              {/* Secondary CTA — magnetic */}
+              <MagneticWrap>
                 <Button
                   size="lg"
-                  render={<a href="#get-started" onClick={() => {
-                    if (typeof window !== "undefined" && (window as Window & { plausible?: (e: string, o?: object) => void }).plausible) {
-                      (window as Window & { plausible?: (e: string, o?: object) => void }).plausible?.("hero-cta-click", { props: { variant } })
-                    }
-                  }} />}
+                  variant="outline"
                   nativeButton={false}
-                  className="relative bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-full px-7 h-12 text-base shadow-lg shadow-primary/25"
+                  onClick={() => {
+                    if (typeof window !== "undefined" && (window as Window & { plausible?: (e: string, o?: object) => void }).plausible) {
+                      (window as Window & { plausible?: (e: string, o?: object) => void }).plausible?.("hero-demo-click", { props: { variant } })
+                    }
+                    openDemoModal()
+                  }}
+                  className="rounded-full px-7 h-12 text-base border-border hover:bg-muted"
                 >
-                  {headline.cta}
-                  <ArrowRight size={18} className="ml-2" />
+                  <Calendar size={16} className="mr-2" />
+                  Book a demo
                 </Button>
-              </div>
-              <Button
-                size="lg"
-                variant="outline"
-                nativeButton={false}
-                onClick={() => {
-                  if (typeof window !== "undefined" && (window as Window & { plausible?: (e: string, o?: object) => void }).plausible) {
-                    (window as Window & { plausible?: (e: string, o?: object) => void }).plausible?.("hero-demo-click", { props: { variant } })
-                  }
-                  openDemoModal()
-                }}
-                className="rounded-full px-7 h-12 text-base border-border hover:bg-muted"
-              >
-                <Calendar size={16} className="mr-2" />
-                Book a demo
-              </Button>
+              </MagneticWrap>
             </motion.div>
 
             <motion.p
               className="text-sm text-muted-foreground"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
+              transition={{ delay: 0.75 }}
             >
               No credit card required · Live in under 24 hours
             </motion.p>
