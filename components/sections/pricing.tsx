@@ -3,7 +3,6 @@
 import { useState, useRef, useCallback } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { CheckCircle } from "lucide-react"
-import { Button } from "@/components/ui/button"
 import { SpotlightCard } from "@/components/ui/spotlight-card"
 
 type CoinParticle = { id: number; x: number; delay: number; emoji: string }
@@ -52,66 +51,78 @@ function PricingCard({
   name: string; price: number; originalPrice: number; annualPrice: number; description: string
   perks: string[]; cta: string; popular: boolean; annual: boolean
 }) {
+  const href = name === "Enterprise"
+    ? "/demo"
+    : `/api/checkout?plan=${name.toLowerCase()}&billing=${annual ? "annual" : "monthly"}`
+
   return (
-    <SpotlightCard
-      className={`relative rounded-2xl border p-7 flex flex-col gap-6 transition-shadow duration-300 ${
-        popular
-          ? "border-primary/60 bg-gradient-to-b from-primary/10 to-primary/5 shadow-2xl shadow-primary/20 ring-1 ring-primary/20"
-          : "border-border bg-card"
-      }`}
+    <motion.div
+      whileHover={{ y: -6 }}
+      transition={{ type: "spring", stiffness: 300, damping: 22 }}
     >
-
-      <div>
-        <p className="font-heading font-bold text-lg mb-1">{name}</p>
-        <p className="text-muted-foreground text-sm">{description}</p>
-      </div>
-
-      <div className="flex items-end gap-2">
-        <AnimatePresence mode="wait">
-          <motion.span
-            key={price}
-            className="text-4xl font-heading font-extrabold"
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 8 }}
-            transition={{ duration: 0.2 }}
-          >
-            €{price}
-          </motion.span>
-        </AnimatePresence>
-        <div className="flex flex-col mb-1">
-          <span className="text-muted-foreground text-sm">/mo</span>
-          {annual && <span className="text-xs text-muted-foreground line-through">€{originalPrice}</span>}
-        </div>
-        {annual && (
-          <span className="mb-1 text-xs font-semibold text-green-600 dark:text-green-400 bg-green-500/10 px-2 py-0.5 rounded-full">
-            Save €{(originalPrice - annualPrice) * 12}/yr
-          </span>
-        )}
-      </div>
-
-      <ul className="space-y-2.5 flex-1">
-        {perks.map((perk) => (
-          <li key={perk} className="flex items-start gap-2.5 text-sm">
-            <CheckCircle size={15} className="text-primary mt-0.5 shrink-0" />
-            <span>{perk}</span>
-          </li>
-        ))}
-      </ul>
-
-      <Button
-        size="lg"
-        render={<a href={name === "Enterprise" ? "/demo" : `/api/checkout?plan=${name.toLowerCase()}&billing=${annual ? "annual" : "monthly"}`} />}
-        nativeButton={false}
-        className={`rounded-full font-semibold h-11 ${
+      <SpotlightCard
+        className={`relative rounded-2xl border p-7 flex flex-col gap-6 transition-shadow duration-300 ${
           popular
-            ? "bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/25"
-            : "bg-transparent border-2 border-border hover:border-primary/40 hover:bg-primary/5 text-foreground transition-colors"
+            ? "border-primary/60 bg-gradient-to-b from-primary/10 to-primary/5 shadow-2xl shadow-primary/20 ring-1 ring-primary/20 hover:shadow-[0_24px_64px_-12px_rgba(124,58,237,0.45)]"
+            : "border-border bg-card hover:shadow-[0_20px_48px_-12px_rgba(124,58,237,0.18)] hover:border-primary/25"
         }`}
       >
-        {cta}
-      </Button>
-    </SpotlightCard>
+        <div>
+          <p className="font-heading font-bold text-lg mb-1">{name}</p>
+          <p className="text-muted-foreground text-sm">{description}</p>
+        </div>
+
+        <div className="flex items-end gap-2">
+          <AnimatePresence mode="wait">
+            <motion.span
+              key={price}
+              className="text-4xl font-heading font-extrabold"
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 8 }}
+              transition={{ duration: 0.2 }}
+            >
+              €{price}
+            </motion.span>
+          </AnimatePresence>
+          <div className="flex flex-col mb-1">
+            <span className="text-muted-foreground text-sm">/mo</span>
+            {annual && <span className="text-xs text-muted-foreground line-through">€{originalPrice}</span>}
+          </div>
+          {annual && (
+            <span className="mb-1 text-xs font-semibold text-green-600 dark:text-green-400 bg-green-500/10 px-2 py-0.5 rounded-full">
+              Save €{(originalPrice - annualPrice) * 12}/yr
+            </span>
+          )}
+        </div>
+
+        <ul className="space-y-2.5 flex-1">
+          {perks.map((perk) => (
+            <li key={perk} className="flex items-start gap-2.5 text-sm">
+              <CheckCircle size={15} className="text-primary mt-0.5 shrink-0" />
+              <span>{perk}</span>
+            </li>
+          ))}
+        </ul>
+
+        <motion.a
+          href={href}
+          className={`group relative overflow-hidden rounded-full font-semibold h-11 flex items-center justify-center text-sm ${
+            popular
+              ? "bg-primary text-primary-foreground shadow-lg shadow-primary/25"
+              : "bg-transparent border-2 border-border hover:border-primary/40 hover:bg-primary/5 text-foreground"
+          }`}
+          whileTap={{ scale: 0.96 }}
+          transition={{ type: "spring", stiffness: 400, damping: 22 }}
+        >
+          <span
+            className="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none"
+            aria-hidden
+          />
+          {cta}
+        </motion.a>
+      </SpotlightCard>
+    </motion.div>
   )
 }
 
