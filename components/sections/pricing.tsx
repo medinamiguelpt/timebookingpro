@@ -4,7 +4,6 @@ import { useState, useRef, useCallback } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { CheckCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
 import { SpotlightCard } from "@/components/ui/spotlight-card"
 
 type CoinParticle = { id: number; x: number; delay: number; emoji: string }
@@ -61,11 +60,6 @@ function PricingCard({
           : "border-border bg-card"
       }`}
     >
-      {popular && (
-        <Badge className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground font-semibold px-5 py-1.5 rounded-full text-xs shadow-lg shadow-primary/30">
-          Most popular
-        </Badge>
-      )}
 
       <div>
         <p className="font-heading font-bold text-lg mb-1">{name}</p>
@@ -253,7 +247,7 @@ export function Pricing() {
           viewport={{ once: true }}
           transition={{ duration: 0.4, delay: 0.4 }}
         >
-          {annual ? "Billed annually · " : ""}All plans include a 14-day free trial · No credit card required
+          For free trial and testing, <a href="/demo" className="text-primary underline underline-offset-2 hover:opacity-80 transition-opacity">contact us</a>{annual ? " · Billed annually" : ""}
         </motion.p>
       </div>
     </section>
