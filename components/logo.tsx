@@ -61,7 +61,7 @@ export function Logo({
       <LogoIcon size={iconSize} />
       {showWordmark && (
         <span className="font-heading font-semibold text-xl tracking-tight text-foreground">
-          timebookingpro
+          TimeBookingPro
         </span>
       )}
     </div>

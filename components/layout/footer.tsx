@@ -23,7 +23,6 @@ const LINKS = {
     { label: "vs. Google Voice", href: "/vs/google-voice" },
   ],
   Company: [
-    { label: "Blog", href: "/blog" },
     { label: "About", href: "#" },
     { label: "Contact", href: "mailto:hello@timebookingpro.com" },
     { label: "Privacy Policy", href: "#" },

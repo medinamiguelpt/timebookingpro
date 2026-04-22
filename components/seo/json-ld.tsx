@@ -59,21 +59,3 @@ export function HomeJsonLd() {
     </>
   )
 }
-
-export function BlogPostJsonLd({
-  title, excerpt, date, slug,
-}: {
-  title: string; excerpt: string; date: string; slug: string
-}) {
-  const article = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline: title,
-    description: excerpt,
-    datePublished: date,
-    url: `https://timebookingpro.com/blog/${slug}`,
-    publisher: { "@type": "Organization", name: "TimeBookingPro", url: "https://timebookingpro.com" },
-    author: { "@type": "Organization", name: "TimeBookingPro" },
-  }
-  return <JsonLdScript schema={article} />
-}
