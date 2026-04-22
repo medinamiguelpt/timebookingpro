@@ -16,14 +16,14 @@ export function LogoIcon({ className, size = 36 }: LogoIconProps) {
       className={className}
       aria-hidden="true"
     >
-      {/* Outer M-badge ring */}
+      {/* Outer M-badge — traced from logo asset */}
       <path
-        d="M32 61 L14 54 L4 38 L4 22 L14 5 L24 19 L32 23 L40 19 L50 5 L60 22 L60 38 L50 54 Z"
+        d="M14 0 L0 8 L0 48 L32 64 L64 48 L64 8 L50 0 L32 9 Z"
         fill="#7C3AED"
       />
-      {/* Inner raised M-badge — background shows through the gap creating 3D depth */}
+      {/* Inner M-badge — same crown shape scaled inside; gap shows background */}
       <path
-        d="M32 54 L20 48 L13 36 L13 25 L20 13 L27 22 L32 26 L37 22 L44 13 L51 25 L51 36 L44 48 Z"
+        d="M14.5 11 L21.3 26 L21 43 L32 53 L43 43 L42.9 26 L49.5 11 L39.1 26 L32 31 L25.4 26 Z"
         fill="#A855F7"
       />
     </svg>
