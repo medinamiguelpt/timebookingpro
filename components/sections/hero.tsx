@@ -208,12 +208,7 @@ function HeadlineReveal({ plain, highlight }: { plain: string; highlight: string
           </motion.span>
         </span>
       ))}
-      <span
-        className="inline-block text-shimmer"
-        style={{
-          animation: `shimmer-slide 3s linear infinite, shimmer-fadein 0.6s ${(0.05 + words.length * 0.09).toFixed(2)}s both`,
-        }}
-      >
+      <span className="inline-block text-shimmer">
         {highlight}
       </span>
     </h1>
