@@ -169,7 +169,7 @@ function TestimonialCard({
               {hasVideo && isCenter && (
                 <motion.button
                   onClick={onPlayVideo}
-                  className="absolute inset-0 rounded-full bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                  className="absolute inset-0 rounded-full bg-black/60 flex items-center justify-center opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity"
                   whileTap={{ scale: 0.9 }}
                   aria-label={videoLabel}
                 >
@@ -184,7 +184,7 @@ function TestimonialCard({
             {hasVideo && isCenter && (
               <button
                 onClick={onPlayVideo}
-                className="shrink-0 flex items-center gap-1.5 text-xs font-semibold text-primary hover:text-primary/80 transition-colors opacity-0 group-hover:opacity-100"
+                className="shrink-0 flex items-center gap-1.5 text-xs font-semibold text-primary hover:text-primary/80 transition-colors opacity-100 md:opacity-0 md:group-hover:opacity-100"
               >
                 <Play size={11} className="ml-0.5" />
                 Watch
@@ -307,10 +307,19 @@ export function Testimonials() {
                     <div className="w-10 h-10 rounded-full bg-primary/15 border border-primary/20 flex items-center justify-center text-xs font-bold text-primary">
                       {TESTIMONIALS[active].initials}
                     </div>
-                    <div>
+                    <div className="flex-1 min-w-0">
                       <p className="text-sm font-semibold text-foreground">{TESTIMONIALS[active].name}</p>
                       <p className="text-xs text-muted-foreground">{TESTIMONIALS[active].role}</p>
                     </div>
+                    {TESTIMONIALS[active].hasVideo && (
+                      <button
+                        onClick={() => setVideoFor(TESTIMONIALS[active].name)}
+                        className="shrink-0 flex items-center gap-1.5 text-xs font-semibold text-primary"
+                      >
+                        <Play size={11} className="ml-0.5" />
+                        Watch
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>
@@ -322,26 +331,28 @@ export function Testimonials() {
         <div className="flex items-center justify-center gap-4 mt-10">
           <button
             onClick={prev}
-            className="p-2.5 rounded-full border border-border hover:border-primary/40 hover:bg-primary/5 text-muted-foreground hover:text-foreground transition-colors"
+            className="p-3 rounded-full border border-border hover:border-primary/40 hover:bg-primary/5 text-muted-foreground hover:text-foreground transition-colors"
             aria-label="Previous testimonial"
           >
             <ChevronLeft size={18} />
           </button>
-          <div className="flex gap-1.5">
+          <div className="flex items-center gap-1">
             {TESTIMONIALS.map((_, i) => (
               <button
                 key={i}
                 onClick={() => setActive(i)}
                 aria-label={`Go to testimonial ${i + 1}`}
-                className={`rounded-full transition-all duration-300 ${
+                className="p-2 flex items-center justify-center"
+              >
+                <span className={`block rounded-full transition-all duration-300 ${
                   i === active ? "w-5 h-2 bg-primary" : "w-2 h-2 bg-border hover:bg-primary/40"
-                }`}
-              />
+                }`} />
+              </button>
             ))}
           </div>
           <button
             onClick={next}
-            className="p-2.5 rounded-full border border-border hover:border-primary/40 hover:bg-primary/5 text-muted-foreground hover:text-foreground transition-colors"
+            className="p-3 rounded-full border border-border hover:border-primary/40 hover:bg-primary/5 text-muted-foreground hover:text-foreground transition-colors"
             aria-label="Next testimonial"
           >
             <ChevronRight size={18} />

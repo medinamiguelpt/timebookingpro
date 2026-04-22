@@ -82,7 +82,7 @@ export function AgentNamer() {
           </motion.p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left — Inputs */}
           <motion.div
             className="flex flex-col gap-6"

@@ -133,7 +133,7 @@ export function FinalCTA() {
           transition={{ duration: 0.4, delay: 0.1 }}
         >
           Your calendar won&apos;t fill{" "}
-          <span className="bg-gradient-to-r from-primary-soft via-white to-primary-soft bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-primary-soft via-white to-primary-soft bg-clip-text text-transparent" style={{ WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
             itself
           </span>
           . Yours will.

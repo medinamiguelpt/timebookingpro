@@ -144,7 +144,7 @@ function ScrollySection() {
   })
 
   return (
-    <div ref={sectionRef} className="grid md:grid-cols-2 gap-16 items-start min-h-[70vh]">
+    <div ref={sectionRef} className="grid md:grid-cols-2 gap-10 md:gap-16 items-start min-h-[70vh]">
       {/* Left: steps with progress indicator */}
       <div className="sticky top-32 self-start">
         <div className="relative">

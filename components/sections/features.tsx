@@ -192,7 +192,7 @@ export function Features() {
 
                 {/* Stat badge (narrow cards) */}
                 {span === "normal" && stat && (
-                  <div className="absolute bottom-4 right-4 z-10 rounded-xl px-3 py-1.5 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  <div className="absolute bottom-4 right-4 z-10 rounded-xl px-3 py-1.5 text-center opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300"
                     style={{ background: accentBg, border: `1px solid ${accent}30` }}>
                     <p className="text-lg font-heading font-extrabold leading-none" style={{ color: accent }}>
                       <CountUp to={stat.value} prefix={stat.prefix} suffix={stat.suffix} />
