@@ -16,21 +16,16 @@ export function LogoIcon({ className, size = 36 }: LogoIconProps) {
       className={className}
       aria-hidden="true"
     >
-      <defs>
-        <linearGradient id="tbp-bg" x1="8" y1="4" x2="56" y2="60" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#A855F7" />
-          <stop offset="100%" stopColor="#6D28D9" />
-        </linearGradient>
-      </defs>
-      {/* Rounded hexagon — midpoint quadratic-bezier technique */}
+      {/* Outer M-badge ring */}
       <path
-        d="M44.1 11 Q56.2 18 56.2 32 Q56.2 46 44.1 53 Q32 60 19.9 53 Q7.8 46 7.8 32 Q7.8 18 19.9 11 Q32 4 44.1 11 Z"
-        fill="url(#tbp-bg)"
+        d="M32 61 L14 54 L4 38 L4 22 L14 5 L24 19 L32 23 L40 19 L50 5 L60 22 L60 38 L50 54 Z"
+        fill="#7C3AED"
       />
-      {/* Upper chevron */}
-      <path d="M20 25 L32 36 L44 25" stroke="white" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-      {/* Lower chevron */}
-      <path d="M20 34 L32 45 L44 34" stroke="rgba(255,255,255,0.55)" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+      {/* Inner raised M-badge — background shows through the gap creating 3D depth */}
+      <path
+        d="M32 54 L20 48 L13 36 L13 25 L20 13 L27 22 L32 26 L37 22 L44 13 L51 25 L51 36 L44 48 Z"
+        fill="#A855F7"
+      />
     </svg>
   )
 }
