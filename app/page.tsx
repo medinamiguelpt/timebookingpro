@@ -2,7 +2,6 @@ import { headers } from "next/headers"
 import { Navbar } from "@/components/layout/navbar"
 import { Footer } from "@/components/layout/footer"
 import { Hero } from "@/components/sections/hero"
-import { TrustBar } from "@/components/sections/trust-bar"
 import { TechStrip } from "@/components/sections/tech-strip"
 import { HowItWorks } from "@/components/sections/how-it-works"
 import { AgentNamer } from "@/components/sections/agent-namer"
@@ -10,7 +9,6 @@ import { Features } from "@/components/sections/features"
 import { BeforeAfter } from "@/components/sections/before-after"
 import { ForWho } from "@/components/sections/for-who"
 import { Pricing } from "@/components/sections/pricing"
-import { Testimonials } from "@/components/sections/testimonials"
 import { Calculator } from "@/components/sections/calculator"
 import { FAQ } from "@/components/sections/faq"
 import { FinalCTA } from "@/components/sections/final-cta"
@@ -28,7 +26,6 @@ export default async function Home() {
       <Navbar />
       <main className="flex flex-col">
         <Hero variant={variant} />
-        <TrustBar />
         <TechStrip />
         <HowItWorks />
         <AgentNamer />
@@ -39,7 +36,6 @@ export default async function Home() {
         <ForWho />
         <Pricing />
         <WaveDivider opacity={0.5} />
-        <Testimonials />
         <Calculator />
         <FAQ />
         <FinalCTA />
