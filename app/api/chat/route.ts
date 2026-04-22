@@ -2,7 +2,7 @@ import Anthropic from "@anthropic-ai/sdk"
 
 const client = new Anthropic()
 
-const SYSTEM = `You are a helpful, concise assistant for CalBliss — an AI voice agent service for barbershops and small businesses.
+const SYSTEM = `You are a helpful, concise assistant for TimeBookingPro — an AI voice agent service for barbershops and small businesses.
 
 Key facts:
 - AI agents handle bookings 24/7 via phone calls
@@ -20,7 +20,7 @@ Rules:
 - If someone wants to sign up, say: "Hit the 'Get your agent' button above — you'll be live within 24 hours."
 - If someone asks about a demo, say: "You can book a free 20-minute demo from the 'Book a demo' button in the hero section."
 - Never make up features or pricing that aren't listed above
-- If you don't know something, say "That's a great question — email us at hello@calbliss.com and we'll get back to you quickly."`
+- If you don't know something, say "That's a great question — email us at hello@timebookingpro.com and we'll get back to you quickly."`
 
 export async function POST(req: Request) {
   const { messages } = await req.json()

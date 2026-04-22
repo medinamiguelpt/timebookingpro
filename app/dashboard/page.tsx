@@ -236,7 +236,7 @@ export default function DashboardPage() {
                 <Link href="/help" className="flex items-center gap-1.5 text-sm text-primary hover:underline font-semibold">
                   Help centre <ArrowRight size={13} />
                 </Link>
-                <a href="mailto:hello@calbliss.com" className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors">
+                <a href="mailto:hello@timebookingpro.com" className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors">
                   Email us
                 </a>
               </div>

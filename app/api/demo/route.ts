@@ -35,8 +35,8 @@ async function notifyDemo({ name, email, business }: { name: string; email: stri
   if (!resendKey) return
   const resend = new Resend(resendKey)
   await resend.emails.send({
-    from: "CalBliss <hello@calbliss.com>",
-    to: ["hello@calbliss.com"],
+    from: "TimeBookingPro <hello@timebookingpro.com>",
+    to: ["hello@timebookingpro.com"],
     subject: `Demo request: ${name} — ${business || "unknown business"}`,
     text: `Name: ${name}\nEmail: ${email}\nBusiness: ${business || "—"}\n\nSchedule their demo ASAP.`,
   })

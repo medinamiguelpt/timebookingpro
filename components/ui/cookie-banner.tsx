@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { X } from "lucide-react"
 
-const STORAGE_KEY = "calbliss-cookie-consent"
+const STORAGE_KEY = "timebookingpro-cookie-consent"
 
 export function CookieBanner() {
   const [visible, setVisible] = useState(false)

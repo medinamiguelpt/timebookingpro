@@ -180,10 +180,10 @@ export function FinalCTA() {
                 <div className="mt-1 text-xs text-white/50 text-center">
                   Share your link to move up:{" "}
                   <button
-                    onClick={() => navigator.clipboard.writeText(`https://calbliss.com/r/${referralCode}`)}
+                    onClick={() => navigator.clipboard.writeText(`https://timebookingpro.com/r/${referralCode}`)}
                     className="text-primary-soft underline underline-offset-2 hover:text-white transition-colors"
                   >
-                    calbliss.com/r/{referralCode}
+                    timebookingpro.com/r/{referralCode}
                   </button>
                 </div>
               )}
@@ -207,7 +207,7 @@ export function FinalCTA() {
                     ))}
                   </div>
                   <button
-                    onClick={() => navigator.clipboard.writeText(`https://calbliss.com/r/${referralCode}`)}
+                    onClick={() => navigator.clipboard.writeText(`https://timebookingpro.com/r/${referralCode}`)}
                     className="mt-3 w-full flex items-center justify-center gap-2 bg-primary/20 hover:bg-primary/30 border border-primary/30 text-primary-soft text-xs font-semibold rounded-full py-2 transition-colors"
                   >
                     <Gift size={12} /> Copy referral link to share
@@ -287,7 +287,7 @@ export function FinalCTA() {
             </div>
           )}
           {state === "error" && (
-            <p className="mt-3 text-sm text-red-400">Something went wrong — try again or email us at hello@calbliss.com</p>
+            <p className="mt-3 text-sm text-red-400">Something went wrong — try again or email us at hello@timebookingpro.com</p>
           )}
           <p className="mt-4 text-xs text-white/30">No credit card required · Live in 24 h · Unsubscribe any time</p>
         </motion.div>

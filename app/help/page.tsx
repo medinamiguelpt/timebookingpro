@@ -119,7 +119,7 @@ const CATEGORIES = [
       },
       {
         q: "Can I export my data?",
-        a: "Yes. You can request a full export of your booking history and customer data at any time by emailing hello@calbliss.com. We provide it in CSV format within 5 business days.",
+        a: "Yes. You can request a full export of your booking history and customer data at any time by emailing hello@timebookingpro.com. We provide it in CSV format within 5 business days.",
       },
     ],
   },
@@ -224,7 +224,7 @@ export default function HelpPage() {
                 <p className="text-muted-foreground mb-2">No articles found.</p>
                 <p className="text-sm text-muted-foreground">
                   Try different keywords or{" "}
-                  <a href="mailto:hello@calbliss.com" className="text-primary hover:underline">
+                  <a href="mailto:hello@timebookingpro.com" className="text-primary hover:underline">
                     contact us directly
                   </a>.
                 </p>
@@ -313,7 +313,7 @@ export default function HelpPage() {
             Our team typically replies within a few hours during business hours.
           </p>
           <a
-            href="mailto:hello@calbliss.com"
+            href="mailto:hello@timebookingpro.com"
             className="inline-flex items-center gap-2 bg-primary text-white rounded-full px-6 py-2.5 text-sm font-semibold hover:bg-primary/90 transition-colors"
           >
             Email us

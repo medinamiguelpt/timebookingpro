@@ -13,7 +13,7 @@ const SOCIAL_PROOF = [
 ]
 
 const QUOTES = [
-  { quote: "CalBliss paid for itself in the first week.", name: "Carlos M.", role: "The Barber Studio" },
+  { quote: "TimeBookingPro paid for itself in the first week.", name: "Carlos M.", role: "The Barber Studio" },
   { quote: "The agent sounds completely natural. No one realises it's AI.", name: "Sophie L.", role: "Bloom Beauty Salon" },
 ]
 
@@ -61,7 +61,7 @@ export default function DemoPage() {
               <div>
                 <p className="text-sm font-semibold uppercase tracking-widest text-primary mb-3">Free demo</p>
                 <h1 className="text-4xl sm:text-5xl font-heading font-extrabold tracking-tight leading-[1.1] mb-4">
-                  See CalBliss live on your number
+                  See TimeBookingPro live on your number
                 </h1>
                 <p className="text-lg text-muted-foreground leading-relaxed">
                   Book a free 20-minute call and we&apos;ll demo the agent answering as your business — live, on the spot.

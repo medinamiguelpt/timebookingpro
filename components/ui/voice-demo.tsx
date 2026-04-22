@@ -302,7 +302,7 @@ export function VoiceDemo() {
                     <span className="text-2xl">✓</span>
                   </div>
                   <p className="text-white font-bold text-lg mb-2">Booking confirmed!</p>
-                  <p className="text-white/50 text-sm mb-6">That&apos;s exactly how your callers experience CalBliss — 24/7.</p>
+                  <p className="text-white/50 text-sm mb-6">That&apos;s exactly how your callers experience TimeBookingPro — 24/7.</p>
                   <a
                     href="/#get-started"
                     onClick={close}

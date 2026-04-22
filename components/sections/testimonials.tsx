@@ -9,7 +9,7 @@ const TESTIMONIALS = [
     name: "Carlos M.",
     role: "Owner · The Barber Studio",
     quote:
-      "I used to lose 3–4 bookings every weekend. Now my calendar fills itself. CalBliss paid for itself in the first week.",
+      "I used to lose 3–4 bookings every weekend. Now my calendar fills itself. TimeBookingPro paid for itself in the first week.",
     stars: 5,
     initials: "CM",
     color: "from-violet-500/15 to-purple-500/5",

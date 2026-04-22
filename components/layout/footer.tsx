@@ -25,7 +25,7 @@ const LINKS = {
   Company: [
     { label: "Blog", href: "/blog" },
     { label: "About", href: "#" },
-    { label: "Contact", href: "mailto:hello@calbliss.com" },
+    { label: "Contact", href: "mailto:hello@timebookingpro.com" },
     { label: "Privacy Policy", href: "#" },
     { label: "Terms of Service", href: "#" },
   ],
@@ -67,7 +67,7 @@ export function Footer() {
         </div>
 
         <div className="mt-12 pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-muted-foreground">
-          <p>© {new Date().getFullYear()} CalBliss. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} TimeBookingPro. All rights reserved.</p>
           <p>Made with care for independent businesses.</p>
         </div>
       </div>

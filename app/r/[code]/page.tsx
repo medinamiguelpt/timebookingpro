@@ -73,7 +73,7 @@ export default function ReferralPage() {
                 href="/"
                 className="inline-flex items-center gap-2 text-sm text-primary font-semibold hover:underline mt-2"
               >
-                Explore CalBliss <ArrowRight size={14} />
+                Explore TimeBookingPro <ArrowRight size={14} />
               </Link>
             </div>
           ) : (
@@ -90,7 +90,7 @@ export default function ReferralPage() {
                 Your first month is free
               </h1>
               <p className="text-muted-foreground text-base leading-relaxed mb-8">
-                A CalBliss customer referred you — which means you jump the queue and your first month is on us. Join the waitlist below.
+                A TimeBookingPro customer referred you — which means you jump the queue and your first month is on us. Join the waitlist below.
               </p>
 
               <form onSubmit={handleSubmit} className="flex flex-col gap-3">

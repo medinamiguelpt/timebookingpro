@@ -69,8 +69,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const config = VERTICALS[vertical]
   if (!config) return {}
   return {
-    title: `CalBliss for ${config.label} — AI Booking Agent`,
-    description: `Stop losing bookings to missed calls. CalBliss AI answers every call for your ${config.label.toLowerCase()} 24/7 and fills your calendar automatically.`,
+    title: `TimeBookingPro for ${config.label} — AI Booking Agent`,
+    description: `Stop losing bookings to missed calls. TimeBookingPro AI answers every call for your ${config.label.toLowerCase()} 24/7 and fills your calendar automatically.`,
   }
 }
 
@@ -97,7 +97,7 @@ async function generateCopy(vertical: string, config: (typeof VERTICALS)[string]
       messages: [
         {
           role: "user",
-          content: `Write conversion-focused landing page copy for CalBliss — an AI voice agent that handles phone bookings 24/7.
+          content: `Write conversion-focused landing page copy for TimeBookingPro — an AI voice agent that handles phone bookings 24/7.
 
 Target vertical: ${config.label}
 Emoji: ${config.emoji}
@@ -210,7 +210,7 @@ export default async function VerticalPage({ params }: Props) {
         <section className="py-20 px-4">
           <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-widest text-primary mb-3">Why CalBliss</p>
+              <p className="text-sm font-semibold uppercase tracking-widest text-primary mb-3">Why TimeBookingPro</p>
               <h2 className="text-3xl font-heading font-extrabold tracking-tight mb-6">
                 Built for {config.label.toLowerCase()} that can&apos;t afford to miss a call
               </h2>
@@ -234,7 +234,7 @@ export default async function VerticalPage({ params }: Props) {
                 ))}
               </div>
               <p className="text-lg font-medium leading-relaxed mb-4 italic">&ldquo;{copy.testimonial}&rdquo;</p>
-              <p className="text-sm text-muted-foreground font-semibold">— {config.label.slice(0, -1)} owner, CalBliss customer</p>
+              <p className="text-sm text-muted-foreground font-semibold">— {config.label.slice(0, -1)} owner, TimeBookingPro customer</p>
             </div>
           </div>
         </section>
@@ -263,7 +263,7 @@ export default async function VerticalPage({ params }: Props) {
               Start capturing every booking
             </h2>
             <p className="text-muted-foreground mb-8">
-              Join {config.label.toLowerCase()} across the country using CalBliss to fill their calendars.
+              Join {config.label.toLowerCase()} across the country using TimeBookingPro to fill their calendars.
             </p>
             <Link
               href="/#get-started"
@@ -278,7 +278,7 @@ export default async function VerticalPage({ params }: Props) {
 
       <footer className="border-t border-border py-6 px-4 text-center">
         <p className="text-xs text-muted-foreground">
-          © 2026 CalBliss ·{" "}
+          © 2026 TimeBookingPro ·{" "}
           <Link href="/help" className="hover:text-foreground transition-colors">Help</Link>
           {" · "}
           <Link href="/for/barbershops" className="hover:text-foreground transition-colors">Barbershops</Link>

@@ -19,7 +19,7 @@ const PLANS: Record<string, { monthly: string; annual: string; name: string }> =
   },
 }
 
-const BASE = process.env.NEXT_PUBLIC_BASE_URL ?? "https://calbliss.com"
+const BASE = process.env.NEXT_PUBLIC_BASE_URL ?? "https://timebookingpro.com"
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url)

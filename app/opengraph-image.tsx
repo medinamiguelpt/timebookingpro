@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og"
 
 export const runtime = "edge"
-export const alt = "CalBliss — Your bookings, handled."
+export const alt = "TimeBookingPro — Your bookings, handled."
 export const size = { width: 1200, height: 630 }
 export const contentType = "image/png"
 
@@ -97,7 +97,7 @@ export default function OGImage() {
               lineHeight: 1,
             }}
           >
-            CalBliss
+            TimeBookingPro
           </div>
 
           {/* Tagline */}
@@ -145,7 +145,7 @@ export default function OGImage() {
             fontWeight: 500,
           }}
         >
-          calbliss.com
+          timebookingpro.com
         </div>
       </div>
     ),

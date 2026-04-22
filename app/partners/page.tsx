@@ -4,15 +4,15 @@ import Link from "next/link"
 import { Logo } from "@/components/logo"
 
 export const metadata: Metadata = {
-  title: "Partner Programme — CalBliss",
-  description: "Resell CalBliss to your clients and earn up to 30% recurring commission. Built for marketing agencies, consultants, and business advisors.",
+  title: "Partner Programme — TimeBookingPro",
+  description: "Resell TimeBookingPro to your clients and earn up to 30% recurring commission. Built for marketing agencies, consultants, and business advisors.",
 }
 
 const TIERS = [
   {
     name: "Affiliate",
     commission: "20%",
-    description: "For freelancers and individuals recommending CalBliss.",
+    description: "For freelancers and individuals recommending TimeBookingPro.",
     perks: [
       "20% recurring commission",
       "Unique referral link",
@@ -35,7 +35,7 @@ const TIERS = [
       "Co-branded materials",
     ],
     cta: "Apply now",
-    href: "mailto:partners@calbliss.com?subject=Reseller%20Partner%20Application",
+    href: "mailto:partners@timebookingpro.com?subject=Reseller%20Partner%20Application",
     highlighted: true,
   },
   {
@@ -51,7 +51,7 @@ const TIERS = [
       "Early access to new features",
     ],
     cta: "Let's talk",
-    href: "mailto:partners@calbliss.com?subject=Strategic%20Partner%20Enquiry",
+    href: "mailto:partners@timebookingpro.com?subject=Strategic%20Partner%20Enquiry",
     highlighted: false,
   },
 ]
@@ -60,7 +60,7 @@ const BENEFITS = [
   { icon: DollarSign, title: "Recurring income", desc: "Earn every month for as long as your client stays — no caps, no cliffs." },
   { icon: Zap, title: "Fast onboarding", desc: "New clients go live in under 24 hours. Your reputation stays intact." },
   { icon: Shield, title: "You stay in control", desc: "Manage all your client accounts from one dashboard." },
-  { icon: Globe, title: "Any industry", desc: "CalBliss works for barbershops, salons, clinics, restaurants, and more." },
+  { icon: Globe, title: "Any industry", desc: "TimeBookingPro works for barbershops, salons, clinics, restaurants, and more." },
 ]
 
 export default function PartnersPage() {
@@ -70,7 +70,7 @@ export default function PartnersPage() {
         <div className="max-w-5xl mx-auto flex items-center justify-between">
           <Link href="/"><Logo iconSize={28} /></Link>
           <Link
-            href="mailto:partners@calbliss.com"
+            href="mailto:partners@timebookingpro.com"
             className="flex items-center gap-2 bg-primary text-white rounded-full px-5 py-2 text-sm font-semibold hover:bg-primary/90 transition-colors"
           >
             Talk to us <ArrowRight size={13} />
@@ -87,7 +87,7 @@ export default function PartnersPage() {
               <Users size={13} /> Partner Programme
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-extrabold leading-[1.1] tracking-tight mb-6">
-              Build a recurring revenue stream recommending CalBliss
+              Build a recurring revenue stream recommending TimeBookingPro
             </h1>
             <p className="text-xl text-muted-foreground max-w-xl mx-auto mb-10 leading-relaxed">
               Earn up to 30% recurring commission for every business you bring on. No caps, no expiry.
@@ -100,7 +100,7 @@ export default function PartnersPage() {
                 Get your referral link <ArrowRight size={15} />
               </a>
               <a
-                href="mailto:partners@calbliss.com"
+                href="mailto:partners@timebookingpro.com"
                 className="flex items-center gap-2 rounded-full px-8 py-3.5 font-semibold border-2 border-border hover:border-primary/40 hover:bg-primary/5 transition-colors text-sm"
               >
                 Talk to the team
@@ -233,7 +233,7 @@ export default function PartnersPage() {
 
       <footer className="border-t border-border py-6 px-4 text-center">
         <p className="text-xs text-muted-foreground">
-          © 2026 CalBliss · <a href="mailto:partners@calbliss.com" className="hover:text-foreground transition-colors">partners@calbliss.com</a>
+          © 2026 TimeBookingPro · <a href="mailto:partners@timebookingpro.com" className="hover:text-foreground transition-colors">partners@timebookingpro.com</a>
         </p>
       </footer>
     </div>

@@ -9,7 +9,7 @@ import { openDemoModal } from "@/components/ui/demo-modal"
 import { Particles } from "@/components/ui/particles"
 import { TiltCard } from "@/components/ui/tilt-card"
 
-const FULL_TEXT = "CalBliss creates a custom voice AI that answers calls, handles bookings, and fills your calendar — automatically, 24 hours a day."
+const FULL_TEXT = "TimeBookingPro creates a custom voice AI that answers calls, handles bookings, and fills your calendar — automatically, 24 hours a day."
 
 function TypewriterText() {
   const [displayed, setDisplayed] = useState("")

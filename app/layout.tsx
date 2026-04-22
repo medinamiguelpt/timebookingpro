@@ -23,21 +23,21 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 })
 
 export const metadata: Metadata = {
-  title: "CalBliss — Your bookings, handled.",
+  title: "TimeBookingPro — Your bookings, handled.",
   description:
-    "CalBliss builds AI voice agents that handle bookings and appointments for barbershops and small businesses — 24/7, automatically.",
-  metadataBase: new URL("https://calbliss.com"),
+    "TimeBookingPro builds AI voice agents that handle bookings and appointments for barbershops and small businesses — 24/7, automatically.",
+  metadataBase: new URL("https://timebookingpro.com"),
   openGraph: {
-    title: "CalBliss — Your bookings, handled.",
+    title: "TimeBookingPro — Your bookings, handled.",
     description:
       "AI voice agents that handle bookings for your business — 24/7, automatically.",
     type: "website",
-    url: "https://calbliss.com",
-    siteName: "CalBliss",
+    url: "https://timebookingpro.com",
+    siteName: "TimeBookingPro",
   },
   twitter: {
     card: "summary_large_image",
-    title: "CalBliss — Your bookings, handled.",
+    title: "TimeBookingPro — Your bookings, handled.",
     description:
       "AI voice agents that handle bookings for your business — 24/7, automatically.",
   },
@@ -61,7 +61,7 @@ export default function RootLayout({
         {/* Plausible Analytics — privacy-friendly, no cookies required */}
         <Script
           defer
-          data-domain="calbliss.com"
+          data-domain="timebookingpro.com"
           src="https://plausible.io/js/script.js"
           strategy="afterInteractive"
         />

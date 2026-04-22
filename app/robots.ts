@@ -3,6 +3,6 @@ import { MetadataRoute } from "next"
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: { userAgent: "*", allow: "/" },
-    sitemap: "https://calbliss.com/sitemap.xml",
+    sitemap: "https://timebookingpro.com/sitemap.xml",
   }
 }

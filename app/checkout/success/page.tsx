@@ -3,7 +3,7 @@ import { Navbar } from "@/components/layout/navbar"
 import { CheckCircle, ArrowRight, ExternalLink, LayoutDashboard } from "lucide-react"
 import type { Metadata } from "next"
 
-export const metadata: Metadata = { title: "Welcome to CalBliss!", robots: "noindex" }
+export const metadata: Metadata = { title: "Welcome to TimeBookingPro!", robots: "noindex" }
 
 export default function CheckoutSuccess() {
   return (
@@ -19,7 +19,7 @@ export default function CheckoutSuccess() {
           </div>
 
           <h1 className="text-3xl font-heading font-extrabold tracking-tight mb-3">
-            You&apos;re in! Welcome to CalBliss.
+            You&apos;re in! Welcome to TimeBookingPro.
           </h1>
           <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
             Your subscription is confirmed. We&apos;ll email you within the next few hours to schedule your setup call — your agent will be live within 24 hours.
@@ -51,7 +51,7 @@ export default function CheckoutSuccess() {
               <div className="flex-1">
                 <p className="font-semibold text-sm mb-1">Connect your Google Business Profile</p>
                 <p className="text-xs text-muted-foreground leading-relaxed mb-3">
-                  Add your CalBliss phone number as your GBP booking number so customers who find you on Google can book instantly.
+                  Add your TimeBookingPro phone number as your GBP booking number so customers who find you on Google can book instantly.
                 </p>
                 <a
                   href="https://business.google.com"
@@ -62,7 +62,7 @@ export default function CheckoutSuccess() {
                   Open Google Business <ExternalLink size={11} />
                 </a>
                 <p className="text-[11px] text-muted-foreground mt-1">
-                  Your CalBliss number will be in your setup email — add it under &quot;Phone&quot; in your GBP profile.
+                  Your TimeBookingPro number will be in your setup email — add it under &quot;Phone&quot; in your GBP profile.
                 </p>
               </div>
             </div>
@@ -79,7 +79,7 @@ export default function CheckoutSuccess() {
               href="/"
               className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground font-medium transition-colors"
             >
-              Back to CalBliss <ArrowRight size={13} />
+              Back to TimeBookingPro <ArrowRight size={13} />
             </Link>
           </div>
         </div>

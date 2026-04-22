@@ -36,7 +36,7 @@ async function sendSmsConfirmation(phone: string, position: number | null) {
   if (!accountSid || !authToken || !from) return
 
   const positionText = position ? ` You're #${position} on the list.` : ""
-  const body = `CalBliss: You're on the waitlist!${positionText} We'll reach out within 24 hours. Questions? Reply to this message.`
+  const body = `TimeBookingPro: You're on the waitlist!${positionText} We'll reach out within 24 hours. Questions? Reply to this message.`
 
   await fetch(`https://api.twilio.com/2010-04-01/Accounts/${accountSid}/Messages.json`, {
     method: "POST",
@@ -78,8 +78,8 @@ async function sendOwnerNotification(email: string, source: string) {
   if (!resendKey) return
   const resend = new Resend(resendKey)
   await resend.emails.send({
-    from: "CalBliss <hello@calbliss.com>",
-    to: ["hello@calbliss.com"],
+    from: "TimeBookingPro <hello@timebookingpro.com>",
+    to: ["hello@timebookingpro.com"],
     subject: `New waitlist signup: ${email}`,
     text: `${email} joined via "${source}".`,
   })
@@ -92,19 +92,19 @@ async function sendConfirmation(email: string, position: number | null, referral
     ? `<p style="color:#7C3AED;font-size:14px;font-weight:700;margin:0 0 4px;">You're #${position} on the list</p>`
     : ""
   const refLine = referralCode
-    ? `<p style="color:#6B6880;font-size:13px;margin:12px 0 0;">Your referral link: <a href="https://calbliss.com/r/${referralCode}" style="color:#7C3AED;">calbliss.com/r/${referralCode}</a> — share it to move up the list.</p>`
+    ? `<p style="color:#6B6880;font-size:13px;margin:12px 0 0;">Your referral link: <a href="https://timebookingpro.com/r/${referralCode}" style="color:#7C3AED;">timebookingpro.com/r/${referralCode}</a> — share it to move up the list.</p>`
     : ""
 
   await resend.emails.send({
-    from: "CalBliss <hello@calbliss.com>",
+    from: "TimeBookingPro <hello@timebookingpro.com>",
     to: [email],
-    subject: "You're on the CalBliss waitlist!",
+    subject: "You're on the TimeBookingPro waitlist!",
     html: `
 <!DOCTYPE html><html><body style="margin:0;padding:0;background:#FAFAFF;font-family:system-ui,sans-serif;">
 <div style="max-width:520px;margin:40px auto;background:#fff;border-radius:16px;border:1px solid #E4DCFF;overflow:hidden;">
   <div style="background:#0D0714;padding:36px 40px;text-align:center;">
     <div style="display:inline-block;background:linear-gradient(135deg,#9333EA,#5B21B6);border-radius:12px;padding:10px 18px;margin-bottom:16px;">
-      <span style="color:#fff;font-size:18px;font-weight:800;letter-spacing:-0.5px;">CalBliss</span>
+      <span style="color:#fff;font-size:18px;font-weight:800;letter-spacing:-0.5px;">TimeBookingPro</span>
     </div>
     <h1 style="color:#fff;font-size:26px;font-weight:800;margin:0;line-height:1.2;">You're on the list!</h1>
     <p style="color:rgba(255,255,255,0.55);font-size:15px;margin:10px 0 0;">We'll be in touch within 24 hours.</p>
@@ -112,7 +112,7 @@ async function sendConfirmation(email: string, position: number | null, referral
   <div style="padding:36px 40px;">
     ${positionLine}
     <p style="color:#1A1027;font-size:15px;line-height:1.6;margin:0 0 20px;">
-      Thanks for joining CalBliss. You're among the first businesses getting access to an AI voice agent that handles bookings 24/7.
+      Thanks for joining TimeBookingPro. You're among the first businesses getting access to an AI voice agent that handles bookings 24/7.
     </p>
     <div style="background:#F0EBFF;border-radius:12px;padding:20px 24px;margin-bottom:24px;">
       <p style="color:#5B21B6;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;margin:0 0 10px;">What happens next</p>
@@ -126,7 +126,7 @@ async function sendConfirmation(email: string, position: number | null, referral
     <p style="color:#6B6880;font-size:13px;line-height:1.6;margin:12px 0 0;">Questions? Reply to this email — we read every one.</p>
   </div>
   <div style="border-top:1px solid #E4DCFF;padding:20px 40px;text-align:center;">
-    <p style="color:#6B6880;font-size:12px;margin:0;">© 2026 CalBliss · <a href="https://calbliss.com" style="color:#7C3AED;">calbliss.com</a></p>
+    <p style="color:#6B6880;font-size:12px;margin:0;">© 2026 TimeBookingPro · <a href="https://timebookingpro.com" style="color:#7C3AED;">timebookingpro.com</a></p>
   </div>
 </div></body></html>`,
   })

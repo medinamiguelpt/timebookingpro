@@ -21,8 +21,8 @@ export function HomeJsonLd() {
   const localBusiness = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    name: "CalBliss",
-    url: "https://calbliss.com",
+    name: "TimeBookingPro",
+    url: "https://timebookingpro.com",
     description: "AI voice agents that handle bookings and appointments for barbershops and small businesses — 24/7, automatically.",
     applicationCategory: "BusinessApplication",
     operatingSystem: "Web",
@@ -71,9 +71,9 @@ export function BlogPostJsonLd({
     headline: title,
     description: excerpt,
     datePublished: date,
-    url: `https://calbliss.com/blog/${slug}`,
-    publisher: { "@type": "Organization", name: "CalBliss", url: "https://calbliss.com" },
-    author: { "@type": "Organization", name: "CalBliss" },
+    url: `https://timebookingpro.com/blog/${slug}`,
+    publisher: { "@type": "Organization", name: "TimeBookingPro", url: "https://timebookingpro.com" },
+    author: { "@type": "Organization", name: "TimeBookingPro" },
   }
   return <JsonLdScript schema={article} />
 }

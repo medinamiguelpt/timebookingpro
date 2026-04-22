@@ -39,7 +39,7 @@ export default function AffiliatePage() {
     }
   }
 
-  const referralUrl = stats ? `https://calbliss.com/r/${stats.referralCode}` : ""
+  const referralUrl = stats ? `https://timebookingpro.com/r/${stats.referralCode}` : ""
 
   const copy = () => {
     navigator.clipboard.writeText(referralUrl)
@@ -69,7 +69,7 @@ export default function AffiliatePage() {
             Earn 30% recurring commission
           </h1>
           <p className="text-muted-foreground max-w-md mx-auto text-base">
-            Refer businesses to CalBliss and earn 30% of their monthly subscription for as long as they stay — forever.
+            Refer businesses to TimeBookingPro and earn 30% of their monthly subscription for as long as they stay — forever.
           </p>
         </div>
 
@@ -141,7 +141,7 @@ export default function AffiliatePage() {
           {state === "not-found" && (
             <p className="mt-3 text-sm text-red-500">
               Code not found. Check your confirmation email or{" "}
-              <a href="mailto:hello@calbliss.com" className="underline">contact us</a>.
+              <a href="mailto:hello@timebookingpro.com" className="underline">contact us</a>.
             </p>
           )}
 

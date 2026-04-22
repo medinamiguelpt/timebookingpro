@@ -21,7 +21,7 @@ export default function NotFound() {
         href="/"
         className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-white font-semibold rounded-full px-7 h-12 text-sm transition-colors shadow-lg shadow-primary/25"
       >
-        Back to CalBliss
+        Back to TimeBookingPro
       </Link>
     </div>
   )

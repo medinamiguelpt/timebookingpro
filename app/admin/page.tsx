@@ -3,7 +3,7 @@ import { notFound } from "next/navigation"
 import { Navbar } from "@/components/layout/navbar"
 import type { Metadata } from "next"
 
-export const metadata: Metadata = { title: "Admin — CalBliss", robots: "noindex" }
+export const metadata: Metadata = { title: "Admin — TimeBookingPro", robots: "noindex" }
 export const dynamic = "force-dynamic"
 
 const supabaseUrl = process.env.SUPABASE_URL

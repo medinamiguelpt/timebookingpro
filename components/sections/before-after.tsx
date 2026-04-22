@@ -61,13 +61,13 @@ export function BeforeAfter() {
               <div className="w-6 h-6 rounded-full bg-destructive/10 flex items-center justify-center shrink-0">
                 <X size={12} className="text-destructive" />
               </div>
-              <span className="font-heading font-bold text-sm text-muted-foreground">Without CalBliss</span>
+              <span className="font-heading font-bold text-sm text-muted-foreground">Without TimeBookingPro</span>
             </div>
             <div className="flex items-center gap-2.5 px-6 py-4 bg-primary/5 border-b border-border">
               <div className="w-6 h-6 rounded-full bg-primary/15 flex items-center justify-center shrink-0">
                 <Check size={12} className="text-primary" />
               </div>
-              <span className="font-heading font-bold text-sm text-primary">With CalBliss</span>
+              <span className="font-heading font-bold text-sm text-primary">With TimeBookingPro</span>
             </div>
           </div>
 

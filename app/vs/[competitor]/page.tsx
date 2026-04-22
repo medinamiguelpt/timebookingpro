@@ -6,7 +6,7 @@ import { Logo } from "@/components/logo"
 
 export const dynamic = "force-static"
 
-type CompRow = { feature: string; calbliss: string | true | false; them: string | true | false }
+type CompRow = { feature: string; timebookingpro: string | true | false; them: string | true | false }
 
 type CompConfig = {
   label: string
@@ -24,82 +24,82 @@ const COMPETITORS: Record<string, CompConfig> = {
     label: "a Human Receptionist",
     tagline: "vs. Human Receptionist",
     headline: "AI answers every call for $49/mo. Your receptionist costs $3,500/mo.",
-    subheadline: "CalBliss handles bookings 24/7 with zero sick days, zero lunch breaks, and zero missed calls.",
+    subheadline: "TimeBookingPro handles bookings 24/7 with zero sick days, zero lunch breaks, and zero missed calls.",
     monthlyPrice: "~$3,500",
     weaknesses: ["Only works office hours", "Gets sick, takes holidays", "Can't handle call surges", "Costs 70× more"],
     rows: [
-      { feature: "Answers calls 24/7", calbliss: true, them: false },
-      { feature: "Handles call surges simultaneously", calbliss: true, them: false },
-      { feature: "Never takes lunch or sick days", calbliss: true, them: false },
-      { feature: "Monthly cost", calbliss: "From $49/mo", them: "~$3,500/mo" },
-      { feature: "Setup time", calbliss: "< 24 hours", them: "2–4 weeks" },
-      { feature: "Speaks multiple languages", calbliss: true, them: "Rarely" },
-      { feature: "Scales with call volume", calbliss: true, them: false },
-      { feature: "SMS booking confirmations", calbliss: true, them: false },
-      { feature: "Analytics dashboard", calbliss: true, them: false },
-      { feature: "Zero training required", calbliss: true, them: false },
+      { feature: "Answers calls 24/7", timebookingpro: true, them: false },
+      { feature: "Handles call surges simultaneously", timebookingpro: true, them: false },
+      { feature: "Never takes lunch or sick days", timebookingpro: true, them: false },
+      { feature: "Monthly cost", timebookingpro: "From $49/mo", them: "~$3,500/mo" },
+      { feature: "Setup time", timebookingpro: "< 24 hours", them: "2–4 weeks" },
+      { feature: "Speaks multiple languages", timebookingpro: true, them: "Rarely" },
+      { feature: "Scales with call volume", timebookingpro: true, them: false },
+      { feature: "SMS booking confirmations", timebookingpro: true, them: false },
+      { feature: "Analytics dashboard", timebookingpro: true, them: false },
+      { feature: "Zero training required", timebookingpro: true, them: false },
     ],
-    verdict: "For most small businesses, a human receptionist is the most expensive way to handle bookings. CalBliss gives you better coverage at a fraction of the cost.",
+    verdict: "For most small businesses, a human receptionist is the most expensive way to handle bookings. TimeBookingPro gives you better coverage at a fraction of the cost.",
   },
   voicemail: {
     label: "Voicemail",
     tagline: "vs. Voicemail",
-    headline: "Voicemail loses you bookings. CalBliss captures every one.",
+    headline: "Voicemail loses you bookings. TimeBookingPro captures every one.",
     subheadline: "78% of callers who reach voicemail don't leave a message — they call your competitor instead.",
     monthlyPrice: "$0",
     weaknesses: ["78% of callers hang up", "No real-time booking", "Manual callback required", "Zero after-hours revenue"],
     rows: [
-      { feature: "Books appointments in real time", calbliss: true, them: false },
-      { feature: "Caller hangs up rate", calbliss: "< 5%", them: "~78%" },
-      { feature: "After-hours booking capture", calbliss: true, them: false },
-      { feature: "SMS booking confirmation", calbliss: true, them: false },
-      { feature: "No callback required", calbliss: true, them: false },
-      { feature: "Calendar integration", calbliss: true, them: false },
-      { feature: "Handles reschedules", calbliss: true, them: false },
-      { feature: "Monthly cost", calbliss: "From $49/mo", them: "$0 (but loses bookings)" },
-      { feature: "ROI positive", calbliss: "Yes", them: "No" },
+      { feature: "Books appointments in real time", timebookingpro: true, them: false },
+      { feature: "Caller hangs up rate", timebookingpro: "< 5%", them: "~78%" },
+      { feature: "After-hours booking capture", timebookingpro: true, them: false },
+      { feature: "SMS booking confirmation", timebookingpro: true, them: false },
+      { feature: "No callback required", timebookingpro: true, them: false },
+      { feature: "Calendar integration", timebookingpro: true, them: false },
+      { feature: "Handles reschedules", timebookingpro: true, them: false },
+      { feature: "Monthly cost", timebookingpro: "From $49/mo", them: "$0 (but loses bookings)" },
+      { feature: "ROI positive", timebookingpro: "Yes", them: "No" },
     ],
-    verdict: "Voicemail feels free, but every unanswered call is lost revenue. One captured booking per day pays for CalBliss many times over.",
+    verdict: "Voicemail feels free, but every unanswered call is lost revenue. One captured booking per day pays for TimeBookingPro many times over.",
   },
   "google-voice": {
     label: "Google Voice",
     tagline: "vs. Google Voice",
-    headline: "Google Voice forwards calls. CalBliss books appointments.",
-    subheadline: "Forwarding is just moving the problem. CalBliss solves it — the AI handles the whole conversation.",
+    headline: "Google Voice forwards calls. TimeBookingPro books appointments.",
+    subheadline: "Forwarding is just moving the problem. TimeBookingPro solves it — the AI handles the whole conversation.",
     monthlyPrice: "$0–$10",
     weaknesses: ["Just a call-forwarding tool", "Still requires you to answer", "No booking capability", "No calendar integration"],
     rows: [
-      { feature: "Books appointments autonomously", calbliss: true, them: false },
-      { feature: "Works when you're unavailable", calbliss: true, them: false },
-      { feature: "Real-time calendar integration", calbliss: true, them: false },
-      { feature: "Sends SMS confirmations", calbliss: true, them: false },
-      { feature: "Analytics on call outcomes", calbliss: true, them: false },
-      { feature: "No human needed to answer", calbliss: true, them: false },
-      { feature: "Purpose-built for bookings", calbliss: true, them: false },
-      { feature: "Monthly cost", calbliss: "From $49/mo", them: "$0–$10/mo" },
-      { feature: "Actually reduces your workload", calbliss: true, them: false },
+      { feature: "Books appointments autonomously", timebookingpro: true, them: false },
+      { feature: "Works when you're unavailable", timebookingpro: true, them: false },
+      { feature: "Real-time calendar integration", timebookingpro: true, them: false },
+      { feature: "Sends SMS confirmations", timebookingpro: true, them: false },
+      { feature: "Analytics on call outcomes", timebookingpro: true, them: false },
+      { feature: "No human needed to answer", timebookingpro: true, them: false },
+      { feature: "Purpose-built for bookings", timebookingpro: true, them: false },
+      { feature: "Monthly cost", timebookingpro: "From $49/mo", them: "$0–$10/mo" },
+      { feature: "Actually reduces your workload", timebookingpro: true, them: false },
     ],
-    verdict: "Google Voice is a phone tool, not a booking system. CalBliss is the complete solution — it answers, books, confirms, and syncs, all without you lifting a finger.",
+    verdict: "Google Voice is a phone tool, not a booking system. TimeBookingPro is the complete solution — it answers, books, confirms, and syncs, all without you lifting a finger.",
   },
   "answering-service": {
     label: "an Answering Service",
     tagline: "vs. Answering Service",
-    headline: "Answering services take messages. CalBliss makes bookings.",
+    headline: "Answering services take messages. TimeBookingPro makes bookings.",
     subheadline: "You're still paying a premium for a human who can't actually book — they just take a note and hope you call back.",
     monthlyPrice: "$200–$500",
     weaknesses: ["Takes messages, doesn't book", "High per-minute costs", "Quality varies by agent", "Still needs your follow-up"],
     rows: [
-      { feature: "Books the appointment on the call", calbliss: true, them: false },
-      { feature: "No per-minute fees", calbliss: true, them: false },
-      { feature: "Consistent quality on every call", calbliss: true, them: false },
-      { feature: "Real-time calendar access", calbliss: true, them: false },
-      { feature: "No follow-up callback needed", calbliss: true, them: false },
-      { feature: "Available 24/7 with no surcharge", calbliss: true, them: "Extra cost" },
-      { feature: "Monthly cost", calbliss: "From $49/mo", them: "$200–$500+/mo" },
-      { feature: "Setup time", calbliss: "< 24 hours", them: "1–2 weeks" },
-      { feature: "ROI positive", calbliss: "Yes", them: "Often marginal" },
+      { feature: "Books the appointment on the call", timebookingpro: true, them: false },
+      { feature: "No per-minute fees", timebookingpro: true, them: false },
+      { feature: "Consistent quality on every call", timebookingpro: true, them: false },
+      { feature: "Real-time calendar access", timebookingpro: true, them: false },
+      { feature: "No follow-up callback needed", timebookingpro: true, them: false },
+      { feature: "Available 24/7 with no surcharge", timebookingpro: true, them: "Extra cost" },
+      { feature: "Monthly cost", timebookingpro: "From $49/mo", them: "$200–$500+/mo" },
+      { feature: "Setup time", timebookingpro: "< 24 hours", them: "1–2 weeks" },
+      { feature: "ROI positive", timebookingpro: "Yes", them: "Often marginal" },
     ],
-    verdict: "Answering services solve the 'someone answered' problem but not the 'the booking was made' problem. CalBliss solves both, for less.",
+    verdict: "Answering services solve the 'someone answered' problem but not the 'the booking was made' problem. TimeBookingPro solves both, for less.",
   },
 }
 
@@ -114,7 +114,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const config = COMPETITORS[competitor]
   if (!config) return {}
   return {
-    title: `CalBliss vs ${config.label} — AI Booking Agent Comparison`,
+    title: `TimeBookingPro vs ${config.label} — AI Booking Agent Comparison`,
     description: config.subheadline,
   }
 }
@@ -151,7 +151,7 @@ export default async function VsPage({ params }: Props) {
           <div className="max-w-3xl mx-auto relative">
             <div className="inline-flex items-center gap-2 bg-primary/10 text-primary rounded-full px-4 py-1.5 text-sm font-semibold mb-6">
               <Zap size={13} />
-              CalBliss {config.tagline}
+              TimeBookingPro {config.tagline}
             </div>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold leading-tight tracking-tight mb-5">
               {config.headline}
@@ -163,7 +163,7 @@ export default async function VsPage({ params }: Props) {
               href="/#get-started"
               className="inline-flex items-center gap-2 bg-primary text-white rounded-full px-8 py-3.5 font-semibold hover:bg-primary/90 transition-colors shadow-lg shadow-primary/25"
             >
-              Try CalBliss free for 14 days <ArrowRight size={15} />
+              Try TimeBookingPro free for 14 days <ArrowRight size={15} />
             </Link>
             <p className="mt-3 text-xs text-muted-foreground">No credit card required</p>
           </div>
@@ -199,7 +199,7 @@ export default async function VsPage({ params }: Props) {
                     <th className="text-left px-5 py-4 font-semibold text-muted-foreground w-1/2">Feature</th>
                     <th className="text-center px-5 py-4 w-1/4">
                       <span className="inline-flex items-center gap-1.5 bg-primary/10 text-primary rounded-full px-3 py-1 text-xs font-bold">
-                        ✦ CalBliss
+                        ✦ TimeBookingPro
                       </span>
                     </th>
                     <th className="text-center px-5 py-4 w-1/4 text-muted-foreground font-medium text-xs">
@@ -215,7 +215,7 @@ export default async function VsPage({ params }: Props) {
                     >
                       <td className="px-5 py-3.5 font-medium">{row.feature}</td>
                       <td className="px-5 py-3.5 text-center">
-                        <Cell value={row.calbliss} />
+                        <Cell value={row.timebookingpro} />
                       </td>
                       <td className="px-5 py-3.5 text-center text-muted-foreground">
                         <Cell value={row.them} />
@@ -255,7 +255,7 @@ export default async function VsPage({ params }: Props) {
 
       <footer className="border-t border-border py-6 px-4 text-center">
         <p className="text-xs text-muted-foreground">
-          © 2026 CalBliss ·{" "}
+          © 2026 TimeBookingPro ·{" "}
           <Link href="/vs/receptionist" className="hover:text-foreground transition-colors">vs. Receptionist</Link>
           {" · "}
           <Link href="/vs/voicemail" className="hover:text-foreground transition-colors">vs. Voicemail</Link>
