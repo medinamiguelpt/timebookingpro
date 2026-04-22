@@ -5,9 +5,9 @@ import { motion } from "framer-motion"
 import { ArrowRight, TrendingUp } from "lucide-react"
 
 const PLANS = [
-  { name: "Starter",      price: 79,  maxCalls: 200  },
-  { name: "Professional", price: 149, maxCalls: 500  },
-  { name: "Enterprise",   price: 299, maxCalls: 1000 },
+  { name: "Starter",      price: 229, maxCalls: 200  },
+  { name: "Professional", price: 429, maxCalls: 600  },
+  { name: "Enterprise",   price: 859, maxCalls: 1600 },
 ]
 
 function formatCurrency(n: number) {

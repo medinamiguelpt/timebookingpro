@@ -43,7 +43,7 @@ export const affiliateQuerySchema = z.object({
 })
 
 export const checkoutQuerySchema = z.object({
-  plan:    z.enum(["starter", "growth", "pro"]).default("growth"),
+  plan:    z.enum(["starter", "professional", "enterprise"]).default("professional"),
   billing: z.enum(["monthly", "annual"]).default("monthly"),
   ref:     z.string().optional().default(""),
 })

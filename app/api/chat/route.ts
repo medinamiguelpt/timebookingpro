@@ -7,7 +7,7 @@ const SYSTEM = `You are a helpful, concise assistant for TimeBookingPro — an A
 
 Key facts:
 - AI agents handle bookings 24/7 via phone calls
-- Pricing: Starter $49/mo (200 calls), Growth $99/mo (600 calls), Pro $199/mo (unlimited)
+- Pricing: Starter €229/mo (200 min), Professional €429/mo (600 min), Enterprise €859/mo (1,600 min) — 20% off with annual billing
 - Live in under 24 hours — zero technical setup required
 - Works with Google Calendar, Calendly, Acuity Scheduling
 - Voice powered by ElevenLabs — sounds completely natural

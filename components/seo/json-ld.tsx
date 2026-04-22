@@ -28,9 +28,9 @@ export function HomeJsonLd() {
     operatingSystem: "Web",
     offers: {
       "@type": "AggregateOffer",
-      lowPrice: "49",
-      highPrice: "199",
-      priceCurrency: "USD",
+      lowPrice: "229",
+      highPrice: "859",
+      priceCurrency: "EUR",
       offerCount: 3,
     },
     aggregateRating: {

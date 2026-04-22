@@ -8,15 +8,15 @@ const PLANS: Record<string, { monthly: string; annual: string; name: string }> =
     annual:  process.env.STRIPE_PRICE_STARTER_ANNUAL  ?? "",
     name: "Starter",
   },
-  growth: {
-    monthly: process.env.STRIPE_PRICE_GROWTH_MONTHLY ?? "",
-    annual:  process.env.STRIPE_PRICE_GROWTH_ANNUAL  ?? "",
-    name: "Growth",
+  professional: {
+    monthly: process.env.STRIPE_PRICE_PROFESSIONAL_MONTHLY ?? "",
+    annual:  process.env.STRIPE_PRICE_PROFESSIONAL_ANNUAL  ?? "",
+    name: "Professional",
   },
-  pro: {
-    monthly: process.env.STRIPE_PRICE_PRO_MONTHLY ?? "",
-    annual:  process.env.STRIPE_PRICE_PRO_ANNUAL  ?? "",
-    name: "Pro",
+  enterprise: {
+    monthly: process.env.STRIPE_PRICE_ENTERPRISE_MONTHLY ?? "",
+    annual:  process.env.STRIPE_PRICE_ENTERPRISE_ANNUAL  ?? "",
+    name: "Enterprise",
   },
 }
 
