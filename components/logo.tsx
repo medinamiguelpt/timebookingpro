@@ -16,16 +16,16 @@ export function LogoIcon({ className, size = 36 }: LogoIconProps) {
       className={className}
       aria-hidden="true"
     >
-      {/* Outer M-badge — traced from logo asset */}
+      {/* Badge ring — outer M-crown shape minus hollow interior (evenodd) */}
       <path
-        d="M14 0 L0 8 L0 48 L32 64 L64 48 L64 8 L50 0 L32 9 Z"
+        fillRule="evenodd"
         fill="#7C3AED"
+        d="M14 0 L0 9 L0 43 L32 64 L64 43 L64 9 L51 0 L32 9 Z M11 13 L53 13 L53 43 L32 55 L11 43 Z"
       />
-      {/* Inner M-badge — same crown shape scaled inside; gap shows background */}
-      <path
-        d="M14.5 11 L21.3 26 L21 43 L32 53 L43 43 L42.9 26 L49.5 11 L39.1 26 L32 31 L25.4 26 Z"
-        fill="#A855F7"
-      />
+      {/* Large chevron (upper V) */}
+      <path d="M15 16 L32 27 L49 16" stroke="#A855F7" strokeWidth="5.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+      {/* Small chevron (lower V) */}
+      <path d="M21 31 L32 41 L43 31" stroke="#A855F7" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
     </svg>
   )
 }
