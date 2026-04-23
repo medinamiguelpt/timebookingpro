@@ -1,7 +1,7 @@
 "use client"
 
 import { useRef, useState, Fragment, type ElementType } from "react"
-import { motion, useScroll, useTransform, useMotionValueEvent, useInView } from "framer-motion"
+import { motion, AnimatePresence, useInView } from "framer-motion"
 import { PhoneCall, Settings2, CalendarCheck, Mic, Zap, Bell } from "lucide-react"
 
 const STEPS = [
@@ -127,126 +127,114 @@ function FlowConnector({ label, delay }: { label: string; delay: number }) {
 }
 
 function ScrollySection() {
-  const sectionRef = useRef<HTMLDivElement>(null)
   const [activeStep, setActiveStep] = useState(0)
 
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start 0.8", "end 0.2"],
-  })
-
-  const progressHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"])
-
-  useMotionValueEvent(scrollYProgress, "change", (v) => {
-    if (v < 0.33) setActiveStep(0)
-    else if (v < 0.66) setActiveStep(1)
-    else setActiveStep(2)
-  })
-
   return (
-    <div ref={sectionRef} className="relative min-h-[140vh]">
-      <div className="sticky top-32">
-        <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-start">
-          {/* Left: steps with progress indicator */}
-          <div>
-            <div className="relative">
-              <div className="absolute left-7 top-8 bottom-8 w-px bg-border" />
-              <motion.div
-                className="absolute left-7 top-8 w-px bg-primary origin-top"
-                style={{ height: progressHeight, maxHeight: "calc(100% - 4rem)" }}
-              />
-              <div className="space-y-12">
-                {STEPS.map(({ icon: Icon, step, title, body, accent }, i) => {
-                  const isActive = i === activeStep
-                  const isPast = i < activeStep
-                  return (
-                    <motion.div
-                      key={title}
-                      animate={{
-                        opacity: isActive ? 1 : isPast ? 0.45 : 0.2,
-                        scale: isActive ? 1 : 0.97,
-                      }}
-                      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                      className="flex items-start gap-5"
-                    >
-                      <div className="relative shrink-0">
-                        <div
-                          className="w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-500"
-                          style={{
-                            background: isActive ? `${accent}20` : "var(--color-muted)",
-                            border: `1px solid ${isActive ? accent + "40" : "var(--color-border)"}`,
-                            boxShadow: isActive ? `0 0 24px ${accent}20` : "none",
-                          }}
-                        >
-                          <Icon size={24} style={{ color: isActive ? accent : "var(--color-muted-foreground)" }} />
-                        </div>
-                        <span
-                          className="absolute -top-2 -right-2 w-6 h-6 rounded-full text-[10px] font-bold flex items-center justify-center transition-all duration-500"
-                          style={{
-                            background: isActive ? accent : "var(--color-border)",
-                            color: isActive ? "white" : "var(--color-muted-foreground)",
-                          }}
-                        >
-                          {step}
-                        </span>
-                      </div>
-                      <div className="pt-1">
-                        <h3
-                          className="text-xl sm:text-2xl font-heading font-bold mb-2 transition-colors duration-500"
-                          style={{ color: isActive ? "var(--color-foreground)" : "var(--color-muted-foreground)" }}
-                        >
-                          {title}
-                        </h3>
-                        <p className="text-muted-foreground leading-relaxed max-w-sm">{body}</p>
-                      </div>
-                    </motion.div>
-                  )
-                })}
-              </div>
-            </div>
-          </div>
-
-          {/* Right: visual panel */}
-          <div>
-            <div className="relative" style={{ minHeight: 240 }}>
-              {VISUAL_PANELS.map((panel, i) => (
-                <motion.div
-                  key={i}
-                  animate={{ opacity: i === activeStep ? 1 : 0, y: i === activeStep ? 0 : 16 }}
-                  transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                  className="absolute inset-0 rounded-2xl border bg-card p-6 flex flex-col gap-4 pointer-events-none"
-                  style={{ borderColor: `${panel.accent}30` }}
-                >
-                  <div className="flex items-center gap-3">
-                    <div
-                      className="w-10 h-10 rounded-xl flex items-center justify-center text-xl"
-                      style={{ background: `${panel.accent}15` }}
-                    >
-                      {panel.icon}
-                    </div>
-                    <p className="font-heading font-bold text-base" style={{ color: panel.accent }}>
-                      {panel.title}
-                    </p>
+    <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-start">
+      {/* Left: steps */}
+      <div className="relative">
+        <div className="absolute left-7 top-8 bottom-8 w-px bg-border" />
+        <motion.div
+          className="absolute left-7 top-8 w-px bg-primary origin-top"
+          animate={{ height: `${(activeStep / (STEPS.length - 1)) * 100}%` }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          style={{ maxHeight: "calc(100% - 4rem)" }}
+        />
+        <div className="space-y-12">
+          {STEPS.map(({ icon: Icon, step, title, body, accent }, i) => {
+            const isActive = i === activeStep
+            const isPast = i < activeStep
+            return (
+              <motion.button
+                key={title}
+                onClick={() => setActiveStep(i)}
+                animate={{
+                  opacity: isActive ? 1 : isPast ? 0.5 : 0.3,
+                  scale: isActive ? 1 : 0.97,
+                }}
+                transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                className="flex items-start gap-5 text-left w-full"
+                whileHover={{ opacity: 0.85 }}
+              >
+                <div className="relative shrink-0">
+                  <div
+                    className="w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-500"
+                    style={{
+                      background: isActive ? `${accent}20` : "var(--color-muted)",
+                      border: `1px solid ${isActive ? accent + "40" : "var(--color-border)"}`,
+                      boxShadow: isActive ? `0 0 24px ${accent}20` : "none",
+                    }}
+                  >
+                    <Icon size={24} style={{ color: isActive ? accent : "var(--color-muted-foreground)" }} />
                   </div>
-                  <ul className="space-y-2">
-                    {panel.lines.map((line, j) => (
-                      <motion.li
-                        key={j}
-                        className="text-sm text-muted-foreground flex items-center gap-2"
-                        initial={{ opacity: 0, x: -8 }}
-                        animate={i === activeStep ? { opacity: 1, x: 0 } : { opacity: 0, x: -8 }}
-                        transition={{ delay: j * 0.08, duration: 0.3 }}
-                      >
-                        <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: panel.accent }} />
-                        {line}
-                      </motion.li>
-                    ))}
-                  </ul>
-                </motion.div>
-              ))}
-            </div>
-          </div>
+                  <span
+                    className="absolute -top-2 -right-2 w-6 h-6 rounded-full text-[10px] font-bold flex items-center justify-center transition-all duration-500"
+                    style={{
+                      background: isActive ? accent : "var(--color-border)",
+                      color: isActive ? "white" : "var(--color-muted-foreground)",
+                    }}
+                  >
+                    {step}
+                  </span>
+                </div>
+                <div className="pt-1">
+                  <h3
+                    className="text-xl sm:text-2xl font-heading font-bold mb-2 transition-colors duration-500"
+                    style={{ color: isActive ? "var(--color-foreground)" : "var(--color-muted-foreground)" }}
+                  >
+                    {title}
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed max-w-sm">{body}</p>
+                </div>
+              </motion.button>
+            )
+          })}
         </div>
+      </div>
+
+      {/* Right: visual panel */}
+      <div className="relative" style={{ minHeight: 280 }}>
+        <AnimatePresence mode="wait">
+          {VISUAL_PANELS.map((panel, i) =>
+            i === activeStep ? (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -16 }}
+                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                className="absolute inset-0 rounded-2xl border bg-card p-6 flex flex-col gap-4"
+                style={{ borderColor: `${panel.accent}30` }}
+              >
+                <div className="flex items-center gap-3">
+                  <div
+                    className="w-10 h-10 rounded-xl flex items-center justify-center text-xl"
+                    style={{ background: `${panel.accent}15` }}
+                  >
+                    {panel.icon}
+                  </div>
+                  <p className="font-heading font-bold text-base" style={{ color: panel.accent }}>
+                    {panel.title}
+                  </p>
+                </div>
+                <ul className="space-y-2">
+                  {panel.lines.map((line, j) => (
+                    <motion.li
+                      key={j}
+                      className="text-sm text-muted-foreground flex items-center gap-2"
+                      initial={{ opacity: 0, x: -8 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: j * 0.08, duration: 0.3 }}
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: panel.accent }} />
+                      {line}
+                    </motion.li>
+                  ))}
+                </ul>
+              </motion.div>
+            ) : null
+          )}
+        </AnimatePresence>
       </div>
     </div>
   )
