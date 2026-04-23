@@ -3,6 +3,12 @@
 import { useEffect, useRef } from "react"
 import { motion, AnimatePresence, useDragControls } from "framer-motion"
 
+const FOCUSABLE = [
+  "a[href]", "button:not([disabled])", "input:not([disabled])",
+  "select:not([disabled])", "textarea:not([disabled])",
+  "[tabindex]:not([tabindex='-1'])",
+].join(", ")
+
 interface BottomSheetProps {
   open: boolean
   onClose: () => void
@@ -13,16 +19,39 @@ interface BottomSheetProps {
 export function BottomSheet({ open, onClose, title, children }: BottomSheetProps) {
   const dragControls = useDragControls()
   const scrollRef = useRef<HTMLDivElement>(null)
+  const sheetRef = useRef<HTMLDivElement>(null)
+  const prevFocusRef = useRef<HTMLElement | null>(null)
 
   useEffect(() => {
     if (!open) return
     const prev = document.body.style.overflow
     document.body.style.overflow = "hidden"
-    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") onClose() }
-    document.addEventListener("keydown", onKey)
+    prevFocusRef.current = document.activeElement as HTMLElement
+
+    // Move focus inside the sheet after entrance animation settles
+    const focusTimer = setTimeout(() => {
+      const first = sheetRef.current?.querySelector<HTMLElement>(FOCUSABLE)
+      first?.focus()
+    }, 120)
+
+    // Focus trap — keep Tab/Shift+Tab within the sheet
+    const trapFocus = (e: KeyboardEvent) => {
+      if (e.key === "Escape") { onClose(); return }
+      if (e.key !== "Tab") return
+      const focusable = Array.from(sheetRef.current?.querySelectorAll<HTMLElement>(FOCUSABLE) ?? [])
+      if (!focusable.length) return
+      const first = focusable[0]
+      const last  = focusable[focusable.length - 1]
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus() }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus() }
+    }
+
+    document.addEventListener("keydown", trapFocus)
     return () => {
+      clearTimeout(focusTimer)
       document.body.style.overflow = prev
-      document.removeEventListener("keydown", onKey)
+      document.removeEventListener("keydown", trapFocus)
+      prevFocusRef.current?.focus() // return focus to trigger element
     }
   }, [open, onClose])
 
@@ -43,6 +72,10 @@ export function BottomSheet({ open, onClose, title, children }: BottomSheetProps
 
           {/* Sheet */}
           <motion.div
+            ref={sheetRef}
+            role="dialog"
+            aria-modal="true"
+            aria-label={title ?? "Details"}
             className="fixed inset-x-0 bottom-0 z-[201] bg-background rounded-t-3xl shadow-2xl flex flex-col"
             style={{
               maxHeight: "85dvh",

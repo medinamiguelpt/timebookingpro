@@ -6,6 +6,7 @@ import { Sun, Moon, Menu, X } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Logo } from "@/components/logo"
 import { Button } from "@/components/ui/button"
+import { MagneticWrap } from "@/components/ui/magnetic-wrap"
 import { cn } from "@/lib/utils"
 
 const NAV_LINKS = [
@@ -85,28 +86,30 @@ export function Navbar() {
           <Logo iconSize={32} />
         </a>
 
-        {/* Desktop nav links */}
+        {/* Desktop nav links — subtle magnetic pull on hover */}
         <ul className="hidden md:flex items-center gap-8">
           {NAV_LINKS.map((link) => {
             const isActive = link.sectionId ? activeSection === link.sectionId : false
             return (
               <li key={link.href}>
-                <a
-                  href={link.href}
-                  className={cn(
-                    "relative text-sm font-medium transition-colors",
-                    isActive ? "text-primary" : "text-muted-foreground hover:text-foreground"
-                  )}
-                >
-                  {link.label}
-                  {isActive && (
-                    <motion.span
-                      layoutId="nav-indicator"
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 rounded-full bg-primary"
-                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                    />
-                  )}
-                </a>
+                <MagneticWrap pull={0.18} stiffness={380} damping={28}>
+                  <a
+                    href={link.href}
+                    className={cn(
+                      "relative text-sm font-medium transition-colors",
+                      isActive ? "text-primary" : "text-muted-foreground hover:text-foreground"
+                    )}
+                  >
+                    {link.label}
+                    {isActive && (
+                      <motion.span
+                        layoutId="nav-indicator"
+                        className="absolute -bottom-1 left-0 right-0 h-0.5 rounded-full bg-primary"
+                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                      />
+                    )}
+                  </a>
+                </MagneticWrap>
               </li>
             )
           })}

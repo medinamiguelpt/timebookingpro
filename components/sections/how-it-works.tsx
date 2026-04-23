@@ -1,8 +1,9 @@
 "use client"
 
-import { useRef, useState, Fragment, type ElementType } from "react"
+import { useRef, useState, useEffect, Fragment, type ElementType } from "react"
 import { motion, AnimatePresence, useInView } from "framer-motion"
 import { PhoneCall, Settings2, CalendarCheck, Mic, Zap, Bell } from "lucide-react"
+import { RevealWords } from "@/components/ui/reveal-words"
 
 const STEPS = [
   {
@@ -126,11 +127,40 @@ function FlowConnector({ label, delay }: { label: string; delay: number }) {
   )
 }
 
+const STEP_DURATION = 3500 // ms per auto-advance step
+
 function ScrollySection() {
   const [activeStep, setActiveStep] = useState(0)
+  const [paused, setPaused] = useState(false)
+  const progressBarRef = useRef<HTMLDivElement>(null)
+
+  // Auto-advance with direct DOM writes to avoid 20fps re-renders
+  useEffect(() => {
+    if (paused) {
+      if (progressBarRef.current) progressBarRef.current.style.width = "0%"
+      return
+    }
+    const UPDATE_MS = 50
+    let elapsed = 0
+    const id = setInterval(() => {
+      elapsed += UPDATE_MS
+      if (progressBarRef.current) progressBarRef.current.style.width = `${(elapsed / STEP_DURATION) * 100}%`
+      if (elapsed >= STEP_DURATION) {
+        elapsed = 0
+        if (progressBarRef.current) progressBarRef.current.style.width = "0%"
+        setActiveStep(s => (s + 1) % STEPS.length)
+      }
+    }, UPDATE_MS)
+    return () => clearInterval(id)
+  }, [paused, activeStep])
+
+  const goToStep = (i: number) => { setActiveStep(i); setPaused(true); setTimeout(() => setPaused(false), 500) }
 
   return (
-    <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-start">
+    <div
+      className="grid md:grid-cols-2 gap-10 md:gap-16 items-start"
+      onMouseLeave={() => setPaused(false)}
+    >
       {/* Left: steps */}
       <div className="relative">
         <div className="absolute left-7 top-8 bottom-8 w-px bg-border" />
@@ -147,14 +177,15 @@ function ScrollySection() {
             return (
               <motion.button
                 key={title}
-                onMouseEnter={() => setActiveStep(i)}
-                onFocus={() => setActiveStep(i)}
+                onMouseEnter={() => { setActiveStep(i); setPaused(true) }}
+                onFocus={() => { setActiveStep(i); setPaused(true) }}
+                onClick={() => goToStep(i)}
                 animate={{
                   opacity: isActive ? 1 : isPast ? 0.5 : 0.3,
                   scale: isActive ? 1 : 0.97,
                 }}
                 transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                className="flex items-start gap-5 text-left w-full cursor-default"
+                className="flex items-start gap-5 text-left w-full cursor-pointer"
               >
                 <div className="relative shrink-0">
                   <div
@@ -189,6 +220,24 @@ function ScrollySection() {
               </motion.button>
             )
           })}
+        </div>
+
+        {/* Story-style progress dots — click to jump, active dot fills as timer counts down */}
+        <div className="flex gap-2 mt-8 ml-5">
+          {STEPS.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => goToStep(i)}
+              aria-label={`Go to step ${i + 1}`}
+              className="relative h-1 rounded-full bg-border overflow-hidden transition-all duration-300"
+              style={{ width: activeStep === i ? 28 : 12 }}
+            >
+              {i < activeStep && <div className="absolute inset-0 bg-primary" />}
+              {i === activeStep && (
+                <div ref={progressBarRef} className="absolute inset-y-0 left-0 bg-primary" style={{ width: "0%" }} />
+              )}
+            </button>
+          ))}
         </div>
       </div>
 
@@ -263,15 +312,12 @@ export function HowItWorks() {
           >
             How it works
           </motion.p>
-          <motion.h2
+          <RevealWords
             className="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold leading-tight tracking-tight"
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: 0.1 }}
+            delay={0.1}
           >
             Up and running in 24 hours
-          </motion.h2>
+          </RevealWords>
           <motion.p
             className="mt-4 text-lg text-muted-foreground max-w-xl mx-auto"
             initial={{ opacity: 0, y: 12 }}

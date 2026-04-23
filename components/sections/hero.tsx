@@ -2,9 +2,11 @@
 
 import { useRef, useEffect, useMemo, useState } from "react"
 import { motion, animate, useScroll, useTransform, useMotionValue, useSpring, AnimatePresence, useInView } from "framer-motion"
+// useMotionValue + useSpring kept for hero blob parallax
 import { ArrowRight, CheckCircle, Phone, Calendar } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
+import { MagneticWrap } from "@/components/ui/magnetic-wrap"
 import { openDemoModal } from "@/components/ui/demo-modal"
 import { Particles } from "@/components/ui/particles"
 import { TiltCard } from "@/components/ui/tilt-card"
@@ -105,6 +107,7 @@ function LiveRevenue({ initialValue, delay = 0.8, intervalMs = 7000, inView = tr
   const displayRef = useRef<HTMLParagraphElement>(null)
   const currentRef = useRef(initialValue)
   const [started, setStarted] = useState(false)
+  const [delta, setDelta] = useState<{ amount: string; id: number } | null>(null)
 
   useEffect(() => {
     if (!inView || started) return
@@ -121,6 +124,9 @@ function LiveRevenue({ initialValue, delay = 0.8, intervalMs = 7000, inView = tr
         currentRef.current = prev + increment
         const el = displayRef.current
         if (!el) return
+        // Flash a +€X delta badge above the number
+        setDelta({ amount: `+€${increment}`, id: Date.now() })
+        setTimeout(() => setDelta(null), 1200)
         animate(prev, currentRef.current, {
           duration: 0.9, ease: [0.22, 1, 0.36, 1],
           onUpdate(v) { if (el) el.textContent = "€" + Math.round(v).toLocaleString() },
@@ -132,9 +138,25 @@ function LiveRevenue({ initialValue, delay = 0.8, intervalMs = 7000, inView = tr
 
   if (!started) return <div className="h-6 w-20 rounded-md bg-gold/20 animate-pulse" aria-hidden />
   return (
-    <p ref={displayRef} className="text-xl font-bold font-heading text-gold">
-      €{initialValue.toLocaleString()}
-    </p>
+    <div className="relative">
+      <AnimatePresence>
+        {delta && (
+          <motion.span
+            key={delta.id}
+            className="absolute -top-4 right-0 text-[11px] font-bold text-gold pointer-events-none"
+            initial={{ opacity: 0, y: 4 }}
+            animate={{ opacity: 1, y: -2 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+          >
+            {delta.amount}
+          </motion.span>
+        )}
+      </AnimatePresence>
+      <p ref={displayRef} className="text-xl font-bold font-heading text-gold">
+        €{initialValue.toLocaleString()}
+      </p>
+    </div>
   )
 }
 
@@ -231,35 +253,6 @@ function HeadlineReveal({ plain, highlight }: { plain: string; highlight: string
   )
 }
 
-function MagneticWrap({ children, className }: { children: React.ReactNode; className?: string }) {
-  const ref = useRef<HTMLDivElement>(null)
-  const rectRef = useRef<DOMRect | null>(null)
-  const x = useMotionValue(0)
-  const y = useMotionValue(0)
-  const sx = useSpring(x, { stiffness: 350, damping: 28 })
-  const sy = useSpring(y, { stiffness: 350, damping: 28 })
-
-  useEffect(() => {
-    const update = () => { rectRef.current = ref.current?.getBoundingClientRect() ?? null }
-    update()
-    window.addEventListener("resize", update)
-    return () => window.removeEventListener("resize", update)
-  }, [])
-
-  const onMove = (e: React.MouseEvent) => {
-    const rect = rectRef.current
-    if (!rect) return
-    x.set((e.clientX - (rect.left + rect.width / 2)) * 0.32)
-    y.set((e.clientY - (rect.top + rect.height / 2)) * 0.32)
-  }
-  const onLeave = () => { x.set(0); y.set(0) }
-
-  return (
-    <motion.div ref={ref} style={{ x: sx, y: sy }} onMouseMove={onMove} onMouseLeave={onLeave} className={className}>
-      {children}
-    </motion.div>
-  )
-}
 
 const HEADLINES = {
   a: { plain: "Give your business", highlight: "its own AI agent", cta: "Get your agent" },

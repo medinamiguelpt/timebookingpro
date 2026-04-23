@@ -9,6 +9,19 @@ import { COUNTRIES, COUNTRY_ORDER, isPlausibleVatId, VENDOR_COUNTRY, type Countr
 import { SpotlightCard } from "@/components/ui/spotlight-card"
 import { BottomSheet } from "@/components/ui/bottom-sheet"
 import { RevealWords } from "@/components/ui/reveal-words"
+import { Tooltip } from "@/components/ui/tooltip"
+
+const FEATURE_TIPS: Record<string, string> = {
+  "200 min/month":               "~20–30 booking calls per day. Overage billed at €0.60/min.",
+  "1 location":                  "One business address and phone number.",
+  "Email support":               "We respond within 24 hours on business days.",
+  "600 min/month":               "~60–90 calls per day. Overage billed at €0.50/min.",
+  "Up to 3 locations":           "Run multiple branches from a single dashboard.",
+  "Priority support":            "4-hour response time in a dedicated support queue.",
+  "1,600 min/month":             "~160–200 calls per day. Overage billed at €0.40/min.",
+  "Unlimited locations":         "Any number of business branches — no extra cost.",
+  "Dedicated success manager":   "A named contact who handles onboarding and ongoing questions.",
+}
 
 // Map a country code to a sensible default currency
 function defaultCurrencyFor(country: CountryCode): CurrencyCode {
@@ -345,7 +358,13 @@ export function Pricing({ defaultCountry = "GR" }: { defaultCountry?: CountryCod
                     {tier.features.map(f => (
                       <li key={f} className="flex items-center gap-2 text-sm">
                         <CheckCircle size={14} className="text-primary shrink-0" />
-                        <span>{f}</span>
+                        {FEATURE_TIPS[f] ? (
+                          <Tooltip content={FEATURE_TIPS[f]}>
+                            <span className="underline decoration-dotted underline-offset-2 decoration-muted-foreground/40">{f}</span>
+                          </Tooltip>
+                        ) : (
+                          <span>{f}</span>
+                        )}
                       </li>
                     ))}
 
