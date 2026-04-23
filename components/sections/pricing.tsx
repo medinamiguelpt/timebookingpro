@@ -8,6 +8,7 @@ import { CURRENCIES, CURRENCY_ORDER, formatMoney, type CurrencyCode } from "@/li
 import { COUNTRIES, COUNTRY_ORDER, isPlausibleVatId, VENDOR_COUNTRY, type CountryCode } from "@/lib/vat"
 import { SpotlightCard } from "@/components/ui/spotlight-card"
 import { BottomSheet } from "@/components/ui/bottom-sheet"
+import { RevealWords } from "@/components/ui/reveal-words"
 
 // Map a country code to a sensible default currency
 function defaultCurrencyFor(country: CountryCode): CurrencyCode {
@@ -63,10 +64,12 @@ export function Pricing({ defaultCountry = "GR" }: { defaultCountry?: CountryCod
             initial={{ opacity:0, y:12 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }} transition={{ duration:0.4 }}>
             Pricing
           </motion.p>
-          <motion.h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold leading-tight tracking-tight"
-            initial={{ opacity:0, y:12 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }} transition={{ duration:0.4, delay:0.1 }}>
+          <RevealWords
+            className="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold leading-tight tracking-tight"
+            delay={0.1}
+          >
             Simple, transparent pricing
-          </motion.h2>
+          </RevealWords>
           <motion.p className="mt-4 text-lg text-muted-foreground max-w-xl mx-auto"
             initial={{ opacity:0, y:12 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }} transition={{ duration:0.4, delay:0.2 }}>
             No setup fees. No contracts. Cancel any time.
@@ -276,8 +279,10 @@ export function Pricing({ defaultCountry = "GR" }: { defaultCountry?: CountryCod
                   <div>
                     <AnimatePresence mode="wait">
                       <motion.div key={`${cycle}-${currencyCode}-${countryCode}-${tier.id}`}
-                        initial={{ opacity:0, y:-6 }} animate={{ opacity:1, y:0 }} exit={{ opacity:0, y:6 }}
-                        transition={{ duration:0.2 }}>
+                        initial={{ opacity:0, scale:0.88, filter:"blur(4px)" }}
+                        animate={{ opacity:1, scale:1, filter:"blur(0px)" }}
+                        exit={{ opacity:0, scale:0.88, filter:"blur(4px)" }}
+                        transition={{ duration:0.25, ease:[0.22,1,0.36,1] }}>
 
                         {showStrike && (
                           <p className="text-sm text-muted-foreground line-through mb-0.5">

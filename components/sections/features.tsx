@@ -5,6 +5,7 @@ import { motion, useInView, animate } from "framer-motion"
 import { Clock, Globe, CalendarDays, MessageSquare, ShieldCheck, BarChart3 } from "lucide-react"
 import { SpotlightCard } from "@/components/ui/spotlight-card"
 import { Globe3D } from "@/components/ui/globe-3d"
+import { RevealWords } from "@/components/ui/reveal-words"
 import { cn } from "@/lib/utils"
 
 const INTEGRATIONS = [
@@ -40,6 +41,8 @@ type Feature = {
   accent: string
   accentBg: string
   span: "normal" | "wide" | "tall"
+  /** Tailwind group-hover class applied to the icon itself (not the container) */
+  iconAnim?: string
   stat?: { value: number; prefix?: string; suffix: string; label: string }
   extra?: React.ReactNode
 }
@@ -47,6 +50,7 @@ type Feature = {
 const FEATURES: Feature[] = [
   {
     icon: Clock,
+    iconAnim: "group-hover:rotate-[20deg]",
     title: "24/7 availability",
     body: "Never sleeps, never takes a break. Your agent answers every call on weekends, nights, and holidays.",
     accent: "#7C3AED",
@@ -56,6 +60,7 @@ const FEATURES: Feature[] = [
   },
   {
     icon: MessageSquare,
+    iconAnim: "group-hover:-translate-y-1 group-hover:scale-110",
     title: "Natural conversation",
     body: "Powered by advanced voice AI — sounds human, handles complex requests, understands context.",
     accent: "#0EA5E9",
@@ -65,6 +70,7 @@ const FEATURES: Feature[] = [
   },
   {
     icon: Globe,
+    iconAnim: "group-hover:rotate-[180deg] duration-700",
     title: "Multilingual",
     body: "Greek, English, Spanish, Portuguese, French, German, Arabic — 7 languages, auto-detected per caller.",
     accent: "#10B981",
@@ -78,6 +84,7 @@ const FEATURES: Feature[] = [
   },
   {
     icon: CalendarDays,
+    iconAnim: "group-hover:-translate-y-1.5 group-hover:scale-105",
     title: "Direct calendar sync",
     body: "Bookings go straight into your calendar in real time. Zero double-bookings, zero manual entry.",
     accent: "#F59E0B",
@@ -96,6 +103,7 @@ const FEATURES: Feature[] = [
   },
   {
     icon: ShieldCheck,
+    iconAnim: "group-hover:scale-110 group-hover:rotate-[-8deg]",
     title: "Fully customisable",
     body: "Name, voice, personality — your brand, your agent.",
     accent: "#EC4899",
@@ -104,6 +112,7 @@ const FEATURES: Feature[] = [
   },
   {
     icon: BarChart3,
+    iconAnim: "group-hover:-translate-y-1 group-hover:scale-y-110",
     title: "Live dashboard",
     body: "Track calls, bookings, and revenue in real time. Know what your agent is doing, always.",
     accent: "#7C3AED",
@@ -124,10 +133,12 @@ export function Features() {
             initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }}>
             Features
           </motion.p>
-          <motion.h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold leading-tight tracking-tight"
-            initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: 0.1 }}>
+          <RevealWords
+            className="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold leading-tight tracking-tight"
+            delay={0.1}
+          >
             Everything your business needs
-          </motion.h2>
+          </RevealWords>
           <motion.p className="mt-4 text-lg text-muted-foreground max-w-xl mx-auto"
             initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: 0.2 }}>
             One agent. Zero missed calls. A calendar that fills itself.
@@ -136,7 +147,7 @@ export function Features() {
 
         {/* Bento grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-auto">
-          {FEATURES.map(({ icon: Icon, title, body, accent, accentBg, span, stat, extra }, i) => (
+          {FEATURES.map(({ icon: Icon, title, body, accent, accentBg, span, stat, extra, iconAnim }, i) => (
             <motion.div
               key={title}
               className={cn(span === "wide" && "sm:col-span-2")}
@@ -159,10 +170,12 @@ export function Features() {
 
                 {/* Content side */}
                 <div className={cn("relative p-6 flex flex-col gap-4 z-10", span === "wide" ? "flex-1" : "")}>
-                  {/* Icon */}
-                  <div className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0 transition-all duration-300 group-hover:scale-110"
+                  {/* Icon — container scales, icon has its own unique animation */}
+                  <div className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-110"
                     style={{ background: accentBg, border: `1px solid ${accent}30` }}>
-                    <Icon size={20} style={{ color: accent }} />
+                    <div className={cn("transition-transform duration-300 origin-center", iconAnim ?? "")}>
+                      <Icon size={20} style={{ color: accent }} />
+                    </div>
                   </div>
 
                   <div>

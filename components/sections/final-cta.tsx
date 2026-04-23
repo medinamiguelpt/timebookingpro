@@ -50,6 +50,15 @@ export function FinalCTA() {
   const [smsState, setSmsState] = useState<"idle" | "loading" | "done">("idle")
   const [leaderboard, setLeaderboard] = useState<{ top: { rank: number; initial: string; referrals: number }[] } | null>(null)
   const [emojiParticles, setEmojiParticles] = useState<EmojiParticle[]>([])
+  const [copied, setCopied] = useState(false)
+  const [inputFocused, setInputFocused] = useState(false)
+
+  const copyReferral = useCallback(() => {
+    if (!referralCode) return
+    navigator.clipboard.writeText(`https://timebookingpro.com/r/${referralCode}`)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2200)
+  }, [referralCode])
 
   const spawnEmojis = useCallback(() => {
     const count = 7
@@ -122,6 +131,24 @@ export function FinalCTA() {
   }
 
   return (
+    <>
+    {/* "Copied!" toast — appears above the mobile safe area */}
+    <AnimatePresence>
+      {copied && (
+        <motion.div
+          className="fixed bottom-10 left-1/2 -translate-x-1/2 z-[300] flex items-center gap-2 bg-foreground text-background text-sm font-semibold rounded-full px-4 py-2.5 shadow-xl whitespace-nowrap pointer-events-none"
+          initial={{ opacity: 0, y: 10, scale: 0.94 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: 10, scale: 0.94 }}
+          transition={{ type: "spring", stiffness: 420, damping: 28 }}
+          aria-live="polite"
+        >
+          <CheckCircle size={14} />
+          Link copied!
+        </motion.div>
+      )}
+    </AnimatePresence>
+
     <section
       id="get-started"
       className="relative py-28 sm:py-36 overflow-hidden bg-[#0D0714]"
@@ -198,7 +225,7 @@ export function FinalCTA() {
                 <div className="mt-1 text-xs text-white/50 text-center">
                   Share your link to move up:{" "}
                   <button
-                    onClick={() => navigator.clipboard.writeText(`https://timebookingpro.com/r/${referralCode}`)}
+                    onClick={copyReferral}
                     className="text-primary-soft underline underline-offset-2 hover:text-white transition-colors"
                   >
                     timebookingpro.com/r/{referralCode}
@@ -225,7 +252,7 @@ export function FinalCTA() {
                     ))}
                   </div>
                   <button
-                    onClick={() => navigator.clipboard.writeText(`https://timebookingpro.com/r/${referralCode}`)}
+                    onClick={copyReferral}
                     className="mt-3 w-full flex items-center justify-center gap-2 bg-primary/20 hover:bg-primary/30 border border-primary/30 text-primary-soft text-xs font-semibold rounded-full py-2 transition-colors"
                   >
                     <Gift size={12} /> Copy referral link to share
@@ -285,20 +312,34 @@ export function FinalCTA() {
                 onSubmit={(e) => { handleSubmit(e); spawnEmojis() }}
                 className="flex flex-col sm:flex-row items-center gap-3 max-w-md mx-auto"
               >
-                <input
-                  type="email"
-                  required
-                  placeholder="your@email.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  onFocus={(e) => {
-                    // On mobile, virtual keyboard pushes content up; scroll the input
-                    // back into center view after the keyboard finishes opening (~300ms)
-                    const el = e.currentTarget
-                    setTimeout(() => el.scrollIntoView({ behavior: "smooth", block: "center" }), 300)
-                  }}
-                  className="flex-1 w-full rounded-full px-5 h-13 bg-white/10 border border-white/20 text-white placeholder:text-white/35 text-sm outline-none focus:border-primary-soft/60 transition-colors"
-                />
+                {/* Email input with animated gradient border on focus */}
+                <div className="relative flex-1">
+                  {/* Spinning gradient ring — only rendered when focused */}
+                  {inputFocused && (
+                    <div
+                      className="absolute -inset-[1.5px] rounded-full pointer-events-none"
+                      style={{
+                        background: "conic-gradient(from var(--border-angle), #7C3AED, #A78BFA, #C4B5FD, #7C3AED)",
+                        animation: "border-spin 3s linear infinite",
+                      }}
+                      aria-hidden
+                    />
+                  )}
+                  <input
+                    type="email"
+                    required
+                    placeholder="your@email.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    onFocus={(e) => {
+                      setInputFocused(true)
+                      const el = e.currentTarget
+                      setTimeout(() => el.scrollIntoView({ behavior: "smooth", block: "center" }), 300)
+                    }}
+                    onBlur={() => setInputFocused(false)}
+                    className="relative z-10 w-full rounded-full px-5 h-13 bg-[#130921] border border-transparent text-white placeholder:text-white/35 text-sm outline-none transition-colors"
+                  />
+                </div>
                 <button
                   type="submit"
                   data-ripple
@@ -318,5 +359,6 @@ export function FinalCTA() {
         </motion.div>
       </div>
     </section>
+    </>
   )
 }

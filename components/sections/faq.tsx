@@ -1,6 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
+import { RevealWords } from "@/components/ui/reveal-words"
 import {
   Accordion,
   AccordionContent,
@@ -65,15 +66,12 @@ export function FAQ() {
           >
             FAQ
           </motion.p>
-          <motion.h2
+          <RevealWords
             className="text-3xl sm:text-4xl font-heading font-extrabold leading-tight tracking-tight"
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: 0.1 }}
+            delay={0.1}
           >
             Frequently asked questions
-          </motion.h2>
+          </RevealWords>
         </div>
 
         <motion.div

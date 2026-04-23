@@ -2,6 +2,7 @@
 
 import { useRef, useEffect, useState, useCallback } from "react"
 import { motion, AnimatePresence, useMotionValue, useSpring, useReducedMotion } from "framer-motion"
+import { RevealWords } from "@/components/ui/reveal-words"
 import { Star, ChevronLeft, ChevronRight, Play, X } from "lucide-react"
 
 const TESTIMONIALS = [
@@ -326,15 +327,12 @@ export function Testimonials() {
           >
             Testimonials
           </motion.p>
-          <motion.h2
+          <RevealWords
             className="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold leading-tight tracking-tight"
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: 0.1 }}
+            delay={0.1}
           >
             Real businesses, real results
-          </motion.h2>
+          </RevealWords>
         </div>
 
         {/* 3D Coverflow — desktop */}
