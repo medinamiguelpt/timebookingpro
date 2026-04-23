@@ -23,34 +23,24 @@ const FEATURE_TIPS: Record<string, string> = {
   "All 7 supported languages":         "Greek · English · Spanish · Portuguese · French · German · Arabic. Agent locks to the caller's language on first substantive word.",
 }
 
-// Strict country → currency mapping (EU-only scope).
-// Only SE/DK/PL have native tables; every other EU country falls back to EUR.
+// Only SE/DK/PL have native price tables; every other EU country falls back to EUR.
+const COUNTRY_CURRENCY: Partial<Record<CountryCode, CurrencyCode>> = {
+  SE: "SEK", DK: "DKK", PL: "PLN",
+}
 function currencyForCountry(country: CountryCode): CurrencyCode {
-  const map: Partial<Record<CountryCode, CurrencyCode>> = {
-    SE: "SEK", DK: "DKK", PL: "PLN",
-  }
-  return map[country] ?? "EUR"
+  return COUNTRY_CURRENCY[country] ?? "EUR"
 }
 
-// Deterministic defaults per the unified-picker brief — no geo-IP guessing on the pricing page.
 const DEFAULT_COUNTRY: CountryCode = "GR"
-const DEFAULT_CURRENCY: CurrencyCode = "EUR"
 
 export function Pricing() {
   const [cycle, setCycle] = useState<BillingCycle>("monthly")
   const [countryCode, setCountryCode] = useState<CountryCode>(DEFAULT_COUNTRY)
-  const [currencyCode, setCurrencyCode] = useState<CurrencyCode>(DEFAULT_CURRENCY)
   const [sheetIdx, setSheetIdx] = useState<number | null>(null)
   const [pressedTierIdx, setPressedTierIdx] = useState<number | null>(null)
   const pressTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
-  // Picking a country updates both country and currency in one setState batch
-  // (React auto-batches multiple setState calls in an event handler since v18,
-  // so the quote re-memoizes exactly once per user interaction).
-  const handleCountryChange = (code: CountryCode) => {
-    setCountryCode(code)
-    setCurrencyCode(currencyForCountry(code))
-  }
+  const currencyCode = currencyForCountry(countryCode)
 
   const handleTierTouchStart = (idx: number) => () => {
     if (pressTimerRef.current) clearTimeout(pressTimerRef.current)
@@ -67,8 +57,7 @@ export function Pricing() {
   const country = COUNTRIES[countryCode]
   const promo = useMemo(() => activeHolidayPromo(cycle), [cycle])
 
-  // isBusiness + hasValidVatId are always false at the landing-page level.
-  // Stripe Checkout handles VIES lookup and reverse-charge for B2B with a valid VAT ID.
+  // B2B reverse-charge is handled at Stripe Checkout via VIES — not on the landing page.
   const quotes = useMemo(() =>
     SUBSCRIPTION_TIERS.map(tier => quote({ tier, cycle, currencyCode, countryCode, isBusiness: false, hasValidVatId: false })),
     [cycle, currencyCode, countryCode]
@@ -123,36 +112,32 @@ export function Pricing() {
           )}
         </AnimatePresence>
 
-        {/* Unified picker — one dropdown, currency implied by country.
-            Matches the canonical dashboard at dashboard-sooty-seven-64.vercel.app/dashboard. */}
-        <div className="flex justify-center mb-6">
-          <div className="flex flex-col gap-1">
-            <label
-              htmlFor="pricing-country"
-              className="text-xs font-semibold text-muted-foreground uppercase tracking-wide text-center"
+        {/* Unified picker — one dropdown, currency implied by country. */}
+        <div className="flex flex-col gap-1 mx-auto w-fit mb-6">
+          <label
+            htmlFor="pricing-country"
+            className="text-xs font-semibold text-muted-foreground uppercase tracking-wide text-center"
+          >
+            Country
+          </label>
+          <div className="relative">
+            <select
+              id="pricing-country"
+              value={countryCode}
+              onChange={e => setCountryCode(e.target.value as CountryCode)}
+              className="appearance-none pl-3 pr-9 h-10 rounded-lg border border-border bg-card text-sm text-foreground outline-none focus:border-primary/50 transition-colors cursor-pointer min-w-[220px]"
+              aria-label="Select country"
             >
-              Country
-            </label>
-            <div className="relative">
-              <select
-                id="pricing-country"
-                value={countryCode}
-                onChange={e => handleCountryChange(e.target.value as CountryCode)}
-                className="appearance-none pl-3 pr-9 h-10 rounded-lg border border-border bg-card text-sm text-foreground outline-none focus:border-primary/50 transition-colors cursor-pointer min-w-[220px]"
-                aria-label="Select country"
-              >
-                {COUNTRY_ORDER.map(code => {
-                  const c = COUNTRIES[code]
-                  const curr = currencyForCountry(code)
-                  return (
-                    <option key={code} value={code}>
-                      {c.flag} {c.name} · {curr}
-                    </option>
-                  )
-                })}
-              </select>
-              <ChevronDown size={14} className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none" />
-            </div>
+              {COUNTRY_ORDER.map(code => {
+                const c = COUNTRIES[code]
+                return (
+                  <option key={code} value={code}>
+                    {c.flag} {c.name} · {currencyForCountry(code)}
+                  </option>
+                )
+              })}
+            </select>
+            <ChevronDown size={14} className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none" />
           </div>
         </div>
 
