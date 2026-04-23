@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { ArrowRight, CheckCircle, MessageSquare, Trophy, Gift } from "lucide-react"
 import { VoiceDemo } from "@/components/ui/voice-demo"
+import confetti from "canvas-confetti"
 
 const EMOJIS = ["📅", "📞", "✅", "🎉", "💜", "⚡", "🚀", "🤖"]
 
@@ -67,6 +68,21 @@ export function FinalCTA() {
   useEffect(() => {
     fetch("/api/leaderboard").then(r => r.json()).then(setLeaderboard).catch(() => null)
   }, [])
+
+  // Brand-colored confetti burst on successful signup
+  useEffect(() => {
+    if (state !== "success") return
+    let animId: number
+    const end = Date.now() + 1600
+    const COLORS = ["#7C3AED", "#A78BFA", "#C4B5FD", "#FFFFFF"]
+    const frame = () => {
+      confetti({ particleCount: 3, angle: 60,  spread: 55, origin: { x: 0, y: 0.75 }, colors: COLORS })
+      confetti({ particleCount: 3, angle: 120, spread: 55, origin: { x: 1, y: 0.75 }, colors: COLORS })
+      if (Date.now() < end) animId = requestAnimationFrame(frame)
+    }
+    animId = requestAnimationFrame(frame)
+    return () => { cancelAnimationFrame(animId); confetti.reset() }
+  }, [state])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -278,7 +294,7 @@ export function FinalCTA() {
                 <button
                   type="submit"
                   disabled={state === "loading"}
-                  className="flex items-center gap-2 whitespace-nowrap bg-primary hover:bg-primary/90 disabled:opacity-60 text-white font-semibold rounded-full px-7 h-13 text-sm shadow-2xl shadow-primary/40 transition-colors"
+                  className="shimmer-btn flex items-center gap-2 whitespace-nowrap bg-primary hover:bg-primary/90 disabled:opacity-60 text-white font-semibold rounded-full px-7 h-13 text-sm shadow-2xl shadow-primary/40 transition-colors"
                 >
                   {state === "loading" ? "Sending…" : "Get your agent"}
                   {state !== "loading" && <ArrowRight size={16} />}

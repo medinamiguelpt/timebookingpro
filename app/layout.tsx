@@ -2,8 +2,10 @@ import type { Metadata } from "next"
 import { Inter, Plus_Jakarta_Sans } from "next/font/google"
 import Script from "next/script"
 import { Providers } from "@/components/providers"
+import { AmbientShift } from "@/components/ui/ambient-shift"
 import { CookieBanner } from "@/components/ui/cookie-banner"
 import { CustomCursor } from "@/components/ui/custom-cursor"
+import { PageIntro } from "@/components/ui/page-intro"
 import { ScrollProgress } from "@/components/ui/scroll-progress"
 import { ScrollHue } from "@/components/ui/scroll-hue"
 import "./globals.css"
@@ -53,10 +55,12 @@ export default function RootLayout({
       className={`${inter.variable} ${plusJakartaSans.variable} h-full`}
     >
       <body className="min-h-full flex flex-col antialiased">
+        <PageIntro />
         <ScrollProgress />
         <Providers>{children}</Providers>
         <CookieBanner />
         <ScrollHue />
+        <AmbientShift />
         <CustomCursor />
         {/* Plausible Analytics — privacy-friendly, no cookies required */}
         <Script

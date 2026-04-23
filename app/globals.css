@@ -4,6 +4,20 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* ── Animatable custom properties (CSS Houdini @property) ─────── */
+/* Registering these as typed values lets CSS transitions interpolate
+   them smoothly — enabling animated gradient positions on the body. */
+@property --ambient-x {
+  syntax: "<percentage>";
+  initial-value: 50%;
+  inherits: true;
+}
+@property --ambient-y {
+  syntax: "<percentage>";
+  initial-value: -10%;
+  inherits: true;
+}
+
 /* ── TimeBookingPro Design Tokens ─────────────────────────────── */
 @theme inline {
   /* Fonts */
@@ -115,7 +129,18 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply text-foreground font-sans antialiased;
+    background-color: var(--background);
+    /* Ambient glow that drifts between sections via JS-updated CSS vars */
+    background-image: radial-gradient(
+      ellipse 100% 70% at var(--ambient-x) var(--ambient-y),
+      color-mix(in srgb, var(--primary) 6%, transparent),
+      transparent 65%
+    );
+    background-attachment: fixed;
+    /* @property registration enables smooth CSS interpolation of these vars */
+    transition: --ambient-x 2.5s cubic-bezier(0.4, 0, 0.2, 1),
+                --ambient-y 2.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -349,5 +374,37 @@
   .magnetic {
     transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
     will-change: transform;
+  }
+
+  /* ── Shimmer sweep button ─────────────────────────────── */
+  /* Light sweeps across on hover — matches the StickyCTA pattern */
+  .shimmer-btn {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shimmer-btn::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: translateX(-110%);
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.22) 50%,
+      transparent 100%
+    );
+    transition: transform 0.65s ease;
+    pointer-events: none;
+  }
+
+  .shimmer-btn:hover::after {
+    transform: translateX(110%);
+  }
+
+  /* Ensure button text stays above the shimmer pseudo-element */
+  .shimmer-btn > * {
+    position: relative;
+    z-index: 1;
   }
 }

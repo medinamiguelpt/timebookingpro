@@ -1,7 +1,7 @@
 "use client"
 
 import { useRef, useEffect, useMemo, useState } from "react"
-import { motion, animate, useScroll, useTransform, useMotionValue, useSpring } from "framer-motion"
+import { motion, animate, useScroll, useTransform, useMotionValue, useSpring, AnimatePresence } from "framer-motion"
 import { ArrowRight, CheckCircle, Phone, Calendar } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -256,6 +256,10 @@ export function Hero({ variant = "a" }: { variant?: "a" | "b" }) {
   const glowY = useTransform(scrollY, [0, 600], [0, 120])
   const glowOpacity = useTransform(scrollY, [0, 400], [1, 0])
 
+  // Scroll indicator: appears after hero animations settle, hides when user scrolls
+  const [showIndicator, setShowIndicator] = useState(false)
+  const [scrolledDown, setScrolledDown] = useState(false)
+
   const rawMouseX = useMotionValue(0)
   const rawMouseY = useMotionValue(0)
   const mouseX = useSpring(rawMouseX, { stiffness: 40, damping: 20 })
@@ -278,6 +282,23 @@ export function Hero({ variant = "a" }: { variant?: "a" | "b" }) {
     window.addEventListener("mousemove", onMove)
     return () => window.removeEventListener("mousemove", onMove)
   }, [rawMouseX, rawMouseY])
+
+  useEffect(() => {
+    // Show indicator after hero animations settle (PageIntro + hero reveals ≈ 1.8s total)
+    const showTimer = setTimeout(() => setShowIndicator(true), 1800)
+    // Hide permanently once user starts scrolling
+    const onScroll = () => {
+      if (window.scrollY > 60) setScrolledDown(true)
+    }
+    window.addEventListener("scroll", onScroll, { passive: true })
+    // Also hide on touch swipe (touchstart fires before scroll event on mobile)
+    window.addEventListener("touchstart", onScroll, { passive: true })
+    return () => {
+      clearTimeout(showTimer)
+      window.removeEventListener("scroll", onScroll)
+      window.removeEventListener("touchstart", onScroll)
+    }
+  }, [])
 
   const headline = HEADLINES[variant] ?? HEADLINES.a
 
@@ -398,6 +419,34 @@ export function Hero({ variant = "a" }: { variant?: "a" | "b" }) {
               <HeroMockup />
             </TiltCard>
           </motion.div>
+        </div>
+
+        {/* Scroll indicator — fades in after animations, out on first scroll */}
+        <div className="flex justify-center pt-10 pb-0">
+          <AnimatePresence>
+            {showIndicator && !scrolledDown && (
+              <motion.div
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 6 }}
+                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                className="flex flex-col items-center gap-2 select-none"
+                aria-hidden
+              >
+                <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground/45">
+                  Scroll
+                </span>
+                {/* Mouse-wheel icon */}
+                <div className="w-[18px] h-[28px] rounded-full border border-muted-foreground/25 flex items-start justify-center pt-[5px]">
+                  <motion.div
+                    className="w-[3px] h-[5px] rounded-full bg-muted-foreground/50"
+                    animate={{ y: [0, 9, 0], opacity: [1, 0.15, 1] }}
+                    transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+                  />
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </section>
