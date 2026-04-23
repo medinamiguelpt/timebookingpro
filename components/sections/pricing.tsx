@@ -172,23 +172,39 @@ export function Pricing({ defaultCountry = "GR" }: { defaultCountry?: CountryCod
 
         {/* Billing cycle toggle */}
         <div className="flex justify-center mb-10">
-          <div className="inline-flex items-center rounded-full bg-card border border-border p-1 gap-1">
+          <div className="inline-flex items-center rounded-full bg-card border border-border p-1">
             {(["monthly","yearly"] as BillingCycle[]).map(c => (
               <button
                 key={c}
                 onClick={() => setCycle(c)}
-                className={`relative px-5 h-8 rounded-full text-sm font-semibold transition-all duration-300 ${
-                  cycle === c ? "bg-primary text-primary-foreground shadow" : "text-muted-foreground hover:text-foreground"
+                className={`relative px-5 h-8 rounded-full text-sm font-semibold transition-colors ${
+                  cycle === c ? "text-primary-foreground" : "text-muted-foreground hover:text-foreground"
                 }`}
               >
-                {c === "monthly" ? "Monthly" : "Yearly"}
-                {c === "yearly" && (
-                  <span className={`ml-1.5 text-xs font-bold px-1.5 py-0.5 rounded-full transition-colors ${
-                    cycle === "yearly" ? "bg-white/20 text-white" : "bg-green-500/15 text-green-600 dark:text-green-400"
-                  }`}>
-                    -{yearlyPct}%
-                  </span>
+                {/* Sliding pill — layoutId makes it spring between buttons */}
+                {cycle === c && (
+                  <motion.span
+                    layoutId="pricing-pill"
+                    className="absolute inset-0 rounded-full bg-primary shadow"
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
                 )}
+                <span className="relative z-10 flex items-center gap-1.5">
+                  {c === "monthly" ? "Monthly" : "Yearly"}
+                  {c === "yearly" && (
+                    <motion.span
+                      key={cycle === "yearly" ? "y" : "n"}
+                      initial={cycle === "yearly" ? { scale: 0.4, opacity: 0 } : false}
+                      animate={{ scale: 1, opacity: 1 }}
+                      transition={{ type: "spring", stiffness: 500, damping: 18 }}
+                      className={`text-xs font-bold px-1.5 py-0.5 rounded-full ${
+                        cycle === "yearly" ? "bg-white/20 text-white" : "bg-green-500/15 text-green-600 dark:text-green-400"
+                      }`}
+                    >
+                      -{yearlyPct}%
+                    </motion.span>
+                  )}
+                </span>
               </button>
             ))}
           </div>

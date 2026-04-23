@@ -1,7 +1,7 @@
 "use client"
 
 import { useRef, useEffect, useState, useCallback } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion, AnimatePresence, useMotionValue, useSpring } from "framer-motion"
 import { Star, ChevronLeft, ChevronRight, Play, X } from "lucide-react"
 
 const TESTIMONIALS = [
@@ -149,6 +149,24 @@ function TestimonialCard({
   const z = isCenter ? 10 : 0
   const translateX = position === "left" ? "-14%" : position === "right" ? "14%" : "0%"
 
+  // Subtle content parallax on mouse hover — desktop/center card only
+  // Touch events don't fire onMouseMove so this is naturally mobile-safe
+  const mx = useMotionValue(0)
+  const my = useMotionValue(0)
+  const sx = useSpring(mx, { stiffness: 150, damping: 20 })
+  const sy = useSpring(my, { stiffness: 150, damping: 20 })
+
+  useEffect(() => {
+    if (!isCenter) { mx.set(0); my.set(0) }
+  }, [isCenter, mx, my])
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!isCenter) return
+    const rect = e.currentTarget.getBoundingClientRect()
+    mx.set(((e.clientX - rect.left) / rect.width - 0.5) * 10)
+    my.set(((e.clientY - rect.top) / rect.height - 0.5) * 8)
+  }
+
   return (
     <motion.div
       animate={{ rotateY, scale, opacity, translateX, zIndex: z }}
@@ -156,9 +174,16 @@ function TestimonialCard({
       style={{ transformStyle: "preserve-3d", willChange: "transform" }}
       className={`absolute top-0 w-full max-w-sm ${isCenter ? "cursor-default" : "cursor-pointer"}`}
     >
-      <div className={`group relative rounded-2xl border border-border bg-card flex flex-col gap-4 h-full overflow-hidden ${isCenter ? "shadow-2xl shadow-black/10" : ""}`}>
+      <div
+        className={`group relative rounded-2xl border border-border bg-card flex flex-col gap-4 h-full overflow-hidden ${isCenter ? "shadow-2xl shadow-black/10" : ""}`}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={() => { mx.set(0); my.set(0) }}
+      >
         <div className={`absolute inset-0 bg-gradient-to-br ${color} opacity-40 group-hover:opacity-70 transition-opacity pointer-events-none`} />
-        <div className="relative p-6 flex flex-col gap-4 h-full min-h-[220px]">
+        <motion.div
+          style={{ x: sx, y: sy }}
+          className="relative p-6 flex flex-col gap-4 h-full min-h-[220px]"
+        >
           <Stars count={stars} />
           <p className="text-sm text-foreground leading-relaxed flex-1">&ldquo;{quote}&rdquo;</p>
           <div className="flex items-center gap-3 pt-2 border-t border-border">
@@ -191,7 +216,7 @@ function TestimonialCard({
               </button>
             )}
           </div>
-        </div>
+        </motion.div>
       </div>
     </motion.div>
   )

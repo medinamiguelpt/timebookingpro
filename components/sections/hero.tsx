@@ -1,7 +1,7 @@
 "use client"
 
 import { useRef, useEffect, useMemo, useState } from "react"
-import { motion, animate, useScroll, useTransform, useMotionValue, useSpring, AnimatePresence } from "framer-motion"
+import { motion, animate, useScroll, useTransform, useMotionValue, useSpring, AnimatePresence, useInView } from "framer-motion"
 import { ArrowRight, CheckCircle, Phone, Calendar } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -50,17 +50,22 @@ function LiveWaveform() {
   )
 }
 
-function LiveStat({ initialValue, delay = 0.6, incrementMin = 1, incrementMax = 3, intervalMs = 5000 }: {
+function LiveStat({ initialValue, delay = 0.6, incrementMin = 1, incrementMax = 3, intervalMs = 5000, inView = true }: {
   initialValue: number
   delay?: number
   incrementMin?: number
   incrementMax?: number
   intervalMs?: number
+  inView?: boolean
 }) {
   const ref = useRef<HTMLParagraphElement>(null)
   const currentRef = useRef(initialValue)
+  const hasStarted = useRef(false)
 
   useEffect(() => {
+    // Only start once the stat is in the viewport
+    if (!inView || hasStarted.current) return
+    hasStarted.current = true
     const el = ref.current
     if (!el) return
 
@@ -86,20 +91,24 @@ function LiveStat({ initialValue, delay = 0.6, incrementMin = 1, incrementMax = 
     }, delay * 1000)
 
     return () => clearTimeout(mountTimer)
-  }, [initialValue, delay, incrementMin, incrementMax, intervalMs])
+  }, [inView, initialValue, delay, incrementMin, incrementMax, intervalMs])
 
   return <p ref={ref} className="text-2xl font-bold font-heading text-primary">0</p>
 }
 
-function LiveRevenue({ initialValue, delay = 0.8, intervalMs = 7000 }: {
+function LiveRevenue({ initialValue, delay = 0.8, intervalMs = 7000, inView = true }: {
   initialValue: number
   delay?: number
   intervalMs?: number
+  inView?: boolean
 }) {
   const displayRef = useRef<HTMLParagraphElement>(null)
   const currentRef = useRef(initialValue)
+  const hasStarted = useRef(false)
 
   useEffect(() => {
+    if (!inView || hasStarted.current) return
+    hasStarted.current = true
     const mountTimer = setTimeout(() => {
       const ticker = setInterval(() => {
         const increment = Math.floor(Math.random() * 60) + 30
@@ -117,7 +126,7 @@ function LiveRevenue({ initialValue, delay = 0.8, intervalMs = 7000 }: {
     }, delay * 1000)
 
     return () => clearTimeout(mountTimer)
-  }, [delay, intervalMs])
+  }, [inView, delay, intervalMs])
 
   return (
     <p ref={displayRef} className="text-xl font-bold font-heading text-gold">
@@ -127,8 +136,12 @@ function LiveRevenue({ initialValue, delay = 0.8, intervalMs = 7000 }: {
 }
 
 function HeroMockup() {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const inView = useInView(containerRef, { once: true, margin: "-50px" })
+
   return (
     <motion.div
+      ref={containerRef}
       className="relative mx-auto max-w-sm lg:max-w-none"
       animate={{ y: [0, -10, 0] }}
       transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
@@ -176,7 +189,7 @@ function HeroMockup() {
         transition={{ delay: 0.6, type: "spring" }}
       >
         <p className="text-[11px] text-muted-foreground">Calls handled today</p>
-        <LiveStat initialValue={47} delay={0.8} incrementMin={1} incrementMax={3} intervalMs={5000} />
+        <LiveStat initialValue={47} delay={0.8} incrementMin={1} incrementMax={3} intervalMs={5000} inView={inView} />
       </motion.div>
 
       <motion.div
@@ -186,7 +199,7 @@ function HeroMockup() {
         transition={{ delay: 0.8, type: "spring" }}
       >
         <p className="text-[11px] text-muted-foreground">Revenue booked</p>
-        <LiveRevenue initialValue={1240} delay={1.2} intervalMs={7000} />
+        <LiveRevenue initialValue={1240} delay={1.2} intervalMs={7000} inView={inView} />
       </motion.div>
     </motion.div>
   )

@@ -8,6 +8,7 @@ import { CustomCursor } from "@/components/ui/custom-cursor"
 import { PageIntro } from "@/components/ui/page-intro"
 import { ScrollProgress } from "@/components/ui/scroll-progress"
 import { ScrollHue } from "@/components/ui/scroll-hue"
+import { SectionSound } from "@/components/ui/section-sound"
 import "./globals.css"
 
 const inter = Inter({
@@ -61,6 +62,7 @@ export default function RootLayout({
         <CookieBanner />
         <ScrollHue />
         <AmbientShift />
+        <SectionSound />
         <CustomCursor />
         {/* Plausible Analytics — privacy-friendly, no cookies required */}
         <Script
