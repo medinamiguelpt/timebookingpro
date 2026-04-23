@@ -75,4 +75,11 @@ Never ask "should I push/deploy?" — just do it as part of every task.
   on the pricing section or the country picker.
 - Supported currencies on the pricing page: EUR (default), SEK, DKK, PLN.
   All other EU countries use EUR.
-- Default country = GR (Greece). Default currency = EUR.
+- Default country = GR (Greece). Default currency = EUR. Defaults are
+  DETERMINISTIC on the pricing page — no geo-IP guessing.
+- ONE dropdown on pricing (unified country+currency picker). Currency is
+  derived from country via `currencyForCountry(code)`. No separate currency
+  select, no "Buying for a business" checkbox, no VAT ID field — Stripe
+  Checkout handles VIES lookup + reverse-charge at checkout.
+- Option label format: `{flag} {country name} · {currency code}`
+  (e.g. `🇬🇷 Greece · EUR`). Matches the canonical dashboard.

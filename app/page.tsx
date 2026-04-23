@@ -1,6 +1,4 @@
 import { headers } from "next/headers"
-import { COUNTRY_ORDER } from "@/lib/vat"
-import type { CountryCode } from "@/lib/vat"
 import { Navbar } from "@/components/layout/navbar"
 import { Footer } from "@/components/layout/footer"
 import { Hero } from "@/components/sections/hero"
@@ -23,8 +21,8 @@ import { WaveDivider } from "@/components/ui/wave-divider"
 export default async function Home() {
   const headersList = await headers()
   const variant = (headersList.get("x-variant") ?? "a") as "a" | "b"
-  const geoCode = headersList.get("x-vercel-ip-country") ?? "GR"
-  const defaultCountry = (COUNTRY_ORDER.includes(geoCode as CountryCode) ? geoCode : "GR") as CountryCode
+  // Pricing section default is deterministic (GR / EUR) per the unified-picker brief —
+  // no geo-IP guessing on the pricing page. Geo headers stay available for other use cases.
 
   return (
     <>
@@ -39,7 +37,7 @@ export default async function Home() {
         <BeforeAfter />
         <WaveDivider opacity={0.6} flip />
         <ForWho />
-        <Pricing defaultCountry={defaultCountry} />
+        <Pricing />
         <WaveDivider opacity={0.5} />
         <Calculator />
         <FAQ />

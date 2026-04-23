@@ -29,8 +29,16 @@ export interface Currency {
 }
 
 export const CURRENCIES: Record<CurrencyCode, Currency> = {
+  // — Pickable currencies (EU-only scope, authoritative from the dashboard handoff) —
   EUR: { code: "EUR", locale: "en-IE", name: "Euro", flag: "🇪🇺", decimals: 2,
-    tierMonthly: { light:  99, standard:  179, busy:  299, heavy:   499 }, roundStep: 1 },
+    tierMonthly: { light:   99, standard:  179, busy:  299, heavy:  499 }, roundStep:  1 },
+  SEK: { code: "SEK", locale: "sv-SE", name: "Swedish Krona", flag: "🇸🇪", decimals: 2,
+    tierMonthly: { light: 1099, standard: 1999, busy: 3299, heavy: 5699 }, roundStep: 10 },
+  DKK: { code: "DKK", locale: "da-DK", name: "Danish Krone", flag: "🇩🇰", decimals: 2,
+    tierMonthly: { light:  749, standard: 1349, busy: 2249, heavy: 3699 }, roundStep: 10 },
+  PLN: { code: "PLN", locale: "pl-PL", name: "Polish Zloty", flag: "🇵🇱", decimals: 2,
+    tierMonthly: { light:  429, standard:  779, busy: 1299, heavy: 2149 }, roundStep:  1 },
+  // — Non-EU (kept for type/data consistency; never listed in the picker) —
   USD: { code: "USD", locale: "en-US", name: "US Dollar", flag: "🇺🇸", decimals: 2,
     tierMonthly: { light: 109, standard:  199, busy:  329, heavy:   549 }, roundStep: 1 },
   GBP: { code: "GBP", locale: "en-GB", name: "British Pound", flag: "🇬🇧", decimals: 2,
@@ -41,14 +49,8 @@ export const CURRENCIES: Record<CurrencyCode, Currency> = {
     tierMonthly: { light: 149, standard:  269, busy:  449, heavy:   749 }, roundStep: 1 },
   AUD: { code: "AUD", locale: "en-AU", name: "Australian Dollar", flag: "🇦🇺", decimals: 2,
     tierMonthly: { light: 169, standard:  299, busy:  499, heavy:   829 }, roundStep: 1 },
-  SEK: { code: "SEK", locale: "sv-SE", name: "Swedish Krona", flag: "🇸🇪", decimals: 2,
-    tierMonthly: { light: 1149, standard: 2049, busy: 3399, heavy:  5699 }, roundStep: 10 },
   NOK: { code: "NOK", locale: "nb-NO", name: "Norwegian Krone", flag: "🇳🇴", decimals: 2,
     tierMonthly: { light: 1149, standard: 2099, busy: 3499, heavy:  5799 }, roundStep: 10 },
-  DKK: { code: "DKK", locale: "da-DK", name: "Danish Krone", flag: "🇩🇰", decimals: 2,
-    tierMonthly: { light: 749, standard: 1349, busy: 2249, heavy:  3749 }, roundStep: 10 },
-  PLN: { code: "PLN", locale: "pl-PL", name: "Polish Zloty", flag: "🇵🇱", decimals: 2,
-    tierMonthly: { light: 449, standard:  799, busy: 1299, heavy:  2199 }, roundStep: 1 },
   AED: { code: "AED", locale: "en-AE", name: "UAE Dirham", flag: "🇦🇪", decimals: 2,
     tierMonthly: { light: 399, standard:  719, busy: 1199, heavy:  1999 }, roundStep: 1 },
   JPY: { code: "JPY", locale: "ja-JP", name: "Japanese Yen", flag: "🇯🇵", decimals: 0,

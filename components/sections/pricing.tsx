@@ -4,8 +4,8 @@ import { useState, useMemo, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { CheckCircle, ChevronDown } from "lucide-react"
 import { SUBSCRIPTION_TIERS, FEATURES_ON_EVERY_PLAN, quote, YEARLY_DISCOUNT, activeHolidayPromo, type BillingCycle } from "@/lib/pricing"
-import { CURRENCIES, CURRENCY_ORDER, type CurrencyCode } from "@/lib/currencies"
-import { COUNTRIES, COUNTRY_ORDER, isPlausibleVatId, VENDOR_COUNTRY, type CountryCode } from "@/lib/vat"
+import { type CurrencyCode } from "@/lib/currencies"
+import { COUNTRIES, COUNTRY_ORDER, type CountryCode } from "@/lib/vat"
 import { SpotlightCard } from "@/components/ui/spotlight-card"
 import { BottomSheet } from "@/components/ui/bottom-sheet"
 import { RevealWords } from "@/components/ui/reveal-words"
@@ -23,24 +23,34 @@ const FEATURE_TIPS: Record<string, string> = {
   "All 7 supported languages":         "Greek · English · Spanish · Portuguese · French · German · Arabic. Agent locks to the caller's language on first substantive word.",
 }
 
-// Map an EU country code to its default currency.
+// Strict country → currency mapping (EU-only scope).
 // Only SE/DK/PL have native tables; every other EU country falls back to EUR.
-function defaultCurrencyFor(country: CountryCode): CurrencyCode {
+function currencyForCountry(country: CountryCode): CurrencyCode {
   const map: Partial<Record<CountryCode, CurrencyCode>> = {
     SE: "SEK", DK: "DKK", PL: "PLN",
   }
   return map[country] ?? "EUR"
 }
 
-export function Pricing({ defaultCountry = "GR" }: { defaultCountry?: CountryCode }) {
+// Deterministic defaults per the unified-picker brief — no geo-IP guessing on the pricing page.
+const DEFAULT_COUNTRY: CountryCode = "GR"
+const DEFAULT_CURRENCY: CurrencyCode = "EUR"
+
+export function Pricing() {
   const [cycle, setCycle] = useState<BillingCycle>("monthly")
-  const [currencyCode, setCurrencyCode] = useState<CurrencyCode>(defaultCurrencyFor(defaultCountry))
-  const [countryCode, setCountryCode] = useState<CountryCode>(defaultCountry)
-  const [isBusiness, setIsBusiness] = useState(false)
-  const [vatId, setVatId] = useState("")
+  const [countryCode, setCountryCode] = useState<CountryCode>(DEFAULT_COUNTRY)
+  const [currencyCode, setCurrencyCode] = useState<CurrencyCode>(DEFAULT_CURRENCY)
   const [sheetIdx, setSheetIdx] = useState<number | null>(null)
   const [pressedTierIdx, setPressedTierIdx] = useState<number | null>(null)
   const pressTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  // Picking a country updates both country and currency in one setState batch
+  // (React auto-batches multiple setState calls in an event handler since v18,
+  // so the quote re-memoizes exactly once per user interaction).
+  const handleCountryChange = (code: CountryCode) => {
+    setCountryCode(code)
+    setCurrencyCode(currencyForCountry(code))
+  }
 
   const handleTierTouchStart = (idx: number) => () => {
     if (pressTimerRef.current) clearTimeout(pressTimerRef.current)
@@ -55,14 +65,13 @@ export function Pricing({ defaultCountry = "GR" }: { defaultCountry?: CountryCod
   }
 
   const country = COUNTRIES[countryCode]
-  const showVatId = isBusiness && country.eu && countryCode !== VENDOR_COUNTRY
-  const vatIdValid = showVatId ? isPlausibleVatId(country, vatId) : false
-  const hasValidVatId = showVatId && vatIdValid
   const promo = useMemo(() => activeHolidayPromo(cycle), [cycle])
 
+  // isBusiness + hasValidVatId are always false at the landing-page level.
+  // Stripe Checkout handles VIES lookup and reverse-charge for B2B with a valid VAT ID.
   const quotes = useMemo(() =>
-    SUBSCRIPTION_TIERS.map(tier => quote({ tier, cycle, currencyCode, countryCode, isBusiness, hasValidVatId })),
-    [cycle, currencyCode, countryCode, isBusiness, hasValidVatId]
+    SUBSCRIPTION_TIERS.map(tier => quote({ tier, cycle, currencyCode, countryCode, isBusiness: false, hasValidVatId: false })),
+    [cycle, currencyCode, countryCode]
   )
 
   const yearlyPct = Math.round(YEARLY_DISCOUNT * 100)
@@ -114,93 +123,38 @@ export function Pricing({ defaultCountry = "GR" }: { defaultCountry?: CountryCod
           )}
         </AnimatePresence>
 
-        {/* Controls row */}
-        <div className="flex flex-wrap items-end gap-4 mb-6">
-          {/* Currency */}
+        {/* Unified picker — one dropdown, currency implied by country.
+            Matches the canonical dashboard at dashboard-sooty-seven-64.vercel.app/dashboard. */}
+        <div className="flex justify-center mb-6">
           <div className="flex flex-col gap-1">
-            <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">Currency</label>
+            <label
+              htmlFor="pricing-country"
+              className="text-xs font-semibold text-muted-foreground uppercase tracking-wide text-center"
+            >
+              Country
+            </label>
             <div className="relative">
               <select
-                value={currencyCode}
-                onChange={e => setCurrencyCode(e.target.value as CurrencyCode)}
-                className="appearance-none pl-3 pr-8 h-9 rounded-lg border border-border bg-card text-sm text-foreground outline-none focus:border-primary/50 transition-colors cursor-pointer"
-                aria-label="Select currency"
-              >
-                {CURRENCY_ORDER.map(code => {
-                  const c = CURRENCIES[code]
-                  return <option key={code} value={code}>{c.flag} {c.code} — {c.name}</option>
-                })}
-              </select>
-              <ChevronDown size={14} className="absolute right-2.5 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none" />
-            </div>
-          </div>
-
-          {/* Country */}
-          <div className="flex flex-col gap-1">
-            <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">Billing country</label>
-            <div className="relative">
-              <select
+                id="pricing-country"
                 value={countryCode}
-                onChange={e => { setCountryCode(e.target.value as CountryCode); setVatId("") }}
-                className="appearance-none pl-3 pr-8 h-9 rounded-lg border border-border bg-card text-sm text-foreground outline-none focus:border-primary/50 transition-colors cursor-pointer"
-                aria-label="Select billing country"
+                onChange={e => handleCountryChange(e.target.value as CountryCode)}
+                className="appearance-none pl-3 pr-9 h-10 rounded-lg border border-border bg-card text-sm text-foreground outline-none focus:border-primary/50 transition-colors cursor-pointer min-w-[220px]"
+                aria-label="Select country"
               >
                 {COUNTRY_ORDER.map(code => {
                   const c = COUNTRIES[code]
-                  const pct = c.vatRate > 0 ? ` · ${Math.round(c.vatRate*100)}% ${c.taxLabel}` : " · No tax"
-                  return <option key={code} value={code}>{c.flag} {c.name}{pct}</option>
+                  const curr = currencyForCountry(code)
+                  return (
+                    <option key={code} value={code}>
+                      {c.flag} {c.name} · {curr}
+                    </option>
+                  )
                 })}
               </select>
-              <ChevronDown size={14} className="absolute right-2.5 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none" />
+              <ChevronDown size={14} className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none" />
             </div>
           </div>
-
-          {/* Business checkbox */}
-          <label className="flex items-center gap-2 cursor-pointer h-9 text-sm text-foreground select-none">
-            <input
-              type="checkbox"
-              checked={isBusiness}
-              onChange={e => { setIsBusiness(e.target.checked); setVatId("") }}
-              className="w-4 h-4 rounded accent-primary cursor-pointer"
-            />
-            Buying for a business
-          </label>
         </div>
-
-        {/* VAT ID input */}
-        <AnimatePresence>
-          {showVatId && (
-            <motion.div
-              initial={{ opacity:0, height:0 }} animate={{ opacity:1, height:"auto" }} exit={{ opacity:0, height:0 }}
-              transition={{ duration:0.25 }}
-              className="mb-6 overflow-hidden"
-            >
-              <div className="flex flex-col gap-1 max-w-xs">
-                <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
-                  VAT ID (optional — enables reverse charge)
-                </label>
-                <input
-                  type="text"
-                  value={vatId}
-                  onChange={e => setVatId(e.target.value)}
-                  placeholder={country.vatIdExample ?? "e.g. DE123456789"}
-                  aria-describedby="vat-explanation"
-                  className={`h-9 px-3 rounded-lg border text-sm text-foreground bg-card outline-none transition-colors ${
-                    vatId.length > 2
-                      ? vatIdValid ? "border-green-500/60 focus:border-green-500" : "border-destructive/60 focus:border-destructive"
-                      : "border-border focus:border-primary/50"
-                  }`}
-                />
-                {vatId.length > 2 && !vatIdValid && (
-                  <p className="text-xs text-destructive">Invalid format — check your VAT ID</p>
-                )}
-                <p id="vat-explanation" className="text-xs text-muted-foreground">
-                  {quotes[0]?.vat.explanation}
-                </p>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
 
         {/* Billing cycle toggle */}
         <div className="flex justify-center mb-10">
