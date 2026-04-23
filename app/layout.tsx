@@ -3,6 +3,7 @@ import { Inter, Plus_Jakarta_Sans } from "next/font/google"
 import Script from "next/script"
 import { Providers } from "@/components/providers"
 import { CookieBanner } from "@/components/ui/cookie-banner"
+import { CustomCursor } from "@/components/ui/custom-cursor"
 import { ScrollProgress } from "@/components/ui/scroll-progress"
 import { ScrollHue } from "@/components/ui/scroll-hue"
 import "./globals.css"
@@ -56,6 +57,7 @@ export default function RootLayout({
         <Providers>{children}</Providers>
         <CookieBanner />
         <ScrollHue />
+        <CustomCursor />
         {/* Plausible Analytics — privacy-friendly, no cookies required */}
         <Script
           defer

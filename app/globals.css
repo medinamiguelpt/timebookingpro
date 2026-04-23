@@ -91,6 +91,18 @@
     @apply border-border outline-ring/50;
   }
 
+  /* Brand-colored text selection */
+  ::selection {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+  }
+
+  /* Hide native cursor when custom cursor is active */
+  .custom-cursor,
+  .custom-cursor * {
+    cursor: none !important;
+  }
+
   html {
     @apply scroll-smooth;
     overflow-x: hidden;
