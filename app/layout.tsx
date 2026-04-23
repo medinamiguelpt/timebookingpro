@@ -4,7 +4,6 @@ import Script from "next/script"
 import { Providers } from "@/components/providers"
 import { CookieBanner } from "@/components/ui/cookie-banner"
 import { ScrollProgress } from "@/components/ui/scroll-progress"
-import { SocialProof } from "@/components/ui/social-proof"
 import { ScrollHue } from "@/components/ui/scroll-hue"
 import "./globals.css"
 
@@ -56,7 +55,6 @@ export default function RootLayout({
         <ScrollProgress />
         <Providers>{children}</Providers>
         <CookieBanner />
-        <SocialProof />
         <ScrollHue />
         {/* Plausible Analytics — privacy-friendly, no cookies required */}
         <Script
