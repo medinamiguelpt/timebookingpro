@@ -53,12 +53,17 @@ export function BottomSheet({ open, onClose, title, children }: BottomSheetProps
             exit={{ y: "100%" }}
             transition={{ type: "spring", stiffness: 350, damping: 38 }}
             // Only draggable via the handle (dragListener:false lets content scroll freely)
+            // dragSnapToOrigin springs back when released without triggering close
             drag="y"
             dragControls={dragControls}
             dragListener={false}
             dragConstraints={{ top: 0 }}
-            dragElastic={{ top: 0.05, bottom: 0.5 }}
-            onDragEnd={(_, info) => { if (info.offset.y > 80) onClose() }}
+            dragElastic={{ top: 0.05, bottom: 0.4 }}
+            dragSnapToOrigin
+            onDragEnd={(_, info) => {
+              // Close on large drag OR fast fling (velocity > 500px/s)
+              if (info.offset.y > 80 || info.velocity.y > 500) onClose()
+            }}
           >
             {/* Drag handle — the ONLY drag start point */}
             <div

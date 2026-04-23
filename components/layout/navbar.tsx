@@ -149,6 +149,7 @@ export function Navbar() {
 
           <a
             href="#get-started"
+            data-ripple
             className="shimmer-btn hidden md:inline-flex items-center justify-center bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-full px-5 h-9 text-sm transition-colors"
           >
             Get Started

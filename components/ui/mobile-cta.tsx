@@ -39,6 +39,7 @@ export function MobileCTA() {
             </div>
             <a
               href="#get-started"
+              data-ripple
               className="shimmer-btn shrink-0 flex items-center gap-1.5 bg-primary text-white font-semibold rounded-full px-4 py-2.5 text-sm shadow-lg shadow-primary/30"
             >
               <Sparkles size={13} className="shrink-0" />

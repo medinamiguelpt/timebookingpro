@@ -10,6 +10,7 @@ import { ScrollProgress } from "@/components/ui/scroll-progress"
 import { ScrollHue } from "@/components/ui/scroll-hue"
 import { SectionSound } from "@/components/ui/section-sound"
 import { ScrollToTop } from "@/components/ui/scroll-to-top"
+import { RippleGlobal } from "@/components/ui/ripple-global"
 import "./globals.css"
 
 const inter = Inter({
@@ -65,6 +66,7 @@ export default function RootLayout({
         <AmbientShift />
         <SectionSound />
         <ScrollToTop />
+        <RippleGlobal />
         <CustomCursor />
         {/* Plausible Analytics — privacy-friendly, no cookies required */}
         <Script

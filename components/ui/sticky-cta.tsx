@@ -40,6 +40,7 @@ export function StickyCTA() {
         {/* Right: CTA button */}
         <motion.a
           href="#get-started"
+          data-ripple
           className="relative shrink-0 group flex items-center gap-2.5 bg-primary text-white font-semibold rounded-full px-7 py-3.5 text-sm overflow-hidden shadow-xl shadow-primary/40"
           whileHover={{ scale: 1.04 }}
           whileTap={{ scale: 0.97 }}

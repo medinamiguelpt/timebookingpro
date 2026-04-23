@@ -232,6 +232,11 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes ripple {
+  from { transform: scale(0); opacity: 0.5; }
+  to   { transform: scale(1); opacity: 0; }
+}
+
 /* ── Utility classes ────────────────────────────────────── */
 @layer utilities {
   .text-balance {

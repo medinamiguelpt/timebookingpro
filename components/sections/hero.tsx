@@ -60,39 +60,39 @@ function LiveStat({ initialValue, delay = 0.6, incrementMin = 1, incrementMax = 
 }) {
   const ref = useRef<HTMLParagraphElement>(null)
   const currentRef = useRef(initialValue)
-  const hasStarted = useRef(false)
+  // Two-phase: skeleton → number. Split into two effects so ref is mounted before count-up reads it.
+  const [started, setStarted] = useState(false)
 
   useEffect(() => {
-    // Only start once the stat is in the viewport
-    if (!inView || hasStarted.current) return
-    hasStarted.current = true
+    if (!inView || started) return
+    setStarted(true)
+  }, [inView, started])
+
+  useEffect(() => {
+    if (!started) return
     const el = ref.current
     if (!el) return
-
+    let ticker: ReturnType<typeof setInterval>
+    let controls: ReturnType<typeof animate>
     const mountTimer = setTimeout(() => {
-      const controls = animate(0, initialValue, {
-        duration: 1.6,
-        ease: [0.22, 1, 0.36, 1],
+      controls = animate(0, initialValue, {
+        duration: 1.6, ease: [0.22, 1, 0.36, 1],
         onUpdate(v) { el.textContent = String(Math.round(v)) },
       })
-
-      const ticker = setInterval(() => {
+      ticker = setInterval(() => {
         const increment = Math.floor(Math.random() * (incrementMax - incrementMin + 1)) + incrementMin
         const prev = currentRef.current
         currentRef.current = prev + increment
         animate(prev, currentRef.current, {
-          duration: 0.8,
-          ease: [0.22, 1, 0.36, 1],
+          duration: 0.8, ease: [0.22, 1, 0.36, 1],
           onUpdate(v) { if (el) el.textContent = String(Math.round(v)) },
         })
       }, intervalMs)
-
-      return () => { controls.stop(); clearInterval(ticker) }
     }, delay * 1000)
+    return () => { clearTimeout(mountTimer); controls?.stop(); clearInterval(ticker) }
+  }, [started, initialValue, delay, incrementMin, incrementMax, intervalMs])
 
-    return () => clearTimeout(mountTimer)
-  }, [inView, initialValue, delay, incrementMin, incrementMax, intervalMs])
-
+  if (!started) return <div className="h-7 w-10 rounded-md bg-primary/20 animate-pulse" aria-hidden />
   return <p ref={ref} className="text-2xl font-bold font-heading text-primary">0</p>
 }
 
@@ -104,30 +104,33 @@ function LiveRevenue({ initialValue, delay = 0.8, intervalMs = 7000, inView = tr
 }) {
   const displayRef = useRef<HTMLParagraphElement>(null)
   const currentRef = useRef(initialValue)
-  const hasStarted = useRef(false)
+  const [started, setStarted] = useState(false)
 
   useEffect(() => {
-    if (!inView || hasStarted.current) return
-    hasStarted.current = true
+    if (!inView || started) return
+    setStarted(true)
+  }, [inView, started])
+
+  useEffect(() => {
+    if (!started) return
+    let ticker: ReturnType<typeof setInterval>
     const mountTimer = setTimeout(() => {
-      const ticker = setInterval(() => {
+      ticker = setInterval(() => {
         const increment = Math.floor(Math.random() * 60) + 30
         const prev = currentRef.current
         currentRef.current = prev + increment
         const el = displayRef.current
         if (!el) return
         animate(prev, currentRef.current, {
-          duration: 0.9,
-          ease: [0.22, 1, 0.36, 1],
+          duration: 0.9, ease: [0.22, 1, 0.36, 1],
           onUpdate(v) { if (el) el.textContent = "€" + Math.round(v).toLocaleString() },
         })
       }, intervalMs)
-      return () => clearInterval(ticker)
     }, delay * 1000)
+    return () => { clearTimeout(mountTimer); clearInterval(ticker) }
+  }, [started, delay, intervalMs])
 
-    return () => clearTimeout(mountTimer)
-  }, [inView, delay, intervalMs])
-
+  if (!started) return <div className="h-6 w-20 rounded-md bg-gold/20 animate-pulse" aria-hidden />
   return (
     <p ref={displayRef} className="text-xl font-bold font-heading text-gold">
       €{initialValue.toLocaleString()}
@@ -420,13 +423,13 @@ export function Hero({ variant = "a" }: { variant?: "a" | "b" }) {
             </motion.p>
           </div>
 
-          {/* Right — Mockup with parallax */}
+          {/* Right — Mockup with parallax + blur-in entrance */}
           <motion.div
             className="lg:pl-8"
             style={{ x: mockupX, y: mockupY }}
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            initial={{ opacity: 0, x: 20, filter: "blur(8px)" }}
+            animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+            transition={{ duration: 0.75, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
           >
             <TiltCard maxTilt={8} scale={1.015}>
               <HeroMockup />

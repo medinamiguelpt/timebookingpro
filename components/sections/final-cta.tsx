@@ -301,6 +301,7 @@ export function FinalCTA() {
                 />
                 <button
                   type="submit"
+                  data-ripple
                   disabled={state === "loading"}
                   className="shimmer-btn flex items-center gap-2 whitespace-nowrap bg-primary hover:bg-primary/90 disabled:opacity-60 text-white font-semibold rounded-full px-7 h-13 text-sm shadow-2xl shadow-primary/40 transition-colors"
                 >
