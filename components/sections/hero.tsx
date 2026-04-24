@@ -295,7 +295,8 @@ function HeroMockup() {
       </motion.div>
 
       <motion.div
-        className="absolute -bottom-4 -left-4 lg:-left-8 bg-card border border-border rounded-xl shadow-lg px-4 py-2.5"
+        // Moved to bottom-right so it doesn't cover the "Booking confirmed" banner
+        className="absolute -bottom-4 -right-4 lg:-right-8 bg-card border border-border rounded-xl shadow-lg px-4 py-2.5"
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.8, type: "spring" }}
