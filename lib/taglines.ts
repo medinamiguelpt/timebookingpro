@@ -19,7 +19,6 @@ export const TAGLINES = {
   agentNamer: [
     "Meet your AI teammate",
     "Name your booking specialist",
-    "Pick a voice for your business",
     "Design your AI receptionist",
     "Your agent, your personality",
   ],

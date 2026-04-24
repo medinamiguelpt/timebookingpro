@@ -104,8 +104,8 @@ const FEATURES: Feature[] = [
   {
     icon: ShieldCheck,
     iconAnim: "group-hover:scale-110 group-hover:rotate-[-8deg]",
-    title: "Fully customisable",
-    body: "Name, voice, personality — your brand, your agent.",
+    title: "Tailored to your brand",
+    body: "Name, personality, script — your words, your agent.",
     accent: "#EC4899",
     accentBg: "rgba(236,72,153,0.08)",
     span: "normal",

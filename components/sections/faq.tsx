@@ -45,8 +45,8 @@ const FAQS = [
     a: "Your agent acts as a first responder — it handles bookings automatically so your team can focus on higher-value tasks. It's not a replacement, it's an upgrade.",
   },
   {
-    q: "Can I change my agent's voice or name later?",
-    a: "Yes. From the dashboard you can update your agent's name, voice, and conversation style at any time. Changes go live within minutes.",
+    q: "Can I change my agent's name or style later?",
+    a: "Yes. From the dashboard you can update your agent's name and conversation style at any time. Changes go live within minutes.",
   },
   {
     q: "Is there a long-term contract?",

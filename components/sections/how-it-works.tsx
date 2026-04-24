@@ -45,7 +45,7 @@ const VISUAL_PANELS = [
     accent: "#7C3AED",
     icon: "⚙️",
     title: "Agent configured",
-    lines: ["Business name ✓", "Hours set ✓", "Services: Haircut, Shave, Beard Trim... ✓", "Voice & language selected ✓"],
+    lines: ["Business name ✓", "Hours set ✓", "Services: Haircut, Shave, Beard Trim... ✓", "Language set ✓"],
   },
   {
     accent: "#0EA5E9",
