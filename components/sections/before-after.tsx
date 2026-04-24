@@ -10,15 +10,11 @@ const ROWS = [
   },
   {
     before: "Call goes to voicemail",
-    after:  "Caller greeted by name, in their language",
+    after:  "Caller welcomed in their language",
   },
   {
     before: "Customer books with a competitor",
     after:  "Booking confirmed in under 90 seconds",
-  },
-  {
-    before: "8 missed bookings this week",
-    after:  "Every booking captured, 24/7",
   },
   {
     before: "Weekend calls go unanswered",
