@@ -129,8 +129,8 @@ export function Calculator({ headline = "See what missed calls cost you" }: { he
             <div className="p-7 flex flex-col gap-5 bg-gradient-to-br from-primary/5 to-transparent">
               <div className="grid grid-cols-2 gap-3">
                 {[
-                  { label: "Monthly calls",      value: stats.monthlyCalls.toLocaleString(),    suffix: "" },
-                  { label: "Missed per month",   value: stats.missedPerMonth.toLocaleString(),  suffix: "" },
+                  { label: "Monthly calls",      value: stats.monthlyCalls.toLocaleString("en-US"),    suffix: "" },
+                  { label: "Missed per month",   value: stats.missedPerMonth.toLocaleString("en-US"),  suffix: "" },
                 ].map(({ label, value }) => (
                   <div key={label} className="rounded-xl border border-border bg-card/80 p-3.5 text-center">
                     <p className="text-[11px] text-muted-foreground mb-1">{label}</p>

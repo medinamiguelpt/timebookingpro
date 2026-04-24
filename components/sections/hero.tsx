@@ -134,7 +134,7 @@ function LiveRevenue({ initialValue, delay = 0.8, intervalMs = 7000, inView = tr
         setTimeout(() => setDelta(null), 1200)
         animate(prev, currentRef.current, {
           duration: 0.9, ease: [0.22, 1, 0.36, 1],
-          onUpdate(v) { if (el) el.textContent = "€" + Math.round(v).toLocaleString() },
+          onUpdate(v) { if (el) el.textContent = "€" + Math.round(v).toLocaleString("en-US") },
         })
       }, intervalMs)
     }, delay * 1000)
@@ -162,7 +162,7 @@ function LiveRevenue({ initialValue, delay = 0.8, intervalMs = 7000, inView = tr
         )}
       </AnimatePresence>
       <p ref={displayRef} className="text-xl font-bold font-heading text-gold">
-        €{initialValue.toLocaleString()}
+        €{initialValue.toLocaleString("en-US")}
       </p>
     </div>
   )
