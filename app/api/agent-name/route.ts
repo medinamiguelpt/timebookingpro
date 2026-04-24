@@ -36,11 +36,14 @@ Reply with ONLY the 5 names as a JSON array of strings, nothing else. Example: [
       throw new Error("Invalid response format")
     }
 
-    return NextResponse.json({ names: names.slice(0, 5) })
+    return NextResponse.json({ ok: true, names: names.slice(0, 5) })
   } catch (err) {
     console.error("[agent-name] Error:", err)
+    // 200 so the frontend doesn't land in its catch block; `ok: false` tells
+    // it we're serving the static fallback (missing/invalid ANTHROPIC_API_KEY,
+    // rate limit, parse failure, etc.) so it can surface a clear message.
     return NextResponse.json(
-      { names: ["Max", "Nova", "Aria", "Leo", "Sage"] },
+      { ok: false, names: ["Max", "Nova", "Aria", "Leo", "Sage"] },
       { status: 200 }
     )
   }

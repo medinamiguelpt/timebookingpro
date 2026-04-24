@@ -28,12 +28,14 @@ export function AgentNamer({ headline = "Meet your AI teammate" }: { headline?: 
   const [business, setBusiness] = useState("")
   const [suggestions, setSuggestions] = useState(DEFAULT_SUGGESTIONS)
   const [generating, setGenerating] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   const displayName = name.trim() || "Max"
   const displayBusiness = business.trim() || "your barbershop"
 
   const generateNames = async () => {
     setGenerating(true)
+    setError(null)
     try {
       const res = await fetch("/api/agent-name", {
         method: "POST",
@@ -41,9 +43,13 @@ export function AgentNamer({ headline = "Meet your AI teammate" }: { headline?: 
         body: JSON.stringify({ business: business.trim() }),
       })
       const data = await res.json()
-      if (Array.isArray(data.names)) setSuggestions(data.names)
+      if (data.ok && Array.isArray(data.names)) {
+        setSuggestions(data.names)
+      } else {
+        setError("AI naming is taking a break — try again in a moment.")
+      }
     } catch {
-      // fall back to defaults silently
+      setError("Couldn't reach the name service. Check your connection.")
     } finally {
       setGenerating(false)
     }
@@ -152,6 +158,12 @@ export function AgentNamer({ headline = "Meet your AI teammate" }: { headline?: 
                 )}
                 {generating ? "Generating…" : "Generate AI names for my business"}
               </button>
+
+              {error && (
+                <p role="alert" className="text-xs text-destructive mt-1" aria-live="polite">
+                  {error}
+                </p>
+              )}
             </div>
 
             <Button
