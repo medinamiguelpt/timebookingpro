@@ -147,13 +147,16 @@ function LiveRevenue({ initialValue, delay = 0.8, intervalMs = 7000, inView = tr
     <div className="relative">
       <AnimatePresence>
         {delta && (
+          // Float the delta ABOVE the whole badge so it doesn't collide with
+          // the "Revenue booked" label. It rises up and fades out into empty
+          // space above the mockup card — classic stock-ticker feel.
           <motion.span
             key={delta.id}
-            className="absolute -top-4 right-0 text-[11px] font-bold text-gold pointer-events-none"
-            initial={{ opacity: 0, y: 4 }}
-            animate={{ opacity: 1, y: -2 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+            className="absolute -top-12 right-0 text-[11px] font-bold text-gold pointer-events-none whitespace-nowrap"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -14 }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           >
             {delta.amount}
           </motion.span>
