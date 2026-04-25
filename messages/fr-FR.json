@@ -6,14 +6,14 @@
     "features": [
       "Tout ce dont votre entreprise a besoin",
       "Conçu pour gérer toutes les réservations",
-      "Un seul agent, tous les outils dont vous avez besoin",
+      "Un seul système d'IA, tous les outils dont vous avez besoin",
       "Toutes les fonctionnalités qui comptent",
       "Chaque appel est traité, à chaque fois"
     ],
     "beforeAfter": [
-      "Quels sont les changements lorsque vous ajoutez un agent ?",
+      "Quels sont les changements lorsque vous ajoutez un système d'IA ?",
       "La différence, ligne par ligne",
-      "Votre journée avec un agent",
+      "Votre journée avec un système d'IA",
       "Découvrez la comparaison côte à côte",
       "Et ce ne sont là que quelques exemples"
     ],
@@ -34,17 +34,17 @@
     "finalCta": [
       "Leur agenda ne se remplira pas tout seul, mais le vôtre, oui.",
       "Mettez en marche votre *système de réservation*",
-      "Commencez par *votre propre agent*",
+      "Commencez par *votre propre système d'IA*",
       "Mettez votre calendrier en avant"
     ]
   },
   "metadata": {
     "title": "TimeBookingPro — Vos réservations, prises en charge.",
-    "description": "TimeBookingPro développe des assistants vocaux basés sur l'IA qui gèrent les réservations et les rendez-vous pour les salons de coiffure et les petites entreprises — 24 heures sur 24, 7 jours sur 7, de manière entièrement automatisée.",
+    "description": "TimeBookingPro développe une IA vocale qui gère les réservations et les rendez-vous pour les salons de coiffure et les petites entreprises — 24 heures sur 24, 7 jours sur 7, de manière entièrement automatisée.",
     "ogTitle": "TimeBookingPro — Vos réservations, prises en charge.",
-    "ogDescription": "Des assistants vocaux basés sur l'IA qui gèrent les réservations pour votre entreprise — 24 heures sur 24, 7 jours sur 7, de manière entièrement automatique.",
+    "ogDescription": "Une IA vocale qui gère les réservations pour votre entreprise — 24 heures sur 24, 7 jours sur 7, de manière entièrement automatique.",
     "twitterTitle": "TimeBookingPro — Vos réservations, prises en charge.",
-    "twitterDescription": "Des assistants vocaux basés sur l'IA qui gèrent les réservations pour votre entreprise — 24 heures sur 24, 7 jours sur 7, de manière entièrement automatique.",
+    "twitterDescription": "Une IA vocale qui gère les réservations pour votre entreprise — 24 heures sur 24, 7 jours sur 7, de manière entièrement automatique.",
     "siteName": "TimeBookingPro"
   },
   "navbar": {
@@ -56,7 +56,7 @@
     "toggleMenu": "Afficher le menu"
   },
   "footer": {
-    "tagline": "Des assistants vocaux basés sur l'IA qui gèrent votre agenda — 24 heures sur 24.",
+    "tagline": "Une IA vocale qui gère votre agenda — 24 heures sur 24.",
     "rightsReserved": "Tous droits réservés.",
     "madeWithCare": "Conçu avec soin pour les entreprises indépendantes."
   },
@@ -105,7 +105,7 @@
     "rows": [
       {
         "before": "Le téléphone sonne à 19 h — vous êtes en plein milieu d'une découpe",
-        "after": "Un agent répond en moins de 2 secondes"
+        "after": "L'IA répond en moins de 2 secondes"
       },
       {
         "before": "Le client passe commande auprès d'un concurrent",
@@ -139,7 +139,7 @@
     "sheetTitle": "{name} plan",
     "includedHeading": "Inclus",
     "microcopyHardCap": "Toutes les formules comprennent la synchronisation des réservations avec votre calendrier, un e-mail de suivi et les 7 langues prises en charge. Le nombre de minutes est plafonné chaque mois : une fois ce quota épuisé, les appels sont redirigés vers la messagerie vocale jusqu'au prochain cycle de facturation ou jusqu'à ce que vous passiez à une formule supérieure. Vous recevrez des alertes par e-mail lorsque vous aurez utilisé 25 %, 50 %, 75 % et 90 % de votre quota, afin que vous ne soyez jamais pris au dépourvu.",
-    "taxLine": "{flag} Les taxes indiquées concernent le site {country}{note}. Les prix affichés s'entendent hors TVA — la TVA est calculée lors du paiement.",
+    "taxLine": "{flag} Les taxes indiquées concernent <bold>{country}</bold>{note}. Les prix affichés s'entendent hors TVA — la TVA est calculée lors du paiement.",
     "taxLineNoteSeparator": " — ",
     "tiers": {
       "light": {
@@ -175,7 +175,7 @@
       "minutes1000": "Environ 30 appels par jour. Limite stricte : la messagerie vocale prend le relais une fois ce quota atteint.",
       "calendarSync": "Google, Outlook, Apple et iCal — synchronisation bidirectionnelle en temps réel.",
       "performanceEmail": "Les réservations traitées, les minutes utilisées, les heures de plus forte affluence — tout cela directement dans votre boîte de réception.",
-      "languages": "Grec · Anglais · Espagnol · Portugais · Français · Allemand · Arabe. L'agent se verrouille sur la langue de l'appelant dès le premier mot significatif."
+      "languages": "Grec · Anglais · Espagnol · Portugais · Français · Allemand · Arabe. L'IA se verrouille sur la langue de l'appelant dès le premier mot significatif."
     },
     "countries": {
       "GR": "Grèce",
@@ -214,7 +214,7 @@
       {
         "label": "Salons de coiffure pour hommes",
         "headline": "Ne perdez plus de rendez-vous pendant que vous êtes en train de coiffer",
-        "body": "Chaque appel manqué, c'est une coupe de cheveux manquée. Votre agent répond immédiatement, vérifie votre agenda et fixe le rendez-vous — pour que vous puissiez vous concentrer sur la coupe.",
+        "body": "Chaque appel manqué, c'est une coupe de cheveux manquée. Votre système d'IA répond immédiatement, vérifie votre agenda et fixe le rendez-vous — pour que vous puissiez vous concentrer sur la coupe.",
         "perks": [
           "Connaît les horaires individuels de vos coiffeurs",
           "Envoie automatiquement les confirmations de réservation",
@@ -224,7 +224,7 @@
       {
         "label": "Salons",
         "headline": "Une réceptionniste qui ne prend jamais de jour de congé",
-        "body": "Des rendez-vous chez le coiffeur aux annulations de dernière minute, votre agent s'occupe de tout — sans jamais mettre un client en attente.",
+        "body": "Des rendez-vous chez le coiffeur aux annulations de dernière minute, votre système d'IA s'occupe de tout — sans jamais mettre un client en attente.",
         "perks": [
           "Répertoriez les stylistes par leur nom",
           "Gère les différences de durée des services",
@@ -235,7 +235,7 @@
       {
         "label": "Spa",
         "headline": "Permettez à vos clients de se détendre — dès le premier appel",
-        "body": "Votre agent se charge de prendre les rendez-vous pour les soins, de répondre aux questions concernant les services et de gérer les changements d'horaires, afin que votre équipe puisse se consacrer entièrement à l'expérience client.",
+        "body": "Votre système d'IA se charge de prendre les rendez-vous pour les soins, de répondre aux questions concernant les services et de gérer les changements d'horaires, afin que votre équipe puisse se consacrer entièrement à l'expérience client.",
         "perks": [
           "Réservez des massages, des soins du visage et des soins",
           "Permet de gérer la planification des horaires pour plusieurs thérapeutes",
@@ -246,7 +246,7 @@
       {
         "label": "Salons de manucure et de beauté",
         "headline": "Gardez votre chaise occupée sans lever le petit doigt",
-        "body": "Des soins au gel aux extensions de cils, votre conseiller connaît vos services et vous réserve le créneau qui vous convient auprès du technicien adéquat — à chaque fois.",
+        "body": "Des soins au gel aux extensions de cils, votre système d'IA connaît vos services et vous réserve le créneau qui vous convient auprès du technicien adéquat — à chaque fois.",
         "perks": [
           "Répertoriez les techniciens par spécialité",
           "Gère les différences de durée des services",
@@ -257,7 +257,7 @@
       {
         "label": "Salles de sport et studios",
         "headline": "Remplissez chaque cours, chaque séance",
-        "body": "Qu'il s'agisse de séances d'entraînement personnalisées ou de cours collectifs, votre agent veille à ce que votre planning soit bien rempli et à ce que vos adhérents soient tenus informés.",
+        "body": "Qu'il s'agisse de séances d'entraînement personnalisées ou de cours collectifs, votre système d'IA veille à ce que votre planning soit bien rempli et à ce que vos adhérents soient tenus informés.",
         "perks": [
           "Cours collectifs et séances individuelles",
           "Gère les limites de capacité des classes",
@@ -269,12 +269,12 @@
   },
   "features": {
     "eyebrow": "Caractéristiques",
-    "subheadline": "Un seul interlocuteur. Disponible 24 heures sur 24, 7 jours sur 7. Un agenda qui se remplit tout seul.",
+    "subheadline": "Un seul système d'IA. Disponible 24 heures sur 24, 7 jours sur 7. Un agenda qui se remplit tout seul.",
     "cards": [
       {
         "title": "Disponible 24 heures sur 24, 7 jours sur 7",
-        "body": "Il ne dort jamais, ne prend jamais de pause. Votre agent répond à tous les appels le week-end, la nuit et les jours fériés.",
-        "statLabel": "vivre, toujours"
+        "body": "Il ne dort jamais, ne prend jamais de pause. Votre système d'IA répond à tous les appels le week-end, la nuit et les jours fériés.",
+        "statLabel": "toujours actif"
       },
       {
         "title": "Conversation naturelle",
@@ -305,7 +305,7 @@
       },
       {
         "title": "Il répond à tous les appels",
-        "body": "Votre assistant répond immédiatement, de jour comme de nuit, y compris le week-end. Il s'exprime naturellement, comprend vos clients et traite toutes les demandes de réservation."
+        "body": "Votre système d'IA répond immédiatement, de jour comme de nuit, y compris le week-end. Il s'exprime naturellement, comprend vos clients et traite toutes les demandes de réservation."
       },
       {
         "title": "Votre agenda se remplit",
@@ -318,7 +318,7 @@
         "sub": "N'importe quel nombre · À toute heure"
       },
       {
-        "label": "Réponse de l'agent",
+        "label": "Réponse de l'IA",
         "sub": "IA vocale · Très rapide"
       },
       {
@@ -354,7 +354,7 @@
         "title": "Appel en cours",
         "lines": [
           "Client : « Bonjour, je voudrais une coupe de cheveux et une taille de barbe. »",
-          "L'agent : « Bien sûr ! J'ai... »",
+          "Le système d'IA : « Bien sûr ! J'ai... »",
           "Place disponible à 15 h ✓",
           "Langue détectée : EN ✓"
         ]
@@ -371,12 +371,12 @@
     ]
   },
   "hero": {
-    "badge": "✦ Agents de réservation basés sur l'IA",
+    "badge": "✦ IA pour vos réservations",
     "typewriter": "TimeBookingPro vous propose une IA vocale qui répond aux appels, gère les réservations et remplit votre agenda — automatiquement, 24 heures sur 24.",
     "headlines": {
       "a": {
         "plain": "Donnez à votre entreprise",
-        "highlight": "son propre agent IA"
+        "highlight": "son propre système d'IA"
       },
       "b": {
         "plain": "Ne perdez plus de réservations",
@@ -400,6 +400,6 @@
   },
   "finalCta": {
     "eyebrow": "TimeBookingPro",
-    "subheadline": "Des assistants vocaux basés sur l'IA qui gèrent les réservations 24 heures sur 24, de manière automatique et en 7 langues."
+    "subheadline": "Une IA vocale qui gère les réservations 24 heures sur 24, de manière automatique et en 7 langues."
   }
 }

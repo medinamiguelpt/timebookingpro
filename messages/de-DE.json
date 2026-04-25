@@ -6,14 +6,14 @@
     "features": [
       "Alles, was Ihr Unternehmen braucht",
       "Entwickelt, um jede Buchung zu bewältigen",
-      "Ein Agent, alle Tools, die Sie benötigen",
+      "Ein KI-System, alle Tools, die Sie benötigen",
       "Alle Funktionen, auf die es ankommt",
       "Jeder Anruf wird bearbeitet – jedes Mal"
     ],
     "beforeAfter": [
-      "Was ändert sich, wenn Sie einen Agenten hinzufügen?",
+      "Was ändert sich, wenn Sie ein KI-System hinzufügen?",
       "Der Unterschied, Zeile für Zeile",
-      "Ihr Tag mit einem Makler",
+      "Ihr Tag mit einem KI-System",
       "Sehen Sie sich den direkten Vergleich an",
       "Und das sind nur einige davon"
     ],
@@ -34,17 +34,17 @@
     "finalCta": [
       "Ihr Terminkalender füllt sich nicht *von selbst*, Ihrer schon.",
       "Schalten Sie Ihre *Buchungsmaschine* ein",
-      "Beginnen Sie mit Ihrem *eigenen Agenten*",
+      "Beginnen Sie mit Ihrem *eigenen KI-System*",
       "Verleihen Sie Ihrem Kalender einen *Auftritt*"
     ]
   },
   "metadata": {
     "title": "TimeBookingPro — Ihre Buchungen – alles im Griff.",
-    "description": "TimeBookingPro entwickelt KI-Sprachassistenten, die Buchungen und Terminvereinbarungen für Friseursalons und kleine Unternehmen rund um die Uhr automatisch abwickeln.",
+    "description": "TimeBookingPro entwickelt eine Sprach-KI, die Buchungen und Terminvereinbarungen für Friseursalons und kleine Unternehmen rund um die Uhr automatisch abwickelt.",
     "ogTitle": "TimeBookingPro — Ihre Buchungen – alles im Griff.",
-    "ogDescription": "KI-Sprachassistenten, die Buchungen für Ihr Unternehmen bearbeiten – rund um die Uhr und automatisch.",
+    "ogDescription": "Eine Sprach-KI, die Buchungen für Ihr Unternehmen bearbeitet – rund um die Uhr und automatisch.",
     "twitterTitle": "TimeBookingPro — Ihre Buchungen – alles im Griff.",
-    "twitterDescription": "KI-Sprachassistenten, die Buchungen für Ihr Unternehmen bearbeiten – rund um die Uhr und automatisch.",
+    "twitterDescription": "Eine Sprach-KI, die Buchungen für Ihr Unternehmen bearbeitet – rund um die Uhr und automatisch.",
     "siteName": "TimeBookingPro"
   },
   "navbar": {
@@ -56,7 +56,7 @@
     "toggleMenu": "Menü ein- und ausblenden"
   },
   "footer": {
-    "tagline": "KI-Sprachassistenten, die Ihren Kalender füllen – rund um die Uhr.",
+    "tagline": "Eine Sprach-KI, die Ihren Kalender füllt – rund um die Uhr.",
     "rightsReserved": "Alle Rechte vorbehalten.",
     "madeWithCare": "Mit Sorgfalt für unabhängige Unternehmen entwickelt."
   },
@@ -105,7 +105,7 @@
     "rows": [
       {
         "before": "Um 19 Uhr klingelt das Telefon – Sie sind gerade mitten beim Schneiden",
-        "after": "Der Mitarbeiter nimmt den Anruf in weniger als 2 Sekunden entgegen"
+        "after": "Das KI-System nimmt den Anruf in weniger als 2 Sekunden entgegen"
       },
       {
         "before": "Der Kunde bucht bei einem Mitbewerber",
@@ -175,7 +175,7 @@
       "minutes1000": "~30+ Anrufe pro Tag. Strenge Obergrenze – sobald das Kontingent aufgebraucht ist, wird die Voicemail aktiviert.",
       "calendarSync": "Google, Outlook, Apple und iCal – bidirektionale Synchronisierung in Echtzeit.",
       "performanceEmail": "Bearbeitete Buchungen, verbrauchte Minuten, Spitzenzeiten bei Anrufen – direkt in Ihren Posteingang.",
-      "languages": "Griechisch · Englisch · Spanisch · Portugiesisch · Französisch · Deutsch · Arabisch. Der Agent passt sich beim ersten inhaltlichen Wort an die Sprache des Anrufers an."
+      "languages": "Griechisch · Englisch · Spanisch · Portugiesisch · Französisch · Deutsch · Arabisch. Das KI-System passt sich beim ersten inhaltlichen Wort an die Sprache des Anrufers an."
     },
     "countries": {
       "GR": "Griechenland",
@@ -214,7 +214,7 @@
       {
         "label": "Friseursalons",
         "headline": "Verlieren Sie keine Buchungen mehr, während Sie am Stuhl sitzen",
-        "body": "Jeder verpasste Anruf bedeutet einen verpassten Haarschnitt. Ihr Berater nimmt den Anruf sofort entgegen, prüft Ihren Terminkalender und sichert Ihnen den Termin – damit Sie sich ganz auf den Haarschnitt konzentrieren können.",
+        "body": "Jeder verpasste Anruf bedeutet einen verpassten Haarschnitt. Ihr KI-System nimmt den Anruf sofort entgegen, prüft Ihren Terminkalender und sichert Ihnen den Termin – damit Sie sich ganz auf den Haarschnitt konzentrieren können.",
         "perks": [
           "kennt die individuellen Arbeitszeiten Ihrer Friseure",
           "Versendet automatisch Buchungsbestätigungen",
@@ -224,7 +224,7 @@
       {
         "label": "Salons",
         "headline": "Eine Rezeptionistin, die nie einen Tag frei nimmt",
-        "body": "Von Terminen für die Haarfärbung bis hin zu kurzfristigen Absagen – Ihr Berater kümmert sich um alles, ohne dass ein Kunde jemals in der Warteschleife hängen bleibt.",
+        "body": "Von Terminen für die Haarfärbung bis hin zu kurzfristigen Absagen – Ihr KI-System kümmert sich um alles, ohne dass ein Kunde jemals in der Warteschleife hängen bleibt.",
         "perks": [
           "Bücher bestimmter Stylisten nach Namen",
           "Berücksichtigt Unterschiede in der Dienstdauer",
@@ -235,7 +235,7 @@
       {
         "label": "Wellnesszentren",
         "headline": "Sorgen Sie dafür, dass sich Ihre Kunden wohlfühlen – schon beim ersten Anruf",
-        "body": "Ihr Ansprechpartner bucht Behandlungen, beantwortet Fragen zu den Dienstleistungen und kümmert sich um Terminverschiebungen – damit sich Ihr Team ganz auf das Kundenerlebnis konzentrieren kann.",
+        "body": "Ihr KI-System bucht Behandlungen, beantwortet Fragen zu den Dienstleistungen und kümmert sich um Terminverschiebungen – damit sich Ihr Team ganz auf das Kundenerlebnis konzentrieren kann.",
         "perks": [
           "Buchen Sie Massagen, Gesichtsbehandlungen und andere Anwendungen",
           "Ermöglicht die Terminplanung für mehrere Therapeuten",
@@ -246,7 +246,7 @@
       {
         "label": "Nagel- und Kosmetikstudios",
         "headline": "Sorgen Sie dafür, dass Ihr Stuhl immer besetzt ist, ohne einen Finger zu rühren",
-        "body": "Von Gel-Behandlungen bis hin zu Wimpernverlängerungen – Ihr Berater kennt Ihr Leistungsangebot und bucht jedes Mal den passenden Termin bei der richtigen Kosmetikerin.",
+        "body": "Von Gel-Behandlungen bis hin zu Wimpernverlängerungen – Ihr KI-System kennt Ihr Leistungsangebot und bucht jedes Mal den passenden Termin bei der richtigen Kosmetikerin.",
         "perks": [
           "Techniker nach Fachgebiet",
           "Berücksichtigt Unterschiede in der Dienstdauer",
@@ -257,7 +257,7 @@
       {
         "label": "Fitnessstudios & Sportstudios",
         "headline": "Füllen Sie jeden Kurs, jede Sitzung",
-        "body": "Von Personal-Training-Stunden bis hin zu Gruppenkursen – Ihr Berater sorgt dafür, dass Ihr Stundenplan voll ist und Ihre Mitglieder auf dem Laufenden bleiben.",
+        "body": "Von Personal-Training-Stunden bis hin zu Gruppenkursen – Ihr KI-System sorgt dafür, dass Ihr Stundenplan voll ist und Ihre Mitglieder auf dem Laufenden bleiben.",
         "perks": [
           "Buchen Sie Kurse und Einzelunterricht",
           "Verwaltet die Kapazitätsgrenzen der Klassen",
@@ -269,12 +269,12 @@
   },
   "features": {
     "eyebrow": "Funktionen",
-    "subheadline": "Ein Ansprechpartner. Rund um die Uhr erreichbar. Ein Kalender, der sich von selbst füllt.",
+    "subheadline": "Ein KI-System. Rund um die Uhr erreichbar. Ein Kalender, der sich von selbst füllt.",
     "cards": [
       {
         "title": "Rund um die Uhr verfügbar",
-        "body": "Wir sind immer für Sie da, ohne Pause. Ihr Makler nimmt jeden Anruf an – am Wochenende, abends und an Feiertagen.",
-        "statLabel": "leben, immer"
+        "body": "Wir sind immer für Sie da, ohne Pause. Ihr KI-System nimmt jeden Anruf an – am Wochenende, abends und an Feiertagen.",
+        "statLabel": "immer aktiv"
       },
       {
         "title": "natürliche Unterhaltung",
@@ -305,7 +305,7 @@
       },
       {
         "title": "Es nimmt jeden Anruf entgegen",
-        "body": "Ihr Mitarbeiter nimmt Anrufe sofort entgegen – tagsüber, nachts und am Wochenende. Er spricht auf natürliche Weise, versteht Ihre Kunden und bearbeitet jede Buchungsanfrage."
+        "body": "Ihr KI-System nimmt Anrufe sofort entgegen – tagsüber, nachts und am Wochenende. Es spricht auf natürliche Weise, versteht Ihre Kunden und bearbeitet jede Buchungsanfrage."
       },
       {
         "title": "Ihr Terminkalender füllt sich",
@@ -318,7 +318,7 @@
         "sub": "Jede Menge · Zu jeder Zeit"
       },
       {
-        "label": "Antwort des Agenten",
+        "label": "Antwort des KI-Systems",
         "sub": "Sprach-KI · Sehr schnell"
       },
       {
@@ -354,7 +354,7 @@
         "title": "Anruf läuft",
         "lines": [
           "Anrufer: „Guten Tag, ich möchte einen Haarschnitt und eine Bartpflege.“",
-          "Agent: „Natürlich! Ich habe …“",
+          "KI-System: „Natürlich! Ich habe …“",
           "Termin um 15:00 Uhr verfügbar ✓",
           "Erkannte Sprache: EN ✓"
         ]
@@ -371,12 +371,12 @@
     ]
   },
   "hero": {
-    "badge": "✦ KI-gestützte Buchungsagenten",
+    "badge": "✦ KI für Buchungen",
     "typewriter": "TimeBookingPro erstellt für Sie eine Sprach-KI, die Anrufe entgegennimmt, Termine verwaltet und Ihren Kalender füllt – automatisch und rund um die Uhr.",
     "headlines": {
       "a": {
         "plain": "Geben Sie Ihrem Unternehmen",
-        "highlight": "einen eigenen KI-Agenten"
+        "highlight": "ein eigenes KI-System"
       },
       "b": {
         "plain": "Verlieren Sie keine Buchungen mehr",
@@ -400,6 +400,6 @@
   },
   "finalCta": {
     "eyebrow": "TimeBookingPro",
-    "subheadline": "KI-Sprachassistenten, die rund um die Uhr Buchungen bearbeiten – automatisch und in 7 Sprachen."
+    "subheadline": "Eine Sprach-KI, die rund um die Uhr Buchungen bearbeitet – automatisch und in 7 Sprachen."
   }
 }
