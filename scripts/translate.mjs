@@ -60,9 +60,16 @@ const PROTECTED_TERMS = [
   "Max", "Nova", "Aria", "Leo", "Sage", "Zara",
   "Carlos M.",
   "The Barber Studio",
-  "ElevenLabs",
+  "ElevenLabs", "OpenAI",
   "Google Calendar", "Calendly", "Acuity", "Outlook", "Apple Calendar",
   "Stripe", "Resend", "Twilio",
+  // AI-assistant references in agent-namer easter eggs.
+  "Siri", "Alexa", "Cortana", "JARVIS", "FRIDAY", "Clippy", "Watson",
+  // HAL and GLaDOS contain only Latin letters and would be matched as common
+  // words in some languages — protect them too.
+  "HAL", "GLaDOS",
+  "Apple",
+  "Elite Cuts",
 ]
 
 function escapeRegex(s) {

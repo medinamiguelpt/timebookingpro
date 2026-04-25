@@ -54,6 +54,36 @@
       }
     ]
   },
+  "agentNamer": {
+    "eyebrow": "Su agente",
+    "subheadline": "Póngale un nombre a su agente, o deje que la IA genere uno basado en su negocio.",
+    "businessLabel": "Nombre de la empresa",
+    "businessPlaceholder": "Por ejemplo: Elite Cuts",
+    "agentNameLabel": "Nombre del agente",
+    "agentNamePlaceholder": "Por ejemplo: Max",
+    "generateButton": "Generar nombres con IA para mi empresa",
+    "generatingButton": "Generando…",
+    "errorTakingBreak": "El sistema de nombres de IA está en pausa; inténtelo de nuevo en unos momentos.",
+    "errorNetwork": "No se ha podido conectar al servidor de nombres. Compruebe su conexión.",
+    "previewAgentLabel": "Agente de IA · {business}",
+    "previewLive": "En directo",
+    "previewUserBubble": "Hola, me gustaría reservar cita para un corte de pelo este sábado.",
+    "previewAgentReply": "¡Hola! Soy {name}, de {business}. Tenemos disponibilidad el sábado a las 10:00 y a las 14:00; ¿qué hora prefiere?",
+    "easterEggHint": "Pruebe con otro nombre para su agente actual ↑",
+    "phoneTagline": "Atiende llamadas las 24 horas del día, los 7 días de la semana, incluso mientras duerme",
+    "defaultBusiness": "su peluquería",
+    "easterEggs": {
+      "siri": "Siri Trabaja para Apple. Yo trabajo para usted. Hay una gran diferencia. 📱",
+      "alexa": "Alexa pido cosas. Yo reservo cosas. Es más útil. 🛒",
+      "cortana": "Cortana Se ha jubilado. Yo no lo haré. Contesto todas las llamadas. 🪦",
+      "hal": "Le prometo que no cerraré ninguna puerta con llave. 🚪",
+      "glados": "Prueba... prueba... reserva confirmada. 🪶",
+      "jarvis": "Señor, su cita de las 10:00 está confirmada y su agenda está totalmente actualizada. 🦾",
+      "friday": "Disponibles en línea y a su servicio. Atendemos todas las llamadas. 🤖",
+      "clippy": "Parece que está intentando concertar una cita. Déjeme encargarme de ello. 📎",
+      "watson": "Es muy sencillo, estimado cliente: su plaza está disponible. 🔍"
+    }
+  },
   "hero": {
     "badge": "✦ Agentes de reservas basados en inteligencia artificial",
     "typewriter": "TimeBookingPro le crea una IA de voz que responde a las llamadas, gestiona las reservas y completa su agenda, de forma automática, las 24 horas del día.",

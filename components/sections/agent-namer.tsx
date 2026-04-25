@@ -2,27 +2,16 @@
 
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import { useTranslations } from "next-intl"
 import { Phone, Mic, Wand2, Loader2 } from "lucide-react"
 
 const DEFAULT_SUGGESTIONS = ["Max", "Nova", "Aria", "Leo", "Sage", "Zara"]
 
-const EASTER_EGGS: Record<string, string> = {
-  siri:    "Siri works for Apple. I work for you. Big difference. 📱",
-  alexa:   "Alexa orders things. I book things. More useful. 🛒",
-  cortana: "Cortana got retired. I won't. I answer every call. 🪦",
-  hal:     "I promise I won't lock any doors. 🚪",
-  glados:  "Testing… testing… booking confirmed. 🧪",
-  jarvis:  "Sir, your 10 AM is confirmed and your calendar is fully up to date. 🦾",
-  friday:  "Online and at your service. All calls answered. 🤖",
-  clippy:  "It looks like you're trying to book an appointment. Let me handle that. 📎",
-  watson:  "Elementary, my dear client — your slot is available. 🔍",
-}
-
-function getEasterEgg(name: string): string | null {
-  return EASTER_EGGS[name.toLowerCase().trim()] ?? null
-}
+const EASTER_EGG_KEYS = ["siri","alexa","cortana","hal","glados","jarvis","friday","clippy","watson"] as const
+type EasterEggKey = (typeof EASTER_EGG_KEYS)[number]
 
 export function AgentNamer({ headline = "Meet your AI teammate" }: { headline?: string }) {
+  const t = useTranslations("agentNamer")
   const [name, setName] = useState("")
   const [business, setBusiness] = useState("")
   const [suggestions, setSuggestions] = useState(DEFAULT_SUGGESTIONS)
@@ -30,7 +19,10 @@ export function AgentNamer({ headline = "Meet your AI teammate" }: { headline?: 
   const [error, setError] = useState<string | null>(null)
 
   const displayName = name.trim() || "Max"
-  const displayBusiness = business.trim() || "your barbershop"
+  const displayBusiness = business.trim() || t("defaultBusiness")
+
+  const easterEggKey = name.toLowerCase().trim() as EasterEggKey
+  const easterEgg = EASTER_EGG_KEYS.includes(easterEggKey) ? t(`easterEggs.${easterEggKey}`) : null
 
   const generateNames = async () => {
     setGenerating(true)
@@ -45,10 +37,10 @@ export function AgentNamer({ headline = "Meet your AI teammate" }: { headline?: 
       if (data.ok && Array.isArray(data.names)) {
         setSuggestions(data.names)
       } else {
-        setError("AI naming is taking a break — try again in a moment.")
+        setError(t("errorTakingBreak"))
       }
     } catch {
-      setError("Couldn't reach the name service. Check your connection.")
+      setError(t("errorNetwork"))
     } finally {
       setGenerating(false)
     }
@@ -65,7 +57,7 @@ export function AgentNamer({ headline = "Meet your AI teammate" }: { headline?: 
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
           >
-            Your agent
+            {t("eyebrow")}
           </motion.p>
           <motion.h2
             key={headline}
@@ -84,7 +76,7 @@ export function AgentNamer({ headline = "Meet your AI teammate" }: { headline?: 
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: 0.2 }}
           >
-            Give your agent a name — or let AI generate one based on your business.
+            {t("subheadline")}
           </motion.p>
         </div>
 
@@ -98,10 +90,10 @@ export function AgentNamer({ headline = "Meet your AI teammate" }: { headline?: 
             transition={{ duration: 0.5 }}
           >
             <div className="flex flex-col gap-2">
-              <label className="text-sm font-semibold text-foreground">Business name</label>
+              <label className="text-sm font-semibold text-foreground">{t("businessLabel")}</label>
               <input
                 type="text"
-                placeholder="e.g. Elite Cuts"
+                placeholder={t("businessPlaceholder")}
                 value={business}
                 onChange={(e) => setBusiness(e.target.value)}
                 maxLength={40}
@@ -110,10 +102,10 @@ export function AgentNamer({ headline = "Meet your AI teammate" }: { headline?: 
             </div>
 
             <div className="flex flex-col gap-2">
-              <label className="text-sm font-semibold text-foreground">Agent name</label>
+              <label className="text-sm font-semibold text-foreground">{t("agentNameLabel")}</label>
               <input
                 type="text"
-                placeholder="e.g. Max"
+                placeholder={t("agentNamePlaceholder")}
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 maxLength={20}
@@ -155,7 +147,7 @@ export function AgentNamer({ headline = "Meet your AI teammate" }: { headline?: 
                 ) : (
                   <Wand2 size={13} />
                 )}
-                {generating ? "Generating…" : "Generate AI names for my business"}
+                {generating ? t("generatingButton") : t("generateButton")}
               </button>
 
               {error && (
@@ -196,19 +188,19 @@ export function AgentNamer({ headline = "Meet your AI teammate" }: { headline?: 
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.2 }}
                   >
-                    AI Agent · {displayBusiness}
+                    {t("previewAgentLabel", { business: displayBusiness })}
                   </motion.p>
                 </div>
                 <div className="ml-auto flex items-center gap-1.5 text-xs text-green-600 dark:text-green-400 font-medium bg-green-500/10 border border-green-500/20 px-2.5 py-1 rounded-full">
                   <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-                  Live
+                  {t("previewLive")}
                 </div>
               </div>
 
               <div className="space-y-2.5">
-                {!getEasterEgg(name) && (
+                {!easterEgg && (
                   <div className="bg-muted rounded-2xl rounded-tl-sm px-3.5 py-2.5 text-sm text-foreground max-w-[85%]">
-                    Hi, I&apos;d like to book a haircut this Saturday.
+                    {t("previewUserBubble")}
                   </div>
                 )}
                 <motion.div
@@ -218,25 +210,22 @@ export function AgentNamer({ headline = "Meet your AI teammate" }: { headline?: 
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.25 }}
                 >
-                  {getEasterEgg(name)
-                    ? getEasterEgg(name)
-                    : `Hi! I'm ${displayName} from ${displayBusiness}. We have Saturday at 10 AM and 2 PM available — which do you prefer?`
-                  }
+                  {easterEgg ?? t("previewAgentReply", { name: displayName, business: displayBusiness })}
                 </motion.div>
-                {getEasterEgg(name) && (
+                {easterEgg && (
                   <motion.p
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     className="text-[11px] text-muted-foreground text-center"
                   >
-                    Try a different name for your actual agent ↑
+                    {t("easterEggHint")}
                   </motion.p>
                 )}
               </div>
 
               <div className="flex items-center gap-2 text-muted-foreground pt-1">
                 <Phone size={14} />
-                <span className="text-xs">Handles calls 24/7 — even while you sleep</span>
+                <span className="text-xs">{t("phoneTagline")}</span>
               </div>
             </div>
           </motion.div>
