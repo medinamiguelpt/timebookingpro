@@ -22,9 +22,9 @@ Never ask "should I push/deploy?" — just do it as part of every task.
 |---|---|
 | Frontend | Next.js (App Router) + shadcn/ui + Tailwind CSS |
 | Database | Supabase PostgreSQL |
-| Email | Resend |
 | AI | Claude API (`claude-sonnet-4-6`) |
-| Payments | Stripe |
+| Translation | DeepL API (free tier, used by `scripts/translate.mjs`) |
+| Payments | Stripe (currently no in-page checkout — see Hard Rules) |
 | Secrets | Doppler |
 | Hosting | Vercel (`timebookingpro.com`) |
 
@@ -32,14 +32,9 @@ Never ask "should I push/deploy?" — just do it as part of every task.
 
 ## Pending Improvements (implement when requested)
 
-1. **Analytics dashboard** — track A/B variant conversion rates in Supabase, show in `/admin`
-2. **Waitlist confirmation email** — auto-send branded "you're on the list" email via Resend
-3. **Agent name generator** — make AgentNamer section call Claude API to generate names
-4. **Testimonial video cards** — upgrade testimonial cards with a fake "play" button + hover preview
-5. **Scroll-triggered nav highlights** — highlight active nav link as user scrolls sections
-6. **Dark/light OG image** — generate different OG images based on `prefers-color-scheme`
-7. **Blog RSS feed** — `app/blog/feed.xml/route.ts` serving a proper RSS feed for SEO
-8. **Structured data (JSON-LD)** — schema.org markup for `LocalBusiness` and `FAQPage`
+1. **Scroll-triggered nav highlights** — highlight active nav link as user scrolls sections
+2. **Dark/light OG image** — generate different OG images based on `prefers-color-scheme`
+3. **Structured data (JSON-LD)** — schema.org markup for `LocalBusiness`
 
 ---
 
@@ -69,8 +64,10 @@ Never ask "should I push/deploy?" — just do it as part of every task.
 - DO NOT write "up to X minutes" — write "X min/month".
 - DO NOT invent discounts. Any promo code must come from the canonical source.
 - Show prices ex-VAT with "Prices shown ex-VAT — tax calculated at checkout."
-- No per-tier CTA buttons on pricing cards. The waitlist email form at the
-  bottom of the homepage is the only conversion entry point.
+- No per-tier CTA buttons on pricing cards. The site currently has NO
+  conversion mechanism — no email signup, no demo booking, no contact info,
+  no checkout buttons. Pricing is informational only. Reintroduce a funnel
+  only when the user explicitly asks for one.
 - EU-only scope: pricing is shown only for the 27 EU member states.
   Do NOT list GB, NO, CH, IS, US, CA, AU, NZ, AE, JP, or SG anywhere
   on the pricing section or the country picker.

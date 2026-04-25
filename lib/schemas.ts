@@ -1,22 +1,10 @@
 import { z } from "zod"
 import { NextResponse } from "next/server"
 
-// ── Shared schemas ────────────────────────────────────────
-
-export const waitlistSchema = z.object({
-  email:  z.string().email("Invalid email"),
-  source: z.string().optional().default("waitlist"),
-  phone:  z.string().optional().default(""),
-})
+// ── Schemas ────────────────────────────────────────
 
 export const agentNameSchema = z.object({
   business: z.string().optional().default(""),
-})
-
-export const dripSchema = z.object({
-  email:  z.string().email("Invalid email"),
-  day:    z.number().int().refine((d) => [1, 3, 7].includes(d), "day must be 1, 3, or 7"),
-  secret: z.string().optional(),
 })
 
 // ── Parse helper ─────────────────────────────────────────

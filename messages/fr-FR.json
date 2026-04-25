@@ -469,19 +469,7 @@
     }
   },
   "finalCta": {
-    "eyebrow": "Commencez dès aujourd'hui",
-    "subheadline": "Rejoignez les entreprises qui acceptent les réservations 24 h/24, 7 j/7. Votre assistant IA sera opérationnel en moins de 24 heures.",
-    "successHeading": "Vous êtes sur la liste !",
-    "positionLine": "Vous êtes le <bold>n° {position}</bold> de la file d'attente — nous vous contacterons dans l'ordre.",
-    "checkEmail": "Vérifiez votre boîte mail : vous allez recevoir un e-mail de confirmation.",
-    "smsEnabled": "Les notifications par SMS sont activées",
-    "smsPrompt": "Souhaitez-vous recevoir des notifications par SMS ?",
-    "smsPhonePlaceholder": "+1 555 000 0000",
-    "smsButton": "Oui, s'il vous plaît",
-    "emailPlaceholder": "your@email.com",
-    "submitLoading": "Envoi en cours…",
-    "submitDefault": "Trouvez votre agent",
-    "errorMessage": "Une erreur s'est produite — veuillez réessayer ou nous envoyer un e-mail à l'adresse hello@timebookingpro.com",
-    "finePrint": "En direct dans 24 heures · Vous pouvez vous désabonner à tout moment"
+    "eyebrow": "TimeBookingPro",
+    "subheadline": "Des assistants vocaux basés sur l'IA qui gèrent les réservations 24 heures sur 24, de manière automatique et en 7 langues."
   }
 }

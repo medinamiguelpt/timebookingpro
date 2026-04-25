@@ -161,7 +161,7 @@
     "seeAllPlanDetails": "Ver todos os detalhes do plano ↑",
     "sheetTitle": "{name} plano",
     "includedHeading": "Incluído",
-    "microcopyHardCap": "Todos os planos incluem reservas sincronizadas com o seu calendário, um e-mail de desempenho e os 7 idiomas suportados. Os minutos têm um limite mensal rígido — as chamadas são encaminhadas para o correio de voz assim que o limite for atingido, até ao próximo ciclo de faturação ou até que seja efetuada uma atualização. Receberá alertas por e-mail quando atingir 25%, 50%, 75% e 90% do seu limite, para que nunca seja apanhado de surpresa.",
+    "microcopyHardCap": "Todos os planos incluem reservas sincronizadas com o seu calendário, um e-mail de desempenho e os 7 idiomas suportados. Os minutos têm um limite mensal fixo — as chamadas são encaminhadas para o correio de voz assim que o limite for atingido, até ao próximo ciclo de faturação ou até que seja efetuada uma atualização. Receberá alertas por e-mail quando atingir 25%, 50%, 75% e 90% do seu limite, para que nunca seja apanhado de surpresa.",
     "taxLine": "{flag} Os impostos apresentados referem-se a <bold>{country}</bold>{note}. Os preços apresentados não incluem IVA — o imposto é calculado no momento do pagamento.",
     "taxLineNoteSeparator": " — ",
     "tiers": {
@@ -274,7 +274,7 @@
       {
         "label": "Spas",
         "headline": "Deixe os seus clientes relaxarem — desde a primeira chamada",
-        "body": "O seu agente marca tratamentos, responde a perguntas sobre os serviços e trata das alterações de horários — para que a sua equipa se possa concentrar inteiramente na experiência.",
+        "body": "O seu agente marca tratamentos, responde a perguntas sobre os serviços e trata das alterações de horário — para que a sua equipa se possa concentrar inteiramente na experiência.",
         "perks": [
           "Marque massagens, tratamentos faciais e outros tratamentos",
           "Permite a gestão da agenda de vários terapeutas",
@@ -469,19 +469,7 @@
     }
   },
   "finalCta": {
-    "eyebrow": "Comece hoje mesmo",
-    "subheadline": "Junte-se às empresas que fazem reservas 24 horas por dia, 7 dias por semana. O seu agente de IA estará operacional em menos de 24 horas.",
-    "successHeading": "Está na lista!",
-    "positionLine": "Está na <bold># {position}</bold> da fila — entraremos em contacto consigo por ordem de chegada.",
-    "checkEmail": "Verifique o seu e-mail — a confirmação está a caminho.",
-    "smsEnabled": "Atualizações por SMS ativadas",
-    "smsPrompt": "Deseja receber atualizações por SMS?",
-    "smsPhonePlaceholder": "+1 555 000 0000",
-    "smsButton": "Sim, por favor",
-    "emailPlaceholder": "your@email.com",
-    "submitLoading": "A enviar…",
-    "submitDefault": "Contrate o seu agente",
-    "errorMessage": "Ocorreu um erro — tente novamente ou envie-nos um e-mail para hello@timebookingpro.com",
-    "finePrint": "Ao vivo em 24 horas · Pode cancelar a subscrição a qualquer momento"
+    "eyebrow": "TimeBookingPro",
+    "subheadline": "Agentes de voz com IA que tratam das reservas 24 horas por dia — de forma automática, em 7 idiomas."
   }
 }
