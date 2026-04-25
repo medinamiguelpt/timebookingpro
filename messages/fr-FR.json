@@ -54,6 +54,32 @@
       }
     ]
   },
+  "features": {
+    "eyebrow": "Caractéristiques",
+    "subheadline": "Un seul interlocuteur. Disponible 24 heures sur 24, 7 jours sur 7. Un agenda qui se remplit tout seul.",
+    "cards": [
+      {
+        "title": "Disponible 24 heures sur 24, 7 jours sur 7",
+        "body": "Il ne dort jamais, ne prend jamais de pause. Votre agent répond à tous les appels le week-end, la nuit et les jours fériés.",
+        "statLabel": "vivre, toujours"
+      },
+      {
+        "title": "Conversation naturelle",
+        "body": "Grâce à une IA vocale de pointe : une voix naturelle, capable de traiter des demandes complexes et de comprendre le contexte.",
+        "statLabel": "les appelants pensent qu'il s'agit d'un être humain"
+      },
+      {
+        "title": "Multilingue",
+        "body": "Grec, anglais, espagnol, portugais, français, allemand, arabe — 7 langues, détectées automatiquement en fonction de l'appelant.",
+        "statLabel": ""
+      },
+      {
+        "title": "Synchronisation directe des calendriers",
+        "body": "Les réservations sont directement enregistrées dans votre agenda en temps réel. Finies les doubles réservations, finies les saisies manuelles.",
+        "statLabel": ""
+      }
+    ]
+  },
   "howItWorks": {
     "eyebrow": "Comment ça marche",
     "subheadline": "Pas d'installation compliquée. Aucune connaissance technique requise. Nous nous occupons de tout.",

@@ -54,6 +54,32 @@
       }
     ]
   },
+  "features": {
+    "eyebrow": "Características",
+    "subheadline": "Un único agente. Disponible las 24 horas del día, los 7 días de la semana. Un calendario que se rellena solo.",
+    "cards": [
+      {
+        "title": "Disponibilidad las 24 horas del día, los 7 días de la semana",
+        "body": "Nunca descansa, nunca se toma un respiro. Su agente responde a todas las llamadas los fines de semana, por la noche y en días festivos.",
+        "statLabel": "viva, siempre"
+      },
+      {
+        "title": "Conversación natural",
+        "body": "Con tecnología de IA de voz avanzada: suena como una persona, gestiona solicitudes complejas y comprende el contexto.",
+        "statLabel": "los que llaman creen que es una persona"
+      },
+      {
+        "title": "Multilingüe",
+        "body": "Griego, inglés, español, portugués, francés, alemán, árabe: 7 idiomas, detectados automáticamente según la persona que llama.",
+        "statLabel": ""
+      },
+      {
+        "title": "Sincronización directa del calendario",
+        "body": "Las reservas se registran directamente en su calendario en tiempo real. Sin reservas duplicadas, sin introducciones manuales.",
+        "statLabel": ""
+      }
+    ]
+  },
   "howItWorks": {
     "eyebrow": "Cómo funciona",
     "subheadline": "Sin configuraciones complicadas. No se requieren conocimientos técnicos. Nosotros nos encargamos de todo.",

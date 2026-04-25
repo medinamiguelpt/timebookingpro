@@ -54,6 +54,32 @@
       }
     ]
   },
+  "features": {
+    "eyebrow": "Funktionen",
+    "subheadline": "Ein Ansprechpartner. Rund um die Uhr erreichbar. Ein Kalender, der sich von selbst füllt.",
+    "cards": [
+      {
+        "title": "Rund um die Uhr verfügbar",
+        "body": "Wir sind immer für Sie da, ohne Pause. Ihr Makler nimmt jeden Anruf an – am Wochenende, abends und an Feiertagen.",
+        "statLabel": "leben, immer"
+      },
+      {
+        "title": "natürliche Unterhaltung",
+        "body": "Basierend auf fortschrittlicher Sprach-KI – klingt menschlich, bearbeitet komplexe Anfragen und versteht den Kontext.",
+        "statLabel": "Die Anrufer glauben, es sei ein Mensch"
+      },
+      {
+        "title": "Mehrsprachig",
+        "body": "Griechisch, Englisch, Spanisch, Portugiesisch, Französisch, Deutsch, Arabisch – 7 Sprachen, die je nach Anrufer automatisch erkannt werden.",
+        "statLabel": ""
+      },
+      {
+        "title": "Direkte Kalendersynchronisierung",
+        "body": "Buchungen werden in Echtzeit direkt in Ihren Kalender übernommen. Keine Doppelbuchungen, keine manuelle Eingabe.",
+        "statLabel": ""
+      }
+    ]
+  },
   "howItWorks": {
     "eyebrow": "So funktioniert es",
     "subheadline": "Keine komplizierte Einrichtung. Keine technischen Kenntnisse erforderlich. Wir kümmern uns um alles.",

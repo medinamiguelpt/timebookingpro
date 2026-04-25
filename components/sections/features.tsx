@@ -2,6 +2,7 @@
 
 import { useRef, useEffect } from "react"
 import { motion, useInView, animate } from "framer-motion"
+import { useTranslations } from "next-intl"
 import { Clock, Globe, CalendarDays, MessageSquare } from "lucide-react"
 import { SpotlightCard } from "@/components/ui/spotlight-card"
 import { Globe3D } from "@/components/ui/globe-3d"
@@ -34,62 +35,48 @@ export function CountUp({ to, prefix = "", suffix = "", duration = 1.8 }: {
   return <span ref={ref}>{prefix}0{suffix}</span>
 }
 
-type Feature = {
-  icon: React.ElementType
-  title: string
-  body: string
-  accent: string
-  accentBg: string
-  span: "normal" | "wide" | "tall"
-  /** Tailwind group-hover class applied to the icon itself (not the container) */
-  iconAnim?: string
-  stat?: { value: number; prefix?: string; suffix: string; label: string }
-  extra?: React.ReactNode
-}
-
-const FEATURES: Feature[] = [
+// Structural per-card config — icons, animations, accent colors, layout span,
+// numeric stat values + side-content. Text fields (title, body, statLabel)
+// come from messages.features.cards[i].
+const CARD_META = [
   {
     icon: Clock,
     iconAnim: "group-hover:rotate-[20deg]",
-    title: "24/7 availability",
-    body: "Never sleeps, never takes a break. Your agent answers every call on weekends, nights, and holidays.",
     accent: "#7C3AED",
     accentBg: "rgba(124,58,237,0.08)",
-    span: "wide",
-    stat: { value: 24, suffix: "/7", label: "live, always" },
+    span: "wide" as const,
+    stat: { value: 24, suffix: "/7" },
+    extra: null as React.ReactNode,
   },
   {
     icon: MessageSquare,
     iconAnim: "group-hover:-translate-y-1 group-hover:scale-110",
-    title: "Natural conversation",
-    body: "Powered by advanced voice AI — sounds human, handles complex requests, understands context.",
     accent: "#0EA5E9",
     accentBg: "rgba(14,165,233,0.08)",
-    span: "normal",
-    stat: { value: 98, suffix: "%", label: "callers think it's human" },
+    span: "normal" as const,
+    stat: { value: 98, suffix: "%" },
+    extra: null as React.ReactNode,
   },
   {
     icon: Globe,
     iconAnim: "group-hover:rotate-[180deg] duration-700",
-    title: "Multilingual",
-    body: "Greek, English, Spanish, Portuguese, French, German, Arabic — 7 languages, auto-detected per caller.",
     accent: "#10B981",
     accentBg: "rgba(16,185,129,0.08)",
-    span: "normal",
+    span: "normal" as const,
+    stat: null,
     extra: (
       <div className="flex justify-center mt-3">
         <Globe3D size={80} />
       </div>
-    ),
+    ) as React.ReactNode,
   },
   {
     icon: CalendarDays,
     iconAnim: "group-hover:-translate-y-1.5 group-hover:scale-105",
-    title: "Direct calendar sync",
-    body: "Bookings go straight into your calendar in real time. Zero double-bookings, zero manual entry.",
     accent: "#F59E0B",
     accentBg: "rgba(245,158,11,0.08)",
-    span: "wide",
+    span: "wide" as const,
+    stat: null,
     extra: (
       <div className="flex flex-wrap gap-1.5 mt-3">
         {INTEGRATIONS.map(({ name, color }) => (
@@ -99,11 +86,17 @@ const FEATURES: Feature[] = [
           </span>
         ))}
       </div>
-    ),
+    ) as React.ReactNode,
   },
 ]
 
+type CardText = { title: string; body: string; statLabel: string }
+
 export function Features({ headline = "Everything your business needs" }: { headline?: string }) {
+  const t = useTranslations("features")
+  const cardTexts = t.raw("cards") as CardText[]
+  const cards = CARD_META.map((m, i) => ({ ...m, ...cardTexts[i] }))
+
   return (
     <section id="features" className="py-24 sm:py-32">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -112,7 +105,7 @@ export function Features({ headline = "Everything your business needs" }: { head
         <div className="text-center mb-14">
           <motion.p className="text-sm font-semibold uppercase tracking-widest text-primary mb-3"
             initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }}>
-            Features
+            {t("eyebrow")}
           </motion.p>
           <RevealWords
             key={headline}
@@ -123,13 +116,13 @@ export function Features({ headline = "Everything your business needs" }: { head
           </RevealWords>
           <motion.p className="mt-4 text-lg text-muted-foreground max-w-xl mx-auto"
             initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: 0.2 }}>
-            One agent. Live 24/7. A calendar that fills itself.
+            {t("subheadline")}
           </motion.p>
         </div>
 
         {/* Bento grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-auto">
-          {FEATURES.map(({ icon: Icon, title, body, accent, accentBg, span, stat, extra, iconAnim }, i) => (
+          {cards.map(({ icon: Icon, title, body, accent, accentBg, span, stat, statLabel, extra, iconAnim }, i) => (
             <motion.div
               key={title}
               className={cn(span === "wide" && "sm:col-span-2")}
@@ -178,9 +171,9 @@ export function Features({ headline = "Everything your business needs" }: { head
                   <div className="text-center">
                     <p className="text-5xl font-heading font-extrabold leading-none mb-2 tabular-nums"
                       style={{ color: accent }}>
-                      <CountUp to={stat.value} prefix={stat.prefix} suffix={stat.suffix} />
+                      <CountUp to={stat.value} suffix={stat.suffix} />
                     </p>
-                    <p className="text-xs text-muted-foreground leading-snug max-w-[140px]">{stat.label}</p>
+                    <p className="text-xs text-muted-foreground leading-snug max-w-[140px]">{statLabel}</p>
                   </div>
                   </div>
                 )}
@@ -190,9 +183,9 @@ export function Features({ headline = "Everything your business needs" }: { head
                   <div className="absolute bottom-4 right-4 z-10 rounded-xl px-3 py-1.5 text-center opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300"
                     style={{ background: accentBg, border: `1px solid ${accent}30` }}>
                     <p className="text-lg font-heading font-extrabold leading-none" style={{ color: accent }}>
-                      <CountUp to={stat.value} prefix={stat.prefix} suffix={stat.suffix} />
+                      <CountUp to={stat.value} suffix={stat.suffix} />
                     </p>
-                    <p className="text-[10px] text-muted-foreground">{stat.label}</p>
+                    <p className="text-[10px] text-muted-foreground">{statLabel}</p>
                   </div>
                 )}
               </SpotlightCard>

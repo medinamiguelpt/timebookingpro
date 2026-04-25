@@ -45,6 +45,32 @@
       { "before": "Weekend calls go unanswered",          "after": "Weekends, nights, and holidays covered" }
     ]
   },
+  "features": {
+    "eyebrow": "Features",
+    "subheadline": "One agent. Live 24/7. A calendar that fills itself.",
+    "cards": [
+      {
+        "title": "24/7 availability",
+        "body": "Never sleeps, never takes a break. Your agent answers every call on weekends, nights, and holidays.",
+        "statLabel": "live, always"
+      },
+      {
+        "title": "Natural conversation",
+        "body": "Powered by advanced voice AI — sounds human, handles complex requests, understands context.",
+        "statLabel": "callers think it's human"
+      },
+      {
+        "title": "Multilingual",
+        "body": "Greek, English, Spanish, Portuguese, French, German, Arabic — 7 languages, auto-detected per caller.",
+        "statLabel": ""
+      },
+      {
+        "title": "Direct calendar sync",
+        "body": "Bookings go straight into your calendar in real time. Zero double-bookings, zero manual entry.",
+        "statLabel": ""
+      }
+    ]
+  },
   "howItWorks": {
     "eyebrow": "How it works",
     "subheadline": "No complicated setup. No technical knowledge required. We handle everything.",
