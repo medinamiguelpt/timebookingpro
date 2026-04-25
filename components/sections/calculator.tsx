@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from "react"
 import { motion } from "framer-motion"
+import { useTranslations } from "next-intl"
 import { TrendingUp } from "lucide-react"
 import { SUBSCRIPTION_TIERS } from "@/lib/pricing"
 
@@ -25,6 +26,7 @@ function formatCurrency(n: number) {
 }
 
 export function Calculator({ headline = "See what missed calls cost you" }: { headline?: string }) {
+  const t = useTranslations("calculator")
   const [dailyCalls, setDailyCalls]     = useState(20)
   const [bookingValue, setBookingValue] = useState(22)
   const [missRate, setMissRate]         = useState(30)
@@ -49,7 +51,7 @@ export function Calculator({ headline = "See what missed calls cost you" }: { he
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
           >
-            Revenue calculator
+            {t("eyebrow")}
           </motion.p>
           <motion.h2
             key={headline}
@@ -68,7 +70,7 @@ export function Calculator({ headline = "See what missed calls cost you" }: { he
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: 0.2 }}
           >
-            Adjust the sliders to match your business — see your real numbers instantly.
+            {t("subheadline")}
           </motion.p>
         </div>
 
@@ -84,21 +86,21 @@ export function Calculator({ headline = "See what missed calls cost you" }: { he
             <div className="p-7 space-y-8">
               {[
                 {
-                  label: "Daily calls received",
+                  label: t("sliderDailyCalls"),
                   value: dailyCalls,
                   min: 5, max: 100, step: 5,
-                  display: `${dailyCalls} calls/day`,
+                  display: t("callsPerDay", { n: dailyCalls }),
                   onChange: setDailyCalls,
                 },
                 {
-                  label: "Average booking value",
+                  label: t("sliderBookingValue"),
                   value: bookingValue,
                   min: 5, max: 150, step: 5,
                   display: `€${bookingValue}`,
                   onChange: setBookingValue,
                 },
                 {
-                  label: "Calls you currently miss",
+                  label: t("sliderMissRate"),
                   value: missRate,
                   min: 10, max: 80, step: 5,
                   display: `${missRate}%`,
@@ -129,8 +131,8 @@ export function Calculator({ headline = "See what missed calls cost you" }: { he
             <div className="p-7 flex flex-col gap-5 bg-gradient-to-br from-primary/5 to-transparent">
               <div className="grid grid-cols-2 gap-3">
                 {[
-                  { label: "Monthly calls",      value: stats.monthlyCalls.toLocaleString("en-US"),    suffix: "" },
-                  { label: "Missed per month",   value: stats.missedPerMonth.toLocaleString("en-US"),  suffix: "" },
+                  { label: t("monthlyCallsLabel"),     value: stats.monthlyCalls.toLocaleString("en-US")    },
+                  { label: t("missedPerMonthLabel"),   value: stats.missedPerMonth.toLocaleString("en-US")  },
                 ].map(({ label, value }) => (
                   <div key={label} className="rounded-xl border border-border bg-card/80 p-3.5 text-center">
                     <p className="text-[11px] text-muted-foreground mb-1">{label}</p>
@@ -141,7 +143,7 @@ export function Calculator({ headline = "See what missed calls cost you" }: { he
 
               {/* Lost revenue highlight */}
               <div className="rounded-xl border border-destructive/20 bg-red-500/5 p-4 text-center">
-                <p className="text-xs font-semibold text-muted-foreground mb-1">Revenue lost per month</p>
+                <p className="text-xs font-semibold text-muted-foreground mb-1">{t("revenueLostLabel")}</p>
                 <motion.p
                   key={stats.lostRevenue}
                   className="text-4xl font-heading font-extrabold text-destructive"
@@ -152,7 +154,7 @@ export function Calculator({ headline = "See what missed calls cost you" }: { he
                   {formatCurrency(stats.lostRevenue)}
                 </motion.p>
                 <p className="text-xs text-muted-foreground mt-1">
-                  = {stats.missedPerMonth} missed × €{bookingValue} avg booking
+                  {t("missedDetail", { missed: stats.missedPerMonth, bookingValue })}
                 </p>
               </div>
 
@@ -161,16 +163,16 @@ export function Calculator({ headline = "See what missed calls cost you" }: { he
                 <div className="flex items-start gap-3">
                   <TrendingUp size={18} className="text-primary mt-0.5 shrink-0" />
                   <div className="flex-1 min-w-0">
-                    <p className="text-xs font-semibold text-primary mb-0.5">Recommended plan</p>
+                    <p className="text-xs font-semibold text-primary mb-0.5">{t("recommendedPlanLabel")}</p>
                     <p className="text-sm font-heading font-bold text-foreground">
-                      {stats.recommended.name} — €{stats.recommended.price}/mo
+                      {t("planLine", { name: stats.recommended.name, price: stats.recommended.price })}
                     </p>
                     <p className="text-xs text-muted-foreground mt-1">
-                      {stats.roi}× ROI · Recovers{" "}
-                      <span className="font-semibold text-primary">
-                        {formatCurrency(stats.lostRevenue - stats.recommended.price)}
-                      </span>{" "}
-                      net every month
+                      {t.rich("roiLine", {
+                        roi: stats.roi,
+                        recovered: formatCurrency(stats.lostRevenue - stats.recommended.price),
+                        bold: (chunks) => <span className="font-semibold text-primary">{chunks}</span>,
+                      })}
                     </p>
                   </div>
                 </div>

@@ -54,6 +54,21 @@
       }
     ]
   },
+  "calculator": {
+    "eyebrow": "Calculadora de receitas",
+    "subheadline": "Ajuste os controles deslizantes de acordo com a sua empresa — veja os seus números reais instantaneamente.",
+    "sliderDailyCalls": "Chamadas recebidas diariamente",
+    "sliderBookingValue": "Valor médio das reservas",
+    "sliderMissRate": "Chamadas que está a perder neste momento",
+    "callsPerDay": "{n} chamadas/dia",
+    "monthlyCallsLabel": "Chamadas mensais",
+    "missedPerMonthLabel": "Perda mensal",
+    "revenueLostLabel": "Receitas perdidas por mês",
+    "missedDetail": "= {missed} perdidas × {bookingValue} € de reserva média",
+    "recommendedPlanLabel": "Plano recomendado",
+    "planLine": "{name} — {price}s de euros por mês",
+    "roiLine": "{roi}× ROI · Recupera <bold>{recovered}</bold> líquidos todos os meses"
+  },
   "forWho": {
     "eyebrow": "A quem se destina",
     "statCaption": "de chamadas atendidas ao primeiro toque",

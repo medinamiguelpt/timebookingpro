@@ -54,6 +54,21 @@
       }
     ]
   },
+  "calculator": {
+    "eyebrow": "حاسبة الإيرادات",
+    "subheadline": "اضبط أشرطة التمرير لتناسب نشاطك التجاري — واطلع على أرقامك الفعلية على الفور.",
+    "sliderDailyCalls": "عدد المكالمات الواردة يوميًا",
+    "sliderBookingValue": "متوسط قيمة الحجز",
+    "sliderMissRate": "المكالمات التي فاتتك حتى الآن",
+    "callsPerDay": "{n} مكالمات في اليوم",
+    "monthlyCallsLabel": "المكالمات الشهرية",
+    "missedPerMonthLabel": "المبلغ المتأخر شهريًا",
+    "revenueLostLabel": "العائدات المفقودة شهريًا",
+    "missedDetail": "= {missed} × متوسط قيمة الحجز البالغ {bookingValue} يورو",
+    "recommendedPlanLabel": "الخطة الموصى بها",
+    "planLine": "{name} — {price}يورو شهريًا",
+    "roiLine": "{roi}× العائد على الاستثمار · يحقق صافي ربح <bold>{recovered}</bold> شهريًا"
+  },
   "forWho": {
     "eyebrow": "لمن هذا المنتج",
     "statCaption": "نسبة المكالمات التي تم الرد عليها عند الرنة الأولى",

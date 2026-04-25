@@ -54,6 +54,21 @@
       }
     ]
   },
+  "calculator": {
+    "eyebrow": "Υπολογιστής εσόδων",
+    "subheadline": "Προσαρμόστε τα ρυθμιστικά σύμφωνα με τις ανάγκες της επιχείρησής σας — δείτε αμέσως τα πραγματικά σας στοιχεία.",
+    "sliderDailyCalls": "Καθημερινές εισερχόμενες κλήσεις",
+    "sliderBookingValue": "Μέση αξία κράτησης",
+    "sliderMissRate": "Οι κλήσεις που χάνετε αυτή τη στιγμή",
+    "callsPerDay": "{n} κλήσεις/ημέρα",
+    "monthlyCallsLabel": "Μηνιαίες κλήσεις",
+    "missedPerMonthLabel": "Χαμένες πληρωμές ανά μήνα",
+    "revenueLostLabel": "Απώλεια εσόδων ανά μήνα",
+    "missedDetail": "= {missed} χαμένες × {bookingValue} € μέση αξία κράτησης",
+    "recommendedPlanLabel": "Προτεινόμενο πρόγραμμα",
+    "planLine": "{name} — {price}€/μήνα",
+    "roiLine": "{roi}× ROI · Αποφέρει καθαρό κέρδος <bold>{recovered}</bold> κάθε μήνα"
+  },
   "forWho": {
     "eyebrow": "Σε ποιους απευθύνεται",
     "statCaption": "από τις κλήσεις που απαντήθηκαν με το πρώτο κουδούνισμα",

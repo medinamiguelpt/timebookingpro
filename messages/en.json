@@ -45,6 +45,21 @@
       { "before": "Weekend calls go unanswered",          "after": "Weekends, nights, and holidays covered" }
     ]
   },
+  "calculator": {
+    "eyebrow": "Revenue calculator",
+    "subheadline": "Adjust the sliders to match your business — see your real numbers instantly.",
+    "sliderDailyCalls": "Daily calls received",
+    "sliderBookingValue": "Average booking value",
+    "sliderMissRate": "Calls you currently miss",
+    "callsPerDay": "{n} calls/day",
+    "monthlyCallsLabel": "Monthly calls",
+    "missedPerMonthLabel": "Missed per month",
+    "revenueLostLabel": "Revenue lost per month",
+    "missedDetail": "= {missed} missed × €{bookingValue} avg booking",
+    "recommendedPlanLabel": "Recommended plan",
+    "planLine": "{name} — €{price}/mo",
+    "roiLine": "{roi}× ROI · Recovers <bold>{recovered}</bold> net every month"
+  },
   "forWho": {
     "eyebrow": "Who it's for",
     "statCaption": "of calls answered on the first ring",

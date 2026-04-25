@@ -54,6 +54,21 @@
       }
     ]
   },
+  "calculator": {
+    "eyebrow": "Calculadora de ingresos",
+    "subheadline": "Ajuste los controles deslizantes según las necesidades de su empresa: consulte sus cifras reales al instante.",
+    "sliderDailyCalls": "Llamadas recibidas diariamente",
+    "sliderBookingValue": "Valor medio de la reserva",
+    "sliderMissRate": "Llamadas que se ha perdido recientemente",
+    "callsPerDay": "{n} llamadas al día",
+    "monthlyCallsLabel": "Reuniones mensuales",
+    "missedPerMonthLabel": "Imposible de alcanzar al mes",
+    "revenueLostLabel": "Ingresos perdidos al mes",
+    "missedDetail": "= {missed} reservas perdidas × {bookingValue} € de reserva media",
+    "recommendedPlanLabel": "Plan recomendado",
+    "planLine": "{name} — {price}s de euros al mes",
+    "roiLine": "{roi}× ROI · Recupera <bold>{recovered}</bold> netos cada mes"
+  },
   "forWho": {
     "eyebrow": "A quién va dirigido",
     "statCaption": "de llamadas atendidas al primer tono",

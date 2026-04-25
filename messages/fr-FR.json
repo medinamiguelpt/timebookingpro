@@ -54,6 +54,21 @@
       }
     ]
   },
+  "calculator": {
+    "eyebrow": "Calculateur de revenus",
+    "subheadline": "Réglez les curseurs en fonction de votre entreprise — consultez instantanément vos chiffres réels.",
+    "sliderDailyCalls": "Nombre d'appels reçus chaque jour",
+    "sliderBookingValue": "Valeur moyenne des réservations",
+    "sliderMissRate": "Les appels que vous manquez actuellement",
+    "callsPerDay": "{n} appels par jour",
+    "monthlyCallsLabel": "Réunions téléphoniques mensuelles",
+    "missedPerMonthLabel": "Manqué par mois",
+    "revenueLostLabel": "Perte de chiffre d'affaires mensuelle",
+    "missedDetail": "= {missed} de réservations manquées × {bookingValue} € de valeur moyenne par réservation",
+    "recommendedPlanLabel": "Formule recommandée",
+    "planLine": "{name} — {price}s d'euros par mois",
+    "roiLine": "{roi}× retour sur investissement · Génère un bénéfice net de <bold>{recovered}</bold> chaque mois"
+  },
   "forWho": {
     "eyebrow": "À qui s'adresse-t-il ?",
     "statCaption": "des appels pris dès la première sonnerie",
