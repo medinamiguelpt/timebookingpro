@@ -3,19 +3,21 @@
 import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import { useTheme } from "next-themes"
+import { useTranslations } from "next-intl"
 import { Sun, Moon, Menu, X } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Logo } from "@/components/logo"
 import { LocaleSwitcher } from "@/components/ui/locale-switcher"
 import { cn } from "@/lib/utils"
 
-const NAV_LINKS = [
-  { label: "How it Works", href: "#how-it-works", sectionId: "how-it-works" },
-  { label: "Features",     href: "#features",     sectionId: "features" },
-  { label: "Pricing",      href: "#pricing",       sectionId: "pricing" },
-]
+const NAV_LINK_KEYS = [
+  { key: "howItWorks", href: "#how-it-works", sectionId: "how-it-works" },
+  { key: "features",   href: "#features",     sectionId: "features" },
+  { key: "pricing",    href: "#pricing",      sectionId: "pricing" },
+] as const
 
 export function Navbar() {
+  const t = useTranslations("navbar")
   const { theme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
   const [scrolled, setScrolled] = useState(false)
@@ -34,7 +36,7 @@ export function Navbar() {
     window.addEventListener("scroll", onScroll, { passive: true })
 
     // Observe each anchor section
-    const sectionIds = NAV_LINKS.map((l) => l.sectionId).filter(Boolean) as string[]
+    const sectionIds = NAV_LINK_KEYS.map((l) => l.sectionId).filter(Boolean) as string[]
 
     observerRef.current = new IntersectionObserver(
       (entries) => {
@@ -82,13 +84,13 @@ export function Navbar() {
         scrolled ? "h-14" : "h-16 max-w-6xl mx-auto px-4 sm:px-6"
       )}>
         {/* Logo */}
-        <Link href="/" aria-label="TimeBookingPro home" className="flex items-center">
+        <Link href="/" aria-label={t("homeAriaLabel")} className="flex items-center">
           <Logo iconSize={32} />
         </Link>
 
         {/* Desktop nav links — pill-style background on hover, no movement */}
         <ul className="hidden md:flex items-center gap-2">
-          {NAV_LINKS.map((link) => {
+          {NAV_LINK_KEYS.map((link) => {
             const isActive = link.sectionId ? activeSection === link.sectionId : false
             return (
               <li key={link.href}>
@@ -101,7 +103,7 @@ export function Navbar() {
                       : "text-muted-foreground hover:text-foreground hover:bg-foreground/5"
                   )}
                 >
-                  {link.label}
+                  {t(link.key)}
                   {isActive && (
                     <motion.span
                       layoutId="nav-indicator"
@@ -123,7 +125,7 @@ export function Navbar() {
 
           <motion.button
             onClick={toggleTheme}
-            aria-label="Toggle theme"
+            aria-label={t("toggleTheme")}
             className="relative p-2 rounded-full text-muted-foreground hover:text-foreground hover:bg-muted transition-colors overflow-hidden"
             whileTap={{ scale: 0.88 }}
           >
@@ -156,7 +158,7 @@ export function Navbar() {
 
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle menu"
+            aria-label={t("toggleMenu")}
             className="md:hidden p-2 rounded-full text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
           >
             <AnimatePresence mode="wait" initial={false}>
@@ -203,7 +205,7 @@ export function Navbar() {
             transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
           >
             <ul className="max-w-6xl mx-auto px-4 py-4 flex flex-col gap-1">
-              {NAV_LINKS.map((link, i) => {
+              {NAV_LINK_KEYS.map((link, i) => {
                 const isActive = link.sectionId ? activeSection === link.sectionId : false
                 return (
                   <motion.li
@@ -222,7 +224,7 @@ export function Navbar() {
                           : "text-muted-foreground hover:text-foreground hover:bg-muted"
                       )}
                     >
-                      {link.label}
+                      {t(link.key)}
                     </a>
                   </motion.li>
                 )
@@ -231,7 +233,7 @@ export function Navbar() {
                 className="pt-2 px-3"
                 initial={{ opacity: 0, x: -12 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: NAV_LINKS.length * 0.06 }}
+                transition={{ delay: NAV_LINK_KEYS.length * 0.06 }}
               >
                 <LocaleSwitcher variant="navbar" />
               </motion.li>

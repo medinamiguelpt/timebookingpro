@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useRef, useEffect } from "react"
-import { useLocale } from "next-intl"
+import { useLocale, useTranslations } from "next-intl"
 import { Globe, Check, ChevronDown } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 import { usePathname, useRouter } from "@/i18n/navigation"
@@ -31,6 +31,7 @@ interface LocaleSwitcherProps {
 }
 
 export function LocaleSwitcher({ variant = "navbar", className }: LocaleSwitcherProps) {
+  const t = useTranslations("localeSwitcher")
   const currentLocale = useLocale() as Locale
   const router = useRouter()
   const pathname = usePathname()
@@ -70,7 +71,7 @@ export function LocaleSwitcher({ variant = "navbar", className }: LocaleSwitcher
         type="button"
         aria-haspopup="listbox"
         aria-expanded={open}
-        aria-label="Change language"
+        aria-label={t("ariaLabel")}
         onClick={() => setOpen((o) => !o)}
         className={cn(
           "inline-flex items-center gap-1.5 rounded-full px-3 h-9 text-sm font-medium transition-colors",
