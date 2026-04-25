@@ -45,6 +45,29 @@
       { "before": "Weekend calls go unanswered",          "after": "Weekends, nights, and holidays covered" }
     ]
   },
+  "hero": {
+    "badge": "✦ AI-powered booking agents",
+    "typewriter": "TimeBookingPro builds you a voice AI that answers calls, handles bookings, and fills your calendar — automatically, 24 hours a day.",
+    "headlines": {
+      "a": { "plain": "Give your business",  "highlight": "its own AI agent" },
+      "b": { "plain": "Stop losing bookings", "highlight": "while you sleep"  }
+    },
+    "finePrint": "Live in under 24 hours",
+    "scrollIndicator": "Scroll",
+    "mockup": {
+      "agentLive": "Kostas is live",
+      "bookingConfirmed": "Booking confirmed — tomorrow at 2:00 PM",
+      "callsHandledLabel": "Calls handled today",
+      "revenueBookedLabel": "Revenue booked"
+    },
+    "chat": {
+      "bubbles": [
+        "Hi! I'd like to book a haircut for tomorrow afternoon.",
+        "Of course! I have 2 PM and 4 PM free tomorrow. Which works best for you?",
+        "2 PM is perfect, thank you!"
+      ]
+    }
+  },
   "finalCta": {
     "eyebrow": "Get started today",
     "subheadline": "Join the businesses that book 24/7. Your AI agent will be live in under 24 hours.",

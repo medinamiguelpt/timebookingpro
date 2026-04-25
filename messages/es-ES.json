@@ -54,6 +54,35 @@
       }
     ]
   },
+  "hero": {
+    "badge": "✦ Agentes de reservas basados en inteligencia artificial",
+    "typewriter": "TimeBookingPro le crea una IA de voz que responde a las llamadas, gestiona las reservas y completa su agenda, de forma automática, las 24 horas del día.",
+    "headlines": {
+      "a": {
+        "plain": "Ofrezca a su empresa",
+        "highlight": "su propio agente de IA"
+      },
+      "b": {
+        "plain": "Deje de perder reservas",
+        "highlight": "mientras duerme"
+      }
+    },
+    "finePrint": "Disponible en menos de 24 horas",
+    "scrollIndicator": "Desplazarse",
+    "mockup": {
+      "agentLive": "Kostas ya está disponible",
+      "bookingConfirmed": "Reserva confirmada: mañana a las 14:00",
+      "callsHandledLabel": "Llamadas atendidas hoy",
+      "revenueBookedLabel": "Ingresos contabilizados"
+    },
+    "chat": {
+      "bubbles": [
+        "¡Hola! Me gustaría reservar una cita para cortarme el pelo mañana por la tarde.",
+        "¡Por supuesto! Mañana tengo libre a las 14:00 y a las 16:00. ¿Qué hora le viene mejor?",
+        "¡A las 2 de la tarde está perfecto, gracias!"
+      ]
+    }
+  },
   "finalCta": {
     "eyebrow": "Empiece hoy mismo",
     "subheadline": "Únase a las empresas que contratan nuestros servicios las 24 horas del día, los 7 días de la semana. Su agente de IA estará operativo en menos de 24 horas.",

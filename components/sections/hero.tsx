@@ -2,15 +2,16 @@
 
 import { useRef, useEffect, useMemo, useState } from "react"
 import { motion, animate, useScroll, useTransform, useMotionValue, useSpring, AnimatePresence, useInView } from "framer-motion"
+import { useTranslations } from "next-intl"
 // useMotionValue + useSpring kept for hero blob parallax
 import { CheckCircle, Phone } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Particles } from "@/components/ui/particles"
 import { TiltCard } from "@/components/ui/tilt-card"
 
-const FULL_TEXT = "TimeBookingPro builds you a voice AI that answers calls, handles bookings, and fills your calendar — automatically, 24 hours a day."
-
 function TypewriterText() {
+  const t = useTranslations("hero")
+  const fullText = t("typewriter")
   const [displayed, setDisplayed] = useState("")
   // Caret persists for 2s after typing finishes — terminal "waiting for input" feel
   const [showCaret, setShowCaret] = useState(true)
@@ -20,14 +21,14 @@ function TypewriterText() {
     let fadeTimer: ReturnType<typeof setTimeout>
     const id = setInterval(() => {
       i++
-      setDisplayed(FULL_TEXT.slice(0, i))
-      if (i >= FULL_TEXT.length) {
+      setDisplayed(fullText.slice(0, i))
+      if (i >= fullText.length) {
         clearInterval(id)
         fadeTimer = setTimeout(() => setShowCaret(false), 2000)
       }
     }, 18)
     return () => { clearInterval(id); clearTimeout(fadeTimer) }
-  }, [])
+  }, [fullText])
 
   return (
     <span>
@@ -194,31 +195,33 @@ function TypingDots({ dark = false }: { dark?: boolean }) {
   )
 }
 
-const CHAT_BUBBLES = [
-  { side: "left"  as const, text: "Hi! I'd like to book a haircut for tomorrow afternoon." },
-  { side: "right" as const, text: "Of course! I have 2 PM and 4 PM free tomorrow. Which works best for you?" },
-  { side: "left"  as const, text: "2 PM is perfect, thank you!" },
-]
+// User/agent ordering is fixed (left/right/left); only the texts come from translations.
+const BUBBLE_SIDES = ["left", "right", "left"] as const
 
 // Each bubble shows typing dots first, then the message — staggered like a real conversation
 function ChatSequence({ inView }: { inView: boolean }) {
+  const tHero = useTranslations("hero")
+  const bubbleTexts = tHero.raw("chat.bubbles") as string[]
+  const bubbles = BUBBLE_SIDES.map((side, i) => ({ side, text: bubbleTexts[i] }))
+
   const [stage, setStage] = useState(-1) // -1 = not started, 0/2/4 = typing, 1/3/5 = bubble shown
   useEffect(() => {
     if (!inView) return
     const timers: ReturnType<typeof setTimeout>[] = []
     let t = 600
-    CHAT_BUBBLES.forEach((_, i) => {
+    bubbles.forEach((_, i) => {
       timers.push(setTimeout(() => setStage(i * 2), t))     // show typing dots
       t += 500 + i * 100
       timers.push(setTimeout(() => setStage(i * 2 + 1), t)) // replace with bubble
       t += 900
     })
     return () => timers.forEach(clearTimeout)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inView])
 
   return (
     <div className="space-y-2.5 min-h-[140px]">
-      {CHAT_BUBBLES.map(({ side, text }, i) => {
+      {bubbles.map(({ side, text }, i) => {
         const typingStage = i * 2
         const bubbleStage = i * 2 + 1
         const showTyping = stage === typingStage
@@ -247,6 +250,7 @@ function ChatSequence({ inView }: { inView: boolean }) {
 }
 
 function HeroMockup() {
+  const t = useTranslations("hero.mockup")
   const containerRef = useRef<HTMLDivElement>(null)
   const inView = useInView(containerRef, { once: true, margin: "-50px" })
 
@@ -264,7 +268,7 @@ function HeroMockup() {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse" />
-            <span className="text-sm font-semibold text-foreground">Kostas is live</span>
+            <span className="text-sm font-semibold text-foreground">{t("agentLive")}</span>
             <LiveWaveform />
           </div>
           <div className="flex items-center gap-1.5 text-xs text-muted-foreground bg-muted px-2 py-1 rounded-full">
@@ -278,7 +282,7 @@ function HeroMockup() {
         <div className="flex items-center gap-2 bg-green-500/10 border border-green-500/20 rounded-xl px-3 py-2.5">
           <CheckCircle size={15} className="text-green-500 shrink-0" />
           <span className="text-sm font-medium text-green-600 dark:text-green-400">
-            Booking confirmed — tomorrow at 2:00 PM
+            {t("bookingConfirmed")}
           </span>
         </div>
       </div>
@@ -289,7 +293,7 @@ function HeroMockup() {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.6, type: "spring" }}
       >
-        <p className="text-[11px] text-muted-foreground">Calls handled today</p>
+        <p className="text-[11px] text-muted-foreground">{t("callsHandledLabel")}</p>
         <LiveStat initialValue={47} delay={0.8} incrementMin={1} incrementMax={3} intervalMs={5000} inView={inView} />
       </motion.div>
 
@@ -300,7 +304,7 @@ function HeroMockup() {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.8, type: "spring" }}
       >
-        <p className="text-[11px] text-muted-foreground">Revenue booked</p>
+        <p className="text-[11px] text-muted-foreground">{t("revenueBookedLabel")}</p>
         <LiveRevenue initialValue={1240} delay={1.2} intervalMs={7000} inView={inView} />
       </motion.div>
     </motion.div>
@@ -330,12 +334,8 @@ function HeadlineReveal({ plain, highlight }: { plain: string; highlight: string
 }
 
 
-const HEADLINES = {
-  a: { plain: "Give your business", highlight: "its own AI agent" },
-  b: { plain: "Stop losing bookings", highlight: "while you sleep" },
-}
-
 export function Hero({ variant = "a" }: { variant?: "a" | "b" }) {
+  const t = useTranslations("hero")
   const sectionRef = useRef<HTMLElement>(null)
   const { scrollY } = useScroll()
   const glowY = useTransform(scrollY, [0, 600], [0, 120])
@@ -385,7 +385,10 @@ export function Hero({ variant = "a" }: { variant?: "a" | "b" }) {
     }
   }, [])
 
-  const headline = HEADLINES[variant] ?? HEADLINES.a
+  const headline = {
+    plain:     t(`headlines.${variant}.plain`),
+    highlight: t(`headlines.${variant}.highlight`),
+  }
 
   return (
     <section ref={sectionRef} className="relative overflow-hidden">
@@ -418,7 +421,7 @@ export function Hero({ variant = "a" }: { variant?: "a" | "b" }) {
                 variant="outline"
                 className="border-primary/30 bg-primary/5 text-primary font-medium px-4 py-1.5 rounded-full text-sm w-fit"
               >
-                ✦ AI-powered booking agents
+                {t("badge")}
               </Badge>
             </motion.div>
 
@@ -440,7 +443,7 @@ export function Hero({ variant = "a" }: { variant?: "a" | "b" }) {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.75 }}
             >
-              Live in under 24 hours
+              {t("finePrint")}
             </motion.p>
           </div>
 
@@ -471,7 +474,7 @@ export function Hero({ variant = "a" }: { variant?: "a" | "b" }) {
                 aria-hidden
               >
                 <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground/45">
-                  Scroll
+                  {t("scrollIndicator")}
                 </span>
                 {/* Mouse-wheel icon */}
                 <div className="w-[18px] h-[28px] rounded-full border border-muted-foreground/25 flex items-start justify-center pt-[5px]">
