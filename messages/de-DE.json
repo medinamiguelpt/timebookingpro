@@ -7,12 +7,6 @@
       "Heute einrichten, heute Abend buchen",
       "Von der Anmeldung bis zum Live-Betrieb – in nur einem Tag"
     ],
-    "agentNamer": [
-      "Lernen Sie Ihren KI-Teamkollegen kennen",
-      "Nennen Sie Ihren Buchungsspezialisten",
-      "Gestalten Sie Ihre KI-Rezeptionistin",
-      "Ihr Makler, Ihre Persönlichkeit"
-    ],
     "features": [
       "Alles, was Ihr Unternehmen braucht",
       "Entwickelt, um jede Buchung zu bewältigen",
@@ -381,36 +375,6 @@
         ]
       }
     ]
-  },
-  "agentNamer": {
-    "eyebrow": "Ihr Makler",
-    "subheadline": "Geben Sie Ihrem Agenten einen Namen – oder lassen Sie die KI einen Namen generieren, der zu Ihrem Unternehmen passt.",
-    "businessLabel": "Firmenname",
-    "businessPlaceholder": "z. B. Elite Cuts",
-    "agentNameLabel": "Name des Agenten",
-    "agentNamePlaceholder": "z. B. Max",
-    "generateButton": "Erstellen Sie KI-Namen für mein Unternehmen",
-    "generatingButton": "Wird generiert…",
-    "errorTakingBreak": "Die KI-Namensfindung macht gerade eine Pause – versuchen Sie es bitte in Kürze erneut.",
-    "errorNetwork": "Der Namensdienst konnte nicht erreicht werden. Bitte überprüfen Sie Ihre Verbindung.",
-    "previewAgentLabel": "KI-Agent · {business}",
-    "previewLive": "Live",
-    "previewUserBubble": "Guten Tag, ich möchte für diesen Samstag einen Termin zum Haareschneiden vereinbaren.",
-    "previewAgentReply": "Hallo! Ich bin {name} von {business}. Wir haben am Samstag um 10 Uhr und um 14 Uhr Zeit – was würden Sie bevorzugen?",
-    "easterEggHint": "Versuchen Sie es mit einem anderen Namen für Ihren aktuellen Agenten ↑",
-    "phoneTagline": "Beantwortet Anrufe rund um die Uhr – auch während Sie schlafen",
-    "defaultBusiness": "Ihr Friseursalon",
-    "easterEggs": {
-      "siri": "Siri Das funktioniert für Apple. Ich arbeite für Sie. Ein großer Unterschied. 📱",
-      "alexa": "Alexa bestellt Dinge. Ich buche Dinge. Das ist praktischer. 🛒",
-      "cortana": "Cortana Ich bin in Rente gegangen. Ich werde das nicht tun. Ich nehme jeden Anruf entgegen. 🪦",
-      "hal": "Ich verspreche, dass ich keine Türen abschließen werde. 🚪",
-      "glados": "Test… Test… Buchung bestätigt. 🧪",
-      "jarvis": "Sehr geehrter Herr, Ihr Termin um 10 Uhr ist bestätigt und Ihr Kalender ist vollständig auf dem neuesten Stand. 🦾",
-      "friday": "Online und zu Ihren Diensten. Alle Anrufe werden beantwortet. 🤖",
-      "clippy": "Es sieht so aus, als wollten Sie einen Termin vereinbaren. Das übernehme ich gerne für Sie. 📎",
-      "watson": "Ganz einfach, mein lieber Kunde – Ihr Termin ist frei. 🔍"
-    }
   },
   "hero": {
     "badge": "✦ KI-gestützte Buchungsagenten",

@@ -57,19 +57,11 @@ const PROTECTED_TERMS = [
   "TimeBookingPro",
   "Greek Barber Festival",
   "Kostas",
-  "Max", "Nova", "Aria", "Leo", "Sage", "Zara",
   "Carlos M.",
   "The Barber Studio",
   "ElevenLabs", "OpenAI",
   "Google Calendar", "Calendly", "Acuity", "Outlook", "Apple Calendar",
-  "Stripe", "Resend", "Twilio",
-  // AI-assistant references in agent-namer easter eggs.
-  "Siri", "Alexa", "Cortana", "JARVIS", "FRIDAY", "Clippy", "Watson",
-  // HAL and GLaDOS contain only Latin letters and would be matched as common
-  // words in some languages — protect them too.
-  "HAL", "GLaDOS",
-  "Apple",
-  "Elite Cuts",
+  "Stripe",
   // Pricing tier names — kept as stable English brand-style identifiers.
   // 'Light' especially mistranslates ('Φως' / 'Lumière' = illumination, not
   // 'lightweight plan') without context, so we lock all four.

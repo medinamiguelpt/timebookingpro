@@ -11,7 +11,6 @@
 
 export const SECTION_KEYS = [
   "howItWorks",
-  "agentNamer",
   "features",
   "beforeAfter",
   "forWho",

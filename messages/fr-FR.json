@@ -7,12 +7,6 @@
       "Installez-le aujourd'hui, réservez dès ce soir",
       "De l'inscription à la mise en ligne en une journée"
     ],
-    "agentNamer": [
-      "Découvrez votre coéquipier IA",
-      "Veuillez indiquer le nom de votre conseiller en réservation",
-      "Créez votre réceptionniste IA",
-      "Votre agent, votre personnalité"
-    ],
     "features": [
       "Tout ce dont votre entreprise a besoin",
       "Conçu pour gérer toutes les réservations",
@@ -381,36 +375,6 @@
         ]
       }
     ]
-  },
-  "agentNamer": {
-    "eyebrow": "Votre agent",
-    "subheadline": "Donnez un nom à votre agent — ou laissez l'IA en générer un en fonction de votre entreprise.",
-    "businessLabel": "Raison sociale",
-    "businessPlaceholder": "par exemple : Elite Cuts",
-    "agentNameLabel": "Nom de l'agent",
-    "agentNamePlaceholder": "par exemple : Max",
-    "generateButton": "Générer des noms créés par l'IA pour mon entreprise",
-    "generatingButton": "Génération en cours…",
-    "errorTakingBreak": "Le système de nommage par IA est en pause — veuillez réessayer dans quelques instants.",
-    "errorNetwork": "Impossible d'accéder au service de noms. Vérifiez votre connexion.",
-    "previewAgentLabel": "Agent IA · {business}",
-    "previewLive": "En direct",
-    "previewUserBubble": "Bonjour, j'aimerais prendre rendez-vous pour une coupe de cheveux ce samedi.",
-    "previewAgentReply": "Bonjour ! Je m'appelle {name} et je travaille pour {business}. Nous avons des créneaux disponibles samedi à 10 h et à 14 h — lequel préférez-vous ?",
-    "easterEggHint": "Essayez un autre nom pour votre agent actuel ↑",
-    "phoneTagline": "Répond aux appels 24 heures sur 24, 7 jours sur 7 — même pendant que vous dormez",
-    "defaultBusiness": "votre salon de coiffure",
-    "easterEggs": {
-      "siri": "Siri « travaille pour Apple ». Je travaille pour vous. Il y a une grande différence. 📱",
-      "alexa": "Alexa Je commande des choses. Je réserve des choses. C'est plus pratique. 🛒",
-      "cortana": "Cortana J'ai pris ma retraite. Pas moi. Je réponds à tous les appels. 🪦",
-      "hal": "Je vous promets que je ne fermerai aucune porte à clé. 🚪",
-      "glados": "Test… test… réservation confirmée. 🧪",
-      "jarvis": "Monsieur, votre rendez-vous de 10 h est confirmé et votre agenda est entièrement à jour. 🦾",
-      "friday": "En ligne et à votre service. Nous répondons à tous vos appels. 🤖",
-      "clippy": "On dirait que vous essayez de prendre rendez-vous. Laissez-moi m'en occuper. 📎",
-      "watson": "C'est élémentaire, cher client : votre créneau est disponible. 🔍"
-    }
   },
   "hero": {
     "badge": "✦ Agents de réservation basés sur l'IA",

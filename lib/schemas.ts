@@ -1,12 +1,6 @@
 import { z } from "zod"
 import { NextResponse } from "next/server"
 
-// ── Schemas ────────────────────────────────────────
-
-export const agentNameSchema = z.object({
-  business: z.string().optional().default(""),
-})
-
 // ── Parse helper ─────────────────────────────────────────
 
 type ParseOk<T>  = { data: T;    error: null }

@@ -6,7 +6,6 @@ import { Footer } from "@/components/layout/footer"
 import { Hero } from "@/components/sections/hero"
 import { TechStrip } from "@/components/sections/tech-strip"
 import { HowItWorks } from "@/components/sections/how-it-works"
-import { AgentNamer } from "@/components/sections/agent-namer"
 import { Features } from "@/components/sections/features"
 import { BeforeAfter } from "@/components/sections/before-after"
 import { ForWho } from "@/components/sections/for-who"
@@ -35,7 +34,6 @@ export default async function Home(
         <Hero variant={variant} />
         <TechStrip />
         <HowItWorks  headline={pick("howItWorks")} />
-        <AgentNamer  headline={pick("agentNamer")} />
         <WaveDivider opacity={0.5} />
         <Features    headline={pick("features")} />
         <BeforeAfter headline={pick("beforeAfter")} />

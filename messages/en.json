@@ -7,12 +7,6 @@
       "Setup today, bookings tonight",
       "From signup to live in a day"
     ],
-    "agentNamer": [
-      "Meet your AI teammate",
-      "Name your booking specialist",
-      "Design your AI receptionist",
-      "Your agent, your personality"
-    ],
     "features": [
       "Everything your business needs",
       "Built to handle every booking",
@@ -381,36 +375,6 @@
         ]
       }
     ]
-  },
-  "agentNamer": {
-    "eyebrow": "Your agent",
-    "subheadline": "Give your agent a name — or let AI generate one based on your business.",
-    "businessLabel": "Business name",
-    "businessPlaceholder": "e.g. Elite Cuts",
-    "agentNameLabel": "Agent name",
-    "agentNamePlaceholder": "e.g. Max",
-    "generateButton": "Generate AI names for my business",
-    "generatingButton": "Generating…",
-    "errorTakingBreak": "AI naming is taking a break — try again in a moment.",
-    "errorNetwork": "Couldn't reach the name service. Check your connection.",
-    "previewAgentLabel": "AI Agent · {business}",
-    "previewLive": "Live",
-    "previewUserBubble": "Hi, I'd like to book a haircut this Saturday.",
-    "previewAgentReply": "Hi! I'm {name} from {business}. We have Saturday at 10 AM and 2 PM available — which do you prefer?",
-    "easterEggHint": "Try a different name for your actual agent ↑",
-    "phoneTagline": "Handles calls 24/7 — even while you sleep",
-    "defaultBusiness": "your barbershop",
-    "easterEggs": {
-      "siri": "Siri works for Apple. I work for you. Big difference. 📱",
-      "alexa": "Alexa orders things. I book things. More useful. 🛒",
-      "cortana": "Cortana got retired. I won't. I answer every call. 🪦",
-      "hal": "I promise I won't lock any doors. 🚪",
-      "glados": "Testing… testing… booking confirmed. 🧪",
-      "jarvis": "Sir, your 10 AM is confirmed and your calendar is fully up to date. 🦾",
-      "friday": "Online and at your service. All calls answered. 🤖",
-      "clippy": "It looks like you're trying to book an appointment. Let me handle that. 📎",
-      "watson": "Elementary, my dear client — your slot is available. 🔍"
-    }
   },
   "hero": {
     "badge": "✦ AI-powered booking agents",

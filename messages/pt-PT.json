@@ -7,12 +7,6 @@
       "Preparação hoje, reservas para esta noite",
       "Desde o registo até à ativação em apenas um dia"
     ],
-    "agentNamer": [
-      "Conheça o seu colega de equipa de IA",
-      "Indique o seu especialista em reservas",
-      "Crie a sua recepcionista com IA",
-      "O seu agente, a sua personalidade"
-    ],
     "features": [
       "Tudo o que a sua empresa precisa",
       "Concebido para gerir todas as reservas",
@@ -381,36 +375,6 @@
         ]
       }
     ]
-  },
-  "agentNamer": {
-    "eyebrow": "O seu agente",
-    "subheadline": "Dê um nome ao seu agente — ou deixe que a IA gere um com base na sua empresa.",
-    "businessLabel": "Nome da empresa",
-    "businessPlaceholder": "por exemplo, Elite Cuts",
-    "agentNameLabel": "Nome do agente",
-    "agentNamePlaceholder": "por exemplo, Max",
-    "generateButton": "Gerar nomes com IA para a minha empresa",
-    "generatingButton": "A gerar…",
-    "errorTakingBreak": "A atribuição de nomes pela IA está em pausa — tente novamente daqui a pouco.",
-    "errorNetwork": "Não foi possível aceder ao serviço de nomes. Verifique a sua ligação.",
-    "previewAgentLabel": "Agente de IA · {business}",
-    "previewLive": "Ao vivo",
-    "previewUserBubble": "Olá, gostaria de marcar um corte de cabelo para este sábado.",
-    "previewAgentReply": "Olá! Sou a {name}, do site {business}. Temos disponibilidade no sábado, às 10h00 e às 14h00 — qual prefere?",
-    "easterEggHint": "Experimente um nome diferente para o seu agente atual ↑",
-    "phoneTagline": "Atende chamadas 24 horas por dia, 7 dias por semana — mesmo enquanto dorme",
-    "defaultBusiness": "a sua barbearia",
-    "easterEggs": {
-      "siri": "Siri trabalha para a Apple. Eu trabalho para si. É uma grande diferença. 📱",
-      "alexa": "Alexa Encomenda coisas. Eu faço reservas. É mais útil. 🛒",
-      "cortana": "Cortana Já me reformei. Eu não. Atendo todas as chamadas. 🪦",
-      "hal": "Prometo que não vou trancar nenhuma porta. 🚪",
-      "glados": "A testar… a testar… reserva confirmada. 🧪",
-      "jarvis": "Senhor, a sua reunião das 10h está confirmada e a sua agenda está totalmente atualizada. 🦾",
-      "friday": "Online e ao seu dispor. Atendemos todas as chamadas. 🤖",
-      "clippy": "Parece que está a tentar marcar uma consulta. Deixe que eu trato disso. 📎",
-      "watson": "É simples, meu caro cliente — o seu horário está disponível. 🔍"
-    }
   },
   "hero": {
     "badge": "✦ Agentes de reservas com tecnologia de IA",
