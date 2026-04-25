@@ -74,7 +74,7 @@ function FlowConnector({ label, delay }: { label: string; delay: number }) {
               "repeating-linear-gradient(90deg, var(--color-border) 0, var(--color-border) 5px, transparent 5px, transparent 11px)",
           }}
         />
-        <svg className="absolute right-0 shrink-0" width="8" height="8" viewBox="0 0 8 8" fill="none">
+        <svg className="absolute end-0 shrink-0 rtl:scale-x-[-1]" width="8" height="8" viewBox="0 0 8 8" fill="none">
           <path d="M1 1l6 3-6 3" stroke="var(--color-border)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
         {inView && (
@@ -136,9 +136,9 @@ function ScrollySection() {
     >
       {/* Left: steps */}
       <div className="relative">
-        <div className="absolute left-7 top-8 bottom-8 w-px bg-border" />
+        <div className="absolute start-7 top-8 bottom-8 w-px bg-border" />
         <motion.div
-          className="absolute left-7 top-8 w-px bg-primary origin-top"
+          className="absolute start-7 top-8 w-px bg-primary origin-top"
           animate={{ height: `${(activeStep / (steps.length - 1)) * 100}%` }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           style={{ maxHeight: "calc(100% - 4rem)" }}
@@ -158,7 +158,7 @@ function ScrollySection() {
                   scale: isActive ? 1 : 0.97,
                 }}
                 transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                className="flex items-start gap-5 text-left w-full cursor-pointer"
+                className="flex items-start gap-5 text-start w-full cursor-pointer"
               >
                 <div className="relative shrink-0">
                   <div
@@ -172,7 +172,7 @@ function ScrollySection() {
                     <Icon size={24} style={{ color: isActive ? accent : "var(--color-muted-foreground)" }} />
                   </div>
                   <span
-                    className="absolute -top-2 -right-2 w-6 h-6 rounded-full text-[10px] font-bold flex items-center justify-center transition-all duration-500"
+                    className="absolute -top-2 -end-2 w-6 h-6 rounded-full text-[10px] font-bold flex items-center justify-center transition-all duration-500"
                     style={{
                       background: isActive ? accent : "var(--color-border)",
                       color: isActive ? "white" : "var(--color-muted-foreground)",
@@ -196,7 +196,7 @@ function ScrollySection() {
         </div>
 
         {/* Story-style progress dots — click to jump, active dot fills as timer counts down */}
-        <div className="flex gap-2 mt-8 ml-5">
+        <div className="flex gap-2 mt-8 ms-5">
           {steps.map((_, i) => (
             <button
               key={i}
@@ -207,7 +207,7 @@ function ScrollySection() {
             >
               {i < activeStep && <div className="absolute inset-0 bg-primary" />}
               {i === activeStep && (
-                <div ref={progressBarRef} className="absolute inset-y-0 left-0 bg-primary" style={{ width: "0%" }} />
+                <div ref={progressBarRef} className="absolute inset-y-0 start-0 bg-primary" style={{ width: "0%" }} />
               )}
             </button>
           ))}
@@ -277,10 +277,10 @@ export function HowItWorks({ headline = "Up and running in 24 hours" }: { headli
     <section id="how-it-works" className="py-24 sm:py-32 overflow-hidden">
       <style>{`
         @keyframes travelDot {
-          0%   { left: -8px; opacity: 0; }
+          0%   { inset-inline-start: -8px; opacity: 0; }
           8%   { opacity: 1; }
           92%  { opacity: 1; }
-          100% { left: calc(100% + 8px); opacity: 0; }
+          100% { inset-inline-start: calc(100% + 8px); opacity: 0; }
         }
       `}</style>
 
@@ -335,7 +335,7 @@ export function HowItWorks({ headline = "Up and running in 24 hours" }: { headli
               >
                 <Icon size={26} style={{ color: accent }} />
                 <span
-                  className="absolute -top-2 -right-2 w-6 h-6 rounded-full text-[10px] font-bold flex items-center justify-center text-white"
+                  className="absolute -top-2 -end-2 w-6 h-6 rounded-full text-[10px] font-bold flex items-center justify-center text-white"
                   style={{ background: accent }}
                 >
                   {step}

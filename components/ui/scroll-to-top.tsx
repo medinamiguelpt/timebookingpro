@@ -29,7 +29,7 @@ export function ScrollToTop() {
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           aria-label={t("ariaLabel")}
           // Stacked above section-sound (bottom-20) and mobile-cta (bottom-0 on mobile)
-          className="fixed bottom-32 right-4 sm:right-6 z-40 w-9 h-9 min-w-[36px] min-h-[36px] rounded-full bg-background/85 backdrop-blur-sm border border-border shadow-sm flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-background transition-colors"
+          className="fixed bottom-32 end-4 sm:end-6 z-40 w-9 h-9 min-w-[36px] min-h-[36px] rounded-full bg-background/85 backdrop-blur-sm border border-border shadow-sm flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-background transition-colors"
         >
           <ArrowUp size={14} />
         </motion.button>

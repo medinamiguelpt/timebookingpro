@@ -72,7 +72,7 @@ export function SectionSound() {
       onClick={toggle}
       aria-label={enabled ? t("muteAriaLabel") : t("enableAriaLabel")}
       title={enabled ? t("muteTitle") : t("enableTitle")}
-      className="fixed bottom-20 right-4 sm:right-6 z-40 w-9 h-9 min-w-[36px] min-h-[36px] rounded-full bg-background/80 backdrop-blur-sm border border-border shadow-sm flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors"
+      className="fixed bottom-20 end-4 sm:end-6 z-40 w-9 h-9 min-w-[36px] min-h-[36px] rounded-full bg-background/80 backdrop-blur-sm border border-border shadow-sm flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors"
     >
       {enabled ? <Volume2 size={14} /> : <VolumeX size={14} />}
     </button>

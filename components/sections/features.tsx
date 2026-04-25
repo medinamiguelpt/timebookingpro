@@ -163,7 +163,7 @@ export function Features({ headline = "Everything your business needs" }: { head
                 {/* Stat side (wide cards) */}
                 {span === "wide" && stat && (
                   <div className={cn(
-                    "relative z-10 flex flex-col items-center justify-center px-8 py-6 sm:min-w-[180px] border-t sm:border-t-0 sm:border-l border-border/60",
+                    "relative z-10 flex flex-col items-center justify-center px-8 py-6 sm:min-w-[180px] border-t sm:border-t-0 sm:border-s border-border/60",
                     "transition-colors duration-300"
                   )}
                   style={{ background: `${accentBg}` }}
@@ -180,7 +180,7 @@ export function Features({ headline = "Everything your business needs" }: { head
 
                 {/* Stat badge (narrow cards) */}
                 {span === "normal" && stat && (
-                  <div className="absolute bottom-4 right-4 z-10 rounded-xl px-3 py-1.5 text-center opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300"
+                  <div className="absolute bottom-4 end-4 z-10 rounded-xl px-3 py-1.5 text-center opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300"
                     style={{ background: accentBg, border: `1px solid ${accent}30` }}>
                     <p className="text-lg font-heading font-extrabold leading-none" style={{ color: accent }}>
                       <CountUp to={stat.value} suffix={stat.suffix} />

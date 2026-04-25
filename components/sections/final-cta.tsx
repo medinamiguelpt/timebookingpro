@@ -254,7 +254,7 @@ export function FinalCTA({ headline = "Their calendar won't fill *itself*, yours
                   className="shimmer-btn flex items-center gap-2 whitespace-nowrap bg-primary hover:bg-primary/90 disabled:opacity-60 text-white font-semibold rounded-full px-7 h-13 text-sm shadow-2xl shadow-primary/40 transition-colors"
                 >
                   {state === "loading" ? t("submitLoading") : t("submitDefault")}
-                  {state !== "loading" && <ArrowRight size={16} />}
+                  {state !== "loading" && <ArrowRight size={16} className="rtl:rotate-180" />}
                 </button>
               </form>
             </motion.div>

@@ -93,7 +93,7 @@ export function LocaleSwitcher({ variant = "navbar", className }: LocaleSwitcher
             transition={{ duration: 0.15, ease: [0.22, 1, 0.36, 1] }}
             className={cn(
               "absolute z-50 min-w-[180px] rounded-xl border border-border bg-background shadow-xl overflow-hidden",
-              dropAbove ? "bottom-full mb-2 right-0" : "top-full mt-2 right-0"
+              dropAbove ? "bottom-full mb-2 end-0" : "top-full mt-2 end-0"
             )}
           >
             {routing.locales.map((loc) => {
@@ -107,14 +107,14 @@ export function LocaleSwitcher({ variant = "navbar", className }: LocaleSwitcher
                     aria-selected={active}
                     onClick={() => switchTo(loc)}
                     className={cn(
-                      "w-full flex items-center gap-2.5 px-3 py-2 text-sm text-left transition-colors",
+                      "w-full flex items-center gap-2.5 px-3 py-2 text-sm text-start transition-colors",
                       active ? "bg-primary/10 text-foreground" : "hover:bg-foreground/5 text-muted-foreground"
                     )}
                   >
                     <span className="text-base leading-none" aria-hidden>{meta.flag}</span>
                     <span className="font-semibold w-12 shrink-0">{meta.label}</span>
                     <span className="text-xs text-muted-foreground/70 truncate">{meta.nativeName}</span>
-                    {active && <Check size={14} className="ml-auto text-primary shrink-0" />}
+                    {active && <Check size={14} className="ms-auto text-primary shrink-0" />}
                   </button>
                 </li>
               )

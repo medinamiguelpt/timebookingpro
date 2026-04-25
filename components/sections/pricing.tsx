@@ -124,7 +124,7 @@ export function Pricing({ headline = "Simple, transparent pricing" }: { headline
               id="pricing-country"
               value={countryCode}
               onChange={e => setCountryCode(e.target.value as CountryCode)}
-              className="appearance-none pl-3 pr-9 h-10 rounded-lg border border-border bg-card text-sm text-foreground outline-none focus:border-primary/50 transition-colors cursor-pointer min-w-[220px]"
+              className="appearance-none ps-3 pe-9 h-10 rounded-lg border border-border bg-card text-sm text-foreground outline-none focus:border-primary/50 transition-colors cursor-pointer min-w-[220px]"
               aria-label={t("selectCountryAriaLabel")}
             >
               {COUNTRY_ORDER.map(code => {
@@ -136,7 +136,7 @@ export function Pricing({ headline = "Simple, transparent pricing" }: { headline
                 )
               })}
             </select>
-            <ChevronDown size={14} className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none" />
+            <ChevronDown size={14} className="absolute end-3 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none" />
           </div>
         </div>
 
@@ -356,7 +356,7 @@ export function Pricing({ headline = "Simple, transparent pricing" }: { headline
           })}
           </div>
           {/* Right-edge fade — signals there's more to swipe, mobile only */}
-          <div className="md:hidden absolute right-0 inset-y-0 w-10 bg-gradient-to-l from-background/70 to-transparent pointer-events-none" aria-hidden />
+          <div className="md:hidden absolute end-0 inset-y-0 w-10 bg-gradient-to-l rtl:bg-gradient-to-r from-background/70 to-transparent pointer-events-none" aria-hidden />
         </div>
 
         {/* Bottom sheet — mobile plan details */}

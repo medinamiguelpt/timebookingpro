@@ -191,7 +191,7 @@ export function AgentNamer({ headline = "Meet your AI teammate" }: { headline?: 
                     {t("previewAgentLabel", { business: displayBusiness })}
                   </motion.p>
                 </div>
-                <div className="ml-auto flex items-center gap-1.5 text-xs text-green-600 dark:text-green-400 font-medium bg-green-500/10 border border-green-500/20 px-2.5 py-1 rounded-full">
+                <div className="ms-auto flex items-center gap-1.5 text-xs text-green-600 dark:text-green-400 font-medium bg-green-500/10 border border-green-500/20 px-2.5 py-1 rounded-full">
                   <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
                   {t("previewLive")}
                 </div>
@@ -199,13 +199,13 @@ export function AgentNamer({ headline = "Meet your AI teammate" }: { headline?: 
 
               <div className="space-y-2.5">
                 {!easterEgg && (
-                  <div className="bg-muted rounded-2xl rounded-tl-sm px-3.5 py-2.5 text-sm text-foreground max-w-[85%]">
+                  <div className="bg-muted rounded-2xl rounded-ss-sm px-3.5 py-2.5 text-sm text-foreground max-w-[85%]">
                     {t("previewUserBubble")}
                   </div>
                 )}
                 <motion.div
                   key={`${displayName}-${displayBusiness}`}
-                  className="bg-primary text-primary-foreground rounded-2xl rounded-tr-sm px-3.5 py-2.5 text-sm ml-auto max-w-[90%]"
+                  className="bg-primary text-primary-foreground rounded-2xl rounded-se-sm px-3.5 py-2.5 text-sm ms-auto max-w-[90%]"
                   initial={{ opacity: 0, scale: 0.97 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.25 }}

@@ -33,7 +33,7 @@ function TypewriterText() {
   return (
     <span>
       {displayed}
-      {showCaret && <span className="inline-block w-0.5 h-4 bg-primary/70 ml-0.5 animate-pulse align-middle" />}
+      {showCaret && <span className="inline-block w-0.5 h-4 bg-primary/70 ms-0.5 animate-pulse align-middle" />}
     </span>
   )
 }
@@ -41,7 +41,7 @@ function TypewriterText() {
 function LiveWaveform() {
   const bars = [0.4, 0.9, 0.6, 1, 0.5, 0.8, 0.45]
   return (
-    <span className="inline-flex items-center gap-[2px] h-3 ml-1">
+    <span className="inline-flex items-center gap-[2px] h-3 ms-1">
       {bars.map((h, i) => (
         <motion.span
           key={i}
@@ -149,7 +149,7 @@ function LiveRevenue({ initialValue, delay = 0.8, intervalMs = 7000, inView = tr
           // space above the mockup card — classic stock-ticker feel.
           <motion.span
             key={delta.id}
-            className="absolute -top-12 right-0 text-[11px] font-bold text-gold pointer-events-none whitespace-nowrap"
+            className="absolute -top-12 end-0 text-[11px] font-bold text-gold pointer-events-none whitespace-nowrap"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -14 }}
@@ -230,7 +230,7 @@ function ChatSequence({ inView }: { inView: boolean }) {
 
         const isLeft = side === "left"
         const base   = "rounded-2xl px-3.5 py-2.5 text-sm max-w-[85%]"
-        const corner = isLeft ? "rounded-tl-sm" : "rounded-tr-sm ml-auto"
+        const corner = isLeft ? "rounded-ss-sm" : "rounded-se-sm ms-auto"
         const fill   = isLeft ? "bg-muted text-foreground" : "bg-primary text-primary-foreground"
 
         return (
@@ -288,7 +288,7 @@ function HeroMockup() {
       </div>
 
       <motion.div
-        className="absolute -top-4 -right-4 lg:-right-8 bg-card border border-border rounded-xl shadow-lg px-4 py-2.5 text-center"
+        className="absolute -top-4 -end-4 lg:-end-8 bg-card border border-border rounded-xl shadow-lg px-4 py-2.5 text-center"
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.6, type: "spring" }}
@@ -299,7 +299,7 @@ function HeroMockup() {
 
       <motion.div
         // Moved to bottom-right so it doesn't cover the "Booking confirmed" banner
-        className="absolute -bottom-4 -right-4 lg:-right-8 bg-card border border-border rounded-xl shadow-lg px-4 py-2.5"
+        className="absolute -bottom-4 -end-4 lg:-end-8 bg-card border border-border rounded-xl shadow-lg px-4 py-2.5"
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.8, type: "spring" }}
@@ -449,7 +449,7 @@ export function Hero({ variant = "a" }: { variant?: "a" | "b" }) {
 
           {/* Right — Mockup with parallax + blur-in entrance */}
           <motion.div
-            className="lg:pl-8"
+            className="lg:ps-8"
             style={{ x: mockupX, y: mockupY }}
             initial={{ opacity: 0, x: 20, filter: "blur(8px)" }}
             animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}

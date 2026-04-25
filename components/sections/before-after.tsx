@@ -41,7 +41,7 @@ export function BeforeAfter({ headline = "What changes when you add an agent" }:
         >
           {/* Column headers */}
           <div className="grid grid-cols-2">
-            <div className="flex items-center gap-2.5 px-6 py-4 bg-destructive/5 border-b border-r border-border">
+            <div className="flex items-center gap-2.5 px-6 py-4 bg-destructive/5 border-b border-e border-border">
               <div className="w-6 h-6 rounded-full bg-destructive/10 flex items-center justify-center shrink-0">
                 <X size={12} className="text-destructive" />
               </div>
@@ -66,7 +66,7 @@ export function BeforeAfter({ headline = "What changes when you add an agent" }:
               transition={{ duration: 0.35, delay: 0.2 + i * 0.07 }}
             >
               {/* Before — text gets struck through on row hover */}
-              <div className={`flex items-start gap-3 px-6 py-5 border-r border-border bg-card group-hover:bg-destructive/[0.03] transition-colors ${i < rows.length - 1 ? "border-b" : ""}`}>
+              <div className={`flex items-start gap-3 px-6 py-5 border-e border-border bg-card group-hover:bg-destructive/[0.03] transition-colors ${i < rows.length - 1 ? "border-b" : ""}`}>
                 <X size={14} className="text-destructive/70 mt-0.5 shrink-0" />
                 <span className="text-sm text-muted-foreground leading-snug transition-all duration-400 group-hover:line-through group-hover:opacity-50">
                   {before}

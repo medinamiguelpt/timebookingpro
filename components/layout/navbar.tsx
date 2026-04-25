@@ -107,7 +107,7 @@ export function Navbar() {
                   {isActive && (
                     <motion.span
                       layoutId="nav-indicator"
-                      className="absolute -bottom-1 left-3 right-3 h-0.5 rounded-full bg-primary"
+                      className="absolute -bottom-1 start-3 end-3 h-0.5 rounded-full bg-primary"
                       transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
                   )}
