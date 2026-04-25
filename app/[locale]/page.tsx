@@ -11,7 +11,6 @@ import { Features } from "@/components/sections/features"
 import { BeforeAfter } from "@/components/sections/before-after"
 import { ForWho } from "@/components/sections/for-who"
 import { Pricing } from "@/components/sections/pricing"
-import { Calculator } from "@/components/sections/calculator"
 import { FinalCTA } from "@/components/sections/final-cta"
 import { HomeJsonLd } from "@/components/seo/json-ld"
 import { WaveDivider } from "@/components/ui/wave-divider"
@@ -43,8 +42,6 @@ export default async function Home(
         <WaveDivider opacity={0.6} flip />
         <ForWho      headline={pick("forWho")} />
         <Pricing     headline={pick("pricing")} />
-        <WaveDivider opacity={0.5} />
-        <Calculator  headline={pick("calculator")} />
         <FinalCTA    headline={pick("finalCta")} />
       </main>
       <Footer />

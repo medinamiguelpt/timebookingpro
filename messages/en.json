@@ -41,12 +41,6 @@
       "Flat monthly, no surprises",
       "Start small, scale as you grow"
     ],
-    "calculator": [
-      "See what missed calls cost you",
-      "Calculate your booking potential",
-      "Run the numbers on your shop",
-      "Do the math in seconds"
-    ],
     "finalCta": [
       "Their calendar won't fill *itself*, yours will.",
       "Your agent, live *by tomorrow*",
@@ -188,21 +182,6 @@
       "PL": "Poland",        "PT": "Portugal",     "RO": "Romania",      "SK": "Slovakia",
       "SI": "Slovenia",      "ES": "Spain",        "SE": "Sweden"
     }
-  },
-  "calculator": {
-    "eyebrow": "Revenue calculator",
-    "subheadline": "Adjust the sliders to match your business — see your real numbers instantly.",
-    "sliderDailyCalls": "Daily calls received",
-    "sliderBookingValue": "Average booking value",
-    "sliderMissRate": "Calls you currently miss",
-    "callsPerDay": "{n} calls/day",
-    "monthlyCallsLabel": "Monthly calls",
-    "missedPerMonthLabel": "Missed per month",
-    "revenueLostLabel": "Revenue lost per month",
-    "missedDetail": "= {missed} missed × €{bookingValue} avg booking",
-    "recommendedPlanLabel": "Recommended plan",
-    "planLine": "{name} — €{price}/mo",
-    "roiLine": "{roi}× ROI · Recovers <bold>{recovered}</bold> net every month"
   },
   "forWho": {
     "eyebrow": "Who it's for",

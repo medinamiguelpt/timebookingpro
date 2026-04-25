@@ -16,7 +16,6 @@ export const SECTION_KEYS = [
   "beforeAfter",
   "forWho",
   "pricing",
-  "calculator",
   "finalCta",
 ] as const
 

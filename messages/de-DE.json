@@ -41,12 +41,6 @@
       "Pauschalbetrag pro Monat, keine Überraschungen",
       "Fangen Sie klein an und erweitern Sie Ihr Angebot, wenn Sie wachsen"
     ],
-    "calculator": [
-      "Erfahren Sie, was Sie verpasste Anrufe kosten",
-      "Berechnen Sie Ihr Buchungspotenzial",
-      "Berechnen Sie die Zahlen für Ihr Geschäft",
-      "Rechnen Sie es in Sekundenschnelle aus"
-    ],
     "finalCta": [
       "Ihr Terminkalender füllt sich nicht *von selbst*, Ihrer schon.",
       "Ihr Makler, live *bis morgen*",
@@ -229,21 +223,6 @@
       "ES": "Spanien",
       "SE": "Schweden"
     }
-  },
-  "calculator": {
-    "eyebrow": "Umsatzrechner",
-    "subheadline": "Passen Sie die Schieberegler an Ihr Unternehmen an – sehen Sie Ihre tatsächlichen Zahlen sofort.",
-    "sliderDailyCalls": "Täglich eingehende Anrufe",
-    "sliderBookingValue": "Durchschnittlicher Buchungswert",
-    "sliderMissRate": "Anrufe, die Sie derzeit verpassen",
-    "callsPerDay": "{n} Anrufe pro Tag",
-    "monthlyCallsLabel": "Monatliche Telefonate",
-    "missedPerMonthLabel": "Fehlbetrag pro Monat",
-    "revenueLostLabel": "Monatlicher Umsatzverlust",
-    "missedDetail": "= {missed} verpasste × {bookingValue} € durchschnittlicher Buchungswert",
-    "recommendedPlanLabel": "Empfohlener Plan",
-    "planLine": "{name} — {price} € pro Monat",
-    "roiLine": "{roi}× ROI · Bringt jeden Monat einen Nettogewinn von <bold>{recovered}</bold> ein"
   },
   "forWho": {
     "eyebrow": "Für wen ist es gedacht?",
