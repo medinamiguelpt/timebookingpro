@@ -81,12 +81,6 @@
     "acceptAll": "Αποδοχή όλων",
     "closeAriaLabel": "Κλείσιμο"
   },
-  "sectionSound": {
-    "muteAriaLabel": "Σίγαση ήχων τμήματος",
-    "enableAriaLabel": "Ενεργοποίηση ήχων ενότητας",
-    "muteTitle": "Σίγαση ήχων",
-    "enableTitle": "Ενεργοποίηση διακριτικών ήχων"
-  },
   "scrollToTop": {
     "ariaLabel": "Επιστροφή στην κορυφή"
   },

@@ -81,12 +81,6 @@
     "acceptAll": "Tout accepter",
     "closeAriaLabel": "Fermer"
   },
-  "sectionSound": {
-    "muteAriaLabel": "Couper le son d'une section",
-    "enableAriaLabel": "Activer les sons de section",
-    "muteTitle": "Couper le son",
-    "enableTitle": "Activer les sons discrets"
-  },
   "scrollToTop": {
     "ariaLabel": "Retour en haut de la page"
   },

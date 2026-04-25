@@ -111,11 +111,6 @@ export function computeVat({
     explanation: country.note ?? `${country.taxLabel} charged at the rate applicable in ${country.name}.` };
 }
 
-export function isPlausibleVatId(country: Country, id: string): boolean {
-  if (!country.vatIdPattern) return false;
-  return country.vatIdPattern.test(id.replace(/\s+/g,"").toUpperCase());
-}
-
 function round2(n: number): number {
   return Math.round(n * 100) / 100;
 }

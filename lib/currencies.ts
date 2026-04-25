@@ -57,12 +57,6 @@ export const CURRENCIES: Record<CurrencyCode, Currency> = {
     tierMonthly: { light: 16000, standard: 29000, busy: 48000, heavy: 81000 }, roundStep: 100 },
 };
 
-/**
- * Pickable currencies on the pricing page — the 4 EU currencies with native
- * tables. Every other EU country falls back to EUR via defaultCurrencyFor().
- */
-export const CURRENCY_ORDER: CurrencyCode[] = ["EUR", "SEK", "DKK", "PLN"];
-
 function prettyLocal(value: number, step: number): number {
   const rounded = Math.ceil(value / step) * step;
   return rounded - (step >= 10 ? 1 : step === 1 ? 1 : 0);

@@ -81,12 +81,6 @@
     "acceptAll": "قبول الكل",
     "closeAriaLabel": "إغلاق"
   },
-  "sectionSound": {
-    "muteAriaLabel": "كتم أصوات القسم",
-    "enableAriaLabel": "تمكين أصوات الأقسام",
-    "muteTitle": "كتم الصوت",
-    "enableTitle": "تمكين الأصوات الخافتة"
-  },
   "scrollToTop": {
     "ariaLabel": "العودة إلى الأعلى"
   },

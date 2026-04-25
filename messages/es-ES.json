@@ -81,12 +81,6 @@
     "acceptAll": "Aceptar todo",
     "closeAriaLabel": "Cerrar"
   },
-  "sectionSound": {
-    "muteAriaLabel": "Silenciar los sonidos de la sección",
-    "enableAriaLabel": "Activar los sonidos de sección",
-    "muteTitle": "Silenciar los sonidos",
-    "enableTitle": "Activar sonidos sutiles"
-  },
   "scrollToTop": {
     "ariaLabel": "Volver al inicio"
   },

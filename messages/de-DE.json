@@ -81,12 +81,6 @@
     "acceptAll": "Alle akzeptieren",
     "closeAriaLabel": "Schließen"
   },
-  "sectionSound": {
-    "muteAriaLabel": "Klangabschnitte stummschalten",
-    "enableAriaLabel": "Abschnittstöne aktivieren",
-    "muteTitle": "Töne stummschalten",
-    "enableTitle": "Leise Töne aktivieren"
-  },
   "scrollToTop": {
     "ariaLabel": "Zurück zum Anfang"
   },

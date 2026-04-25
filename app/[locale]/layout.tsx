@@ -11,7 +11,6 @@ import { CookieBanner } from "@/components/ui/cookie-banner"
 import { PageIntro } from "@/components/ui/page-intro"
 import { ScrollProgress } from "@/components/ui/scroll-progress"
 import { ScrollHue } from "@/components/ui/scroll-hue"
-import { SectionSound } from "@/components/ui/section-sound"
 import { ScrollToTop } from "@/components/ui/scroll-to-top"
 import { RippleGlobal } from "@/components/ui/ripple-global"
 import { AnchorHighlight } from "@/components/ui/anchor-highlight"
@@ -96,7 +95,6 @@ export default async function RootLayout({
           <CookieBanner />
           <ScrollHue />
           <AmbientShift />
-          <SectionSound />
           <ScrollToTop />
           <RippleGlobal />
           <AnchorHighlight />

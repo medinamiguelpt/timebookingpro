@@ -81,12 +81,6 @@
     "acceptAll": "Accept all",
     "closeAriaLabel": "Close"
   },
-  "sectionSound": {
-    "muteAriaLabel": "Mute section sounds",
-    "enableAriaLabel": "Enable section sounds",
-    "muteTitle": "Mute sounds",
-    "enableTitle": "Enable subtle sounds"
-  },
   "scrollToTop": {
     "ariaLabel": "Back to top"
   },
@@ -120,9 +114,18 @@
     "withoutBrand": "Without TimeBookingPro",
     "withBrand": "With TimeBookingPro",
     "rows": [
-      { "before": "Phone rings at 7 PM — you're mid-cut",  "after": "Agent picks up in under 2 seconds" },
-      { "before": "Customer books with a competitor",     "after": "Booking confirmed in under 90 seconds" },
-      { "before": "Weekend calls go unanswered",          "after": "Weekends, nights, and holidays covered" }
+      {
+        "before": "Phone rings at 7 PM — you're mid-cut",
+        "after": "Agent picks up in under 2 seconds"
+      },
+      {
+        "before": "Customer books with a competitor",
+        "after": "Booking confirmed in under 90 seconds"
+      },
+      {
+        "before": "Weekend calls go unanswered",
+        "after": "Weekends, nights, and holidays covered"
+      }
     ]
   },
   "pricing": {
@@ -150,10 +153,22 @@
     "taxLine": "{flag} Taxes shown for <bold>{country}</bold>{note}. Prices shown ex-VAT — tax calculated at checkout.",
     "taxLineNoteSeparator": " — ",
     "tiers": {
-      "light":    { "name": "Light",    "profile": "Small or quieter business — ~3 calls/day" },
-      "standard": { "name": "Standard", "profile": "Bustling single location — ~8 calls/day" },
-      "busy":     { "name": "Busy",     "profile": "High volume or a couple of locations — ~15 calls/day" },
-      "heavy":    { "name": "Heavy",    "profile": "Multi-location or very high volume — ~30+ calls/day" }
+      "light": {
+        "name": "Light",
+        "profile": "Small or quieter business — ~3 calls/day"
+      },
+      "standard": {
+        "name": "Standard",
+        "profile": "Bustling single location — ~8 calls/day"
+      },
+      "busy": {
+        "name": "Busy",
+        "profile": "High volume or a couple of locations — ~15 calls/day"
+      },
+      "heavy": {
+        "name": "Heavy",
+        "profile": "Multi-location or very high volume — ~30+ calls/day"
+      }
     },
     "badges": {
       "mostPopular": "Most popular",
@@ -165,22 +180,42 @@
       "languages": "All 7 supported languages"
     },
     "featureTips": {
-      "minutes100":      "~3 calls per day. Hard cap — voicemail takes over when the bucket is spent.",
-      "minutes250":      "~8 calls per day. Hard cap — voicemail takes over when the bucket is spent.",
-      "minutes500":      "~15 calls per day. Hard cap — voicemail takes over when the bucket is spent.",
-      "minutes1000":     "~30+ calls per day. Hard cap — voicemail takes over when the bucket is spent.",
-      "calendarSync":    "Google, Outlook, Apple, and iCal — real-time two-way sync.",
-      "performanceEmail":"Bookings handled, minutes used, top call hours — sent straight to your inbox.",
-      "languages":       "Greek · English · Spanish · Portuguese · French · German · Arabic. Agent locks to the caller's language on first substantive word."
+      "minutes100": "~3 calls per day. Hard cap — voicemail takes over when the bucket is spent.",
+      "minutes250": "~8 calls per day. Hard cap — voicemail takes over when the bucket is spent.",
+      "minutes500": "~15 calls per day. Hard cap — voicemail takes over when the bucket is spent.",
+      "minutes1000": "~30+ calls per day. Hard cap — voicemail takes over when the bucket is spent.",
+      "calendarSync": "Google, Outlook, Apple, and iCal — real-time two-way sync.",
+      "performanceEmail": "Bookings handled, minutes used, top call hours — sent straight to your inbox.",
+      "languages": "Greek · English · Spanish · Portuguese · French · German · Arabic. Agent locks to the caller's language on first substantive word."
     },
     "countries": {
-      "GR": "Greece",        "AT": "Austria",      "BE": "Belgium",      "BG": "Bulgaria",
-      "HR": "Croatia",       "CY": "Cyprus",       "CZ": "Czechia",      "DK": "Denmark",
-      "EE": "Estonia",       "FI": "Finland",      "FR": "France",       "DE": "Germany",
-      "HU": "Hungary",       "IE": "Ireland",      "IT": "Italy",        "LV": "Latvia",
-      "LT": "Lithuania",     "LU": "Luxembourg",   "MT": "Malta",        "NL": "Netherlands",
-      "PL": "Poland",        "PT": "Portugal",     "RO": "Romania",      "SK": "Slovakia",
-      "SI": "Slovenia",      "ES": "Spain",        "SE": "Sweden"
+      "GR": "Greece",
+      "AT": "Austria",
+      "BE": "Belgium",
+      "BG": "Bulgaria",
+      "HR": "Croatia",
+      "CY": "Cyprus",
+      "CZ": "Czechia",
+      "DK": "Denmark",
+      "EE": "Estonia",
+      "FI": "Finland",
+      "FR": "France",
+      "DE": "Germany",
+      "HU": "Hungary",
+      "IE": "Ireland",
+      "IT": "Italy",
+      "LV": "Latvia",
+      "LT": "Lithuania",
+      "LU": "Luxembourg",
+      "MT": "Malta",
+      "NL": "Netherlands",
+      "PL": "Poland",
+      "PT": "Portugal",
+      "RO": "Romania",
+      "SK": "Slovakia",
+      "SI": "Slovenia",
+      "ES": "Spain",
+      "SE": "Sweden"
     }
   },
   "forWho": {
@@ -276,30 +311,74 @@
     "underTheHood": "Under the hood — simplified",
     "goToStepLabel": "Go to step {n}",
     "steps": [
-      { "title": "We set up your agent",     "body": "Tell us your business name, hours, and services. We build and train your personal AI agent in under 24 hours." },
-      { "title": "It answers every call",    "body": "Your agent picks up instantly — day, night, and weekends. It speaks naturally, understands your customers, and handles any booking request." },
-      { "title": "Your calendar fills up",   "body": "Bookings land directly in your calendar. You get a notification, your customer gets a confirmation. Zero effort on your part." }
+      {
+        "title": "We set up your agent",
+        "body": "Tell us your business name, hours, and services. We build and train your personal AI agent in under 24 hours."
+      },
+      {
+        "title": "It answers every call",
+        "body": "Your agent picks up instantly — day, night, and weekends. It speaks naturally, understands your customers, and handles any booking request."
+      },
+      {
+        "title": "Your calendar fills up",
+        "body": "Bookings land directly in your calendar. You get a notification, your customer gets a confirmation. Zero effort on your part."
+      }
     ],
     "flowNodes": [
-      { "label": "Customer calls",      "sub": "Any number · Any hour" },
-      { "label": "Agent answers",       "sub": "Voice AI · Very fast" },
-      { "label": "Booking processed",   "sub": "Intent understood" },
-      { "label": "Slot confirmed",      "sub": "Calendar synced live" },
-      { "label": "Both notified",       "sub": "SMS · Email" }
+      {
+        "label": "Customer calls",
+        "sub": "Any number · Any hour"
+      },
+      {
+        "label": "Agent answers",
+        "sub": "Voice AI · Very fast"
+      },
+      {
+        "label": "Booking processed",
+        "sub": "Intent understood"
+      },
+      {
+        "label": "Slot confirmed",
+        "sub": "Calendar synced live"
+      },
+      {
+        "label": "Both notified",
+        "sub": "SMS · Email"
+      }
     ],
-    "connectorLabels": ["Voice call", "Conversation", "Booking data", "Confirmation"],
+    "connectorLabels": [
+      "Voice call",
+      "Conversation",
+      "Booking data",
+      "Confirmation"
+    ],
     "visualPanels": [
       {
         "title": "Agent configured",
-        "lines": ["Business name ✓", "Hours set ✓", "Services: Haircut, Shave, Beard Trim... ✓", "Language set ✓"]
+        "lines": [
+          "Business name ✓",
+          "Hours set ✓",
+          "Services: Haircut, Shave, Beard Trim... ✓",
+          "Language set ✓"
+        ]
       },
       {
         "title": "Call in progress",
-        "lines": ["Caller: 'Hi, I'd like a haircut + beard'", "Agent: 'Of course! I have...'", "3 PM slot available ✓", "Language detected: EN ✓"]
+        "lines": [
+          "Caller: 'Hi, I'd like a haircut + beard'",
+          "Agent: 'Of course! I have...'",
+          "3 PM slot available ✓",
+          "Language detected: EN ✓"
+        ]
       },
       {
         "title": "Booking confirmed",
-        "lines": ["Service: Haircut + Beard — €22 ✓", "Calendar: Updated ✓", "SMS sent to customer ✓", "Notification sent to you ✓"]
+        "lines": [
+          "Service: Haircut + Beard — €22 ✓",
+          "Calendar: Updated ✓",
+          "SMS sent to customer ✓",
+          "Notification sent to you ✓"
+        ]
       }
     ]
   },
@@ -322,23 +401,29 @@
     "phoneTagline": "Handles calls 24/7 — even while you sleep",
     "defaultBusiness": "your barbershop",
     "easterEggs": {
-      "siri":    "Siri works for Apple. I work for you. Big difference. 📱",
-      "alexa":   "Alexa orders things. I book things. More useful. 🛒",
+      "siri": "Siri works for Apple. I work for you. Big difference. 📱",
+      "alexa": "Alexa orders things. I book things. More useful. 🛒",
       "cortana": "Cortana got retired. I won't. I answer every call. 🪦",
-      "hal":     "I promise I won't lock any doors. 🚪",
-      "glados":  "Testing… testing… booking confirmed. 🧪",
-      "jarvis":  "Sir, your 10 AM is confirmed and your calendar is fully up to date. 🦾",
-      "friday":  "Online and at your service. All calls answered. 🤖",
-      "clippy":  "It looks like you're trying to book an appointment. Let me handle that. 📎",
-      "watson":  "Elementary, my dear client — your slot is available. 🔍"
+      "hal": "I promise I won't lock any doors. 🚪",
+      "glados": "Testing… testing… booking confirmed. 🧪",
+      "jarvis": "Sir, your 10 AM is confirmed and your calendar is fully up to date. 🦾",
+      "friday": "Online and at your service. All calls answered. 🤖",
+      "clippy": "It looks like you're trying to book an appointment. Let me handle that. 📎",
+      "watson": "Elementary, my dear client — your slot is available. 🔍"
     }
   },
   "hero": {
     "badge": "✦ AI-powered booking agents",
     "typewriter": "TimeBookingPro builds you a voice AI that answers calls, handles bookings, and fills your calendar — automatically, 24 hours a day.",
     "headlines": {
-      "a": { "plain": "Give your business",  "highlight": "its own AI agent" },
-      "b": { "plain": "Stop losing bookings", "highlight": "while you sleep"  }
+      "a": {
+        "plain": "Give your business",
+        "highlight": "its own AI agent"
+      },
+      "b": {
+        "plain": "Stop losing bookings",
+        "highlight": "while you sleep"
+      }
     },
     "finePrint": "Live in under 24 hours",
     "scrollIndicator": "Scroll",
