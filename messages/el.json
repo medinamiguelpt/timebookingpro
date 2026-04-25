@@ -1,27 +1,27 @@
 {
   "metadata": {
-    "title": "TimeBookingPro — Your bookings, handled.",
-    "description": "TimeBookingPro builds AI voice agents that handle bookings and appointments for barbershops and small businesses — 24/7, automatically.",
-    "ogTitle": "TimeBookingPro — Your bookings, handled.",
-    "ogDescription": "AI voice agents that handle bookings for your business — 24/7, automatically.",
-    "twitterTitle": "TimeBookingPro — Your bookings, handled.",
-    "twitterDescription": "AI voice agents that handle bookings for your business — 24/7, automatically.",
+    "title": "TimeBookingPro — Οι κρατήσεις σας, υπό έλεγχο.",
+    "description": "TimeBookingPro αναπτύσσει φωνητικούς βοηθούς τεχνητής νοημοσύνης που διαχειρίζονται κρατήσεις και ραντεβού για κουρεία και μικρές επιχειρήσεις — 24 ώρες το 24ωρο, 7 ημέρες την εβδομάδα, αυτόματα.",
+    "ogTitle": "TimeBookingPro — Οι κρατήσεις σας, υπό έλεγχο.",
+    "ogDescription": "Φωνητικοί βοηθοί τεχνητής νοημοσύνης που διαχειρίζονται τις κρατήσεις για την επιχείρησή σας — 24 ώρες το 24ωρο, 7 ημέρες την εβδομάδα, αυτόματα.",
+    "twitterTitle": "TimeBookingPro — Οι κρατήσεις σας, υπό έλεγχο.",
+    "twitterDescription": "Φωνητικοί βοηθοί τεχνητής νοημοσύνης που διαχειρίζονται τις κρατήσεις για την επιχείρησή σας — 24 ώρες το 24ωρο, 7 ημέρες την εβδομάδα, αυτόματα.",
     "siteName": "TimeBookingPro"
   },
   "navbar": {
-    "homeAriaLabel": "TimeBookingPro home",
-    "howItWorks": "How it Works",
-    "features": "Features",
-    "pricing": "Pricing",
-    "toggleTheme": "Toggle theme",
-    "toggleMenu": "Toggle menu"
+    "homeAriaLabel": "TimeBookingPro αρχική σελίδα",
+    "howItWorks": "Πώς λειτουργεί",
+    "features": "Χαρακτηριστικά",
+    "pricing": "Τιμές",
+    "toggleTheme": "Αλλαγή θέματος",
+    "toggleMenu": "Εναλλαγή μενού"
   },
   "footer": {
-    "tagline": "AI voice agents that fill your calendar — 24 hours a day.",
-    "rightsReserved": "All rights reserved.",
-    "madeWithCare": "Made with care for independent businesses."
+    "tagline": "Φωνητικοί βοηθοί τεχνητής νοημοσύνης που συμπληρώνουν το ημερολόγιό σας — 24 ώρες το 24ωρο.",
+    "rightsReserved": "Με επιφύλαξη παντός δικαιώματος.",
+    "madeWithCare": "Φτιαγμένο με φροντίδα για τις ανεξάρτητες επιχειρήσεις."
   },
   "localeSwitcher": {
-    "ariaLabel": "Change language"
+    "ariaLabel": "Αλλαγή γλώσσας"
   }
 }

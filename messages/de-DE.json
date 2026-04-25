@@ -1,27 +1,27 @@
 {
   "metadata": {
-    "title": "TimeBookingPro — Your bookings, handled.",
-    "description": "TimeBookingPro builds AI voice agents that handle bookings and appointments for barbershops and small businesses — 24/7, automatically.",
-    "ogTitle": "TimeBookingPro — Your bookings, handled.",
-    "ogDescription": "AI voice agents that handle bookings for your business — 24/7, automatically.",
-    "twitterTitle": "TimeBookingPro — Your bookings, handled.",
-    "twitterDescription": "AI voice agents that handle bookings for your business — 24/7, automatically.",
+    "title": "TimeBookingPro — Ihre Buchungen – alles im Griff.",
+    "description": "TimeBookingPro entwickelt KI-Sprachassistenten, die Buchungen und Terminvereinbarungen für Friseursalons und kleine Unternehmen rund um die Uhr automatisch abwickeln.",
+    "ogTitle": "TimeBookingPro — Ihre Buchungen – alles im Griff.",
+    "ogDescription": "KI-Sprachassistenten, die Buchungen für Ihr Unternehmen bearbeiten – rund um die Uhr und automatisch.",
+    "twitterTitle": "TimeBookingPro — Ihre Buchungen – alles im Griff.",
+    "twitterDescription": "KI-Sprachassistenten, die Buchungen für Ihr Unternehmen bearbeiten – rund um die Uhr und automatisch.",
     "siteName": "TimeBookingPro"
   },
   "navbar": {
-    "homeAriaLabel": "TimeBookingPro home",
-    "howItWorks": "How it Works",
-    "features": "Features",
-    "pricing": "Pricing",
-    "toggleTheme": "Toggle theme",
-    "toggleMenu": "Toggle menu"
+    "homeAriaLabel": "TimeBookingPro Startseite",
+    "howItWorks": "So funktioniert es",
+    "features": "Funktionen",
+    "pricing": "Preise",
+    "toggleTheme": "Design umschalten",
+    "toggleMenu": "Menü ein- und ausblenden"
   },
   "footer": {
-    "tagline": "AI voice agents that fill your calendar — 24 hours a day.",
-    "rightsReserved": "All rights reserved.",
-    "madeWithCare": "Made with care for independent businesses."
+    "tagline": "KI-Sprachassistenten, die Ihren Kalender füllen – rund um die Uhr.",
+    "rightsReserved": "Alle Rechte vorbehalten.",
+    "madeWithCare": "Mit Sorgfalt für unabhängige Unternehmen entwickelt."
   },
   "localeSwitcher": {
-    "ariaLabel": "Change language"
+    "ariaLabel": "Sprache ändern"
   }
 }

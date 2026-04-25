@@ -1,27 +1,27 @@
 {
   "metadata": {
-    "title": "TimeBookingPro — Your bookings, handled.",
-    "description": "TimeBookingPro builds AI voice agents that handle bookings and appointments for barbershops and small businesses — 24/7, automatically.",
-    "ogTitle": "TimeBookingPro — Your bookings, handled.",
-    "ogDescription": "AI voice agents that handle bookings for your business — 24/7, automatically.",
-    "twitterTitle": "TimeBookingPro — Your bookings, handled.",
-    "twitterDescription": "AI voice agents that handle bookings for your business — 24/7, automatically.",
+    "title": "TimeBookingPro — As suas reservas, tratadas.",
+    "description": "TimeBookingPro desenvolve assistentes de voz com IA que gerem reservas e marcações para barbearias e pequenas empresas — 24 horas por dia, 7 dias por semana, de forma automática.",
+    "ogTitle": "TimeBookingPro — As suas reservas, tratadas.",
+    "ogDescription": "Agentes de voz com IA que tratam das reservas da sua empresa — 24 horas por dia, 7 dias por semana, de forma automática.",
+    "twitterTitle": "TimeBookingPro — As suas reservas, tratadas.",
+    "twitterDescription": "Agentes de voz com IA que tratam das reservas da sua empresa — 24 horas por dia, 7 dias por semana, de forma automática.",
     "siteName": "TimeBookingPro"
   },
   "navbar": {
-    "homeAriaLabel": "TimeBookingPro home",
-    "howItWorks": "How it Works",
-    "features": "Features",
-    "pricing": "Pricing",
-    "toggleTheme": "Toggle theme",
-    "toggleMenu": "Toggle menu"
+    "homeAriaLabel": "TimeBookingPro início",
+    "howItWorks": "Como funciona",
+    "features": "Características",
+    "pricing": "Preços",
+    "toggleTheme": "Alternar tema",
+    "toggleMenu": "Alternar menu"
   },
   "footer": {
-    "tagline": "AI voice agents that fill your calendar — 24 hours a day.",
-    "rightsReserved": "All rights reserved.",
-    "madeWithCare": "Made with care for independent businesses."
+    "tagline": "Agentes de voz com IA que preenchem a sua agenda — 24 horas por dia.",
+    "rightsReserved": "Todos os direitos reservados.",
+    "madeWithCare": "Concebido a pensar nas empresas independentes."
   },
   "localeSwitcher": {
-    "ariaLabel": "Change language"
+    "ariaLabel": "Alterar idioma"
   }
 }

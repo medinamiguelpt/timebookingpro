@@ -1,27 +1,27 @@
 {
   "metadata": {
-    "title": "TimeBookingPro — Your bookings, handled.",
-    "description": "TimeBookingPro builds AI voice agents that handle bookings and appointments for barbershops and small businesses — 24/7, automatically.",
-    "ogTitle": "TimeBookingPro — Your bookings, handled.",
-    "ogDescription": "AI voice agents that handle bookings for your business — 24/7, automatically.",
-    "twitterTitle": "TimeBookingPro — Your bookings, handled.",
-    "twitterDescription": "AI voice agents that handle bookings for your business — 24/7, automatically.",
+    "title": "TimeBookingPro — Vos réservations, prises en charge.",
+    "description": "TimeBookingPro développe des assistants vocaux basés sur l'IA qui gèrent les réservations et les rendez-vous pour les salons de coiffure et les petites entreprises — 24 heures sur 24, 7 jours sur 7, de manière entièrement automatisée.",
+    "ogTitle": "TimeBookingPro — Vos réservations, prises en charge.",
+    "ogDescription": "Des assistants vocaux basés sur l'IA qui gèrent les réservations pour votre entreprise — 24 heures sur 24, 7 jours sur 7, de manière entièrement automatique.",
+    "twitterTitle": "TimeBookingPro — Vos réservations, prises en charge.",
+    "twitterDescription": "Des assistants vocaux basés sur l'IA qui gèrent les réservations pour votre entreprise — 24 heures sur 24, 7 jours sur 7, de manière entièrement automatique.",
     "siteName": "TimeBookingPro"
   },
   "navbar": {
-    "homeAriaLabel": "TimeBookingPro home",
-    "howItWorks": "How it Works",
-    "features": "Features",
-    "pricing": "Pricing",
-    "toggleTheme": "Toggle theme",
-    "toggleMenu": "Toggle menu"
+    "homeAriaLabel": "TimeBookingPro Accueil",
+    "howItWorks": "Comment ça marche",
+    "features": "Caractéristiques",
+    "pricing": "Tarifs",
+    "toggleTheme": "Changer de thème",
+    "toggleMenu": "Afficher le menu"
   },
   "footer": {
-    "tagline": "AI voice agents that fill your calendar — 24 hours a day.",
-    "rightsReserved": "All rights reserved.",
-    "madeWithCare": "Made with care for independent businesses."
+    "tagline": "Des assistants vocaux basés sur l'IA qui gèrent votre agenda — 24 heures sur 24.",
+    "rightsReserved": "Tous droits réservés.",
+    "madeWithCare": "Conçu avec soin pour les entreprises indépendantes."
   },
   "localeSwitcher": {
-    "ariaLabel": "Change language"
+    "ariaLabel": "Changer de langue"
   }
 }

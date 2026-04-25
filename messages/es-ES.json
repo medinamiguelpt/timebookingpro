@@ -1,27 +1,27 @@
 {
   "metadata": {
-    "title": "TimeBookingPro — Your bookings, handled.",
-    "description": "TimeBookingPro builds AI voice agents that handle bookings and appointments for barbershops and small businesses — 24/7, automatically.",
-    "ogTitle": "TimeBookingPro — Your bookings, handled.",
-    "ogDescription": "AI voice agents that handle bookings for your business — 24/7, automatically.",
-    "twitterTitle": "TimeBookingPro — Your bookings, handled.",
-    "twitterDescription": "AI voice agents that handle bookings for your business — 24/7, automatically.",
+    "title": "TimeBookingPro — Sus reservas, gestionadas.",
+    "description": "TimeBookingPro desarrolla asistentes de voz con inteligencia artificial que gestionan reservas y citas para peluquerías y pequeñas empresas, las 24 horas del día, los 7 días de la semana, de forma automática.",
+    "ogTitle": "TimeBookingPro — Sus reservas, gestionadas.",
+    "ogDescription": "Agentes de voz con IA que gestionan las reservas de su empresa, las 24 horas del día, los 7 días de la semana, de forma automática.",
+    "twitterTitle": "TimeBookingPro — Sus reservas, gestionadas.",
+    "twitterDescription": "Agentes de voz con IA que gestionan las reservas de su empresa, las 24 horas del día, los 7 días de la semana, de forma automática.",
     "siteName": "TimeBookingPro"
   },
   "navbar": {
-    "homeAriaLabel": "TimeBookingPro home",
-    "howItWorks": "How it Works",
-    "features": "Features",
-    "pricing": "Pricing",
-    "toggleTheme": "Toggle theme",
-    "toggleMenu": "Toggle menu"
+    "homeAriaLabel": "TimeBookingPro Inicio",
+    "howItWorks": "Cómo funciona",
+    "features": "Características",
+    "pricing": "Precios",
+    "toggleTheme": "Cambiar tema",
+    "toggleMenu": "Mostrar/ocultar menú"
   },
   "footer": {
-    "tagline": "AI voice agents that fill your calendar — 24 hours a day.",
-    "rightsReserved": "All rights reserved.",
-    "madeWithCare": "Made with care for independent businesses."
+    "tagline": "Agentes de voz con IA que gestionan su agenda las 24 horas del día.",
+    "rightsReserved": "Todos los derechos reservados.",
+    "madeWithCare": "Creado con esmero para las empresas independientes."
   },
   "localeSwitcher": {
-    "ariaLabel": "Change language"
+    "ariaLabel": "Cambiar idioma"
   }
 }
