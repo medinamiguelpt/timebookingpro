@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import { useTranslations } from "next-intl"
 import { X } from "lucide-react"
 
 type Shortcut = { keys: string[]; label: string; action: () => void }
@@ -12,17 +13,18 @@ function scrollToId(id: string) {
 }
 
 export function KeyboardShortcuts() {
+  const t = useTranslations("keyboardShortcuts")
   const [open, setOpen] = useState(false)
   const [prefix, setPrefix] = useState<string | null>(null)
 
   const shortcuts: Shortcut[] = [
-    { keys: ["G", "H"], label: "Jump to top",        action: () => window.scrollTo({ top: 0, behavior: "smooth" }) },
-    { keys: ["G", "W"], label: "Jump to How it works", action: () => scrollToId("how-it-works") },
-    { keys: ["G", "F"], label: "Jump to Features",   action: () => scrollToId("features") },
-    { keys: ["G", "P"], label: "Jump to Pricing",    action: () => scrollToId("pricing") },
-    { keys: ["G", "C"], label: "Jump to Get started", action: () => scrollToId("get-started") },
-    { keys: ["?"],      label: "Toggle this menu",   action: () => setOpen(o => !o) },
-    { keys: ["Esc"],    label: "Close menu",         action: () => setOpen(false) },
+    { keys: ["G", "H"], label: t("items.jumpToTop"),        action: () => window.scrollTo({ top: 0, behavior: "smooth" }) },
+    { keys: ["G", "W"], label: t("items.jumpToHowItWorks"), action: () => scrollToId("how-it-works") },
+    { keys: ["G", "F"], label: t("items.jumpToFeatures"),   action: () => scrollToId("features") },
+    { keys: ["G", "P"], label: t("items.jumpToPricing"),    action: () => scrollToId("pricing") },
+    { keys: ["G", "C"], label: t("items.jumpToGetStarted"), action: () => scrollToId("get-started") },
+    { keys: ["?"],      label: t("items.toggleMenu"),       action: () => setOpen(o => !o) },
+    { keys: ["Esc"],    label: t("items.closeMenu"),        action: () => setOpen(false) },
   ]
 
   useEffect(() => {
@@ -87,10 +89,10 @@ export function KeyboardShortcuts() {
             transition={{ type: "spring", stiffness: 380, damping: 28 }}
           >
             <div className="flex items-center justify-between px-5 py-3.5 border-b border-border">
-              <p className="font-heading font-bold text-sm">Keyboard shortcuts</p>
+              <p className="font-heading font-bold text-sm">{t("heading")}</p>
               <button
                 onClick={() => setOpen(false)}
-                aria-label="Close shortcuts menu"
+                aria-label={t("closeAriaLabel")}
                 className="p-1 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
               >
                 <X size={16} />
@@ -111,7 +113,11 @@ export function KeyboardShortcuts() {
               ))}
             </ul>
             <div className="px-5 py-3 text-[11px] text-muted-foreground/70 border-t border-border">
-              Tip: press <kbd className="inline-flex items-center justify-center px-1 rounded bg-muted border border-border font-mono font-semibold">?</kbd> any time to open this menu.
+              {t.rich("tip", {
+                kbd: (chunks) => (
+                  <kbd className="inline-flex items-center justify-center px-1 rounded bg-muted border border-border font-mono font-semibold">{chunks}</kbd>
+                ),
+              })}
             </div>
           </motion.div>
         </>

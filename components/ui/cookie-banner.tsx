@@ -2,11 +2,13 @@
 
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import { useTranslations } from "next-intl"
 import { X } from "lucide-react"
 
 const STORAGE_KEY = "timebookingpro-cookie-consent"
 
 export function CookieBanner() {
+  const t = useTranslations("cookieBanner")
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
@@ -35,10 +37,9 @@ export function CookieBanner() {
         >
           <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl">
-              We use cookies to improve your experience and analyse site usage.
-              By continuing, you agree to our{" "}
+              {t("message")}{" "}
               <a href="#" className="underline underline-offset-2 hover:text-foreground transition-colors">
-                Privacy Policy
+                {t("privacyPolicyLink")}
               </a>
               .
             </p>
@@ -47,17 +48,17 @@ export function CookieBanner() {
                 onClick={decline}
                 className="text-sm text-muted-foreground hover:text-foreground transition-colors px-4 py-2"
               >
-                Decline
+                {t("decline")}
               </button>
               <button
                 onClick={accept}
                 className="text-sm font-semibold bg-primary hover:bg-primary/90 text-white rounded-full px-5 py-2 transition-colors"
               >
-                Accept all
+                {t("acceptAll")}
               </button>
               <button
                 onClick={decline}
-                aria-label="Close"
+                aria-label={t("closeAriaLabel")}
                 className="p-1.5 text-muted-foreground hover:text-foreground transition-colors"
               >
                 <X size={16} />

@@ -1,11 +1,13 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
+import { useTranslations } from "next-intl"
 import { Volume2, VolumeX } from "lucide-react"
 
 const SECTION_IDS = ["how-it-works", "features", "pricing", "get-started"]
 
 export function SectionSound() {
+  const t = useTranslations("sectionSound")
   const [enabled, setEnabled] = useState(false)
   const [mounted, setMounted] = useState(false)
   const ctxRef = useRef<AudioContext | null>(null)
@@ -68,8 +70,8 @@ export function SectionSound() {
   return (
     <button
       onClick={toggle}
-      aria-label={enabled ? "Mute section sounds" : "Enable section sounds"}
-      title={enabled ? "Mute sounds" : "Enable subtle sounds"}
+      aria-label={enabled ? t("muteAriaLabel") : t("enableAriaLabel")}
+      title={enabled ? t("muteTitle") : t("enableTitle")}
       className="fixed bottom-20 right-4 sm:right-6 z-40 w-9 h-9 min-w-[36px] min-h-[36px] rounded-full bg-background/80 backdrop-blur-sm border border-border shadow-sm flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors"
     >
       {enabled ? <Volume2 size={14} /> : <VolumeX size={14} />}

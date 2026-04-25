@@ -80,6 +80,36 @@
   "localeSwitcher": {
     "ariaLabel": "تغيير اللغة"
   },
+  "cookieBanner": {
+    "message": "نستخدم ملفات تعريف الارتباط لتحسين تجربتك وتحليل استخدام الموقع. بمواصلة تصفح الموقع، فإنك توافق على",
+    "privacyPolicyLink": "سياسة الخصوصية",
+    "decline": "الانخفاض",
+    "acceptAll": "قبول الكل",
+    "closeAriaLabel": "إغلاق"
+  },
+  "sectionSound": {
+    "muteAriaLabel": "كتم أصوات القسم",
+    "enableAriaLabel": "تمكين أصوات الأقسام",
+    "muteTitle": "كتم الصوت",
+    "enableTitle": "تمكين الأصوات الخافتة"
+  },
+  "scrollToTop": {
+    "ariaLabel": "العودة إلى الأعلى"
+  },
+  "keyboardShortcuts": {
+    "heading": "اختصارات لوحة المفاتيح",
+    "closeAriaLabel": "إغلاق قائمة الاختصارات",
+    "tip": "نصيحة: اضغط على <kbd>?</kbd> في أي وقت لفتح هذه القائمة.",
+    "items": {
+      "jumpToTop": "الانتقال إلى الأعلى",
+      "jumpToHowItWorks": "انتقل إلى \"كيف يعمل\"",
+      "jumpToFeatures": "الانتقال إلى الميزات",
+      "jumpToPricing": "الانتقال إلى الأسعار",
+      "jumpToGetStarted": "انتقل إلى «البدء»",
+      "toggleMenu": "تبديل هذه القائمة",
+      "closeMenu": "إغلاق القائمة"
+    }
+  },
   "techStrip": {
     "heading": "مدعوم بتقنية رائدة في القطاع",
     "labels": {

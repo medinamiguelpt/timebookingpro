@@ -80,6 +80,36 @@
   "localeSwitcher": {
     "ariaLabel": "Alterar idioma"
   },
+  "cookieBanner": {
+    "message": "Utilizamos cookies para melhorar a sua experiência e analisar a utilização do site. Ao continuar, concorda com a nossa",
+    "privacyPolicyLink": "Política de Privacidade",
+    "decline": "Recusar",
+    "acceptAll": "Aceitar tudo",
+    "closeAriaLabel": "Fechar"
+  },
+  "sectionSound": {
+    "muteAriaLabel": "Silenciar os sons da secção",
+    "enableAriaLabel": "Ativar sons de secção",
+    "muteTitle": "Silenciar sons",
+    "enableTitle": "Ativar sons suaves"
+  },
+  "scrollToTop": {
+    "ariaLabel": "Voltar ao topo"
+  },
+  "keyboardShortcuts": {
+    "heading": "Atalhos de teclado",
+    "closeAriaLabel": "Fechar o menu de atalhos",
+    "tip": "Dica: prima <kbd>?</kbd> a qualquer momento para abrir este menu.",
+    "items": {
+      "jumpToTop": "Ir para o topo",
+      "jumpToHowItWorks": "Ir para «Como funciona»",
+      "jumpToFeatures": "Ir para as funcionalidades",
+      "jumpToPricing": "Ir para a secção de preços",
+      "jumpToGetStarted": "Ir para «Começar»",
+      "toggleMenu": "Expandir este menu",
+      "closeMenu": "Fechar menu"
+    }
+  },
   "techStrip": {
     "heading": "Equipado com tecnologia líder do setor",
     "labels": {
@@ -131,7 +161,7 @@
     "seeAllPlanDetails": "Ver todos os detalhes do plano ↑",
     "sheetTitle": "{name} plano",
     "includedHeading": "Incluído",
-    "microcopyHardCap": "Todos os planos incluem reservas sincronizadas com o seu calendário, um e-mail de desempenho e os 7 idiomas suportados. Os minutos têm um limite mensal fixo — as chamadas são encaminhadas para o correio de voz assim que o limite for atingido, até ao próximo ciclo de faturação ou até que seja efetuada uma atualização. Receberá alertas por e-mail quando atingir 25%, 50%, 75% e 90% do seu limite, para que nunca seja apanhado de surpresa.",
+    "microcopyHardCap": "Todos os planos incluem reservas sincronizadas com o seu calendário, um e-mail de desempenho e os 7 idiomas suportados. Os minutos têm um limite mensal rígido — as chamadas são encaminhadas para o correio de voz assim que o limite for atingido, até ao próximo ciclo de faturação ou até que seja efetuada uma atualização. Receberá alertas por e-mail quando atingir 25%, 50%, 75% e 90% do seu limite, para que nunca seja apanhado de surpresa.",
     "taxLine": "{flag} Os impostos apresentados referem-se a <bold>{country}</bold>{note}. Os preços apresentados não incluem IVA — o imposto é calculado no momento do pagamento.",
     "taxLineNoteSeparator": " — ",
     "tiers": {
@@ -244,7 +274,7 @@
       {
         "label": "Spas",
         "headline": "Deixe os seus clientes relaxarem — desde a primeira chamada",
-        "body": "O seu agente marca tratamentos, responde a perguntas sobre os serviços e trata das alterações de horário — para que a sua equipa se possa concentrar inteiramente na experiência.",
+        "body": "O seu agente marca tratamentos, responde a perguntas sobre os serviços e trata das alterações de horários — para que a sua equipa se possa concentrar inteiramente na experiência.",
         "perks": [
           "Marque massagens, tratamentos faciais e outros tratamentos",
           "Permite a gestão da agenda de vários terapeutas",

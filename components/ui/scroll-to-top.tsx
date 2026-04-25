@@ -2,9 +2,11 @@
 
 import { useEffect, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import { useTranslations } from "next-intl"
 import { ArrowUp } from "lucide-react"
 
 export function ScrollToTop() {
+  const t = useTranslations("scrollToTop")
   const [show, setShow] = useState(false)
 
   useEffect(() => {
@@ -25,7 +27,7 @@ export function ScrollToTop() {
           exit={{ opacity: 0, scale: 0.75 }}
           transition={{ type: "spring", stiffness: 420, damping: 28 }}
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          aria-label="Back to top"
+          aria-label={t("ariaLabel")}
           // Stacked above section-sound (bottom-20) and mobile-cta (bottom-0 on mobile)
           className="fixed bottom-32 right-4 sm:right-6 z-40 w-9 h-9 min-w-[36px] min-h-[36px] rounded-full bg-background/85 backdrop-blur-sm border border-border shadow-sm flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-background transition-colors"
         >

@@ -80,6 +80,36 @@
   "localeSwitcher": {
     "ariaLabel": "Changer de langue"
   },
+  "cookieBanner": {
+    "message": "Nous utilisons des cookies pour améliorer votre expérience et analyser l'utilisation du site. En poursuivant votre navigation, vous acceptez notre",
+    "privacyPolicyLink": "Politique de confidentialité",
+    "decline": "Refuser",
+    "acceptAll": "Tout accepter",
+    "closeAriaLabel": "Fermer"
+  },
+  "sectionSound": {
+    "muteAriaLabel": "Couper le son d'une section",
+    "enableAriaLabel": "Activer les sons de section",
+    "muteTitle": "Couper le son",
+    "enableTitle": "Activer les sons discrets"
+  },
+  "scrollToTop": {
+    "ariaLabel": "Retour en haut de la page"
+  },
+  "keyboardShortcuts": {
+    "heading": "Raccourcis clavier",
+    "closeAriaLabel": "Fermer le menu contextuel",
+    "tip": "Astuce : appuyez à tout moment sur <kbd>?</kbd> pour ouvrir ce menu.",
+    "items": {
+      "jumpToTop": "Retour en haut de la page",
+      "jumpToHowItWorks": "Aller à la section « Comment ça marche »",
+      "jumpToFeatures": "Aller à la rubrique « Fonctionnalités »",
+      "jumpToPricing": "Aller à la rubrique « Tarifs »",
+      "jumpToGetStarted": "Aller à la section « Pour commencer »",
+      "toggleMenu": "Afficher ce menu",
+      "closeMenu": "Fermer le menu"
+    }
+  },
   "techStrip": {
     "heading": "Grâce à une technologie de pointe",
     "labels": {

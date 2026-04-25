@@ -80,6 +80,36 @@
   "localeSwitcher": {
     "ariaLabel": "Sprache ändern"
   },
+  "cookieBanner": {
+    "message": "Wir verwenden Cookies, um Ihr Nutzererlebnis zu verbessern und die Nutzung unserer Website zu analysieren. Wenn Sie fortfahren, stimmen Sie unseren",
+    "privacyPolicyLink": "Datenschutzerklärung",
+    "decline": "Abnahme",
+    "acceptAll": "Alle akzeptieren",
+    "closeAriaLabel": "Schließen"
+  },
+  "sectionSound": {
+    "muteAriaLabel": "Klangabschnitte stummschalten",
+    "enableAriaLabel": "Abschnittstöne aktivieren",
+    "muteTitle": "Töne stummschalten",
+    "enableTitle": "Leise Töne aktivieren"
+  },
+  "scrollToTop": {
+    "ariaLabel": "Zurück zum Anfang"
+  },
+  "keyboardShortcuts": {
+    "heading": "Tastaturkürzel",
+    "closeAriaLabel": "Schnellzugriffsmenü schließen",
+    "tip": "Tipp: Drücken Sie jederzeit <kbd>?</kbd>, um dieses Menü zu öffnen.",
+    "items": {
+      "jumpToTop": "Zum Seitenanfang",
+      "jumpToHowItWorks": "Weiter zu „So funktioniert es“",
+      "jumpToFeatures": "Zu den Funktionen springen",
+      "jumpToPricing": "Weiter zu den Preisen",
+      "jumpToGetStarted": "Weiter zu „Erste Schritte“",
+      "toggleMenu": "Dieses Menü ein- oder ausblenden",
+      "closeMenu": "Menü schließen"
+    }
+  },
   "techStrip": {
     "heading": "Basierend auf branchenführender Technologie",
     "labels": {

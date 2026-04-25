@@ -80,6 +80,36 @@
   "localeSwitcher": {
     "ariaLabel": "Cambiar idioma"
   },
+  "cookieBanner": {
+    "message": "Utilizamos cookies para mejorar su experiencia y analizar el uso del sitio web. Al continuar, acepta nuestra",
+    "privacyPolicyLink": "Política de privacidad",
+    "decline": "Descenso",
+    "acceptAll": "Aceptar todo",
+    "closeAriaLabel": "Cerrar"
+  },
+  "sectionSound": {
+    "muteAriaLabel": "Silenciar los sonidos de la sección",
+    "enableAriaLabel": "Activar los sonidos de sección",
+    "muteTitle": "Silenciar los sonidos",
+    "enableTitle": "Activar sonidos sutiles"
+  },
+  "scrollToTop": {
+    "ariaLabel": "Volver al inicio"
+  },
+  "keyboardShortcuts": {
+    "heading": "Atajos de teclado",
+    "closeAriaLabel": "Cerrar el menú de accesos directos",
+    "tip": "Consejo: pulse <kbd>?</kbd> en cualquier momento para abrir este menú.",
+    "items": {
+      "jumpToTop": "Ir al inicio de la página",
+      "jumpToHowItWorks": "Ir a «Cómo funciona»",
+      "jumpToFeatures": "Ir a las funciones",
+      "jumpToPricing": "Ir a la sección de precios",
+      "jumpToGetStarted": "Ir a «Cómo empezar»",
+      "toggleMenu": "Mostrar este menú",
+      "closeMenu": "Cerrar menú"
+    }
+  },
   "techStrip": {
     "heading": "Con tecnología líder en el sector",
     "labels": {
@@ -208,7 +238,7 @@
     "sliderMissRate": "Llamadas que se ha perdido recientemente",
     "callsPerDay": "{n} llamadas al día",
     "monthlyCallsLabel": "Reuniones mensuales",
-    "missedPerMonthLabel": "Importe pendiente de pago al mes",
+    "missedPerMonthLabel": "Imposible de alcanzar al mes",
     "revenueLostLabel": "Ingresos perdidos al mes",
     "missedDetail": "= {missed} reservas perdidas × {bookingValue} € de reserva media",
     "recommendedPlanLabel": "Plan recomendado",

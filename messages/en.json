@@ -80,6 +80,36 @@
   "localeSwitcher": {
     "ariaLabel": "Change language"
   },
+  "cookieBanner": {
+    "message": "We use cookies to improve your experience and analyse site usage. By continuing, you agree to our",
+    "privacyPolicyLink": "Privacy Policy",
+    "decline": "Decline",
+    "acceptAll": "Accept all",
+    "closeAriaLabel": "Close"
+  },
+  "sectionSound": {
+    "muteAriaLabel": "Mute section sounds",
+    "enableAriaLabel": "Enable section sounds",
+    "muteTitle": "Mute sounds",
+    "enableTitle": "Enable subtle sounds"
+  },
+  "scrollToTop": {
+    "ariaLabel": "Back to top"
+  },
+  "keyboardShortcuts": {
+    "heading": "Keyboard shortcuts",
+    "closeAriaLabel": "Close shortcuts menu",
+    "tip": "Tip: press <kbd>?</kbd> any time to open this menu.",
+    "items": {
+      "jumpToTop": "Jump to top",
+      "jumpToHowItWorks": "Jump to How it works",
+      "jumpToFeatures": "Jump to Features",
+      "jumpToPricing": "Jump to Pricing",
+      "jumpToGetStarted": "Jump to Get started",
+      "toggleMenu": "Toggle this menu",
+      "closeMenu": "Close menu"
+    }
+  },
   "techStrip": {
     "heading": "Powered by industry-leading technology",
     "labels": {
