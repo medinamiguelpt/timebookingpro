@@ -436,15 +436,6 @@ export function Hero({ variant = "a" }: { variant?: "a" | "b" }) {
             >
               <TypewriterText />
             </motion.p>
-
-            <motion.p
-              className="text-sm text-muted-foreground"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.75 }}
-            >
-              {t("finePrint")}
-            </motion.p>
           </div>
 
           {/* Right — Mockup with parallax + blur-in entrance */}

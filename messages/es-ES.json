@@ -1,11 +1,7 @@
 {
   "taglines": {
     "howItWorks": [
-      "Operativo en 24 horas",
-      "Tres pasos para crear un agente totalmente automatizado",
-      "Su agente, disponible a partir de mañana",
-      "Prepárelo hoy, reservas para esta noche",
-      "Desde el registro hasta la puesta en marcha en un día"
+      "Tres pasos para crear un agente totalmente automatizado"
     ],
     "features": [
       "Todo lo que su empresa necesita",
@@ -37,7 +33,6 @@
     ],
     "finalCta": [
       "Su agenda no se llenará *por sí sola*, pero la suya sí.",
-      "Su agente, en directo *mañana*",
       "Ponga en marcha su *sistema de reservas*",
       "Empiece con su *propio agente*",
       "Dele a su calendario un *impulso*"
@@ -221,7 +216,6 @@
         "headline": "Deje de perder reservas mientras está atendiendo a un cliente",
         "body": "Cada llamada perdida es un corte de pelo perdido. Su agente responde al instante, comprueba su agenda y confirma la cita, para que usted pueda centrarse en el corte.",
         "perks": [
-          "Gestiona las visitas sin cita previa frente a las citas concertadas",
           "Conoce los horarios individuales de sus peluqueros",
           "Envía confirmaciones de reserva automáticamente",
           "Habla el idioma que prefieren sus clientes"
@@ -389,7 +383,6 @@
         "highlight": "mientras duerme"
       }
     },
-    "finePrint": "Disponible en menos de 24 horas",
     "scrollIndicator": "Desplazarse",
     "mockup": {
       "agentLive": "Kostas ya está disponible",

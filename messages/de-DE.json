@@ -1,11 +1,7 @@
 {
   "taglines": {
     "howItWorks": [
-      "Innerhalb von 24 Stunden einsatzbereit",
-      "Drei Schritte zu einem vollautomatisierten Agenten",
-      "Ihr Makler, morgen vor Ort",
-      "Heute einrichten, heute Abend buchen",
-      "Von der Anmeldung bis zum Live-Betrieb – in nur einem Tag"
+      "Drei Schritte zu einem vollautomatisierten Agenten"
     ],
     "features": [
       "Alles, was Ihr Unternehmen braucht",
@@ -37,7 +33,6 @@
     ],
     "finalCta": [
       "Ihr Terminkalender füllt sich nicht *von selbst*, Ihrer schon.",
-      "Ihr Makler, live *bis morgen*",
       "Schalten Sie Ihre *Buchungsmaschine* ein",
       "Beginnen Sie mit Ihrem *eigenen Agenten*",
       "Verleihen Sie Ihrem Kalender einen *Auftritt*"
@@ -221,7 +216,6 @@
         "headline": "Verlieren Sie keine Buchungen mehr, während Sie am Stuhl sitzen",
         "body": "Jeder verpasste Anruf bedeutet einen verpassten Haarschnitt. Ihr Berater nimmt den Anruf sofort entgegen, prüft Ihren Terminkalender und sichert Ihnen den Termin – damit Sie sich ganz auf den Haarschnitt konzentrieren können.",
         "perks": [
-          "Bearbeitet Anrufe von Laufkundschaft und Terminanfragen",
           "kennt die individuellen Arbeitszeiten Ihrer Friseure",
           "Versendet automatisch Buchungsbestätigungen",
           "Spricht die Sprache, die Ihre Kunden bevorzugen"
@@ -389,7 +383,6 @@
         "highlight": "während Sie schlafen"
       }
     },
-    "finePrint": "In weniger als 24 Stunden verfügbar",
     "scrollIndicator": "Scrollen",
     "mockup": {
       "agentLive": "Kostas ist live",

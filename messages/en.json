@@ -1,11 +1,10 @@
 {
   "taglines": {
     "howItWorks": [
-      "Up and running in 24 hours",
       "Three steps to a fully automated agent",
-      "Your agent, live by tomorrow",
-      "Setup today, bookings tonight",
-      "From signup to live in a day"
+      "How TimeBookingPro works",
+      "From phone call to confirmed booking",
+      "Your agent, end to end"
     ],
     "features": [
       "Everything your business needs",
@@ -37,7 +36,6 @@
     ],
     "finalCta": [
       "Their calendar won't fill *itself*, yours will.",
-      "Your agent, live *by tomorrow*",
       "Turn on your *booking machine*",
       "Start with your *own agent*",
       "Give your calendar a *promotion*"
@@ -221,7 +219,6 @@
         "headline": "Stop losing bookings while you're behind the chair",
         "body": "Every missed call is a missed haircut. Your agent answers instantly, checks your schedule, and locks in the appointment — so you can focus on the cut.",
         "perks": [
-          "Handles walk-in vs appointment calls",
           "Knows your barbers' individual schedules",
           "Sends booking confirmations automatically",
           "Speaks the language your customers prefer"
@@ -307,7 +304,7 @@
     "steps": [
       {
         "title": "We set up your agent",
-        "body": "Tell us your business name, hours, and services. We build and train your personal AI agent in under 24 hours."
+        "body": "Tell us your business name, hours, and services. We build and train your personal AI agent."
       },
       {
         "title": "It answers every call",
@@ -389,7 +386,6 @@
         "highlight": "while you sleep"
       }
     },
-    "finePrint": "Live in under 24 hours",
     "scrollIndicator": "Scroll",
     "mockup": {
       "agentLive": "Kostas is live",

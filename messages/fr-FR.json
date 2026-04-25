@@ -1,11 +1,7 @@
 {
   "taglines": {
     "howItWorks": [
-      "Opérationnel en 24 heures",
-      "Trois étapes pour un agent entièrement automatisé",
-      "Votre agent, en direct dès demain",
-      "Installez-le aujourd'hui, réservez dès ce soir",
-      "De l'inscription à la mise en ligne en une journée"
+      "Trois étapes pour un agent entièrement automatisé"
     ],
     "features": [
       "Tout ce dont votre entreprise a besoin",
@@ -37,7 +33,6 @@
     ],
     "finalCta": [
       "Leur agenda ne se remplira pas tout seul, mais le vôtre, oui.",
-      "Votre agent, en direct *d'ici demain*",
       "Mettez en marche votre *système de réservation*",
       "Commencez par *votre propre agent*",
       "Mettez votre calendrier en avant"
@@ -221,7 +216,6 @@
         "headline": "Ne perdez plus de rendez-vous pendant que vous êtes en train de coiffer",
         "body": "Chaque appel manqué, c'est une coupe de cheveux manquée. Votre agent répond immédiatement, vérifie votre agenda et fixe le rendez-vous — pour que vous puissiez vous concentrer sur la coupe.",
         "perks": [
-          "Gère les visites spontanées et les rendez-vous téléphoniques",
           "Connaît les horaires individuels de vos coiffeurs",
           "Envoie automatiquement les confirmations de réservation",
           "Parle la langue que vos clients préfèrent"
@@ -389,7 +383,6 @@
         "highlight": "pendant que vous dormez"
       }
     },
-    "finePrint": "Disponible sous 24 heures",
     "scrollIndicator": "Faire défiler",
     "mockup": {
       "agentLive": "Kostas est en ligne",

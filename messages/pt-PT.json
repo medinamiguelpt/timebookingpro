@@ -1,11 +1,7 @@
 {
   "taglines": {
     "howItWorks": [
-      "Operacional em 24 horas",
-      "Três passos para um agente totalmente automatizado",
-      "O seu agente, disponível amanhã",
-      "Preparação hoje, reservas para esta noite",
-      "Desde o registo até à ativação em apenas um dia"
+      "Três passos para um agente totalmente automatizado"
     ],
     "features": [
       "Tudo o que a sua empresa precisa",
@@ -37,7 +33,6 @@
     ],
     "finalCta": [
       "A agenda deles não se vai encher *sozinha*, mas a sua sim.",
-      "O seu agente, ao vivo *até amanhã*",
       "Ligue a sua *máquina de reservas*",
       "Comece com o seu *próprio agente*",
       "Dê ao seu calendário uma *promoção*"
@@ -221,7 +216,6 @@
         "headline": "Deixe de perder marcações enquanto está a atender os clientes",
         "body": "Cada chamada perdida é um corte de cabelo perdido. O seu agente responde imediatamente, verifica a sua agenda e confirma a marcação — para que se possa concentrar no corte.",
         "perks": [
-          "Lida com visitas sem marcação e com marcações",
           "Conhece os horários individuais dos seus barbeiros",
           "Envia confirmações de reserva automaticamente",
           "Fala a língua que os seus clientes preferem"
@@ -389,7 +383,6 @@
         "highlight": "enquanto dorme"
       }
     },
-    "finePrint": "Disponível em menos de 24 horas",
     "scrollIndicator": "Deslizar",
     "mockup": {
       "agentLive": "Kostas já está no ar",

@@ -264,7 +264,7 @@ function ScrollySection() {
   )
 }
 
-export function HowItWorks({ headline = "Up and running in 24 hours" }: { headline?: string }) {
+export function HowItWorks({ headline = "How TimeBookingPro works" }: { headline?: string }) {
   const t = useTranslations("howItWorks")
   const stepsText = t.raw("steps") as StepText[]
   const flowNodesText = t.raw("flowNodes") as FlowNodeText[]

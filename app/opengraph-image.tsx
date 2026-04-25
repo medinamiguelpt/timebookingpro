@@ -84,7 +84,7 @@ export default function OGImage() {
           </div>
 
           <div style={{ display: "flex", gap: 14, marginTop: 8 }}>
-            {["Live in 24 hours", "Cancel any time"].map((text) => (
+            {["24/7 availability", "Cancel any time"].map((text) => (
               <div
                 key={text}
                 style={{
