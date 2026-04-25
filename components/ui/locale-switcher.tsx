@@ -9,23 +9,64 @@ import { routing, type Locale } from "@/i18n/routing"
 import { cn } from "@/lib/utils"
 
 /**
- * Per-locale display metadata. Flag = country whose flag commonly represents
- * the language. Label = short recognizable abbreviation. NativeName = how
- * native speakers write their own language (used in the dropdown to help users
- * find their language regardless of the currently active UI language).
+ * Per-locale display metadata.
+ *  flag        — emoji used to derive the Twemoji SVG codepoints
+ *  label       — short abbreviation, kept for accessibility (alt text, aria-label)
+ *  nativeName  — how speakers write their own language; shown in dropdown
+ *
+ * Apple's emoji set is proprietary so we serve Twitter/jdecked Twemoji
+ * SVGs from jsDelivr. Twemoji's flag style is the common 'looks like
+ * Apple/Google but works on Windows too' choice (used by Discord, GitHub,
+ * WhatsApp Web, etc.). The native OS emoji renderer wouldn't ship UK / Greek
+ * / Saudi flags consistently on Windows browsers — Twemoji fixes that.
  */
 const LOCALE_META: Record<Locale, { flag: string; label: string; nativeName: string }> = {
-  "en":     { flag: "🇬🇧", label: "ENG",  nativeName: "English"    },
-  "el":     { flag: "🇬🇷", label: "GR",   nativeName: "Ελληνικά"   },
-  "es-ES":  { flag: "🇪🇸", label: "ESP",  nativeName: "Español"    },
-  "pt-PT":  { flag: "🇵🇹", label: "PORT", nativeName: "Português"  },
-  "fr-FR":  { flag: "🇫🇷", label: "FR",   nativeName: "Français"   },
-  "de-DE":  { flag: "🇩🇪", label: "DE",   nativeName: "Deutsch"    },
-  "ar-SA":  { flag: "🇸🇦", label: "AR",   nativeName: "العربية"    },
+  "en":     { flag: "🇬🇧", label: "English",    nativeName: "English"    },
+  "el":     { flag: "🇬🇷", label: "Greek",      nativeName: "Ελληνικά"   },
+  "es-ES":  { flag: "🇪🇸", label: "Spanish",    nativeName: "Español"    },
+  "pt-PT":  { flag: "🇵🇹", label: "Portuguese", nativeName: "Português"  },
+  "fr-FR":  { flag: "🇫🇷", label: "French",     nativeName: "Français"   },
+  "de-DE":  { flag: "🇩🇪", label: "German",     nativeName: "Deutsch"    },
+  "ar-SA":  { flag: "🇸🇦", label: "Arabic",     nativeName: "العربية"    },
+}
+
+/** Convert a flag emoji (e.g. "🇬🇧") to a hyphenated hex codepoint string ("1f1ec-1f1e7"). */
+function emojiCodepoints(emoji: string): string {
+  return [...emoji]
+    .map(c => c.codePointAt(0)?.toString(16))
+    .filter(Boolean)
+    .join("-")
+}
+
+/**
+ * Twemoji SVG via jsDelivr. Pinned to v15.1.0 so a future upstream rename
+ * doesn't silently break flag rendering. Each file is ~1-2 KB and gets
+ * cached aggressively by jsDelivr's edge.
+ */
+function twemojiUrl(emoji: string): string {
+  return `https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/${emojiCodepoints(emoji)}.svg`
+}
+
+function FlagImage({ emoji, alt, size = 18 }: { emoji: string; alt: string; size?: number }) {
+  // 4:3 is close to the canonical flag aspect ratio across most countries.
+  const height = Math.round((size * 3) / 4)
+  return (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={twemojiUrl(emoji)}
+      alt={alt}
+      width={size}
+      height={height}
+      loading="lazy"
+      decoding="async"
+      className="inline-block rounded-[2px] shrink-0 ring-1 ring-black/5"
+      style={{ width: size, height }}
+    />
+  )
 }
 
 interface LocaleSwitcherProps {
-  /** "compact" = trigger shows globe + label, dropdown opens above on footer use. */
+  /** "compact" = dropdown opens above (used in footer). "navbar" drops down. */
   variant?: "compact" | "navbar"
   className?: string
 }
@@ -74,12 +115,12 @@ export function LocaleSwitcher({ variant = "navbar", className }: LocaleSwitcher
         aria-label={t("ariaLabel")}
         onClick={() => setOpen((o) => !o)}
         className={cn(
-          "inline-flex items-center gap-1.5 rounded-full px-3 h-9 text-sm font-medium transition-colors",
+          "inline-flex items-center gap-2 rounded-full px-3 h-9 text-sm font-medium transition-colors",
           "border border-border hover:bg-foreground/5 text-muted-foreground hover:text-foreground"
         )}
       >
         <Globe size={14} aria-hidden />
-        <span className="font-semibold tracking-wide">{current.label}</span>
+        <FlagImage emoji={current.flag} alt={current.label} size={20} />
         <ChevronDown size={12} className={cn("transition-transform", open && "rotate-180")} aria-hidden />
       </button>
 
@@ -107,13 +148,12 @@ export function LocaleSwitcher({ variant = "navbar", className }: LocaleSwitcher
                     aria-selected={active}
                     onClick={() => switchTo(loc)}
                     className={cn(
-                      "w-full flex items-center gap-2.5 px-3 py-2 text-sm text-start transition-colors",
+                      "w-full flex items-center gap-3 px-3 py-2 text-sm text-start transition-colors",
                       active ? "bg-primary/10 text-foreground" : "hover:bg-foreground/5 text-muted-foreground"
                     )}
                   >
-                    <span className="text-base leading-none" aria-hidden>{meta.flag}</span>
-                    <span className="font-semibold w-12 shrink-0">{meta.label}</span>
-                    <span className="text-xs text-muted-foreground/70 truncate">{meta.nativeName}</span>
+                    <FlagImage emoji={meta.flag} alt={meta.label} size={20} />
+                    <span className="truncate">{meta.nativeName}</span>
                     {active && <Check size={14} className="ms-auto text-primary shrink-0" />}
                   </button>
                 </li>
