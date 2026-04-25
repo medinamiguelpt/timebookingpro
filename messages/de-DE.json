@@ -53,5 +53,21 @@
         "after": "An Wochenenden, abends und an Feiertagen"
       }
     ]
+  },
+  "finalCta": {
+    "eyebrow": "Fangen Sie noch heute an",
+    "subheadline": "Schließen Sie sich den Unternehmen an, die rund um die Uhr Buchungen entgegennehmen. Ihr KI-Agent ist in weniger als 24 Stunden einsatzbereit.",
+    "successHeading": "Sie stehen auf der Liste!",
+    "positionLine": "Sie sind <bold>die Nummer {position}</bold>. in der Warteschlange – wir melden uns der Reihe nach bei Ihnen.",
+    "checkEmail": "Bitte überprüfen Sie Ihre E-Mails – die Bestätigung ist unterwegs.",
+    "smsEnabled": "SMS-Benachrichtigungen aktiviert",
+    "smsPrompt": "Möchten Sie SMS-Benachrichtigungen erhalten?",
+    "smsPhonePlaceholder": "+1 555 000 0000",
+    "smsButton": "Ja, bitte",
+    "emailPlaceholder": "your@email.com",
+    "submitLoading": "Wird gesendet…",
+    "submitDefault": "Finden Sie Ihren Makler",
+    "errorMessage": "Es ist ein Fehler aufgetreten – bitte versuchen Sie es erneut oder senden Sie uns eine E-Mail an hello@timebookingpro.com",
+    "finePrint": "Live in 24 Stunden · Sie können sich jederzeit abmelden"
   }
 }

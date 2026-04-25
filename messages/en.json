@@ -44,5 +44,21 @@
       { "before": "Customer books with a competitor",     "after": "Booking confirmed in under 90 seconds" },
       { "before": "Weekend calls go unanswered",          "after": "Weekends, nights, and holidays covered" }
     ]
+  },
+  "finalCta": {
+    "eyebrow": "Get started today",
+    "subheadline": "Join the businesses that book 24/7. Your AI agent will be live in under 24 hours.",
+    "successHeading": "You're on the list!",
+    "positionLine": "You're <bold>#{position}</bold> in line — we'll reach out in order.",
+    "checkEmail": "Check your email — confirmation is on its way.",
+    "smsEnabled": "SMS updates enabled",
+    "smsPrompt": "Get SMS updates?",
+    "smsPhonePlaceholder": "+1 555 000 0000",
+    "smsButton": "Yes please",
+    "emailPlaceholder": "your@email.com",
+    "submitLoading": "Sending…",
+    "submitDefault": "Get your agent",
+    "errorMessage": "Something went wrong — try again or email us at hello@timebookingpro.com",
+    "finePrint": "Live in 24 h · Unsubscribe any time"
   }
 }

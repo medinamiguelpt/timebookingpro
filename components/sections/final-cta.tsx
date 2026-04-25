@@ -2,6 +2,7 @@
 
 import { useState, useCallback } from "react"
 import { motion, AnimatePresence, useAnimation } from "framer-motion"
+import { useTranslations } from "next-intl"
 import { ArrowRight, CheckCircle, MessageSquare } from "lucide-react"
 
 const EMOJIS = ["📅", "📞", "✅", "🎉", "💜", "⚡", "🚀", "🤖"]
@@ -56,6 +57,7 @@ function HighlightedHeadline({ text }: { text: string }) {
 }
 
 export function FinalCTA({ headline = "Their calendar won't fill *itself*, yours will." }: { headline?: string }) {
+  const t = useTranslations("finalCta")
   const [email, setEmail] = useState("")
   const [state, setState] = useState<"idle" | "loading" | "success" | "error">("idle")
   const [position, setPosition] = useState<number | null>(null)
@@ -136,7 +138,7 @@ export function FinalCTA({ headline = "Their calendar won't fill *itself*, yours
           viewport={{ once: true }}
           transition={{ duration: 0.4 }}
         >
-          Get started today
+          {t("eyebrow")}
         </motion.p>
 
         <motion.h2
@@ -157,7 +159,7 @@ export function FinalCTA({ headline = "Their calendar won't fill *itself*, yours
           viewport={{ once: true }}
           transition={{ duration: 0.4, delay: 0.2 }}
         >
-          Join the businesses that book 24/7. Your AI agent will be live in under 24 hours.
+          {t("subheadline")}
         </motion.p>
 
         <motion.div
@@ -170,29 +172,32 @@ export function FinalCTA({ headline = "Their calendar won't fill *itself*, yours
             <div className="flex flex-col items-center gap-3">
               <div className="flex items-center gap-2.5 text-green-400 font-semibold text-lg">
                 <CheckCircle size={22} />
-                You&apos;re on the list!
+                {t("successHeading")}
               </div>
               {position && (
                 <p className="text-white/70 text-sm font-medium">
-                  You&apos;re <span className="text-primary-soft font-bold">#{position}</span> in line — we&apos;ll reach out in order.
+                  {t.rich("positionLine", {
+                    position,
+                    bold: (chunks) => <span className="text-primary-soft font-bold">{chunks}</span>,
+                  })}
                 </p>
               )}
-              <p className="text-white/50 text-sm">Check your email — confirmation is on its way.</p>
+              <p className="text-white/50 text-sm">{t("checkEmail")}</p>
 
               {/* SMS opt-in */}
               {smsState === "done" ? (
                 <div className="flex items-center gap-2 text-green-400 text-xs font-semibold mt-1">
-                  <CheckCircle size={14} /> SMS updates enabled
+                  <CheckCircle size={14} /> {t("smsEnabled")}
                 </div>
               ) : (
                 <form onSubmit={handleSmsOptin} className="mt-2 flex gap-2 items-center">
                   <div className="flex items-center gap-1.5 bg-white/10 border border-white/20 rounded-full px-3 py-1.5 text-xs text-white/50">
                     <MessageSquare size={12} />
-                    <span>Get SMS updates?</span>
+                    <span>{t("smsPrompt")}</span>
                   </div>
                   <input
                     type="tel"
-                    placeholder="+1 555 000 0000"
+                    placeholder={t("smsPhonePlaceholder")}
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     className="rounded-full px-4 h-8 bg-white/10 border border-white/20 text-white placeholder:text-white/30 text-xs outline-none focus:border-primary-soft/60 transition-colors w-36"
@@ -202,7 +207,7 @@ export function FinalCTA({ headline = "Their calendar won't fill *itself*, yours
                     disabled={smsState === "loading" || !phone}
                     className="bg-white/15 hover:bg-white/20 disabled:opacity-40 text-white text-xs font-semibold rounded-full px-3 h-8 transition-colors whitespace-nowrap"
                   >
-                    {smsState === "loading" ? "…" : "Yes please"}
+                    {smsState === "loading" ? "…" : t("smsButton")}
                   </button>
                 </form>
               )}
@@ -230,7 +235,7 @@ export function FinalCTA({ headline = "Their calendar won't fill *itself*, yours
                   <input
                     type="email"
                     required
-                    placeholder="your@email.com"
+                    placeholder={t("emailPlaceholder")}
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     onFocus={(e) => {
@@ -248,16 +253,16 @@ export function FinalCTA({ headline = "Their calendar won't fill *itself*, yours
                   disabled={state === "loading"}
                   className="shimmer-btn flex items-center gap-2 whitespace-nowrap bg-primary hover:bg-primary/90 disabled:opacity-60 text-white font-semibold rounded-full px-7 h-13 text-sm shadow-2xl shadow-primary/40 transition-colors"
                 >
-                  {state === "loading" ? "Sending…" : "Get your agent"}
+                  {state === "loading" ? t("submitLoading") : t("submitDefault")}
                   {state !== "loading" && <ArrowRight size={16} />}
                 </button>
               </form>
             </motion.div>
           )}
           {state === "error" && (
-            <p className="mt-3 text-sm text-red-400">Something went wrong — try again or email us at hello@timebookingpro.com</p>
+            <p className="mt-3 text-sm text-red-400">{t("errorMessage")}</p>
           )}
-          <p className="mt-4 text-xs text-white/30">Live in 24 h · Unsubscribe any time</p>
+          <p className="mt-4 text-xs text-white/30">{t("finePrint")}</p>
         </motion.div>
       </div>
     </section>

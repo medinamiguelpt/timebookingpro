@@ -53,5 +53,21 @@
         "after": "Fins de semana, noites e feriados"
       }
     ]
+  },
+  "finalCta": {
+    "eyebrow": "Comece hoje mesmo",
+    "subheadline": "Junte-se às empresas que fazem reservas 24 horas por dia, 7 dias por semana. O seu agente de IA estará operacional em menos de 24 horas.",
+    "successHeading": "Está na lista!",
+    "positionLine": "É <bold>o número {position}</bold>. Entraremos em contacto consigo por ordem de chegada.",
+    "checkEmail": "Verifique o seu e-mail — a confirmação está a caminho.",
+    "smsEnabled": "Atualizações por SMS ativadas",
+    "smsPrompt": "Deseja receber atualizações por SMS?",
+    "smsPhonePlaceholder": "+1 555 000 0000",
+    "smsButton": "Sim, por favor",
+    "emailPlaceholder": "your@email.com",
+    "submitLoading": "A enviar…",
+    "submitDefault": "Contrate o seu agente",
+    "errorMessage": "Ocorreu um erro — tente novamente ou envie-nos um e-mail para hello@timebookingpro.com",
+    "finePrint": "Ao vivo em 24 horas · Pode cancelar a subscrição a qualquer momento"
   }
 }

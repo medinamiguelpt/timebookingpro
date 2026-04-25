@@ -71,12 +71,16 @@ function escapeRegex(s) {
 
 function protectTerms(text) {
   let out = text
+  // Wrap brand and proper-noun terms.
   for (const term of PROTECTED_TERMS) {
     // \b doesn't work cleanly across Unicode, but our source is English
     // and the protected terms are Latin-script, so word-boundary is fine.
     const re = new RegExp(`\\b${escapeRegex(term)}\\b`, "g")
     out = out.replace(re, `<ignore>${term}</ignore>`)
   }
+  // Wrap ICU placeholders: {name}, {count}, etc. Match identifiers only —
+  // anything more complex (plural rules, formats) would need extra handling.
+  out = out.replace(/\{(\w+)\}/g, "<ignore>{$1}</ignore>")
   return out
 }
 
