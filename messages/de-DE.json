@@ -54,6 +54,67 @@
       }
     ]
   },
+  "forWho": {
+    "eyebrow": "Für wen ist es gedacht?",
+    "statCaption": "Anrufe, die beim ersten Klingeln entgegengenommen wurden",
+    "tabs": [
+      {
+        "label": "Friseursalons",
+        "headline": "Verlieren Sie keine Buchungen mehr, während Sie am Stuhl sitzen",
+        "body": "Jeder verpasste Anruf bedeutet einen verpassten Haarschnitt. Ihr Berater nimmt den Anruf sofort entgegen, prüft Ihren Terminkalender und sichert Ihnen den Termin – damit Sie sich ganz auf den Haarschnitt konzentrieren können.",
+        "perks": [
+          "Bearbeitet Anrufe von Laufkundschaft und Terminanfragen",
+          "kennt die individuellen Arbeitszeiten Ihrer Friseure",
+          "Versendet automatisch Buchungsbestätigungen",
+          "Spricht die Sprache, die Ihre Kunden bevorzugen"
+        ]
+      },
+      {
+        "label": "Salons",
+        "headline": "Eine Rezeptionistin, die nie einen Tag frei nimmt",
+        "body": "Von Terminen für die Haarfärbung bis hin zu kurzfristigen Absagen – Ihr Berater kümmert sich um alles, ohne dass ein Kunde jemals in der Warteschleife hängen bleibt.",
+        "perks": [
+          "Bücher bestimmter Stylisten nach Namen",
+          "Berücksichtigt Unterschiede in der Dienstdauer",
+          "Bearbeitet Stornierungen und Terminverschiebungen",
+          "Funktioniert über mehrere Mitarbeiterkalender hinweg"
+        ]
+      },
+      {
+        "label": "Wellnesszentren",
+        "headline": "Sorgen Sie dafür, dass sich Ihre Kunden wohlfühlen – schon beim ersten Anruf",
+        "body": "Ihr Ansprechpartner bucht Behandlungen, beantwortet Fragen zu den Dienstleistungen und kümmert sich um Terminverschiebungen – damit sich Ihr Team ganz auf das Kundenerlebnis konzentrieren kann.",
+        "perks": [
+          "Buchen Sie Massagen, Gesichtsbehandlungen und andere Anwendungen",
+          "Ermöglicht die Terminplanung für mehrere Therapeuten",
+          "Versendet Erinnerungen, um die Zahl der Nichterscheinen zu verringern",
+          "Einsetzbar in mehreren Behandlungsräumen"
+        ]
+      },
+      {
+        "label": "Nagel- und Kosmetikstudios",
+        "headline": "Sorgen Sie dafür, dass Ihr Stuhl immer besetzt ist, ohne einen Finger zu rühren",
+        "body": "Von Gel-Behandlungen bis hin zu Wimpernverlängerungen – Ihr Berater kennt Ihr Leistungsangebot und bucht jedes Mal den passenden Termin bei der richtigen Kosmetikerin.",
+        "perks": [
+          "Techniker nach Fachgebiet",
+          "Berücksichtigt Unterschiede in der Dienstdauer",
+          "Bearbeitet Stornierungen und Terminverschiebungen",
+          "Beantwortet Fragen zu Preisen und Verfügbarkeit"
+        ]
+      },
+      {
+        "label": "Fitnessstudios & Sportstudios",
+        "headline": "Füllen Sie jeden Kurs, jede Sitzung",
+        "body": "Von Personal-Training-Stunden bis hin zu Gruppenkursen – Ihr Berater sorgt dafür, dass Ihr Stundenplan voll ist und Ihre Mitglieder auf dem Laufenden bleiben.",
+        "perks": [
+          "Buchen Sie Kurse und Einzelunterricht",
+          "Verwaltet die Kapazitätsgrenzen der Klassen",
+          "Bearbeitet Anfragen zu Mitgliedschaften und Probeabonnements",
+          "Versendet automatisch Erinnerungen zur Sitzung"
+        ]
+      }
+    ]
+  },
   "features": {
     "eyebrow": "Funktionen",
     "subheadline": "Ein Ansprechpartner. Rund um die Uhr erreichbar. Ein Kalender, der sich von selbst füllt.",
@@ -220,7 +281,7 @@
     "eyebrow": "Fangen Sie noch heute an",
     "subheadline": "Schließen Sie sich den Unternehmen an, die rund um die Uhr Buchungen entgegennehmen. Ihr KI-Agent ist in weniger als 24 Stunden einsatzbereit.",
     "successHeading": "Sie stehen auf der Liste!",
-    "positionLine": "Sie sind <bold>die Nummer {position}</bold>. in der Warteschlange – wir melden uns der Reihe nach bei Ihnen.",
+    "positionLine": "Sie sind <bold>Nr. {position}</bold> in der Warteschlange – wir werden uns der Reihe nach bei Ihnen melden.",
     "checkEmail": "Bitte überprüfen Sie Ihre E-Mails – die Bestätigung ist unterwegs.",
     "smsEnabled": "SMS-Benachrichtigungen aktiviert",
     "smsPrompt": "Möchten Sie SMS-Benachrichtigungen erhalten?",

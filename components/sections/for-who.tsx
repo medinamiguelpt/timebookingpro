@@ -1,73 +1,20 @@
 "use client"
 
 import { motion } from "framer-motion"
+import { useTranslations } from "next-intl"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { CheckCircle } from "lucide-react"
 
-const TABS = [
-  {
-    value: "barbershops",
-    label: "Barbershops",
-    headline: "Stop losing bookings while you're behind the chair",
-    body: "Every missed call is a missed haircut. Your agent answers instantly, checks your schedule, and locks in the appointment — so you can focus on the cut.",
-    perks: [
-      "Handles walk-in vs appointment calls",
-      "Knows your barbers' individual schedules",
-      "Sends booking confirmations automatically",
-      "Speaks the language your customers prefer",
-    ],
-  },
-  {
-    value: "salons",
-    label: "Salons",
-    headline: "A receptionist that never takes a day off",
-    body: "From colouring appointments to last-minute cancellations, your agent manages it all — without ever putting a customer on hold.",
-    perks: [
-      "Books specific stylists by name",
-      "Handles service duration differences",
-      "Manages cancellations and reschedules",
-      "Works across multiple staff calendars",
-    ],
-  },
-  {
-    value: "spas",
-    label: "Spas",
-    headline: "Let your clients relax — starting from the first call",
-    body: "Your agent books treatments, answers questions about services, and handles rescheduling — so your team can focus entirely on the experience.",
-    perks: [
-      "Books massages, facials, and treatments",
-      "Handles multi-therapist scheduling",
-      "Sends reminders to reduce no-shows",
-      "Works across multiple treatment rooms",
-    ],
-  },
-  {
-    value: "nails",
-    label: "Nail & Beauty Studios",
-    headline: "Keep your chair full without lifting a finger",
-    body: "From gel sets to lash extensions, your agent knows your services and books the right slot with the right technician — every time.",
-    perks: [
-      "Books specific technicians by specialty",
-      "Handles service duration differences",
-      "Manages cancellations and reschedules",
-      "Answers pricing and availability questions",
-    ],
-  },
-  {
-    value: "gyms",
-    label: "Gyms & Studios",
-    headline: "Fill every class, every session",
-    body: "From personal training sessions to group classes, your agent keeps your timetable full and your members informed.",
-    perks: [
-      "Books classes and 1-to-1 sessions",
-      "Manages class capacity limits",
-      "Handles membership and trial enquiries",
-      "Sends session reminders automatically",
-    ],
-  },
-]
+// Stable tab values (used for state). Labels + content come from translations.
+const TAB_VALUES = ["barbershops", "salons", "spas", "nails", "gyms"] as const
+
+type TabText = { label: string; headline: string; body: string; perks: string[] }
 
 export function ForWho({ headline = "Built for every booking business" }: { headline?: string }) {
+  const t = useTranslations("forWho")
+  const tabsText = t.raw("tabs") as TabText[]
+  const tabs = TAB_VALUES.map((value, i) => ({ value, ...tabsText[i] }))
+
   return (
     <section className="py-24 sm:py-32 bg-muted/30">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -79,7 +26,7 @@ export function ForWho({ headline = "Built for every booking business" }: { head
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
           >
-            Who it&apos;s for
+            {t("eyebrow")}
           </motion.p>
           <motion.h2
             key={headline}
@@ -101,7 +48,7 @@ export function ForWho({ headline = "Built for every booking business" }: { head
         >
           <Tabs defaultValue="barbershops">
             <TabsList className="flex flex-wrap gap-2 h-auto bg-transparent justify-center mb-10">
-              {TABS.map((tab) => (
+              {tabs.map((tab) => (
                 <TabsTrigger
                   key={tab.value}
                   value={tab.value}
@@ -112,7 +59,7 @@ export function ForWho({ headline = "Built for every booking business" }: { head
               ))}
             </TabsList>
 
-            {TABS.map((tab) => (
+            {tabs.map((tab) => (
               <TabsContent key={tab.value} value={tab.value}>
                 <div className="grid md:grid-cols-2 gap-10 items-center rounded-2xl border border-border bg-card p-8 sm:p-10">
                   <div>
@@ -135,7 +82,7 @@ export function ForWho({ headline = "Built for every booking business" }: { head
                     <div className="w-56 h-56 rounded-3xl bg-primary/10 border border-primary/20 flex flex-col items-center justify-center gap-4 text-center p-6">
                       <p className="text-5xl font-heading font-extrabold text-primary">98%</p>
                       <p className="text-sm font-medium text-muted-foreground">
-                        of calls answered on the first ring
+                        {t("statCaption")}
                       </p>
                     </div>
                   </div>

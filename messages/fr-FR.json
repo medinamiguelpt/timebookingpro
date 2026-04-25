@@ -54,6 +54,67 @@
       }
     ]
   },
+  "forWho": {
+    "eyebrow": "À qui s'adresse-t-il ?",
+    "statCaption": "des appels pris dès la première sonnerie",
+    "tabs": [
+      {
+        "label": "Salons de coiffure pour hommes",
+        "headline": "Ne perdez plus de rendez-vous pendant que vous êtes en train de coiffer",
+        "body": "Chaque appel manqué, c'est une coupe de cheveux manquée. Votre agent répond immédiatement, vérifie votre agenda et fixe le rendez-vous — pour que vous puissiez vous concentrer sur la coupe.",
+        "perks": [
+          "Gère les visites spontanées et les rendez-vous téléphoniques",
+          "Connaît les horaires individuels de vos coiffeurs",
+          "Envoie automatiquement les confirmations de réservation",
+          "Parle la langue que vos clients préfèrent"
+        ]
+      },
+      {
+        "label": "Salons",
+        "headline": "Une réceptionniste qui ne prend jamais de jour de congé",
+        "body": "Des rendez-vous chez le coiffeur aux annulations de dernière minute, votre agent s'occupe de tout — sans jamais mettre un client en attente.",
+        "perks": [
+          "Répertoriez les stylistes par leur nom",
+          "Gère les différences de durée des services",
+          "Gère les annulations et les reports",
+          "Fonctionne avec plusieurs calendriers du personnel"
+        ]
+      },
+      {
+        "label": "Spa",
+        "headline": "Permettez à vos clients de se détendre — dès le premier appel",
+        "body": "Votre agent se charge de prendre les rendez-vous pour les soins, de répondre aux questions concernant les services et de gérer les changements d'horaires, afin que votre équipe puisse se consacrer entièrement à l'expérience client.",
+        "perks": [
+          "Réservez des massages, des soins du visage et des soins",
+          "Permet de gérer la planification des horaires pour plusieurs thérapeutes",
+          "Envoie des rappels afin de réduire le nombre de désistements",
+          "Fonctionne dans plusieurs salles de soins"
+        ]
+      },
+      {
+        "label": "Salons de manucure et de beauté",
+        "headline": "Gardez votre chaise occupée sans lever le petit doigt",
+        "body": "Des soins au gel aux extensions de cils, votre conseiller connaît vos services et vous réserve le créneau qui vous convient auprès du technicien adéquat — à chaque fois.",
+        "perks": [
+          "Répertoriez les techniciens par spécialité",
+          "Gère les différences de durée des services",
+          "Gère les annulations et les reports",
+          "Répond aux questions concernant les prix et la disponibilité"
+        ]
+      },
+      {
+        "label": "Salles de sport et studios",
+        "headline": "Remplissez chaque cours, chaque séance",
+        "body": "Qu'il s'agisse de séances d'entraînement personnalisées ou de cours collectifs, votre agent veille à ce que votre planning soit bien rempli et à ce que vos adhérents soient tenus informés.",
+        "perks": [
+          "Cours collectifs et séances individuelles",
+          "Gère les limites de capacité des classes",
+          "Gère les demandes d'adhésion et d'essai",
+          "Envoie automatiquement des rappels de session"
+        ]
+      }
+    ]
+  },
   "features": {
     "eyebrow": "Caractéristiques",
     "subheadline": "Un seul interlocuteur. Disponible 24 heures sur 24, 7 jours sur 7. Un agenda qui se remplit tout seul.",
@@ -220,7 +281,7 @@
     "eyebrow": "Commencez dès aujourd'hui",
     "subheadline": "Rejoignez les entreprises qui acceptent les réservations 24 h/24, 7 j/7. Votre assistant IA sera opérationnel en moins de 24 heures.",
     "successHeading": "Vous êtes sur la liste !",
-    "positionLine": "Vous êtes <bold>le n°{position}e</bold> de la file d'attente — nous vous contacterons dans l'ordre.",
+    "positionLine": "Vous êtes le <bold>n° {position}</bold> de la file d'attente — nous vous contacterons dans l'ordre.",
     "checkEmail": "Vérifiez votre boîte mail : vous allez recevoir un e-mail de confirmation.",
     "smsEnabled": "Les notifications par SMS sont activées",
     "smsPrompt": "Souhaitez-vous recevoir des notifications par SMS ?",

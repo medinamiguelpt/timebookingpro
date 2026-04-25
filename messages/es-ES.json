@@ -54,6 +54,67 @@
       }
     ]
   },
+  "forWho": {
+    "eyebrow": "A quién va dirigido",
+    "statCaption": "de llamadas atendidas al primer tono",
+    "tabs": [
+      {
+        "label": "Barberías",
+        "headline": "Deje de perder reservas mientras está atendiendo a un cliente",
+        "body": "Cada llamada perdida es un corte de pelo perdido. Su agente responde al instante, comprueba su agenda y confirma la cita, para que usted pueda centrarse en el corte.",
+        "perks": [
+          "Gestiona las visitas sin cita previa frente a las citas concertadas",
+          "Conoce los horarios individuales de sus peluqueros",
+          "Envía confirmaciones de reserva automáticamente",
+          "Habla el idioma que prefieren sus clientes"
+        ]
+      },
+      {
+        "label": "Salones",
+        "headline": "Una recepcionista que nunca se toma un día libre",
+        "body": "Desde citas para teñirse el pelo hasta cancelaciones de última hora, su agente se encarga de todo, sin dejar nunca al cliente en espera.",
+        "perks": [
+          "Libros de estilistas concretos por su nombre",
+          "Gestiona las diferencias en la duración de los servicios",
+          "Gestiona las cancelaciones y los cambios de fecha",
+          "Funciona con varios calendarios de personal"
+        ]
+      },
+      {
+        "label": "Centros de bienestar",
+        "headline": "Haga que sus clientes se relajen, desde la primera llamada",
+        "body": "Su agente se encarga de reservar los tratamientos, responder a las preguntas sobre los servicios y gestionar los cambios de cita, para que su equipo pueda centrarse por completo en la experiencia.",
+        "perks": [
+          "Reserve masajes, tratamientos faciales y otros tratamientos",
+          "Permite gestionar la programación de varios terapeutas",
+          "Envía recordatorios para reducir las ausencias",
+          "Funciona en varias salas de tratamiento"
+        ]
+      },
+      {
+        "label": "Salones de manicura y belleza",
+        "headline": "Mantenga su silla ocupada sin mover un dedo",
+        "body": "Desde tratamientos de gel hasta extensiones de pestañas, su agente conoce sus servicios y le reserva la cita adecuada con el técnico adecuado, siempre.",
+        "perks": [
+          "Libros para técnicos específicos por especialidad",
+          "Gestiona las diferencias en la duración de los servicios",
+          "Gestiona las cancelaciones y los cambios de fecha",
+          "Responde a preguntas sobre precios y disponibilidad"
+        ]
+      },
+      {
+        "label": "Gimnasios y centros de entrenamiento",
+        "headline": "Llene todas las clases, todas las sesiones",
+        "body": "Desde sesiones de entrenamiento personal hasta clases en grupo, su agente se encarga de mantener su agenda llena y de mantener informados a sus socios.",
+        "perks": [
+          "Clases y sesiones individuales",
+          "Gestiona los límites de aforo de las clases",
+          "Se encarga de las consultas sobre afiliaciones y periodos de prueba",
+          "Envía recordatorios de sesión automáticamente"
+        ]
+      }
+    ]
+  },
   "features": {
     "eyebrow": "Características",
     "subheadline": "Un único agente. Disponible las 24 horas del día, los 7 días de la semana. Un calendario que se rellena solo.",
@@ -220,7 +281,7 @@
     "eyebrow": "Empiece hoy mismo",
     "subheadline": "Únase a las empresas que contratan nuestros servicios las 24 horas del día, los 7 días de la semana. Su agente de IA estará operativo en menos de 24 horas.",
     "successHeading": "¡Ya está en la lista!",
-    "positionLine": "Usted es <bold>el número {position}</bold> de la lista; nos pondremos en contacto con usted por orden.",
+    "positionLine": "Usted es el <bold>n.º {position}</bold> de la lista; nos pondremos en contacto con usted por orden.",
     "checkEmail": "Compruebe su correo electrónico: le enviaremos un mensaje de confirmación en breve.",
     "smsEnabled": "Actualizaciones por SMS activadas",
     "smsPrompt": "¿Desea recibir notificaciones por SMS?",

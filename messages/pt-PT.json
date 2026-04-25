@@ -54,6 +54,67 @@
       }
     ]
   },
+  "forWho": {
+    "eyebrow": "A quem se destina",
+    "statCaption": "de chamadas atendidas ao primeiro toque",
+    "tabs": [
+      {
+        "label": "Barbearias",
+        "headline": "Deixe de perder marcações enquanto está a atender os clientes",
+        "body": "Cada chamada perdida é um corte de cabelo perdido. O seu agente responde imediatamente, verifica a sua agenda e confirma a marcação — para que se possa concentrar no corte.",
+        "perks": [
+          "Lida com visitas sem marcação e com marcações",
+          "Conhece os horários individuais dos seus barbeiros",
+          "Envia confirmações de reserva automaticamente",
+          "Fala a língua que os seus clientes preferem"
+        ]
+      },
+      {
+        "label": "Salões",
+        "headline": "Uma recepcionista que nunca tira um dia de folga",
+        "body": "Desde marcações para serviços de coloração até cancelamentos de última hora, o seu agente trata de tudo — sem nunca colocar um cliente em espera.",
+        "perks": [
+          "Livros de estilistas específicos, por nome",
+          "Lida com as diferenças na duração dos serviços",
+          "Gere cancelamentos e remarcações",
+          "Funciona em vários calendários de funcionários"
+        ]
+      },
+      {
+        "label": "Spas",
+        "headline": "Deixe os seus clientes relaxarem — desde a primeira chamada",
+        "body": "O seu agente marca tratamentos, responde a perguntas sobre os serviços e trata das alterações de horário — para que a sua equipa se possa concentrar inteiramente na experiência.",
+        "perks": [
+          "Marque massagens, tratamentos faciais e outros tratamentos",
+          "Permite a gestão da agenda de vários terapeutas",
+          "Envia lembretes para reduzir o número de faltas",
+          "Funciona em várias salas de tratamento"
+        ]
+      },
+      {
+        "label": "Salões de manicura e beleza",
+        "headline": "Mantenha a sua sala cheia sem ter de fazer nada",
+        "body": "Desde tratamentos com gel até extensões de pestanas, o seu agente conhece os seus serviços e marca a hora certa com o técnico certo — sempre.",
+        "perks": [
+          "Técnicos por especialidade",
+          "Lida com as diferenças na duração dos serviços",
+          "Gere cancelamentos e remarcações",
+          "Responde a perguntas sobre preços e disponibilidade"
+        ]
+      },
+      {
+        "label": "Ginásios e estúdios",
+        "headline": "Encha todas as aulas, todas as sessões",
+        "body": "Desde sessões de treino pessoal a aulas em grupo, o seu agente mantém a sua agenda preenchida e os seus sócios informados.",
+        "perks": [
+          "Aulas em grupo e sessões individuais",
+          "Gere os limites de capacidade das turmas",
+          "Responde a pedidos de informação sobre adesões e períodos de teste",
+          "Envia lembretes de sessão automaticamente"
+        ]
+      }
+    ]
+  },
   "features": {
     "eyebrow": "Características",
     "subheadline": "Um único agente. Disponível 24 horas por dia, 7 dias por semana. Um calendário que se preenche automaticamente.",
@@ -220,7 +281,7 @@
     "eyebrow": "Comece hoje mesmo",
     "subheadline": "Junte-se às empresas que fazem reservas 24 horas por dia, 7 dias por semana. O seu agente de IA estará operacional em menos de 24 horas.",
     "successHeading": "Está na lista!",
-    "positionLine": "É <bold>o número {position}</bold>. Entraremos em contacto consigo por ordem de chegada.",
+    "positionLine": "Está na <bold># {position}</bold> da fila — entraremos em contacto consigo por ordem de chegada.",
     "checkEmail": "Verifique o seu e-mail — a confirmação está a caminho.",
     "smsEnabled": "Atualizações por SMS ativadas",
     "smsPrompt": "Deseja receber atualizações por SMS?",

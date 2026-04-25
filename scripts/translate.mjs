@@ -76,8 +76,32 @@ function escapeRegex(s) {
   return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
 }
 
+/**
+ * Escape XML-special characters so DeepL's xml tag_handling parser doesn't
+ * choke on stray `&`, `<`, `>` in source copy. We only escape characters
+ * that would break the parse — quotes are left alone since they're never
+ * structural in our content.
+ */
+function escapeXml(text) {
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+}
+
+function unescapeXml(text) {
+  return text
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&amp;/g, "&")
+}
+
 function protectTerms(text) {
-  let out = text
+  // First escape XML special chars in the raw content. After this, we add
+  // our own well-formed <ignore> tags around brand names + ICU placeholders;
+  // they intentionally don't get escaped since we want DeepL to parse them.
+  let out = escapeXml(text)
+
   // Wrap brand and proper-noun terms.
   for (const term of PROTECTED_TERMS) {
     // \b doesn't work cleanly across Unicode, but our source is English
@@ -92,7 +116,8 @@ function protectTerms(text) {
 }
 
 function unprotectTerms(text) {
-  return text.replace(/<ignore>([\s\S]*?)<\/ignore>/g, "$1")
+  // Strip ignore tags, then decode the XML entities we added in escapeXml.
+  return unescapeXml(text.replace(/<ignore>([\s\S]*?)<\/ignore>/g, "$1"))
 }
 
 /** Collect every leaf string from a JSON tree as { path: string[], value: string }. */
