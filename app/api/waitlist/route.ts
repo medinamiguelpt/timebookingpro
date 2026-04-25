@@ -18,25 +18,21 @@ const twilioAuth  = twilioSid && twilioToken
   ? Buffer.from(`${twilioSid}:${twilioToken}`).toString("base64")
   : null
 
-function generateCode(): string {
-  return Math.random().toString(36).substring(2, 8).toUpperCase()
-}
-
 export async function POST(req: Request) {
   const parsed = parseBody(waitlistSchema, await req.json())
   if (parsed.error) return parsed.error
-  const { email, source, ref, phone } = parsed.data
+  const { email, source, phone } = parsed.data
 
-  const { position, referralCode } = await persistToSupabase(email, source, ref, phone)
+  const { position } = await persistToSupabase(email, source, phone)
 
   await Promise.allSettled([
     sendOwnerNotification(email, source),
-    sendConfirmation(email, position, referralCode),
+    sendConfirmation(email, position),
     phone ? sendSmsConfirmation(phone, position) : Promise.resolve(),
   ])
 
   console.log(`[waitlist] New signup (source: ${source}, position: ${position})`)
-  return NextResponse.json({ ok: true, position, referralCode })
+  return NextResponse.json({ ok: true, position })
 }
 
 async function sendSmsConfirmation(phone: string, position: number | null) {
@@ -55,15 +51,13 @@ async function sendSmsConfirmation(phone: string, position: number | null) {
   })
 }
 
-async function persistToSupabase(email: string, source: string, ref: string, phone = "") {
-  if (!supabase) return { position: null, referralCode: null }
-
-  const code = generateCode()
+async function persistToSupabase(email: string, source: string, phone = "") {
+  if (!supabase) return { position: null }
 
   const { error } = await supabase
     .from("waitlist")
     .upsert(
-      { email, source, referred_by: ref || null, referral_code: code, phone: phone || null, created_at: new Date().toISOString() },
+      { email, source, phone: phone || null, created_at: new Date().toISOString() },
       { onConflict: "email" }
     )
 
@@ -74,7 +68,7 @@ async function persistToSupabase(email: string, source: string, ref: string, pho
     .select("id", { count: "exact", head: true })
     .lte("created_at", new Date().toISOString())
 
-  return { position: count ?? null, referralCode: code }
+  return { position: count ?? null }
 }
 
 async function sendOwnerNotification(email: string, source: string) {
@@ -87,13 +81,10 @@ async function sendOwnerNotification(email: string, source: string) {
   })
 }
 
-async function sendConfirmation(email: string, position: number | null, referralCode: string | null) {
+async function sendConfirmation(email: string, position: number | null) {
   if (!resend) return
   const positionLine = position
     ? `<p style="color:#7C3AED;font-size:14px;font-weight:700;margin:0 0 4px;">You're #${position} on the list</p>`
-    : ""
-  const refLine = referralCode
-    ? `<p style="color:#6B6880;font-size:13px;margin:12px 0 0;">Your referral link: <a href="${SITE_URL}/r/${referralCode}" style="color:#7C3AED;">${SITE_URL.replace("https://","")}/r/${referralCode}</a> — share it to move up the list.</p>`
     : ""
 
   await resend.emails.send({
@@ -123,7 +114,6 @@ async function sendConfirmation(email: string, position: number | null, referral
         <li>You'll start capturing every booking from day one</li>
       </ul>
     </div>
-    ${refLine}
     <p style="color:#6B6880;font-size:13px;line-height:1.6;margin:12px 0 0;">Questions? Reply to this email — we read every one.</p>
   </div>
   <div style="border-top:1px solid #E4DCFF;padding:20px 40px;text-align:center;">

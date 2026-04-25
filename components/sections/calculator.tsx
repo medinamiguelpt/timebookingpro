@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react"
 import { motion } from "framer-motion"
-import { ArrowRight, TrendingUp } from "lucide-react"
+import { TrendingUp } from "lucide-react"
 import { SUBSCRIPTION_TIERS } from "@/lib/pricing"
 
 // Each tier's monthly minute bucket converted to an approximate call cap,
@@ -175,14 +175,6 @@ export function Calculator({ headline = "See what missed calls cost you" }: { he
                   </div>
                 </div>
               </div>
-
-              <a
-                href={`/api/checkout?plan=${stats.recommended.id}&billing=monthly`}
-                className="flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white font-semibold rounded-full h-12 text-sm shadow-lg shadow-primary/25 transition-colors"
-              >
-                Start with {stats.recommended.name}
-                <ArrowRight size={16} />
-              </a>
             </div>
           </div>
         </motion.div>

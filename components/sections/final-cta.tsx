@@ -1,8 +1,8 @@
 "use client"
 
-import { useState, useEffect, useCallback } from "react"
+import { useState, useCallback } from "react"
 import { motion, AnimatePresence, useAnimation } from "framer-motion"
-import { ArrowRight, CheckCircle, MessageSquare, Trophy, Gift } from "lucide-react"
+import { ArrowRight, CheckCircle, MessageSquare } from "lucide-react"
 
 const EMOJIS = ["📅", "📞", "✅", "🎉", "💜", "⚡", "🚀", "🤖"]
 
@@ -29,13 +29,6 @@ function EmojiReactions({ particles }: { particles: EmojiParticle[] }) {
     </div>
   )
 }
-
-const MILESTONES = [
-  { count: 1,  reward: "30-day trial", icon: "🎁" },
-  { count: 3,  reward: "1 month free", icon: "⭐" },
-  { count: 10, reward: "3 months free", icon: "🏆" },
-  { count: 25, reward: "25% off forever", icon: "💎" },
-]
 
 let particleCounter = 0
 
@@ -66,21 +59,11 @@ export function FinalCTA({ headline = "Their calendar won't fill *itself*, yours
   const [email, setEmail] = useState("")
   const [state, setState] = useState<"idle" | "loading" | "success" | "error">("idle")
   const [position, setPosition] = useState<number | null>(null)
-  const [referralCode, setReferralCode] = useState<string | null>(null)
   const [phone, setPhone] = useState("")
   const [smsState, setSmsState] = useState<"idle" | "loading" | "done">("idle")
-  const [leaderboard, setLeaderboard] = useState<{ top: { rank: number; initial: string; referrals: number }[] } | null>(null)
   const [emojiParticles, setEmojiParticles] = useState<EmojiParticle[]>([])
-  const [copied, setCopied] = useState(false)
   const [inputFocused, setInputFocused] = useState(false)
   const shakeControls = useAnimation()
-
-  const copyReferral = useCallback(() => {
-    if (!referralCode) return
-    navigator.clipboard.writeText(`https://timebookingpro.com/r/${referralCode}`)
-    setCopied(true)
-    setTimeout(() => setCopied(false), 2200)
-  }, [referralCode])
 
   const spawnEmojis = useCallback(() => {
     const count = 7
@@ -96,23 +79,6 @@ export function FinalCTA({ headline = "Their calendar won't fill *itself*, yours
     }, 2000)
   }, [])
 
-  useEffect(() => {
-    const CACHE = "tbp-leaderboard"
-    // Load stale data immediately so the UI never flashes empty
-    try {
-      const cached = localStorage.getItem(CACHE)
-      if (cached) setLeaderboard(JSON.parse(cached))
-    } catch {}
-    // Fetch fresh data in the background, update and re-cache on success
-    fetch("/api/leaderboard")
-      .then(r => r.json())
-      .then(data => {
-        setLeaderboard(data)
-        try { localStorage.setItem(CACHE, JSON.stringify(data)) } catch {}
-      })
-      .catch(() => null)
-  }, [])
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!email) return
@@ -126,7 +92,6 @@ export function FinalCTA({ headline = "Their calendar won't fill *itself*, yours
       if (res.ok) {
         const data = await res.json()
         setPosition(data.position ?? null)
-        setReferralCode(data.referralCode ?? null)
         setState("success")
         // Double-pulse haptic on mobile devices that support it
         if (typeof navigator !== "undefined" && "vibrate" in navigator) navigator.vibrate([80, 30, 80])
@@ -153,24 +118,6 @@ export function FinalCTA({ headline = "Their calendar won't fill *itself*, yours
   }
 
   return (
-    <>
-    {/* "Copied!" toast — appears above the mobile safe area */}
-    <AnimatePresence>
-      {copied && (
-        <motion.div
-          className="fixed bottom-10 left-1/2 -translate-x-1/2 z-[300] flex items-center gap-2 bg-foreground text-background text-sm font-semibold rounded-full px-4 py-2.5 shadow-xl whitespace-nowrap pointer-events-none"
-          initial={{ opacity: 0, y: 10, scale: 0.94 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          exit={{ opacity: 0, y: 10, scale: 0.94 }}
-          transition={{ type: "spring", stiffness: 420, damping: 28 }}
-          aria-live="polite"
-        >
-          <CheckCircle size={14} />
-          Link copied!
-        </motion.div>
-      )}
-    </AnimatePresence>
-
     <section
       id="get-started"
       className="relative py-28 sm:py-36 overflow-hidden bg-[#0D0714]"
@@ -230,83 +177,7 @@ export function FinalCTA({ headline = "Their calendar won't fill *itself*, yours
                   You&apos;re <span className="text-primary-soft font-bold">#{position}</span> in line — we&apos;ll reach out in order.
                 </p>
               )}
-              {referralCode && (
-                <div className="mt-1 text-xs text-white/50 text-center">
-                  Share your link to move up:{" "}
-                  <button
-                    onClick={copyReferral}
-                    className="text-primary-soft underline underline-offset-2 hover:text-white transition-colors"
-                  >
-                    timebookingpro.com/r/{referralCode}
-                  </button>
-                </div>
-              )}
               <p className="text-white/50 text-sm">Check your email — confirmation is on its way.</p>
-
-              {/* Milestone progress — each milestone springs in with a 100ms stagger */}
-              {referralCode && (
-                <motion.div
-                  className="mt-4 w-full max-w-xs"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.15 }}
-                >
-                  <motion.div
-                    className="flex items-center gap-2 text-white/70 text-xs mb-3"
-                    initial={{ opacity: 0, y: 4 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 }}
-                  >
-                    <Trophy size={13} className="text-primary-soft" />
-                    <span>Refer friends to unlock rewards</span>
-                  </motion.div>
-                  <div className="flex gap-2 justify-center">
-                    {MILESTONES.map(({ count, icon }, i) => (
-                      <motion.div
-                        key={count}
-                        className="flex flex-col items-center gap-1 flex-1"
-                        initial={{ opacity: 0, scale: 0.7, y: 6 }}
-                        animate={{ opacity: 1, scale: 1, y: 0 }}
-                        transition={{
-                          type: "spring", stiffness: 420, damping: 22,
-                          delay: 0.35 + i * 0.1,
-                        }}
-                      >
-                        <div className="w-9 h-9 rounded-full bg-white/10 border border-white/15 flex items-center justify-center text-sm">
-                          {icon}
-                        </div>
-                        <p className="text-[9px] text-white/40 text-center leading-tight">{count} ref{count > 1 ? "s" : ""}</p>
-                      </motion.div>
-                    ))}
-                  </div>
-                  <motion.button
-                    onClick={copyReferral}
-                    initial={{ opacity: 0, y: 4 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.35 + MILESTONES.length * 0.1 + 0.1 }}
-                    className="mt-3 w-full flex items-center justify-center gap-2 bg-primary/20 hover:bg-primary/30 border border-primary/30 text-primary-soft text-xs font-semibold rounded-full py-2 transition-colors"
-                  >
-                    <Gift size={12} /> Copy referral link to share
-                  </motion.button>
-                </motion.div>
-              )}
-
-              {/* Leaderboard teaser */}
-              {leaderboard && leaderboard.top.length > 0 && (
-                <div className="mt-4 w-full max-w-xs bg-white/5 border border-white/10 rounded-xl p-3">
-                  <p className="text-[10px] text-white/40 uppercase tracking-wider mb-2">Top referrers this month</p>
-                  {leaderboard.top.slice(0, 3).map((r, i) => (
-                    <div key={i} className="flex items-center gap-2 py-1">
-                      <span className="text-xs text-white/30 w-4">#{r.rank}</span>
-                      <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center text-[10px] text-primary-soft font-bold">{r.initial}</div>
-                      <div className="flex-1 bg-white/10 rounded-full h-1.5 overflow-hidden">
-                        <div className="bg-primary h-full rounded-full" style={{ width: `${Math.min(100, (r.referrals / 15) * 100)}%` }} />
-                      </div>
-                      <span className="text-[10px] text-white/40">{r.referrals}</span>
-                    </div>
-                  ))}
-                </div>
-              )}
 
               {/* SMS opt-in */}
               {smsState === "done" ? (
@@ -390,6 +261,5 @@ export function FinalCTA({ headline = "Their calendar won't fill *itself*, yours
         </motion.div>
       </div>
     </section>
-    </>
   )
 }
