@@ -23,5 +23,35 @@
   },
   "localeSwitcher": {
     "ariaLabel": "Cambiar idioma"
+  },
+  "techStrip": {
+    "heading": "Con tecnología líder en el sector",
+    "labels": {
+      "voiceAi": "IA de voz",
+      "phoneCalls": "Llamadas telefónicas",
+      "languageAi": "Inteligencia artificial lingüística",
+      "scheduling": "Programación",
+      "bookingFlows": "Flujos de reserva",
+      "payments": "Pagos"
+    }
+  },
+  "beforeAfter": {
+    "eyebrow": "La diferencia",
+    "withoutBrand": "Sin TimeBookingPro",
+    "withBrand": "ConTimeBookingPro",
+    "rows": [
+      {
+        "before": "Suena el teléfono a las 19:00 h; está en medio de un corte",
+        "after": "El agente responde en menos de 2 segundos"
+      },
+      {
+        "before": "El cliente realiza una reserva con la competencia",
+        "after": "Reserva confirmada en menos de 90 segundos"
+      },
+      {
+        "before": "Las llamadas del fin de semana quedan sin respuesta",
+        "after": "Cubrimos fines de semana, noches y días festivos"
+      }
+    ]
   }
 }

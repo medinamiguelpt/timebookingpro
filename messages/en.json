@@ -23,5 +23,26 @@
   },
   "localeSwitcher": {
     "ariaLabel": "Change language"
+  },
+  "techStrip": {
+    "heading": "Powered by industry-leading technology",
+    "labels": {
+      "voiceAi": "Voice AI",
+      "phoneCalls": "Phone calls",
+      "languageAi": "Language AI",
+      "scheduling": "Scheduling",
+      "bookingFlows": "Booking flows",
+      "payments": "Payments"
+    }
+  },
+  "beforeAfter": {
+    "eyebrow": "The difference",
+    "withoutBrand": "Without TimeBookingPro",
+    "withBrand": "With TimeBookingPro",
+    "rows": [
+      { "before": "Phone rings at 7 PM — you're mid-cut",  "after": "Agent picks up in under 2 seconds" },
+      { "before": "Customer books with a competitor",     "after": "Booking confirmed in under 90 seconds" },
+      { "before": "Weekend calls go unanswered",          "after": "Weekends, nights, and holidays covered" }
+    ]
   }
 }

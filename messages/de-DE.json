@@ -23,5 +23,35 @@
   },
   "localeSwitcher": {
     "ariaLabel": "Sprache ändern"
+  },
+  "techStrip": {
+    "heading": "Basierend auf branchenführender Technologie",
+    "labels": {
+      "voiceAi": "Sprach-KI",
+      "phoneCalls": "Telefonate",
+      "languageAi": "Sprach-KI",
+      "scheduling": "Terminplanung",
+      "bookingFlows": "Buchungsabläufe",
+      "payments": "Zahlungen"
+    }
+  },
+  "beforeAfter": {
+    "eyebrow": "Der Unterschied",
+    "withoutBrand": "Ohne „TimeBookingPro“",
+    "withBrand": "Mit „TimeBookingPro“",
+    "rows": [
+      {
+        "before": "Um 19 Uhr klingelt das Telefon – Sie sind gerade mitten beim Schneiden",
+        "after": "Der Mitarbeiter nimmt den Anruf in weniger als 2 Sekunden entgegen"
+      },
+      {
+        "before": "Der Kunde bucht bei einem Mitbewerber",
+        "after": "Buchung in weniger als 90 Sekunden bestätigt"
+      },
+      {
+        "before": "Anrufe am Wochenende bleiben unbeantwortet",
+        "after": "An Wochenenden, abends und an Feiertagen"
+      }
+    ]
   }
 }

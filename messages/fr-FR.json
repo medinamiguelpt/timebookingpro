@@ -23,5 +23,35 @@
   },
   "localeSwitcher": {
     "ariaLabel": "Changer de langue"
+  },
+  "techStrip": {
+    "heading": "Grâce à une technologie de pointe",
+    "labels": {
+      "voiceAi": "IA vocale",
+      "phoneCalls": "Appels téléphoniques",
+      "languageAi": "IA linguistique",
+      "scheduling": "Planification",
+      "bookingFlows": "Processus de réservation",
+      "payments": "Paiements"
+    }
+  },
+  "beforeAfter": {
+    "eyebrow": "La différence",
+    "withoutBrand": "Sans TimeBookingPro",
+    "withBrand": "Avec l'TimeBookingPro",
+    "rows": [
+      {
+        "before": "Le téléphone sonne à 19 h — vous êtes en plein milieu d'une découpe",
+        "after": "Un agent répond en moins de 2 secondes"
+      },
+      {
+        "before": "Le client passe commande auprès d'un concurrent",
+        "after": "Réservation confirmée en moins de 90 secondes"
+      },
+      {
+        "before": "Les appels passés le week-end restent sans réponse",
+        "after": "Couverture les week-ends, le soir et les jours fériés"
+      }
+    ]
   }
 }

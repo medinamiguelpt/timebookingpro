@@ -1,17 +1,20 @@
 "use client"
 
 import { motion } from "framer-motion"
+import { useTranslations } from "next-intl"
 
 const TECH = [
-  { name: "ElevenLabs", label: "Voice AI", color: "#7C3AED", bg: "rgba(124,58,237,0.1)" },
-  { name: "Twilio", label: "Phone calls", color: "#F22F46", bg: "rgba(242,47,70,0.1)" },
-  { name: "OpenAI", label: "Language AI", color: "#10A37F", bg: "rgba(16,163,127,0.1)" },
-  { name: "Google Calendar", label: "Scheduling", color: "#1A73E8", bg: "rgba(26,115,232,0.1)" },
-  { name: "Calendly", label: "Booking flows", color: "#006BFF", bg: "rgba(0,107,255,0.1)" },
-  { name: "Stripe", label: "Payments", color: "#635BFF", bg: "rgba(99,91,255,0.1)" },
-]
+  { name: "ElevenLabs",      labelKey: "voiceAi",      color: "#7C3AED", bg: "rgba(124,58,237,0.1)" },
+  { name: "Twilio",           labelKey: "phoneCalls",   color: "#F22F46", bg: "rgba(242,47,70,0.1)"  },
+  { name: "OpenAI",           labelKey: "languageAi",   color: "#10A37F", bg: "rgba(16,163,127,0.1)" },
+  { name: "Google Calendar",  labelKey: "scheduling",   color: "#1A73E8", bg: "rgba(26,115,232,0.1)" },
+  { name: "Calendly",         labelKey: "bookingFlows", color: "#006BFF", bg: "rgba(0,107,255,0.1)"  },
+  { name: "Stripe",           labelKey: "payments",     color: "#635BFF", bg: "rgba(99,91,255,0.1)"  },
+] as const
 
 export function TechStrip() {
+  const t = useTranslations("techStrip")
+
   return (
     <section className="py-14 border-b border-border">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -22,11 +25,11 @@ export function TechStrip() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          Powered by industry-leading technology
+          {t("heading")}
         </motion.p>
 
         <div className="flex flex-wrap items-center justify-center gap-3">
-          {TECH.map(({ name, label, color, bg }, i) => (
+          {TECH.map(({ name, labelKey, color, bg }, i) => (
             <motion.div
               key={name}
               className="flex items-center gap-2.5 rounded-full px-4 py-2.5 border"
@@ -45,7 +48,7 @@ export function TechStrip() {
                 style={{ backgroundColor: color }}
               />
               <span className="text-sm font-semibold text-foreground whitespace-nowrap">{name}</span>
-              <span className="text-xs text-muted-foreground whitespace-nowrap hidden sm:inline">· {label}</span>
+              <span className="text-xs text-muted-foreground whitespace-nowrap hidden sm:inline">· {t(`labels.${labelKey}`)}</span>
             </motion.div>
           ))}
         </div>
