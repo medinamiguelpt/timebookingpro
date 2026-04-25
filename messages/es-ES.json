@@ -1,4 +1,60 @@
 {
+  "taglines": {
+    "howItWorks": [
+      "Operativo en 24 horas",
+      "Tres pasos para crear un agente totalmente automatizado",
+      "Su agente, disponible a partir de mañana",
+      "Prepárelo hoy, reservas para esta noche",
+      "Desde el registro hasta la puesta en marcha en un día"
+    ],
+    "agentNamer": [
+      "Conozca a su compañero de equipo de IA",
+      "Indique el nombre de su asesor de reservas",
+      "Diseñe su recepcionista con IA",
+      "Su agente, su personalidad"
+    ],
+    "features": [
+      "Todo lo que su empresa necesita",
+      "Diseñado para gestionar cualquier reserva",
+      "Un único agente, todas las herramientas que necesita",
+      "Todas las características que importan",
+      "Cada llamada atendida, en todo momento"
+    ],
+    "beforeAfter": [
+      "¿Qué cambia al añadir un agente?",
+      "La diferencia, línea por línea",
+      "Su jornada con un agente",
+      "Vea la comparación de los efectos",
+      "Y estos son solo algunos"
+    ],
+    "forWho": [
+      "Diseñado para cualquier negocio de reservas",
+      "Diseñado para empresas de servicios",
+      "Adaptado a su agenda",
+      "Para peluquerías, salones de belleza, clínicas y otros establecimientos",
+      "Para cualquier tienda que acepte reservas"
+    ],
+    "pricing": [
+      "Precios sencillos y transparentes",
+      "Un precio razonable",
+      "Pague solo por lo que utilice",
+      "Cuota mensual fija, sin sorpresas",
+      "Empiece poco a poco y vaya ampliando a medida que crezca"
+    ],
+    "calculator": [
+      "Descubra cuánto le cuestan las llamadas perdidas",
+      "Calcule su potencial de reservas",
+      "Analice las cifras de su tienda",
+      "Haga el cálculo en unos segundos"
+    ],
+    "finalCta": [
+      "Su agenda no se llenará *por sí sola*, pero la suya sí.",
+      "Su agente, en directo *mañana*",
+      "Ponga en marcha su *sistema de reservas*",
+      "Empiece con su *propio agente*",
+      "Dele a su calendario un *impulso*"
+    ]
+  },
   "metadata": {
     "title": "TimeBookingPro — Sus reservas, gestionadas.",
     "description": "TimeBookingPro desarrolla asistentes de voz con inteligencia artificial que gestionan reservas y citas para peluquerías y pequeñas empresas, las 24 horas del día, los 7 días de la semana, de forma automática.",
@@ -152,7 +208,7 @@
     "sliderMissRate": "Llamadas que se ha perdido recientemente",
     "callsPerDay": "{n} llamadas al día",
     "monthlyCallsLabel": "Reuniones mensuales",
-    "missedPerMonthLabel": "Imposible de alcanzar al mes",
+    "missedPerMonthLabel": "Importe pendiente de pago al mes",
     "revenueLostLabel": "Ingresos perdidos al mes",
     "missedDetail": "= {missed} reservas perdidas × {bookingValue} € de reserva media",
     "recommendedPlanLabel": "Plan recomendado",

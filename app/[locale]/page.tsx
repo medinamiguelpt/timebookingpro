@@ -1,6 +1,6 @@
 import { headers } from "next/headers"
-import { setRequestLocale } from "next-intl/server"
-import { pickTagline } from "@/lib/taglines"
+import { getTranslations, setRequestLocale } from "next-intl/server"
+import { pickFromPool, type SectionKey } from "@/lib/taglines"
 import { Navbar } from "@/components/layout/navbar"
 import { Footer } from "@/components/layout/footer"
 import { Hero } from "@/components/sections/hero"
@@ -24,8 +24,10 @@ export default async function Home(
 
   const headersList = await headers()
   const variant = (headersList.get("x-variant") ?? "a") as "a" | "b"
-  // Pricing section default is deterministic (GR / EUR) per the unified-picker brief —
-  // no geo-IP guessing on the pricing page. Geo headers stay available for other use cases.
+
+  const t = await getTranslations({ locale })
+  const taglines = t.raw("taglines") as Record<SectionKey, string[]>
+  const pick = (section: SectionKey) => pickFromPool(taglines[section])
 
   return (
     <>
@@ -33,17 +35,17 @@ export default async function Home(
       <main className="flex flex-col">
         <Hero variant={variant} />
         <TechStrip />
-        <HowItWorks  headline={pickTagline("howItWorks")} />
-        <AgentNamer  headline={pickTagline("agentNamer")} />
+        <HowItWorks  headline={pick("howItWorks")} />
+        <AgentNamer  headline={pick("agentNamer")} />
         <WaveDivider opacity={0.5} />
-        <Features    headline={pickTagline("features")} />
-        <BeforeAfter headline={pickTagline("beforeAfter")} />
+        <Features    headline={pick("features")} />
+        <BeforeAfter headline={pick("beforeAfter")} />
         <WaveDivider opacity={0.6} flip />
-        <ForWho      headline={pickTagline("forWho")} />
-        <Pricing     headline={pickTagline("pricing")} />
+        <ForWho      headline={pick("forWho")} />
+        <Pricing     headline={pick("pricing")} />
         <WaveDivider opacity={0.5} />
-        <Calculator  headline={pickTagline("calculator")} />
-        <FinalCTA    headline={pickTagline("finalCta")} />
+        <Calculator  headline={pick("calculator")} />
+        <FinalCTA    headline={pick("finalCta")} />
       </main>
       <Footer />
       <HomeJsonLd />

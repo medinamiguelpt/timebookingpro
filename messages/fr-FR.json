@@ -1,4 +1,60 @@
 {
+  "taglines": {
+    "howItWorks": [
+      "Opérationnel en 24 heures",
+      "Trois étapes pour un agent entièrement automatisé",
+      "Votre agent, en direct dès demain",
+      "Installez-le aujourd'hui, réservez dès ce soir",
+      "De l'inscription à la mise en ligne en une journée"
+    ],
+    "agentNamer": [
+      "Découvrez votre coéquipier IA",
+      "Veuillez indiquer le nom de votre conseiller en réservation",
+      "Créez votre réceptionniste IA",
+      "Votre agent, votre personnalité"
+    ],
+    "features": [
+      "Tout ce dont votre entreprise a besoin",
+      "Conçu pour gérer toutes les réservations",
+      "Un seul agent, tous les outils dont vous avez besoin",
+      "Toutes les fonctionnalités qui comptent",
+      "Chaque appel est traité, à chaque fois"
+    ],
+    "beforeAfter": [
+      "Quels sont les changements lorsque vous ajoutez un agent ?",
+      "La différence, ligne par ligne",
+      "Votre journée avec un agent",
+      "Découvrez la comparaison côte à côte",
+      "Et ce ne sont là que quelques exemples"
+    ],
+    "forWho": [
+      "Conçu pour toutes les entreprises de réservation",
+      "Conçu pour les entreprises de services",
+      "Conçu en fonction de votre agenda",
+      "Pour les barbiers, les salons de coiffure, les cliniques et bien d'autres encore",
+      "Pour tout magasin acceptant les réservations"
+    ],
+    "pricing": [
+      "Une tarification simple et transparente",
+      "Un prix raisonnable",
+      "Ne payez que ce que vous utilisez",
+      "Un forfait mensuel, sans surprise",
+      "Commencez modestement, puis développez-vous au fur et à mesure"
+    ],
+    "calculator": [
+      "Découvrez ce que vous coûtent les appels manqués",
+      "Calculez votre potentiel de réservation",
+      "Faites le bilan financier de votre magasin",
+      "Faites le calcul en quelques secondes"
+    ],
+    "finalCta": [
+      "Leur agenda ne se remplira pas tout seul, mais le vôtre, oui.",
+      "Votre agent, en direct *d'ici demain*",
+      "Mettez en marche votre *système de réservation*",
+      "Commencez par *votre propre agent*",
+      "Mettez votre calendrier en avant"
+    ]
+  },
   "metadata": {
     "title": "TimeBookingPro — Vos réservations, prises en charge.",
     "description": "TimeBookingPro développe des assistants vocaux basés sur l'IA qui gèrent les réservations et les rendez-vous pour les salons de coiffure et les petites entreprises — 24 heures sur 24, 7 jours sur 7, de manière entièrement automatisée.",

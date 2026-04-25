@@ -1,4 +1,60 @@
 {
+  "taglines": {
+    "howItWorks": [
+      "Up and running in 24 hours",
+      "Three steps to a fully automated agent",
+      "Your agent, live by tomorrow",
+      "Setup today, bookings tonight",
+      "From signup to live in a day"
+    ],
+    "agentNamer": [
+      "Meet your AI teammate",
+      "Name your booking specialist",
+      "Design your AI receptionist",
+      "Your agent, your personality"
+    ],
+    "features": [
+      "Everything your business needs",
+      "Built to handle every booking",
+      "One agent, every tool you need",
+      "All the features that matter",
+      "Every call handled, every time"
+    ],
+    "beforeAfter": [
+      "What changes when you add an agent",
+      "The difference, line by line",
+      "Your day with an agent",
+      "See the side-by-side impact",
+      "And these are just a few"
+    ],
+    "forWho": [
+      "Built for every booking business",
+      "Made for service businesses",
+      "Built around your calendar",
+      "For barbers, salons, clinics and more",
+      "For any shop that takes bookings"
+    ],
+    "pricing": [
+      "Simple, transparent pricing",
+      "Priced to make sense",
+      "Pay for what you use",
+      "Flat monthly, no surprises",
+      "Start small, scale as you grow"
+    ],
+    "calculator": [
+      "See what missed calls cost you",
+      "Calculate your booking potential",
+      "Run the numbers on your shop",
+      "Do the math in seconds"
+    ],
+    "finalCta": [
+      "Their calendar won't fill *itself*, yours will.",
+      "Your agent, live *by tomorrow*",
+      "Turn on your *booking machine*",
+      "Start with your *own agent*",
+      "Give your calendar a *promotion*"
+    ]
+  },
   "metadata": {
     "title": "TimeBookingPro — Your bookings, handled.",
     "description": "TimeBookingPro builds AI voice agents that handle bookings and appointments for barbershops and small businesses — 24/7, automatically.",

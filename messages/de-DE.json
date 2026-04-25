@@ -1,4 +1,60 @@
 {
+  "taglines": {
+    "howItWorks": [
+      "Innerhalb von 24 Stunden einsatzbereit",
+      "Drei Schritte zu einem vollautomatisierten Agenten",
+      "Ihr Makler, morgen vor Ort",
+      "Heute einrichten, heute Abend buchen",
+      "Von der Anmeldung bis zum Live-Betrieb – in nur einem Tag"
+    ],
+    "agentNamer": [
+      "Lernen Sie Ihren KI-Teamkollegen kennen",
+      "Nennen Sie Ihren Buchungsspezialisten",
+      "Gestalten Sie Ihre KI-Rezeptionistin",
+      "Ihr Makler, Ihre Persönlichkeit"
+    ],
+    "features": [
+      "Alles, was Ihr Unternehmen braucht",
+      "Entwickelt, um jede Buchung zu bewältigen",
+      "Ein Agent, alle Tools, die Sie benötigen",
+      "Alle Funktionen, auf die es ankommt",
+      "Jeder Anruf wird bearbeitet – jedes Mal"
+    ],
+    "beforeAfter": [
+      "Was ändert sich, wenn Sie einen Agenten hinzufügen?",
+      "Der Unterschied, Zeile für Zeile",
+      "Ihr Tag mit einem Makler",
+      "Sehen Sie sich den direkten Vergleich an",
+      "Und das sind nur einige davon"
+    ],
+    "forWho": [
+      "Entwickelt für jedes Buchungsunternehmen",
+      "Speziell für Dienstleistungsunternehmen",
+      "Auf Ihren Kalender abgestimmt",
+      "Für Friseure, Salons, Kliniken und mehr",
+      "Für alle Geschäfte, die Reservierungen entgegennehmen"
+    ],
+    "pricing": [
+      "Einfache, transparente Preisgestaltung",
+      "Ein Preis, der Sinn macht",
+      "Sie zahlen nur für das, was Sie tatsächlich nutzen",
+      "Pauschalbetrag pro Monat, keine Überraschungen",
+      "Fangen Sie klein an und erweitern Sie Ihr Angebot, wenn Sie wachsen"
+    ],
+    "calculator": [
+      "Erfahren Sie, was Sie verpasste Anrufe kosten",
+      "Berechnen Sie Ihr Buchungspotenzial",
+      "Berechnen Sie die Zahlen für Ihr Geschäft",
+      "Rechnen Sie es in Sekundenschnelle aus"
+    ],
+    "finalCta": [
+      "Ihr Terminkalender füllt sich nicht *von selbst*, Ihrer schon.",
+      "Ihr Makler, live *bis morgen*",
+      "Schalten Sie Ihre *Buchungsmaschine* ein",
+      "Beginnen Sie mit Ihrem *eigenen Agenten*",
+      "Verleihen Sie Ihrem Kalender einen *Auftritt*"
+    ]
+  },
   "metadata": {
     "title": "TimeBookingPro — Ihre Buchungen – alles im Griff.",
     "description": "TimeBookingPro entwickelt KI-Sprachassistenten, die Buchungen und Terminvereinbarungen für Friseursalons und kleine Unternehmen rund um die Uhr automatisch abwickeln.",
@@ -75,7 +131,7 @@
     "seeAllPlanDetails": "Alle Details zum Tarif anzeigen ↑",
     "sheetTitle": "{name} Plan",
     "includedHeading": "Im Lieferumfang enthalten",
-    "microcopyHardCap": "Alle Tarife umfassen die Synchronisierung von Buchungen mit Ihrem Kalender, eine Leistungsübersicht per E-Mail sowie alle 7 unterstützten Sprachen. Die Gesprächsminuten unterliegen einer festen monatlichen Obergrenze – sobald das Kontingent aufgebraucht ist, werden Anrufe bis zum nächsten Abrechnungszeitraum oder einem Upgrade an die Voicemail weitergeleitet. Sie erhalten E-Mail-Benachrichtigungen bei 25 %, 50 %, 75 % und 90 % Ihres Kontingents, damit Sie nie unvorbereitet sind.",
+    "microcopyHardCap": "Alle Tarife umfassen die Synchronisierung von Buchungen mit Ihrem Kalender, eine Leistungsübersicht per E-Mail sowie alle 7 unterstützten Sprachen. Die Minuten sind auf ein festes monatliches Limit begrenzt – sobald dieses aufgebraucht ist, werden Anrufe bis zum nächsten Abrechnungszeitraum oder bis zu einem Upgrade an die Voicemail weitergeleitet. Sie erhalten E-Mail-Benachrichtigungen bei 25 %, 50 %, 75 % und 90 % Ihres Kontingents, damit Sie nie unvorbereitet sind.",
     "taxLine": "{flag} Die angegebenen Preise gelten für <bold>{country}</bold>{note}. Die angegebenen Preise verstehen sich ohne Mehrwertsteuer – die Steuer wird an der Kasse berechnet.",
     "taxLineNoteSeparator": " — ",
     "tiers": {
@@ -199,7 +255,7 @@
       {
         "label": "Nagel- und Kosmetikstudios",
         "headline": "Sorgen Sie dafür, dass Ihr Stuhl immer besetzt ist, ohne einen Finger zu rühren",
-        "body": "Von Gel-Behandlungen bis hin zu Wimpernverlängerungen – Ihr Berater kennt Ihr Leistungsangebot und bucht jedes Mal den passenden Termin bei der richtigen Fachkraft.",
+        "body": "Von Gel-Behandlungen bis hin zu Wimpernverlängerungen – Ihr Berater kennt Ihr Leistungsangebot und bucht jedes Mal den passenden Termin bei der richtigen Kosmetikerin.",
         "perks": [
           "Techniker nach Fachgebiet",
           "Berücksichtigt Unterschiede in der Dienstdauer",
@@ -349,13 +405,13 @@
       "glados": "Test… Test… Buchung bestätigt. 🧪",
       "jarvis": "Sehr geehrter Herr, Ihr Termin um 10 Uhr ist bestätigt und Ihr Kalender ist vollständig auf dem neuesten Stand. 🦾",
       "friday": "Online und zu Ihren Diensten. Alle Anrufe werden beantwortet. 🤖",
-      "clippy": "Es sieht so aus, als wollten Sie einen Termin vereinbaren. Lassen Sie mich das für Sie erledigen. 📎",
+      "clippy": "Es sieht so aus, als wollten Sie einen Termin vereinbaren. Das übernehme ich gerne für Sie. 📎",
       "watson": "Ganz einfach, mein lieber Kunde – Ihr Termin ist frei. 🔍"
     }
   },
   "hero": {
     "badge": "✦ KI-gestützte Buchungsagenten",
-    "typewriter": "TimeBookingPro erstellt für Sie eine Sprach-KI, die Anrufe entgegennimmt, Buchungen bearbeitet und Ihren Kalender füllt – automatisch und rund um die Uhr.",
+    "typewriter": "TimeBookingPro erstellt für Sie eine Sprach-KI, die Anrufe entgegennimmt, Termine verwaltet und Ihren Kalender füllt – automatisch und rund um die Uhr.",
     "headlines": {
       "a": {
         "plain": "Geben Sie Ihrem Unternehmen",
