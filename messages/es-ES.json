@@ -54,6 +54,83 @@
       }
     ]
   },
+  "howItWorks": {
+    "eyebrow": "Cómo funciona",
+    "subheadline": "Sin configuraciones complicadas. No se requieren conocimientos técnicos. Nosotros nos encargamos de todo.",
+    "underTheHood": "Detrás de las cámaras — simplificado",
+    "goToStepLabel": "Vaya al paso {n}",
+    "steps": [
+      {
+        "title": "Nos encargamos de crear su cuenta",
+        "body": "Indíquenos el nombre de su empresa, el horario de atención y los servicios que ofrece. Creamos y entrenamos a su agente de IA personalizado en menos de 24 horas."
+      },
+      {
+        "title": "Responde a todas las llamadas",
+        "body": "Su agente responde al instante, tanto de día como de noche y durante los fines de semana. Habla con naturalidad, comprende a sus clientes y gestiona cualquier solicitud de reserva."
+      },
+      {
+        "title": "Su agenda se va llenando",
+        "body": "Las reservas se registran directamente en su calendario. Usted recibe una notificación y su cliente, una confirmación. Sin ningún esfuerzo por su parte."
+      }
+    ],
+    "flowNodes": [
+      {
+        "label": "Llamadas de clientes",
+        "sub": "Cualquier cantidad · A cualquier hora"
+      },
+      {
+        "label": "Respuesta del agente",
+        "sub": "IA de voz · Muy rápida"
+      },
+      {
+        "label": "Reserva procesada",
+        "sub": "Entendido"
+      },
+      {
+        "label": "Plaza confirmada",
+        "sub": "Calendario sincronizado en tiempo real"
+      },
+      {
+        "label": "Ambos han sido notificados",
+        "sub": "SMS · Correo electrónico"
+      }
+    ],
+    "connectorLabels": [
+      "Llamada de voz",
+      "Conversación",
+      "Datos de la reserva",
+      "Confirmación"
+    ],
+    "visualPanels": [
+      {
+        "title": "Agente configurado",
+        "lines": [
+          "Razón social ✓",
+          "Horario establecido ✓",
+          "Servicios: Corte de pelo, afeitado, recorte de barba... ✓",
+          "Idioma seleccionado ✓"
+        ]
+      },
+      {
+        "title": "Llamada en curso",
+        "lines": [
+          "Cliente: «Hola, me gustaría un corte de pelo y un arreglo de barba».",
+          "Agente: «¡Por supuesto! Tengo...»",
+          "Hay una franja horaria disponible a las 15:00 ✓",
+          "Idioma detectado: EN ✓"
+        ]
+      },
+      {
+        "title": "Reserva confirmada",
+        "lines": [
+          "Servicio: Corte de pelo + Barba — 22 € ✓",
+          "Calendario: Actualizado ✓",
+          "SMS enviado al cliente ✓",
+          "Se le ha enviado una notificación ✓"
+        ]
+      }
+    ]
+  },
   "agentNamer": {
     "eyebrow": "Su agente",
     "subheadline": "Póngale un nombre a su agente, o deje que la IA genere uno basado en su negocio.",

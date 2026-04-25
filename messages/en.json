@@ -45,6 +45,39 @@
       { "before": "Weekend calls go unanswered",          "after": "Weekends, nights, and holidays covered" }
     ]
   },
+  "howItWorks": {
+    "eyebrow": "How it works",
+    "subheadline": "No complicated setup. No technical knowledge required. We handle everything.",
+    "underTheHood": "Under the hood — simplified",
+    "goToStepLabel": "Go to step {n}",
+    "steps": [
+      { "title": "We set up your agent",     "body": "Tell us your business name, hours, and services. We build and train your personal AI agent in under 24 hours." },
+      { "title": "It answers every call",    "body": "Your agent picks up instantly — day, night, and weekends. It speaks naturally, understands your customers, and handles any booking request." },
+      { "title": "Your calendar fills up",   "body": "Bookings land directly in your calendar. You get a notification, your customer gets a confirmation. Zero effort on your part." }
+    ],
+    "flowNodes": [
+      { "label": "Customer calls",      "sub": "Any number · Any hour" },
+      { "label": "Agent answers",       "sub": "Voice AI · Very fast" },
+      { "label": "Booking processed",   "sub": "Intent understood" },
+      { "label": "Slot confirmed",      "sub": "Calendar synced live" },
+      { "label": "Both notified",       "sub": "SMS · Email" }
+    ],
+    "connectorLabels": ["Voice call", "Conversation", "Booking data", "Confirmation"],
+    "visualPanels": [
+      {
+        "title": "Agent configured",
+        "lines": ["Business name ✓", "Hours set ✓", "Services: Haircut, Shave, Beard Trim... ✓", "Language set ✓"]
+      },
+      {
+        "title": "Call in progress",
+        "lines": ["Caller: 'Hi, I'd like a haircut + beard'", "Agent: 'Of course! I have...'", "3 PM slot available ✓", "Language detected: EN ✓"]
+      },
+      {
+        "title": "Booking confirmed",
+        "lines": ["Service: Haircut + Beard — €22 ✓", "Calendar: Updated ✓", "SMS sent to customer ✓", "Notification sent to you ✓"]
+      }
+    ]
+  },
   "agentNamer": {
     "eyebrow": "Your agent",
     "subheadline": "Give your agent a name — or let AI generate one based on your business.",

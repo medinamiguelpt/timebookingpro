@@ -54,6 +54,83 @@
       }
     ]
   },
+  "howItWorks": {
+    "eyebrow": "So funktioniert es",
+    "subheadline": "Keine komplizierte Einrichtung. Keine technischen Kenntnisse erforderlich. Wir kümmern uns um alles.",
+    "underTheHood": "Ein Blick unter die Haube – vereinfacht",
+    "goToStepLabel": "Weiter zu Schritt {n}",
+    "steps": [
+      {
+        "title": "Wir richten Ihren Agenten ein",
+        "body": "Teilen Sie uns Ihren Firmennamen, Ihre Öffnungszeiten und Ihre Dienstleistungen mit. Wir erstellen und schulen Ihren persönlichen KI-Agenten in weniger als 24 Stunden."
+      },
+      {
+        "title": "Es nimmt jeden Anruf entgegen",
+        "body": "Ihr Mitarbeiter nimmt Anrufe sofort entgegen – tagsüber, nachts und am Wochenende. Er spricht auf natürliche Weise, versteht Ihre Kunden und bearbeitet jede Buchungsanfrage."
+      },
+      {
+        "title": "Ihr Terminkalender füllt sich",
+        "body": "Buchungen werden direkt in Ihren Kalender übernommen. Sie erhalten eine Benachrichtigung, Ihr Kunde erhält eine Bestätigung. Ganz ohne Aufwand Ihrerseits."
+      }
+    ],
+    "flowNodes": [
+      {
+        "label": "Kundenanrufe",
+        "sub": "Jede Menge · Zu jeder Zeit"
+      },
+      {
+        "label": "Antwort des Agenten",
+        "sub": "Sprach-KI · Sehr schnell"
+      },
+      {
+        "label": "Buchung bearbeitet",
+        "sub": "Verstanden"
+      },
+      {
+        "label": "Termin bestätigt",
+        "sub": "Kalender wird in Echtzeit synchronisiert"
+      },
+      {
+        "label": "Beide wurden benachrichtigt",
+        "sub": "SMS · E-Mail"
+      }
+    ],
+    "connectorLabels": [
+      "Sprachanruf",
+      "Gespräch",
+      "Buchungsdaten",
+      "Bestätigung"
+    ],
+    "visualPanels": [
+      {
+        "title": "Agent konfiguriert",
+        "lines": [
+          "Firmenname ✓",
+          "Öffnungszeiten festgelegt ✓",
+          "Dienstleistungen: Haarschnitt, Rasur, Bartpflege... ✓",
+          "Sprache eingestellt ✓"
+        ]
+      },
+      {
+        "title": "Anruf läuft",
+        "lines": [
+          "Anrufer: „Guten Tag, ich möchte einen Haarschnitt und eine Bartpflege.“",
+          "Agent: „Natürlich! Ich habe …“",
+          "Termin um 15:00 Uhr verfügbar ✓",
+          "Erkannte Sprache: EN ✓"
+        ]
+      },
+      {
+        "title": "Buchung bestätigt",
+        "lines": [
+          "Leistung: Haarschnitt + Bartpflege — 22 € ✓",
+          "Kalender: Aktualisiert ✓",
+          "SMS an den Kunden gesendet ✓",
+          "Benachrichtigung an Sie gesendet ✓"
+        ]
+      }
+    ]
+  },
   "agentNamer": {
     "eyebrow": "Ihr Makler",
     "subheadline": "Geben Sie Ihrem Agenten einen Namen – oder lassen Sie die KI einen Namen generieren, der zu Ihrem Unternehmen passt.",

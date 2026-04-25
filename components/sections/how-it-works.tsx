@@ -2,64 +2,30 @@
 
 import { useRef, useState, useEffect, Fragment, type ElementType } from "react"
 import { motion, AnimatePresence, useInView } from "framer-motion"
+import { useTranslations } from "next-intl"
 import { PhoneCall, Settings2, CalendarCheck, Mic, Zap, Bell } from "lucide-react"
 import { RevealWords } from "@/components/ui/reveal-words"
 import { TiltCard } from "@/components/ui/tilt-card"
 
-const STEPS = [
-  {
-    icon: Settings2,
-    step: "01",
-    title: "We set up your agent",
-    body: "Tell us your business name, hours, and services. We build and train your personal AI agent in under 24 hours.",
-    accent: "#7C3AED",
-  },
-  {
-    icon: PhoneCall,
-    step: "02",
-    title: "It answers every call",
-    body: "Your agent picks up instantly — day, night, and weekends. It speaks naturally, understands your customers, and handles any booking request.",
-    accent: "#0EA5E9",
-  },
-  {
-    icon: CalendarCheck,
-    step: "03",
-    title: "Your calendar fills up",
-    body: "Bookings land directly in your calendar. You get a notification, your customer gets a confirmation. Zero effort on your part.",
-    accent: "#10B981",
-  },
-]
+// Structural data — icons + accent colors. Textual content (title, body, etc.)
+// lives in messages/<locale>.json under "howItWorks".
+const STEP_META = [
+  { icon: Settings2,     step: "01", accent: "#7C3AED" },
+  { icon: PhoneCall,     step: "02", accent: "#0EA5E9" },
+  { icon: CalendarCheck, step: "03", accent: "#10B981" },
+] as const
 
-const FLOW_NODES = [
-  { Icon: PhoneCall,    label: "Customer calls",     sub: "Any number · Any hour" },
-  { Icon: Mic,          label: "Agent answers",       sub: "Voice AI · Very fast" },
-  { Icon: Zap,          label: "Booking processed",   sub: "Intent understood" },
-  { Icon: CalendarCheck,label: "Slot confirmed",      sub: "Calendar synced live" },
-  { Icon: Bell,         label: "Both notified",       sub: "SMS · Email" },
-]
+const FLOW_ICONS = [PhoneCall, Mic, Zap, CalendarCheck, Bell] as const
 
-const CONNECTOR_LABELS = ["Voice call", "Conversation", "Booking data", "Confirmation"]
+const VISUAL_PANEL_META = [
+  { accent: "#7C3AED", icon: "⚙️" },
+  { accent: "#0EA5E9", icon: "📞" },
+  { accent: "#10B981", icon: "📅" },
+] as const
 
-const VISUAL_PANELS = [
-  {
-    accent: "#7C3AED",
-    icon: "⚙️",
-    title: "Agent configured",
-    lines: ["Business name ✓", "Hours set ✓", "Services: Haircut, Shave, Beard Trim... ✓", "Language set ✓"],
-  },
-  {
-    accent: "#0EA5E9",
-    icon: "📞",
-    title: "Call in progress",
-    lines: ["Caller: 'Hi, I'd like a haircut + beard'", "Agent: 'Of course! I have...'", "3 PM slot available ✓", "Language detected: EN ✓"],
-  },
-  {
-    accent: "#10B981",
-    icon: "📅",
-    title: "Booking confirmed",
-    lines: ["Service: Haircut + Beard — €22 ✓", "Calendar: Updated ✓", "SMS sent to customer ✓", "Notification sent to you ✓"],
-  },
-]
+type StepText = { title: string; body: string }
+type FlowNodeText = { label: string; sub: string }
+type VisualPanelText = { title: string; lines: string[] }
 
 function FlowNode({ Icon, label, sub, index }: { Icon: ElementType; label: string; sub: string; index: number }) {
   return (
@@ -131,6 +97,12 @@ function FlowConnector({ label, delay }: { label: string; delay: number }) {
 const STEP_DURATION = 3500 // ms per auto-advance step
 
 function ScrollySection() {
+  const t = useTranslations("howItWorks")
+  const stepsText = t.raw("steps") as StepText[]
+  const panelsText = t.raw("visualPanels") as VisualPanelText[]
+  const steps = STEP_META.map((m, i) => ({ ...m, ...stepsText[i] }))
+  const panels = VISUAL_PANEL_META.map((m, i) => ({ ...m, ...panelsText[i] }))
+
   const [activeStep, setActiveStep] = useState(0)
   const [paused, setPaused] = useState(false)
   const progressBarRef = useRef<HTMLDivElement>(null)
@@ -149,11 +121,11 @@ function ScrollySection() {
       if (elapsed >= STEP_DURATION) {
         elapsed = 0
         if (progressBarRef.current) progressBarRef.current.style.width = "0%"
-        setActiveStep(s => (s + 1) % STEPS.length)
+        setActiveStep(s => (s + 1) % steps.length)
       }
     }, UPDATE_MS)
     return () => clearInterval(id)
-  }, [paused, activeStep])
+  }, [paused, activeStep, steps.length])
 
   const goToStep = (i: number) => { setActiveStep(i); setPaused(true); setTimeout(() => setPaused(false), 500) }
 
@@ -167,12 +139,12 @@ function ScrollySection() {
         <div className="absolute left-7 top-8 bottom-8 w-px bg-border" />
         <motion.div
           className="absolute left-7 top-8 w-px bg-primary origin-top"
-          animate={{ height: `${(activeStep / (STEPS.length - 1)) * 100}%` }}
+          animate={{ height: `${(activeStep / (steps.length - 1)) * 100}%` }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           style={{ maxHeight: "calc(100% - 4rem)" }}
         />
         <div className="space-y-12">
-          {STEPS.map(({ icon: Icon, step, title, body, accent }, i) => {
+          {steps.map(({ icon: Icon, step, title, body, accent }, i) => {
             const isActive = i === activeStep
             const isPast = i < activeStep
             return (
@@ -225,11 +197,11 @@ function ScrollySection() {
 
         {/* Story-style progress dots — click to jump, active dot fills as timer counts down */}
         <div className="flex gap-2 mt-8 ml-5">
-          {STEPS.map((_, i) => (
+          {steps.map((_, i) => (
             <button
               key={i}
               onClick={() => goToStep(i)}
-              aria-label={`Go to step ${i + 1}`}
+              aria-label={t("goToStepLabel", { n: i + 1 })}
               className="relative h-1 rounded-full bg-border overflow-hidden transition-all duration-300"
               style={{ width: activeStep === i ? 28 : 12 }}
             >
@@ -246,7 +218,7 @@ function ScrollySection() {
       <TiltCard maxTilt={5} scale={1.008} glare={false} className="relative" >
       <div className="relative" style={{ minHeight: 280 }}>
         <AnimatePresence mode="wait">
-          {VISUAL_PANELS.map((panel, i) =>
+          {panels.map((panel, i) =>
             i === activeStep ? (
               <motion.div
                 key={i}
@@ -293,6 +265,14 @@ function ScrollySection() {
 }
 
 export function HowItWorks({ headline = "Up and running in 24 hours" }: { headline?: string }) {
+  const t = useTranslations("howItWorks")
+  const stepsText = t.raw("steps") as StepText[]
+  const flowNodesText = t.raw("flowNodes") as FlowNodeText[]
+  const connectorLabels = t.raw("connectorLabels") as string[]
+
+  const mobileSteps = STEP_META.map((m, i) => ({ ...m, ...stepsText[i] }))
+  const flowNodes = FLOW_ICONS.map((Icon, i) => ({ Icon, ...flowNodesText[i] }))
+
   return (
     <section id="how-it-works" className="py-24 sm:py-32 overflow-hidden">
       <style>{`
@@ -313,7 +293,7 @@ export function HowItWorks({ headline = "Up and running in 24 hours" }: { headli
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
           >
-            How it works
+            {t("eyebrow")}
           </motion.p>
           <RevealWords
             key={headline}
@@ -329,7 +309,7 @@ export function HowItWorks({ headline = "Up and running in 24 hours" }: { headli
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: 0.2 }}
           >
-            No complicated setup. No technical knowledge required. We handle everything.
+            {t("subheadline")}
           </motion.p>
         </div>
 
@@ -340,7 +320,7 @@ export function HowItWorks({ headline = "Up and running in 24 hours" }: { headli
 
         {/* Mobile: simple stacked cards */}
         <div className="md:hidden grid gap-8">
-          {STEPS.map(({ icon: Icon, step, title, body, accent }, i) => (
+          {mobileSteps.map(({ icon: Icon, step, title, body, accent }, i) => (
             <motion.div
               key={title}
               className="relative flex flex-col items-center text-center gap-4"
@@ -378,25 +358,25 @@ export function HowItWorks({ headline = "Up and running in 24 hours" }: { headli
           transition={{ duration: 0.5, delay: 0.2 }}
         >
           <p className="text-center text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-10">
-            Under the hood — simplified
+            {t("underTheHood")}
           </p>
           <div className="hidden md:flex items-end gap-0 w-full overflow-hidden">
-            {FLOW_NODES.map((node, i) => (
+            {flowNodes.map((node, i) => (
               <Fragment key={node.label}>
                 <FlowNode {...node} index={i} />
-                {i < FLOW_NODES.length - 1 && (
-                  <FlowConnector label={CONNECTOR_LABELS[i]} delay={i * 0.15} />
+                {i < flowNodes.length - 1 && (
+                  <FlowConnector label={connectorLabels[i]} delay={i * 0.15} />
                 )}
               </Fragment>
             ))}
           </div>
           <div className="flex md:hidden flex-col items-center gap-0">
-            {FLOW_NODES.map((node, i) => (
+            {flowNodes.map((node, i) => (
               <div key={node.label} className="flex flex-col items-center">
                 <FlowNode {...node} index={i} />
-                {i < FLOW_NODES.length - 1 && (
+                {i < flowNodes.length - 1 && (
                   <div className="flex flex-col items-center gap-1 my-1">
-                    <span className="text-[10px] text-muted-foreground/70">{CONNECTOR_LABELS[i]}</span>
+                    <span className="text-[10px] text-muted-foreground/70">{connectorLabels[i]}</span>
                     <div className="relative flex flex-col items-center overflow-hidden" style={{ height: 32, width: 16 }}>
                       <div className="w-px flex-1 bg-border" />
                     </div>

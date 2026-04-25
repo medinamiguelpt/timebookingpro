@@ -54,6 +54,83 @@
       }
     ]
   },
+  "howItWorks": {
+    "eyebrow": "Comment ça marche",
+    "subheadline": "Pas d'installation compliquée. Aucune connaissance technique requise. Nous nous occupons de tout.",
+    "underTheHood": "En détail — en version simplifiée",
+    "goToStepLabel": "Passez à l'étape {n}",
+    "steps": [
+      {
+        "title": "Nous configurons votre agent",
+        "body": "Indiquez-nous le nom de votre entreprise, vos horaires d'ouverture et les services que vous proposez. Nous créons et formons votre assistant IA personnalisé en moins de 24 heures."
+      },
+      {
+        "title": "Il répond à tous les appels",
+        "body": "Votre assistant répond immédiatement, de jour comme de nuit, y compris le week-end. Il s'exprime naturellement, comprend vos clients et traite toutes les demandes de réservation."
+      },
+      {
+        "title": "Votre agenda se remplit",
+        "body": "Les réservations s'affichent directement dans votre agenda. Vous recevez une notification et votre client reçoit une confirmation. Vous n'avez rien à faire."
+      }
+    ],
+    "flowNodes": [
+      {
+        "label": "Appels des clients",
+        "sub": "N'importe quel nombre · À toute heure"
+      },
+      {
+        "label": "Réponse de l'agent",
+        "sub": "IA vocale · Très rapide"
+      },
+      {
+        "label": "Réservation enregistrée",
+        "sub": "J'ai bien compris"
+      },
+      {
+        "label": "Place confirmée",
+        "sub": "Calendrier synchronisé en temps réel"
+      },
+      {
+        "label": "Les deux ont été informés",
+        "sub": "SMS · E-mail"
+      }
+    ],
+    "connectorLabels": [
+      "Appel vocal",
+      "Conversation",
+      "Données de réservation",
+      "Confirmation"
+    ],
+    "visualPanels": [
+      {
+        "title": "Agent configuré",
+        "lines": [
+          "Raison sociale ✓",
+          "Horaires définis ✓",
+          "Services : Coupe de cheveux, Rasage, Taille de barbe... ✓",
+          "Langue sélectionnée ✓"
+        ]
+      },
+      {
+        "title": "Appel en cours",
+        "lines": [
+          "Client : « Bonjour, je voudrais une coupe de cheveux et une taille de barbe. »",
+          "L'agent : « Bien sûr ! J'ai... »",
+          "Place disponible à 15 h ✓",
+          "Langue détectée : EN ✓"
+        ]
+      },
+      {
+        "title": "Réservation confirmée",
+        "lines": [
+          "Prestation : Coupe de cheveux + Barbe — 22 € ✓",
+          "Calendrier : mis à jour ✓",
+          "SMS envoyé au client ✓",
+          "Notification envoyée ✓"
+        ]
+      }
+    ]
+  },
   "agentNamer": {
     "eyebrow": "Votre agent",
     "subheadline": "Donnez un nom à votre agent — ou laissez l'IA en générer un en fonction de votre entreprise.",
